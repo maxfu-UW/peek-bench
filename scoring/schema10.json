@@ -1,0 +1,80 @@
+{
+  "_comment": "PEEK-Bench extraction target = the 9 FFF process parameters of Figure 1 + UTS. Column names mirror PEEK2-CF-main-2026May17-CF-P27d.xlsx (Sheet1). GT is PRE-imputation: blank means the paper does not report it, and null is the correct answer. The 'NOT ...' clauses are the real competing wordings found by scanning all 23 source papers (549 distractor terms); infill<-extrusion-flow and specimen<-layer thickness are confirmed observed failures.",
+  "gt_file": "group_truth_excel_file/PEEK2-CF-main-2026May17-CF-P27d-peekbench-v1b.xlsx (resolved dynamically: newest -peekbench-v*.xlsx)",
+  "gt_sheet": "Sheet1",
+  "index_column": "cf_paper_id",
+  "columns": [
+    {
+      "name": "cf_paper_id",
+      "unit": "",
+      "type": "str",
+      "note": "given in the prompt; copy verbatim"
+    },
+    {
+      "name": "sample_id",
+      "unit": "",
+      "type": "str",
+      "note": "the paper's own run/sample label where one exists"
+    },
+    {
+      "name": "nozzle_diameter",
+      "unit": "mm",
+      "type": "float",
+      "note": "orifice bore, 0.2-1.0. NOT filament dia 1.75, NOT bead/road width, NOT fibre dia in um"
+    },
+    {
+      "name": "nozzle_temp",
+      "unit": "C",
+      "type": "float",
+      "note": "extruder setpoint. NOT drying/annealing T, NOT melt Tm or Tg, NOT printer max, NOT grade digits (450G)"
+    },
+    {
+      "name": "printing_speed",
+      "unit": "mm/s",
+      "type": "float",
+      "note": "print-head deposition speed. NOT tensile crosshead rate in mm/min, NOT screw rpm. If the paper gives mm/min, do the arithmetic yourself and write ONLY the resulting number (never an expression like 20/60)"
+    },
+    {
+      "name": "fiber_weight_fraction",
+      "unit": "wt%",
+      "type": "float",
+      "note": "carbon-fibre wt% of THIS row's material, 0-30; 0 for neat PEEK. NOT vol%, NOT infill %, NOT crystallinity %. Do not infer from grade digits (K10)"
+    },
+    {
+      "name": "raster_angle",
+      "unit": "deg",
+      "type": "str",
+      "note": "in-plane deposition angle as TEXT: '+-45', '0', '90', '0/90'. NOT build orientation, NOT contact or fracture angle. Pattern name only ('Lines') -> null"
+    },
+    {
+      "name": "infill_percentage",
+      "unit": "%",
+      "type": "float",
+      "note": "slicer infill density of the part interior. NOT extrusion flow %, NOT porosity/void %, NOT crystallinity %, NOT elongation %, NOT ANOVA contribution %. null if no infill setting is stated"
+    },
+    {
+      "name": "specimen_thickness",
+      "unit": "mm",
+      "type": "float",
+      "note": "thickness of the tensile coupon, typ 2-4. NOT layer height, NOT wall/shell thickness, NOT test-fixture span. Do not infer from the test standard"
+    },
+    {
+      "name": "layer_thickness",
+      "unit": "mm",
+      "type": "float",
+      "note": "slice/layer height, typ 0.1-0.4. NOT bead width, NOT nozzle diameter, NOT specimen thickness"
+    },
+    {
+      "name": "platform_temp",
+      "unit": "C",
+      "type": "float",
+      "note": "heated bed setpoint. NOT chamber/ambient/enclosure T, NOT drying oven, NOT annealing T"
+    },
+    {
+      "name": "tensile_strength",
+      "unit": "MPa",
+      "type": "float",
+      "note": "measured ULTIMATE tensile stress, mean. NOT yield, NOT flexural/compressive, NOT modulus (thousands of MPa), NOT peak load in N, NOT datasheet or FEM-predicted values"
+    }
+  ]
+}

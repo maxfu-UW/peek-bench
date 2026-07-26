@@ -1,0 +1,32 @@
+{
+  "_comment": "Conditions a paper genuinely reports but the curator deliberately excluded from GT. A predicted row matching one of these was READ CORRECTLY and must not be counted as a hallucination: it leaves the precision denominator rather than scoring against the model. Identified by tensile_strength, which uniquely labels a condition within a paper; matched at the scorer's UTS tolerance (5% or 1.0 MPa). Add a paper here ONLY with the evidence recorded in 'why' -- an over-broad entry silently forgives real hallucinations.",
+  "_not_for": "GT curation errors. If a paper reports a condition that SHOULD be in GT, fix the GT instead. This file is only for conditions correctly outside the benchmark's scope.",
+  "papers": {
+    "CF-P18": {
+      "why": "Nyman 2024 Fig. 4a is a 3 materials x 3 test-temperatures grid with values printed as bar labels. GT keeps only the two room-temperature FFF bars (CF-PEEK 79.9, ESD-PEEK 74.9). Excluded here: the CNC-machined reference material at every temperature, and the 110 C / 130 C groups for all materials. Cross-checked: Table 4's percentage strength drops recompute from this grid to the rounding digit, and the user confirmed the figure directly.",
+      "in_scope_uts": [
+        79.9,
+        74.9
+      ],
+      "excluded_uts": [
+        87.9,
+        70.1,
+        58.9,
+        60.0,
+        56.5,
+        52.0,
+        49.6
+      ],
+      "excluded_because": {
+        "87.9": "Plain PEEK (CNC) at room temperature - non-FFF reference specimen",
+        "70.1": "Plain PEEK (CNC) at 110 C - non-FFF and elevated temperature",
+        "56.5": "Plain PEEK (CNC) at 130 C - non-FFF and elevated temperature",
+        "58.9": "CF-PEEK (FFF) at 110 C - elevated test temperature",
+        "52.0": "CF-PEEK (FFF) at 130 C - elevated test temperature",
+        "60.0": "ESD-PEEK (FFF) at 110 C - elevated test temperature",
+        "49.6": "ESD-PEEK (FFF) at 130 C - elevated test temperature"
+      }
+    }
+  },
+  "_why_CF-P11_is_absent": "CF-P11 is deliberately NOT listed, because a value-keyed entry would be UNSAFE: its excluded values collide with its in-scope ones inside the UTS tolerance (58 MPa is both the '2% SCF unadjusted' summary bar AND the real GT nozzle-diameter-0.3 row; 65 and 62 collide likewise). CF-P18 was safe only because its 7 excluded values sit far from its 2 in-scope values. CF-P11's scope is handled in paper_scope.json instead. CORRECTION (2026-07-26): an earlier version of this note claimed Qwen's 35 extra rows were 'fabrication by replication' across sweeps the paper never ran. That was WRONG. Figure 4's caption states the sweeps cover PEEK, 2% SCF/PEEK AND 5% SCF/PEEK, so the full design is 3 materials x (5 nozzle diameters + 5 temperatures + 7 infill angles) = 51 rows, plus Figure 2's 6 unadjusted/adjusted summary bars = 57 -- exactly what qwen-r3 emitted. Every condition it extracted is real. Its error was in the VALUES for the non-2% materials (17-18 bare-PEEK rows repeat a single 65 MPa instead of reading each curve), not in inventing conditions. GT keeps only the 17 rows at 2 wt% SCF, which is an undisclosed scope restriction now stated in paper_scope.json."
+}

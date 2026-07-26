@@ -1,0 +1,6 @@
+# The curated research dataset and source PDFs are deliberately not published here.
+*.xlsx.orig
+ground_truth/
+**/PEEK2-CF-main-*.xlsx
+*.pdf
+__pycache__/
