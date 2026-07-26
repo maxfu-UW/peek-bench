@@ -168,6 +168,12 @@ Ranked, with costs measured rather than estimated — see [docs/next-steps.md](d
 4. **Run the frozen test**: 90 runs ≈ 9 h wall clock on the M4 Pro.
 5. **Cheap control**: `gemma-3-12b-it` on CF-P18 (~12 min) to show the image-token effect is
    architectural, not a size artefact.
+6. **Serve the benchmark over MCP** — add `get_page_image`, `submit_extraction` and
+   `get_answerability` to the existing `peek-paper-md` server. Scoring server-side keeps ground
+   truth off the client, which is what lets a held-out split be published rather than spent.
+7. **Package the workflows as Skills** — `peek-extract`, `peek-score`, `peek-curate`. The scoring
+   one generalises: the six defects here are a checklist any extraction benchmark could run
+   against itself.
 
 ---
 

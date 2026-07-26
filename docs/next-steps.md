@@ -55,6 +55,60 @@ encoder, so if the 12B checkpoint also returns correct conditions with null valu
 image-token effect is demonstrably **architectural rather than a size artefact** — closing the most
 obvious objection, since the current evidence rests on the 27B checkpoint alone.
 
+## 6. Serve the benchmark over MCP
+
+Today the harness is bespoke Python driving a local LM Studio endpoint. That makes the benchmark
+hard to run against anything else, and it means the ground truth has to sit on the same machine as
+the model.
+
+An MCP server fixes both. A `peek-paper-md` server already exists and serves the corpus
+(`list_papers`, `get_paper` returning frontmatter + markdown body). The benchmark needs three more
+tools on top of it:
+
+| tool | purpose |
+|---|---|
+| `get_page_image(paper_id, page)` | the load-bearing one — this benchmark is about **reading figures**, and a markdown body cannot carry a bar chart |
+| `submit_extraction(paper_id, rows)` | score server-side and return metrics only |
+| `get_answerability(paper_id)` | per-paper ceiling, so a score can be read as "at ceiling" vs "model failed" |
+
+**Why this matters more than convenience: it protects the frozen test split.** If scoring happens
+server-side and only metrics come back, ground truth never reaches the client. The test papers can
+then be evaluated by any MCP-capable agent without the answers leaking into a context window, a
+log, or a training corpus. That is the difference between a benchmark that can be published and one
+that is single-use.
+
+It also makes the comparison **model-agnostic**. Every number in this repo comes from three local
+vision models driven by one harness; the image-token finding predicts how *any* model should
+behave, and an MCP surface is how that prediction gets tested against hosted models on identical
+tooling.
+
+Design notes worth keeping: return page images at native resolution and let the client downsample
+(the whole finding is about what survives downsampling); expose the per-paper scope notes through
+the same tool that serves the paper, so scope travels with the task rather than living in a
+separate prompt; and rate-limit or log `submit_extraction` per paper, since unlimited scored
+submissions turn a held-out split into a training signal.
+
+## 7. Package the workflows as Skills
+
+Three procedures in this project are reusable, non-obvious, and were each arrived at by getting
+them wrong first:
+
+- **`peek-extract`** — the extraction protocol: inclusion criteria, the 12-field schema with its
+  per-field "NOT x, NOT y" disambiguations (derived from a 549-term scan of the corpus), and the
+  A→B→C method that forces a model to locate the setup table before viewing figures.
+- **`peek-score`** — running the scorer and, more importantly, *reading* it: when `row_f1` is an
+  alignment artefact, when `UTS_acc` is withheld and sorted MAPE should be quoted instead, what
+  `answerability_ceiling` and `ambiguous_row_frac` mean, and why row F1 and UTS accuracy must never
+  be reported alone.
+- **`peek-curate`** — the ground-truth audit loop that found four undisclosed scope filters and 25
+  wrongly-blank cells: read the paper, map each GT row to a reported condition, and check whether a
+  blank is genuinely unreported or a curation miss. This one changed published numbers twice.
+
+The scoring skill is the one with value beyond this project. Nothing in it is PEEK-specific: *a
+metric that rewards narrow extraction over correct extraction* is a general failure mode, and the
+six defects in [scoring-defects.md](scoring-defects.md) are a checklist any extraction benchmark
+could run against itself.
+
 ## Deferred
 
 - **Per-paper scope notes break prompt uniformity.** Two papers currently carry them, so their
