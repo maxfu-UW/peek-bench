@@ -128,6 +128,28 @@ ax.set_title("CF-P18: the two metrics rank models differently — report both\n"
              "mistral identifies every row perfectly and gets the numbers wrong", fontsize=9)
 fig.tight_layout(); fig.savefig(F / "fig4_f1_vs_uts.png", bbox_inches="tight"); plt.close(fig)
 
+# ---- Figure 5: accuracy costs time
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(9.2, 3.6))
+runtime, mape = {}, {}
+for m in MODELS:
+    runtime[m] = np.mean([d[d.model == m]["wall_min"].mean() for d in (p19, p11, p18)])
+    mape[m] = pd.concat([p11[p11.model == m]["UTS_MAPE_pct"],
+                         p18[p18.model == m]["UTS_MAPE_pct"]]).dropna().mean()
+bars(a1, runtime, None, "{:.1f}", "wall-clock minutes per run")
+a1.set_title("Runtime — the MOST accurate model is the SLOWEST", fontsize=9)
+for m in MODELS:
+    a2.scatter(runtime[m], mape[m], s=150, color=COLOR[m], zorder=3, edgecolor="w", linewidth=1.4)
+    a2.annotate(m, (runtime[m], mape[m]), textcoords="offset points", xytext=(8, 6), fontsize=8.5)
+a2.set_xlabel("wall-clock minutes per run"); a2.set_ylabel("UTS MAPE (%), figure-locked papers")
+a2.set_title("Down-and-right is better;\ngemma is dominated on both axes", fontsize=9)
+a2.set_xlim(2, 8.6); a2.set_ylim(-4, 48)
+a2.annotate("", xy=(7.6, 6), xytext=(3.6, 36),
+            arrowprops=dict(arrowstyle="->", color="#999", lw=1.1, ls="--"))
+a2.text(5.3, 24, "accuracy costs\n~2.3x the time", fontsize=8, color="#777", ha="center")
+fig.suptitle("Chart-reading accuracy is not free: qwen is 2.3x mistral's runtime",
+             fontsize=10.5, y=1.04)
+fig.tight_layout(); fig.savefig(F / "fig5_runtime_vs_accuracy.png", bbox_inches="tight"); plt.close(fig)
+
 print("wrote:")
 for p in sorted(F.glob("*.png")):
     print(f"  {p.relative_to(F.parent.parent)}  ({p.stat().st_size//1024} KB)")

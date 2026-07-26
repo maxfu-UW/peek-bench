@@ -44,7 +44,7 @@ Per paper:
 | | **qwen** | 0.889 | **1.000** | **1.000** | **0.00** | 4.5 |
 
 **Why this is architectural rather than a capability ranking.** Gemma-3-27B is the *largest* model
-in the roster and places last. Its CF-P18 output is the clearest evidence: it emitted the **correct
+in the roster and is the *least accurate* on these papers (it is not the slowest — see §3). Its CF-P18 output is the clearest evidence: it emitted the **correct
 conditions** — `CF-PEEK 450 °C / 10 wt%` and `ESD-PEEK 430 °C / 0 wt%`, both exactly right — with
 `tensile_strength = null` on **every row**. It found the experiment and could not resolve the
 digits. Gemma 3 encodes any image as a fixed 256 tokens at 896×896; a 2008×716 chart downsampled
@@ -92,7 +92,24 @@ stability.
 
 ---
 
-## 3. Row F1 and UTS accuracy rank models differently
+## 3. Accuracy costs time — and Gemma occupies the worst position
+
+Mean wall-clock minutes per run:
+
+| model | CF-P19 | CF-P11 | CF-P18 | mean | figure-locked UTS MAPE |
+|---|---|---|---|---|---|
+| mistral-small-3.1-24b | 3.6 | 3.7 | 2.3 | **3.2** | 18.78 % |
+| gemma-3-27b-it | 5.3 | 3.9 | 4.1 | **4.4** | 40.78 % |
+| qwen3-vl-32b-instruct | 9.9 | 7.8 | 4.5 | **7.4** | **3.48 %** |
+
+![runtime vs accuracy](figures/fig5_runtime_vs_accuracy.png)
+
+Qwen is **2.3× slower than Mistral** and the only model that reads charts reliably — a real and
+quantified tradeoff, not a free win. Gemma is both slower than Mistral *and* less accurate than
+either, because its fixed 256-token image encoder means additional compute cannot buy chart
+resolution.
+
+## 4. Row F1 and UTS accuracy rank models differently
 
 ![F1 vs UTS](figures/fig4_f1_vs_uts.png)
 
@@ -102,7 +119,7 @@ three repeats. Reporting either metric alone inverts the ranking. Row F1 measure
 condition*; UTS accuracy measures *did you read the number*. They are different capabilities and
 this benchmark separates them.
 
-## 4. Failure modes worth naming
+## 5. Failure modes worth naming
 
 - **Value replication.** On CF-P11, one model emitted 52–57 rows covering the paper's full
   3-material × 3-sweep design (which is real — Figure 4 sweeps all three materials), but filled

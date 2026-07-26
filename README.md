@@ -54,8 +54,12 @@ Pooled UTS error across the two papers whose values are figure-locked (CF-P11, C
 
 ![headline](docs/figures/fig1_uts_error_by_paper.png)
 
-An 11× spread, correctly ordered. Gemma-3-27B is the **largest** model in the roster and finishes
-last, so this is an architectural property rather than a capability ranking.
+An 11× spread, correctly ordered. Gemma-3-27B is the **largest** model in the roster yet is the
+**least accurate** on these papers, so this is an architectural property rather than a capability
+ranking.
+
+*("Least accurate", not slowest — on wall-clock time the ordering is nearly reversed. See
+[speed](#accuracy-costs-time) below.)*
 
 The mechanism is unusually legible on CF-P18, whose values are printed as data labels on a
 2008×716 raster bar chart. Gemma emitted the **correct experimental conditions** — `CF-PEEK 450 °C
@@ -70,6 +74,26 @@ difference is where the numbers live.
 See [docs/findings.md](docs/findings.md) for the full result set, including the supplementary-
 information experiment (parameter accuracy 0.393 → 0.916, *p* = 0.0006, *d* = 2.70, with UTS
 deliberately unmoved at *p* = 0.93).
+
+## Accuracy costs time
+
+Reading a chart properly is not free. Mean wall-clock per run, same M4 Pro, three papers:
+
+| model | CF-P19 | CF-P11 | CF-P18 | **mean** | UTS MAPE (figure-locked) |
+|---|---|---|---|---|---|
+| mistral-small-3.1-24b | 3.6 | 3.7 | 2.3 | **3.2 min** | 18.78 % |
+| gemma-3-27b-it | 5.3 | 3.9 | 4.1 | **4.4 min** | 40.78 % |
+| qwen3-vl-32b-instruct | 9.9 | 7.8 | 4.5 | **7.4 min** | **3.48 %** |
+
+**The most accurate model is the slowest — 2.3× Mistral and 1.7× Gemma.** Gemma is neither fastest
+nor most accurate, which is the least useful position to occupy: its fixed 256-token image encoder
+means the extra time buys nothing on figure-locked papers.
+
+The tradeoff is worth stating explicitly because it drives campaign cost. A full 10-paper × 3-model
+× 3-repeat test run is ≈ 9 h; dropping to Qwen alone would be slower per run but is the only
+configuration that reads charts reliably.
+
+![runtime vs accuracy](docs/figures/fig5_runtime_vs_accuracy.png)
 
 ## Second finding: benchmark scoring is where the bugs are
 
