@@ -210,6 +210,42 @@ number but without which the headline numbers would have been wrong:
 - **Scorer debugging.** Six defects, several found only by re-deriving numbers from primary
   sources. No GPU cost, but it dominated the human/agent time and changed published rankings.
 
+### Cost of a full sweep, by split
+
+Projected from measured throughput — gemma 0.355, mistral 0.275, qwen 0.565 min/page — at
+3 models × 3 repeats per paper.
+
+| split | papers | runs | inference | + model-load | status |
+|---|---|---|---|---|---|
+| **dev-13** | 13 | 117 | **11.1 h** | ~2.0 h | 6 papers done, **7 never run (6.8 h)** |
+| **test-10** (frozen) | 10 | 90 | **7.6 h** | ~1.5 h | not started |
+| **both** | 23 | 207 | **18.7 h** | ~3.5 h | — |
+
+Per-paper cost is driven by page count, not by how many datapoints a paper yields — which makes
+some papers poor value. CF-P15 costs 82 min for **2** datapoints; CF-P19 costs 22 min for **12**.
+The dev papers already run were, by luck rather than design, the cheap and informative ones.
+
+| dev paper | pages | UTS pts | 9 runs | |
+|---|---|---|---|---|
+| CF-P24 | 11 | 20 | 39 min | done |
+| CF-P05 | 11 | 18 | 39 min | done |
+| CF-P11 | 10 | 17 | 36 min | done |
+| CF-P19 | 6 | 12 | 22 min | done |
+| CF-P13 | 21 | 11 | 75 min | done |
+| CF-P18 | 13 | 2 | 47 min | done |
+| CF-P01 | 19 | 10 | 68 min | **not run** |
+| CF-P14 | 21 | 9 | 75 min | **not run** |
+| CF-P20 | 17 | 5 | 61 min | **not run** |
+| CF-P02 | 9 | 3 | 32 min | **not run** |
+| CF-P10 | 17 | 2 | 61 min | **not run** |
+| CF-P15 | 23 | 2 | 82 min | **not run** |
+| CF-P04 | 8 | 2 | 29 min | **not run** |
+
+**Completing dev-13 is not obviously worth 6.8 h.** The seven unrun papers hold 33 datapoints
+between them, and five of the seven are text/table papers where all three models already score
+within ~1.5 % — they would mostly confirm the ceiling effect seen on CF-P19. CF-P14 (9 pts,
+partly figure-locked) is the one with real information left in it.
+
 ### Remaining to a complete benchmark
 
 | item | cost |
@@ -218,6 +254,7 @@ number but without which the headline numbers would have been wrong:
 | Frozen test run: 10 papers × 3 models × 3 repeats = 90 runs | **7.6 h** + ~1.5 h model-load overhead |
 | `gemma-3-12b-it` control on CF-P18 | ~12 min |
 | **Total to publishable** | **≈ 9–10 h**, one overnight run |
+| *(optional)* finish dev-13 — 7 papers, 63 runs | 6.8 h, low expected yield |
 
 ### Honest read on the estimate
 
