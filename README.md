@@ -168,3 +168,65 @@ Ranked, with costs measured rather than estimated — see [docs/next-steps.md](d
 4. **Run the frozen test**: 90 runs ≈ 9 h wall clock on the M4 Pro.
 5. **Cheap control**: `gemma-3-12b-it` on CF-P18 (~12 min) to show the image-token effect is
    architectural, not a size artefact.
+
+---
+
+## Total development time estimate
+
+Everything below is **measured** from run artefacts on disk, not recalled.
+
+### Development phase (complete)
+
+| | |
+|---|---|
+| **Model inference** | **12.5 h** across **88 runs** (mean 8.5 min/run) |
+| **Calendar span** | ~1.1 days of elapsed wall clock, 2026-07-24 → 2026-07-26 |
+| **Papers exercised** | 6 of 23 (CF-P05, P11, P13, P18, P19, P24) |
+| **Hardware** | one Apple M4 Pro, 64 GB unified memory — no cloud, no GPU rental |
+| **Code written** | ~1,100 lines of Python + 6 runner scripts |
+
+Inference time by model — note the same asymmetry the benchmark measures, showing up as cost:
+
+| model | runs | total |
+|---|---|---|
+| qwen3-vl-32b | 29 | **7.2 h** |
+| gemma-3-27b | 29 | 2.6 h |
+| mistral-small-3.1-24b | 29 | 2.1 h |
+
+**Qwen alone consumed 58 % of all compute** while running the same number of extractions. That is
+the accuracy/cost tradeoff expressed as a budget line rather than a per-run average.
+
+### What the 12.5 h actually bought
+
+Only a minority went to the results in this repo. The rest went to work that produced no headline
+number but without which the headline numbers would have been wrong:
+
+- **Discarded runs.** The supplementary A/B was run twice — 9 runs under a harness that failed
+  1-in-3, then 18 more after the fixes. CF-P18 and CF-P11 were each re-run after scope corrections.
+  Roughly a third of all compute was superseded.
+- **Model triage.** Several candidate models were downloaded and probed before three were kept.
+  Three early verdicts were **wrong** and had to be retracted — each from a qualitative probe rather
+  than a measurement, which is why image-token budgets are now measured by token delta.
+- **Scorer debugging.** Six defects, several found only by re-deriving numbers from primary
+  sources. No GPU cost, but it dominated the human/agent time and changed published rankings.
+
+### Remaining to a complete benchmark
+
+| item | cost |
+|---|---|
+| Audit the 6 unaudited test papers | no GPU — **blocking** |
+| Frozen test run: 10 papers × 3 models × 3 repeats = 90 runs | **7.6 h** + ~1.5 h model-load overhead |
+| `gemma-3-12b-it` control on CF-P18 | ~12 min |
+| **Total to publishable** | **≈ 9–10 h**, one overnight run |
+
+### Honest read on the estimate
+
+The **12.5 h of inference is the small part**. The dominant costs were curation and metric design:
+tracing four undisclosed scope filters, finding six scoring defects, and reconciling ground-truth
+cells against the source papers — all of which changed results and none of which is visible in a
+runtime total.
+
+A team reproducing this with the ground truth in hand and the scorer already correct would need
+roughly **10 h of compute and a day of setup**. Building it from scratch — including discovering
+that the metric, not the model, was the dominant error source — took substantially longer than the
+compute suggests.
