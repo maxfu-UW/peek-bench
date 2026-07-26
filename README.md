@@ -46,11 +46,11 @@ this chart?") gave the wrong answer at least once; the token delta never did.
 
 Pooled UTS error across the two papers whose values are figure-locked (CF-P11, CF-P18):
 
-| model | image tokens | UTS MAPE | n |
-|---|---|---|---|
-| gemma-3-27b | 256 | **40.78 %** | 3 |
-| mistral-small-3.1 | 1,030 | **18.78 %** | 6 |
-| qwen3-vl-32b | ~2,900 | **3.48 %** | 12 |
+| model | image tokens | UTS MAPE | runtime | n |
+|---|---|---|---|---|
+| gemma-3-27b | 256 | **40.78 %** | 4.4 min/run | 3 |
+| mistral-small-3.1 | 1,030 | **18.78 %** | **3.2 min/run** | 6 |
+| qwen3-vl-32b | ~2,900 | **3.48 %** | 7.4 min/run | 12 |
 
 ![headline](docs/figures/fig1_uts_error_by_paper.png)
 

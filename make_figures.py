@@ -57,17 +57,27 @@ def bars(ax, vals, errs=None, fmt="{:.2f}", ylab=""):
 
 # ---- Figure 1: the headline — UTS error per paper, ordered by where the values live
 p11, p18, p19 = load("CF-P11-v2.xlsx"), load("CF-P18-v2.xlsx"), load("CF-P19.xlsx")
-fig, axes = plt.subplots(1, 3, figsize=(11, 3.6), sharey=True)
-axes[0].set_ylim(0, 55)
-for ax, (d, title, sub) in zip(axes, [
-        (p19, "CF-P19  —  values in a TABLE", "15 'MPa' in text / 12 values"),
-        (p11, "CF-P11  —  values in FIGURES", "4 'MPa' in text / 17 values"),
-        (p18, "CF-P18  —  values in a FIGURE", "1 'MPa' in text / 2 values")]):
+fig, axes = plt.subplots(2, 3, figsize=(11, 6.6))
+axes[0, 0].set_ylim(0, 55); axes[1, 0].set_ylim(0, 11)
+PANELS = [(p19, "CF-P19  —  values in a TABLE", "15 'MPa' in text / 12 values"),
+          (p11, "CF-P11  —  values in FIGURES", "4 'MPa' in text / 17 values"),
+          (p18, "CF-P18  —  values in a FIGURE", "1 'MPa' in text / 2 values")]
+for j, (d, title, sub) in enumerate(PANELS):
+    ax = axes[0, j]
+    if j: ax.sharey(axes[0, 0])
     g = d.groupby("model")["UTS_MAPE_pct"]
-    bars(ax, g.mean().to_dict(), g.std().fillna(0).to_dict(), "{:.1f}", "UTS MAPE (%)  lower is better")
+    bars(ax, g.mean().to_dict(), g.std().fillna(0).to_dict(), "{:.1f}",
+         "UTS MAPE (%)  lower is better" if j == 0 else "")
     ax.set_title(f"{title}\n{sub}", fontsize=9)
-fig.suptitle("Tensile-strength extraction error: models diverge only when the numbers are locked in figures",
-             fontsize=10.5, y=1.03)
+    ax.set_xticklabels([])
+    ax2 = axes[1, j]
+    if j: ax2.sharey(axes[1, 0])
+    gt_ = d.groupby("model")["wall_min"]
+    bars(ax2, gt_.mean().to_dict(), gt_.std().fillna(0).to_dict(), "{:.1f}",
+         "runtime (min/run)  lower is better" if j == 0 else "")
+fig.suptitle("Accuracy (top) and cost (bottom). Models diverge on accuracy only when the numbers "
+             "are locked in figures —\nbut qwen costs 2.0-2.8x mistral's runtime on every paper",
+             fontsize=10.5, y=1.02)
 fig.tight_layout(); fig.savefig(F / "fig1_uts_error_by_paper.png", bbox_inches="tight"); plt.close(fig)
 
 # ---- Figure 2: pooled figure-locked error vs image-token budget

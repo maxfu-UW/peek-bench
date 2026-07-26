@@ -34,7 +34,7 @@ Pooled UTS error over both:
 
 Per paper:
 
-| paper | model | row F1 | cell acc | UTS acc | UTS MAPE | min/run |
+| paper | model | row F1 | cell acc | UTS acc | UTS MAPE | runtime (min/run) |
 |---|---|---|---|---|---|---|
 | CF-P11 | gemma | 0.684 | 0.505 | 0.041 | 40.78 | 3.9 |
 | | mistral | 0.926 | 0.863 | 0.207 | 28.08 | 3.7 |
