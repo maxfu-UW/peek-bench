@@ -165,15 +165,23 @@ Across all 13 papers, **Read-only beat the tool-enabled run on every metric** �
 0.933, UTS MAPE **0.39 vs 0.49** — and cost 22 % less. On the five papers examined first, including
 CF-P24 where the tool-enabled agents had digitised the axes at 1100 dpi:
 
-| paper | claude READ-ONLY | claude + code | mistral | gemma |
-|---|---|---|---|---|
-| CF-P11 | 1.96 | 1.59 | 25.96 | 29.84 |
-| CF-P13 | 1.78 | 1.68 | 11.70 | 9.28 |
-| CF-P18 | 0.00 | 0.00 | 10.17 | 13.11 |
-| CF-P19 *(table control)* | 0.40 | 0.40 | 1.00 | 0.64 |
-| CF-P24 | **0.54** | 2.16 | 2.11 | 6.25 | Eyeballing beat computing. The agents' own provenance says so: *"EVERY
-tensile_strength below is an EYEBALL ESTIMATE against the y-axis"* — landing within 2 % on a paper
-where Gemma is 30 % out.
+UTS MAPE %, all five configurations:
+
+| paper | claude READ-ONLY | claude + code | qwen | mistral | gemma |
+|---|---|---|---|---|---|
+| CF-P11 | 1.96 | **1.59** | 6.45 | 25.96 | 29.84 |
+| CF-P13 | 1.78 | **1.68** | 3.56 | 11.70 | 9.28 |
+| CF-P18 | **0.00** | **0.00** | **0.00** | 10.17 | 13.11 |
+| CF-P19 *(table control)* | **0.40** | **0.40** | 1.41 | 1.00 | 0.64 |
+| CF-P24 | **0.54** | 2.16 | 1.31 | 2.11 | 6.25 |
+
+Eyeballing beat computing. The agents' own provenance says so: *"EVERY tensile_strength below is an
+EYEBALL ESTIMATE against the y-axis"* — landing within 2 % on a paper where Gemma is 30 % out.
+
+Note qwen: it **ties Claude at 0.00 on CF-P18** and is within ~1 point on CF-P19 and CF-P24. The
+frontier advantage is real but narrow, and it is concentrated on **CF-P11's swept curves**
+(1.96 vs 6.45), where values must be interpolated against an axis rather than transcribed from a
+printed label.
 
 **Caveats that stay attached to this row.** Claude reads the PDF through a document-reading tool
 rather than fixed-budget JPEGs, so it does not have a comparable "image tokens" figure — the
