@@ -62,7 +62,53 @@ null values.
 
 ---
 
-## 2. Supplementary information moves parameters and leaves outputs alone
+## 2. A frontier model reads these charts; the local VLMs do not
+
+`claude-opus-5`, run through Claude Code over the same 13 papers with the same prompt and 3 repeats,
+in two configurations that differ **only in tool access**:
+
+| configuration | tools | runs | row F1 | cell | UTS acc | UTS MAPE | API cost |
+|---|---|---|---|---|---|---|---|
+| **claude** | Read only | 39 | **0.950** | **0.963** | **0.982** | **0.39** | **$10.47** |
+| **claude code** | Read + Bash + Write + Edit | 39 | 0.933 | 0.962 | 0.968 | 0.49 | $13.50 |
+| mistral (best local, complete) | agentic view/note/submit | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
+| gemma | agentic view/note/submit | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
+
+**~11× lower tensile error than the best completed local model, for about $0.81 per paper.**
+The gap sits exactly on the figure-locked papers — CF-P11 **1.96 vs 25.96**, CF-P18 **0.00 vs
+10.17**, CF-P13 **1.78 vs 11.70**.
+
+### It is reading, not tooling — established by ablation
+
+The first Claude run made **220 Bash calls against 138 Reads**. Agents were rendering pages at
+1100 dpi and detecting axis ticks programmatically, which would make this a chart-*digitisation*
+result rather than a chart-*reading* one — a different and much weaker claim.
+
+So the whole 13-paper set was re-run with code execution **forbidden**: Read tool only, no
+rendering, no pixel arithmetic, no scripts. Compliance was verified against the agent transcripts
+rather than trusted: **44 Read calls, zero Bash/Write/Edit across 39/39 agents.**
+
+Read-only won on every metric and cost 22 % less. It was also better on CF-P24 — the paper where the
+tool-enabled agents had digitised the axes (**0.54 vs 2.16**). The agents' own provenance explains
+why it works at all: *"EVERY tensile_strength below is an EYEBALL ESTIMATE against the y-axis"* —
+landing within 2 % on a paper where Gemma is 30 % out.
+
+### Controls and caveats
+
+- **Contamination.** Every extraction ran in a fresh subagent with no access to the session that
+  built the ground truth, and was explicitly barred from opening any spreadsheet or looking for
+  answers. Provenance strings cite page numbers and figure panels, not recalled values.
+- **Not a controlled variable swap.** The local models see JPEGs at a fixed image-token budget;
+  Claude reads the PDF through a document-reading tool. There is no comparable "image tokens"
+  figure for the Claude rows — this is *agentic system* vs *local VLM at a fixed image budget*.
+- **Shared confound.** These are published papers, so any of the systems may have seen them in
+  training. That applies to all five configurations equally.
+- **Scope penalty.** Claude is *penalised* for following the stated criteria: on CF-P24 it emitted
+  34 rows covering neat PEEK and CF-PEEK, exactly as the inclusion criteria say, while the ground
+  truth keeps only the 20 CF rows. Its row F1 is suppressed by undisclosed curation, not by
+  extraction error.
+
+## 3. Supplementary information moves parameters and leaves outputs alone
 
 CF-P13 (Li 2023) states its process parameters **only in supplementary Table S1**; the main
 article does not contain them. A/B over the same paper — main article (11 pp) vs main + SI merged
@@ -92,7 +138,7 @@ stability.
 
 ---
 
-## 3. Accuracy costs time — and Gemma occupies the worst position
+## 4. Accuracy costs time — and Gemma occupies the worst position
 
 Mean wall-clock minutes per run:
 
@@ -109,7 +155,7 @@ quantified tradeoff, not a free win. Gemma is both slower than Mistral *and* les
 either, because its fixed 256-token image encoder means additional compute cannot buy chart
 resolution.
 
-## 4. Row F1 and UTS accuracy rank models differently
+## 5. Row F1 and UTS accuracy rank models differently
 
 ![F1 vs UTS](figures/fig4_f1_vs_uts.png)
 
@@ -119,7 +165,7 @@ three repeats. Reporting either metric alone inverts the ranking. Row F1 measure
 condition*; UTS accuracy measures *did you read the number*. They are different capabilities and
 this benchmark separates them.
 
-## 5. Failure modes worth naming
+## 6. Failure modes worth naming
 
 - **Value replication.** On CF-P11, one model emitted 52–57 rows covering the paper's full
   3-material × 3-sweep design (which is real — Figure 4 sweeps all three materials), but filled

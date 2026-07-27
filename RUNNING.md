@@ -92,3 +92,23 @@ Expect **run-to-run variance**: the same model on the same paper varies across r
 why everything here is 3 repeats. Do not compare single runs. And do not silently drop failed runs
 — an earlier result reported `0.895 ± 0.002` that was actually two surviving runs out of three;
 with all three it was `0.681 ± 0.237`.
+
+## Reproducing the Claude rows
+
+The two Claude configurations are not run by these shell scripts — they are Claude Code subagents.
+To reproduce:
+
+1. Use the prompt in [docs/prompt.md](docs/prompt.md), with the `view_page`/`note`/`submit` protocol
+   replaced by "read this PDF". Keep the inclusion criteria, field definitions and any per-paper
+   scope note **verbatim** — they are what the local harness sends.
+2. Run **one extraction per subagent**, with no shared conversation history, given only the PDF path.
+   If the agent can see the ground truth — or a session that discussed it — the result is
+   contaminated and worthless.
+3. For the **Read-only** row, forbid Bash/Write/Edit and verify from the transcripts that no code
+   ran. Do not rely on the agent's self-report.
+4. Write each run to `results_claude/<CF-Pxx>__claude-r<N>.json` in the same shape as the local
+   runs (`{cf_paper_id, model, rows, submitted_full}`), then score with the same `score10.py`.
+
+Cost for 39 runs was **$10.47** (Read-only) and **$13.50** (with tools) at $5/MTok input +
+$25/MTok output, ~90 % input share. Token counts are in the README so the figures recompute at any
+rate.

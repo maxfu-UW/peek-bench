@@ -69,6 +69,32 @@ figure-sourced, so absence from the text layer says nothing), and string matchin
 the ceiling is an upper bound. Zero-valued cells are a known weak spot — `"0"` matches almost any
 document.
 
+## The Claude configurations
+
+Two rows in the results table are `claude-opus-5` driven through Claude Code rather than a local
+serving endpoint. They use the same inclusion criteria, field definitions and per-paper scope notes
+as the local harness — see [prompt.md](prompt.md) — with the `view_page`/`note`/`submit` tool
+protocol replaced by direct document reading.
+
+**Orchestration.** Each extraction is an independent subagent; 39 run in parallel. Wall clock for
+the 39-run sweep was 12.9 min against 2.0 h of serial-equivalent model time. That parallelism is an
+infrastructure property, not a model property, and is reported separately from per-run cost.
+
+**Contamination control.** The ground truth was built and audited in the same session that launched
+these runs, so an agent with that context would be recalling answers rather than reading papers.
+Every extraction therefore runs in a fresh subagent with no conversation history, given only the PDF
+path and the prompt, and explicitly barred from opening any spreadsheet or searching for ground
+truth.
+
+**The Read-only ablation.** Because the first run's agents wrote and executed code to digitise
+charts, the set was re-run with code execution forbidden. Compliance is checked by counting actual
+`tool_use` records in the agent transcripts — self-reporting on a compliance question is verified,
+not trusted. Any run that executed code would be discarded; none did.
+
+**What cannot be equalised.** Local models receive page JPEGs at a fixed image-token budget
+(256 / 1,030 / ~2,900). Claude reads the PDF through a document-reading tool at native resolution.
+The two are not a controlled swap of one variable, and the Claude rows carry no image-token figure.
+
 ## Scope mechanisms
 
 Ground truth encodes curation decisions the prompt never stated, and charging those to the model
