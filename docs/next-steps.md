@@ -33,13 +33,13 @@ The scorer already stamps `gt_file` and `gt_md5` into every workbook.
 
 ## 4. Run the frozen test
 
-Measured throughput: gemma 0.355 min/page, mistral 0.275, qwen 0.565.
+Measured throughput from the COMPLETED dev-13 sweep: gemma 0.398 min/page, mistral 0.333, qwen 0.713. (Earlier priors of 0.355/0.275/0.565 came from two short papers and underestimated the corpus.)
 
 | configuration | runs | wall clock |
 |---|---|---|
-| 10 papers × 3 models × 3 repeats | 90 | **7.6 h** + ~1.5 h model-load overhead |
-| 2 models instead of 3 | 60 | 5.1 h |
-| 1 repeat instead of 3 | 30 | 2.5 h |
+| 10 papers × 3 models × 3 repeats | 90 | **9.2 h** + ~9 min model-load overhead |
+| 2 models instead of 3 | 60 | 5.8 h |
+| 1 repeat instead of 3 | 30 | 3.1 h |
 
 Largest items: CF-P25 (15 pp, 30 pts, 54 min), CF-P22 (21 pp, 24 pts, 75 min).
 

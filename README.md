@@ -392,39 +392,53 @@ compute suggests.
 
 ### Cost of a full sweep, by split
 
-Projected from measured throughput — gemma 0.355, mistral 0.275, qwen 0.565 min/page — at
-3 models × 3 repeats per paper.
+The dev-13 figures below are **measured** from the completed 117-run sweep, not projected. The
+test-10 row is projected from the same measured throughput.
 
-| split | papers | runs | inference | + model-load | status |
-|---|---|---|---|---|---|
-| **dev-13** | 13 | 117 | **11.1 h** | ~2.0 h | 6 papers done, **7 never run (6.8 h)** |
-| **test-10** (frozen) | 10 | 90 | **7.6 h** | ~1.5 h | not started |
-| **both** | 23 | 207 | **18.7 h** | ~3.5 h | — |
+| split | papers | pages | runs | inference | wall clock | status |
+|---|---|---|---|---|---|---|
+| **dev-13** | 13 | 186 | 117 | **12.3 h** | **12 h 24 min** | **complete** |
+| test-10 (frozen) | 10 | 127 | 90 | *9.2 h projected* | — | not started |
+| both | 23 | 313 | 207 | ~21.5 h | — | — |
 
-Per-paper cost is driven by page count, not by how many datapoints a paper yields — which makes
-some papers poor value. CF-P15 costs 82 min for **2** datapoints; CF-P19 costs 22 min for **12**.
-The dev papers already run were, by luck rather than design, the cheap and informative ones.
+**Measured throughput superseded the earlier priors** — every model was slower in the full sweep
+than in the short per-paper runs used to build the first estimate:
 
-| dev paper | pages | UTS pts | 9 runs | |
-|---|---|---|---|---|
-| CF-P24 | 11 | 20 | 39 min | done |
-| CF-P05 | 11 | 18 | 39 min | done |
-| CF-P11 | 10 | 17 | 36 min | done |
-| CF-P19 | 6 | 12 | 22 min | done |
-| CF-P13 | 21 | 11 | 75 min | done |
-| CF-P18 | 13 | 2 | 47 min | done |
-| CF-P01 | 19 | 10 | 68 min | **not run** |
-| CF-P14 | 21 | 9 | 75 min | **not run** |
-| CF-P20 | 17 | 5 | 61 min | **not run** |
-| CF-P02 | 9 | 3 | 32 min | **not run** |
-| CF-P10 | 17 | 2 | 61 min | **not run** |
-| CF-P15 | 23 | 2 | 82 min | **not run** |
-| CF-P04 | 8 | 2 | 29 min | **not run** |
+| model | measured min/page | earlier prior |
+|---|---|---|
+| gemma-3-27b | **0.398** | 0.355 |
+| mistral-small-3.1 | **0.333** | 0.275 |
+| qwen3-vl-32b | **0.713** | 0.565 |
 
-**Completing dev-13 is not obviously worth 6.8 h.** The seven unrun papers hold 33 datapoints
-between them, and five of the seven are text/table papers where all three models already score
-within ~1.5 % — they would mostly confirm the ceiling effect seen on CF-P19. CF-P14 (9 pts,
-partly figure-locked) is the one with real information left in it.
+That is why the test-10 projection rose from 7.6 h to **9.2 h**. The original priors came from
+CF-P18 and CF-P11 — both small, and both papers where models terminate early — so they
+underestimated the corpus.
+
+**Per-paper cost tracks page count far less cleanly than expected.** Measured, 9 runs each:
+
+| dev paper | pages | UTS pts | 9 runs |
+|---|---|---|---|
+| CF-P13 | 21 | 11 | **134 min** |
+| CF-P14 | 21 | 9 | 100 min |
+| CF-P05 | 11 | 18 | 90 min |
+| CF-P24 | 11 | 20 | 71 min |
+| CF-P19 | 6 | 12 | 56 min |
+| CF-P15 | 23 | 2 | 50 min |
+| CF-P11 | 10 | 17 | 48 min |
+| CF-P01 | 19 | 10 | 47 min |
+| CF-P20 | 17 | 5 | 37 min |
+| CF-P18 | 13 | 2 | 33 min |
+| CF-P10 | 17 | 2 | 30 min |
+| CF-P04 | 8 | 2 | 25 min |
+| CF-P02 | 9 | 3 | 18 min |
+
+The page-count model I used for planning does not hold: **CF-P15 is the longest paper (23 pp) but
+only the 6th most expensive**, while CF-P05 at 11 pages cost 90 min. Runtime tracks **rows emitted**
+— generation volume — more than pages read. CF-P13 is expensive on both counts (21 pp, and models
+over-extract it), CF-P02 cheap on both.
+
+The cost/yield asymmetry survives though: **CF-P02 gives 3 datapoints for 18 min; CF-P05 gives 18
+for 90 min** — a 5× spread in minutes per datapoint.
 
 ### Remaining to a complete benchmark
 
