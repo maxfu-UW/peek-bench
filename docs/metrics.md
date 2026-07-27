@@ -32,6 +32,7 @@ sweep:
 | CF-P11 mistral | **0.938** | **0.134** | found 94 % of conditions, read 13 % of values |
 | CF-P01 mistral | 1.000 | 1.000 | tabulated paper — both agree |
 | CF-P20 gemma | **0.000** | — | found every condition, reported `tensile_strength = null` on all |
+| CF-P24 qwen | 0.667 | **0.967** | the inverse — read almost every value, mis-identified rows |
 
 The last row is the important one. `0.000` does not mean "found nothing" — it means the model
 identified the experiment and reported **no measurements**. A null-UTS row cannot match by design,

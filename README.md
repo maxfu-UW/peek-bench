@@ -194,18 +194,23 @@ published papers in training — a shared confound, not a Claude-specific one.
 **Cost**: the 39-run Claude sweep used **1.93 M tokens** and **12.9 min wall clock** (2.0 h serial,
 run in parallel), versus ~11 h of local GPU for the equivalent 117 local runs.
 
-**Paired across all 13 papers, Mistral beats Gemma on structure but not on reading values:**
+**Paired Wilcoxon across all 13 papers, every pair:**
 
-| metric | mistral better on | *p* (Wilcoxon) |
-|---|---|---|
-| row F1 | 8/13 papers | **0.043** |
-| cell accuracy | 6/11 papers | **0.031** |
-| UTS MAPE | 4/11 papers | 0.38 — no difference |
+| comparison | row F1 | cell accuracy | UTS MAPE |
+|---|---|---|---|
+| mistral vs gemma | 8/13, ***p* = 0.043** | 6/11, ***p* = 0.031** | 4/11, *p* = 0.38 |
+| qwen vs mistral | 5/13, *p* = 0.078 | 8/13, *p* = 0.055 | 7/12, ***p* = 0.023** |
+| **qwen vs gemma** | 9/13, ***p* = 0.007** | 7/11, ***p* = 0.016** | 5/11, *p* = 0.063 |
 
-Both structural metrics are significant; value accuracy is not. On the figure-locked CF-P11 the two
-are effectively tied at **25.96 % vs 29.84 %** error — both catastrophic. So 256 and 1,030 image
-tokens *both* fail at chart reading, which suggests a **threshold** rather than a smooth gradient.
-Qwen's ~2,900 will decide that.
+The pattern is not a clean ladder. **Mistral beats Gemma on structure but not on values**
+(UTS *p* = 0.38 — on figure-locked CF-P11 they are effectively tied at 25.96 % vs 29.84 %, both
+catastrophic). **Qwen beats Mistral on values but not on structure** (UTS *p* = 0.023, row F1
+*p* = 0.078).
+
+So the image-token budget buys **chart reading specifically**, and it only starts paying above
+~1,000 tokens: 256 → 1,030 changes nothing measurable for value accuracy, 1,030 → ~2,900 changes it
+significantly. Structure — finding which conditions exist — improves earlier and for different
+reasons.
 
 ![dev-13 sweep](docs/figures/fig6_dev13_sweep.png)
 
@@ -458,10 +463,12 @@ for 90 min** — a 5× spread in minutes per datapoint.
 | item | cost |
 |---|---|
 | Audit the 6 unaudited test papers | no GPU — **blocking** |
-| Frozen test run: 10 papers × 3 models × 3 repeats = 90 runs | **7.6 h** + ~1.5 h model-load overhead |
+| Frozen test run: 10 papers × 3 models × 3 repeats = 90 runs | **9.2 h** + ~9 min model-load overhead |
 | `gemma-3-12b-it` control on CF-P18 | ~12 min |
 | **Total to publishable** | **≈ 9–10 h**, one overnight run |
-| *(optional)* finish dev-13 — 7 papers, 63 runs | 6.8 h, low expected yield |
+
+*(dev-13 is complete — 117/117. The test-run estimate rose from 7.6 h to 9.2 h once the completed
+sweep gave measured throughput rather than priors.)*
 
 ### Honest read on the estimate
 
