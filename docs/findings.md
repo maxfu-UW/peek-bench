@@ -1,5 +1,11 @@
 # Findings
 
+> **Two experiment generations.** Sections 1 and 3–6 report the **early per-paper runs** (CF-P11,
+> P13, P18, P19) under mixed prompt versions. Section 2 and the dev-13 tables report the **frozen
+> 13-paper sweep**, which supersedes them for model comparison. The same model can appear in both
+> with different numbers. `qwen3-vl-32b` is **still running in the sweep (18/39)** — its sweep row is
+> partial and italicised wherever shown.
+
 All numbers below come from runs on the **development** split. The frozen 10-paper test split has
 not been run. Ground truth is not distributed with this repo, so the workbooks in `results/` carry
 metrics only (`summary`, `per_column`); each is stamped with the GT filename and MD5 it was scored

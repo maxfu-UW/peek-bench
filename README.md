@@ -42,13 +42,27 @@ this chart?") gave the wrong answer at least once; the token delta never did.
 
 ---
 
-## Headline finding
+## Two experiment generations — read the labels
+
+This repo contains results from **two separate runs**, and the same model appears in both with
+different numbers. They are not interchangeable:
+
+| | papers | prompt | status |
+|---|---|---|---|
+| **A. Early per-paper runs** | CF-P11, P13, P18, P19 | **mixed versions**, changed mid-campaign | complete, superseded |
+| **B. Dev-13 sweep** | all 13 dev papers | **one frozen version** | gemma + mistral complete, **qwen in progress** |
+
+**Generation B supersedes A** for any model comparison. A is retained because it contains the
+supplementary-information A/B and the early figure/table contrast, which B does not repeat.
+Every table below states which generation it comes from.
+
+## Headline finding — generation A (early per-paper runs, mixed prompts)
 
 **Chart-reading accuracy is monotonic in image-token budget, and it is not explained by model size.**
 
 Pooled UTS error across the two papers whose values are figure-locked (CF-P11, CF-P18):
 
-| model | image tokens | UTS MAPE | runtime | n |
+| model | image tokens | UTS MAPE | runtime | runs |
 |---|---|---|---|---|
 | gemma-3-27b | 256 | **40.78 %** | 4.4 min/run | 3 |
 | mistral-small-3.1 | 1,030 | **18.78 %** | **3.2 min/run** | 6 |
@@ -97,17 +111,20 @@ configuration that reads charts reliably.
 
 ![runtime vs accuracy](docs/figures/fig5_runtime_vs_accuracy.png)
 
-## Dev-13 sweep (in progress — 2 of 3 models complete)
+## Dev-13 sweep — generation B (primary result, in progress)
 
-All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. This
-supersedes the earlier per-paper results, which came from mixed prompt versions and are not
-poolable.
+All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. **This is the
+result to cite**; generation A above came from mixed prompt versions and is not poolable with it.
+
+> **qwen3-vl-32b is still running (18/39 runs, 6/13 papers).** Its row is marked partial everywhere
+> it appears and must not be compared against the completed rows — the papers it has covered so far
+> are not a random subset. Charts draw it hatched and semi-transparent rather than omitting it.
 
 | configuration | model | tools | image path | runs | row F1 | cell | UTS acc | **UTS MAPE** | API cost |
 |---|---|---|---|---|---|---|---|---|---|
 | gemma | `gemma-3-27b-it` | agentic view/note/submit | JPEG, **256** tok | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
 | mistral | `mistral-small-3.1-24b-instruct-2503` | agentic view/note/submit | JPEG, **1,030** tok | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
-| qwen | `qwen3-vl-32b-instruct` | agentic view/note/submit | JPEG, **~2,900** dyn | *4/39* | — | — | — | — | $0 · local |
+| qwen *(partial)* | `qwen3-vl-32b-instruct` | agentic view/note/submit | JPEG, **~2,900** dyn | **18/39** | *0.850* | *0.897* | *0.877* | *2.12* | $0 · local |
 | **claude** | `claude-opus-5` | **Read only** | PDF native | 39 | **0.950** | **0.963** | **0.982** | **0.39** | **$10.47** |
 | **claude code** | `claude-opus-5` | Read + Bash + Write + Edit | PDF native + code | 39 | 0.933 | 0.962 | 0.968 | 0.49 | $13.50 |
 

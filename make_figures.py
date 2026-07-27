@@ -170,7 +170,11 @@ if (R / "DEV13-sweep.xlsx").exists():
     d13 = pd.read_excel(R / "DEV13-sweep.xlsx", sheet_name="summary")
     d13["model"] = d13["run"].str.split("__").str[1].str.split("-").str[0]
     d13["paper"] = d13["run"].str.split("__").str[0]
-    done = [m for m in MODELS if (d13.model == m).sum() >= 39]
+    # Include EVERY model that has runs. Dropping a partially-complete model makes it vanish
+    # from the chart with no indication it was ever run -- a reader cannot tell "absent" from
+    # "not yet finished". Partial series are drawn and labelled with their run count instead.
+    done = [m for m in MODELS if (d13.model == m).sum() > 0]
+    counts = {m: int((d13.model == m).sum()) for m in done}
     papers = (d13.groupby("paper")["gt_rows"].first().sort_values(ascending=False).index.tolist())
     fig, axes = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
     x = np.arange(len(papers)); w = 0.8 / max(len(done), 1)
@@ -180,7 +184,12 @@ if (R / "DEV13-sweep.xlsx").exists():
                                               (axes[1], "UTS_MAPE_pct", "UTS MAPE %  (reads the value)")]):
             v = [g[met].mean().get(p, np.nan) for p in papers]
             pos = x + (j - (len(done) - 1) / 2) * w
-            ax.bar(pos, v, w, label=mo if k_ == 0 else None, color=COLOR[mo])
+            lab = None
+            if k_ == 0:
+                lab = mo if counts[mo] >= 39 else f"{mo} ({counts[mo]}/39, partial)"
+            ax.bar(pos, v, w, label=lab, color=COLOR[mo],
+                   alpha=1.0 if counts[mo] >= 39 else 0.55,
+                   hatch=None if counts[mo] >= 39 else "//")
             # A zero bar and a no-data bar both render blank; distinguish them explicitly.
             for xi, vi in zip(pos, v):
                 if pd.isna(vi):
