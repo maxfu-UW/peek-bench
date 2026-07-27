@@ -103,23 +103,34 @@ All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt v
 supersedes the earlier per-paper results, which came from mixed prompt versions and are not
 poolable.
 
-| system | runs | row F1 | cell acc | UTS acc | UTS MAPE | min/run |
-|---|---|---|---|---|---|---|
-| gemma-3-27b-it | 39/39 | 0.573 | 0.798 | 0.761 | 5.20 | 5.2 |
-| mistral-small-3.1-24b | 39/39 | 0.856 | 0.906 | 0.808 | 4.44 | 4.2 |
-| qwen3-vl-32b | *in progress* | — | — | — | — | — |
-| **claude-opus-5** (agentic) | 39/39 | **0.933** | **0.962** | **0.968** | **0.49** | **3.0** |
+| configuration | model | tools | image path | runs | row F1 | cell | UTS acc | **UTS MAPE** | API cost |
+|---|---|---|---|---|---|---|---|---|---|
+| gemma | `gemma-3-27b-it` | agentic view/note/submit | JPEG, **256** tok | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
+| mistral | `mistral-small-3.1-24b-instruct-2503` | agentic view/note/submit | JPEG, **1,030** tok | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
+| qwen | `qwen3-vl-32b-instruct` | agentic view/note/submit | JPEG, **~2,900** dyn | *4/39* | — | — | — | — | $0 · local |
+| **claude** | `claude-opus-5` | **Read only** | PDF native | 39 | **0.950** | **0.963** | **0.982** | **0.39** | **$10.47** |
+| **claude code** | `claude-opus-5` | Read + Bash + Write + Edit | PDF native + code | 39 | 0.933 | 0.962 | 0.968 | 0.49 | $13.50 |
 
-![claude vs local](docs/figures/fig7_claude_vs_local.png)
+Local models: LM Studio on one Apple M4 Pro (64 GB), contexts 40,960 / 32,768 / 65,536. Claude rows:
+Anthropic API through Claude Code, orchestrated as parallel subagents (12.9 min wall clock, 2.0 h
+serial-equivalent for 39 runs). **Both Claude rows are the same model** — the only variable is tool
+access.
 
-**Claude is ~10× more accurate on tensile values than either completed local model**, and the gap is
-concentrated exactly where the benchmark is hard — the figure-locked papers:
+API cost at **$5/MTok input + $25/MTok output** ([Opus 5 / Opus 4.8 standard rates](https://platform.claude.com/docs/en/about-claude/pricing)),
+assuming a 90 % input share since PDF page images dominate. Token counts are exact; dollars scale
+with your rate. The Batch API would halve these to **$5.24 / $6.75**. Local models cost nothing in
+API terms but consumed ~11 h of GPU for the equivalent 117 runs.
+
+![five configurations](docs/figures/fig7_five_configs.png)
+
+**Claude is ~11× more accurate on tensile values than either completed local model, for about a
+dollar a paper**, and the gap is concentrated exactly where the benchmark is hard:
 
 | paper | claude | mistral | gemma |
 |---|---|---|---|
-| CF-P11 (figure sweeps) | **1.59** | 25.96 | 29.84 |
+| CF-P11 (figure sweeps) | **1.96** | 25.96 | 29.84 |
 | CF-P18 (printed bar labels) | **0.00** | 10.17 | 13.11 |
-| CF-P13 (SI + figures) | **1.68** | 11.70 | 9.28 |
+| CF-P13 (SI + figures) | **1.78** | 11.70 | 9.28 |
 
 ### The result is reading, not tooling — verified by ablation
 
@@ -129,17 +140,17 @@ chart-*digitisation* result rather than a chart-*reading* one, so it was re-run 
 **code execution forbidden** — Read tool only, verified against the transcripts (44 Read calls,
 **zero** Bash/Write/Edit across 15/15 agents).
 
+Across all 13 papers, **Read-only beat the tool-enabled run on every metric** — row F1 0.950 vs
+0.933, UTS MAPE **0.39 vs 0.49** — and cost 22 % less. On the five papers examined first, including
+CF-P24 where the tool-enabled agents had digitised the axes at 1100 dpi:
+
 | paper | claude READ-ONLY | claude + code | mistral | gemma |
 |---|---|---|---|---|
 | CF-P11 | 1.96 | 1.59 | 25.96 | 29.84 |
 | CF-P13 | 1.78 | 1.68 | 11.70 | 9.28 |
 | CF-P18 | 0.00 | 0.00 | 10.17 | 13.11 |
 | CF-P19 *(table control)* | 0.40 | 0.40 | 1.00 | 0.64 |
-| CF-P24 | **0.54** | 2.16 | 2.11 | 6.25 |
-| **MEAN** | **0.94** | 1.17 | 10.08 | 12.16 |
-
-**Read-only was slightly better**, including on CF-P24 — the paper where the tool-enabled agents had
-digitised the axes. Eyeballing beat computing. The agents' own provenance says so: *"EVERY
+| CF-P24 | **0.54** | 2.16 | 2.11 | 6.25 | Eyeballing beat computing. The agents' own provenance says so: *"EVERY
 tensile_strength below is an EYEBALL ESTIMATE against the y-axis"* — landing within 2 % on a paper
 where Gemma is 30 % out.
 
