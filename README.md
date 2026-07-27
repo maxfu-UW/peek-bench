@@ -50,7 +50,7 @@ different numbers. They are not interchangeable:
 | | papers | prompt | status |
 |---|---|---|---|
 | **A. Early per-paper runs** | CF-P11, P13, P18, P19 | **mixed versions**, changed mid-campaign | complete, superseded |
-| **B. Dev-13 sweep** | all 13 dev papers | **one frozen version** | gemma + mistral complete, **qwen in progress** |
+| **B. Dev-13 sweep** | all 13 dev papers | **one frozen version** | **complete — 117/117** |
 
 **Generation B supersedes A** for any model comparison. A is retained because it contains the
 supplementary-information A/B and the early figure/table contrast, which B does not repeat.
@@ -116,15 +116,14 @@ configuration that reads charts reliably.
 All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. **This is the
 result to cite**; generation A above came from mixed prompt versions and is not poolable with it.
 
-> **qwen3-vl-32b is still running (18/39 runs, 6/13 papers).** Its row is marked partial everywhere
-> it appears and must not be compared against the completed rows — the papers it has covered so far
-> are not a random subset. Charts draw it hatched and semi-transparent rather than omitting it.
+**COMPLETE: 117/117 runs, 12 h 24 min wall clock, 3 zero-row failures (all Mistral, all traced to a
+context-exhaustion bug on the longest papers).**
 
 | configuration | model | tools | image path | runs | row F1 | cell | UTS acc | **UTS MAPE** | API cost |
 |---|---|---|---|---|---|---|---|---|---|
 | gemma | `gemma-3-27b-it` | agentic view/note/submit | JPEG, **256** tok | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
 | mistral | `mistral-small-3.1-24b-instruct-2503` | agentic view/note/submit | JPEG, **1,030** tok | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
-| qwen *(partial)* | `qwen3-vl-32b-instruct` | agentic view/note/submit | JPEG, **~2,900** dyn | **18/39** | *0.850* | *0.897* | *0.877* | *2.12* | $0 · local |
+| qwen | `qwen3-vl-32b-instruct` | agentic view/note/submit | JPEG, **~2,900** dyn | 39 | 0.933 | 0.927 | 0.947 | 1.06 | $0 · local |
 | **claude** | `claude-opus-5` | **Read only** | PDF native | 39 | **0.950** | **0.963** | **0.982** | **0.39** | **$10.47** |
 | **claude code** | `claude-opus-5` | Read + Bash + Write + Edit | PDF native + code | 39 | 0.933 | 0.962 | 0.968 | 0.49 | $13.50 |
 
@@ -327,27 +326,31 @@ Ranked, with costs measured rather than estimated — see [docs/next-steps.md](d
 
 ## Total development time estimate
 
-Measured from run artefacts on disk, **as of 2026-07-26 23:20** — not recalled. The dev-13 sweep is
-still running (qwen 18/39), so the local figures are a floor.
+Measured from run artefacts on disk, **final as of 2026-07-27 01:22**. The dev-13 sweep is complete
+(117/117), so these are the numbers, not a floor.
 
 ### Local GPU (Apple M4 Pro, 64 GB)
 
 | | |
 |---|---|
-| **Runs on disk** | **184** |
-| **Total inference** | **22.6 h** |
-| **Calendar span** | **1.98 days**, 2026-07-24 23:43 → 2026-07-26 23:09 |
+| **Runs on disk** | **205** |
+| **Total inference** | **24.8 h** |
+| **Calendar span** | **2.07 days**, 2026-07-24 23:43 → 2026-07-27 01:22 |
 | Hardware | one M4 Pro — no cloud, no GPU rental |
 | Code written | ~1,100 lines Python + 7 runner scripts |
 
 | model | runs | inference |
 |---|---|---|
-| qwen3-vl-32b | 47 | **11.2 h** |
+| qwen3-vl-32b | 68 | **13.4 h** |
 | gemma-3-27b | 68 | 6.0 h |
 | mistral-small-3.1-24b | 68 | 4.9 h |
 
-**Qwen consumed 50 % of all GPU time** while contributing the fewest completed runs — the
-accuracy/cost tradeoff as a budget line rather than a per-run average.
+**Qwen consumed 54 % of all GPU time for the same number of runs** — 2.7× Mistral. It is also the
+only local model that reads charts (UTS MAPE 1.06 % vs 4.44 / 5.20). That is the accuracy/cost
+tradeoff as a budget line rather than a per-run average.
+
+The full dev-13 sweep alone was **117 runs in 12 h 24 min**, with **3 zero-row failures** — all
+Mistral, all traced to context exhaustion on the three longest papers.
 
 ### Claude API
 
@@ -358,22 +361,22 @@ accuracy/cost tradeoff as a budget line rather than a per-run average.
 | **Wall clock** | **~20 min** total (parallel subagents) |
 | **Cost** | **$23.98** at $5/MTok in + $25/MTok out, 90 % input share |
 
-The entire Claude side of the benchmark — two full 13-paper configurations — cost **under $24 and
-20 minutes of wall clock**, against 22.6 h of local GPU for the equivalent local sweeps.
+Two complete 13-paper configurations for **under $24 and twenty minutes**, against 24.8 h of local
+GPU for the local sweeps.
 
-### What the 22.6 h actually bought
+### What the 24.8 h actually bought
 
 | | |
 |---|---|
-| Survived into the published results | **14.6 h** |
-| **Superseded by re-runs** | **8.1 h (36 %)** |
+| Survived into the published results | **16.8 h** |
+| **Superseded by re-runs** | **8.1 h (33 %)** |
 
-Roughly a third of all compute was thrown away and redone. The supplementary A/B ran twice (a
-harness that failed 1-in-3, then again after fixes); CF-P18 and CF-P11 were each re-run after scope
-corrections; the whole dev-13 sweep re-ran all 13 papers because earlier results came from mixed
-prompt versions. Plus model triage, including **three verdicts that were wrong and had to be
-retracted** — each from a qualitative probe rather than a measurement, which is why image-token
-budgets are now measured by token delta.
+A third of all compute was thrown away and redone: the supplementary A/B ran twice (a harness that
+failed 1-in-3, then again after fixes); CF-P18 and CF-P11 were each re-run after scope corrections;
+the whole dev-13 sweep redid all 13 papers because earlier results came from mixed prompt versions.
+Plus model triage, including **three verdicts that were wrong and had to be retracted** — each from
+a qualitative probe rather than a measurement, which is why image-token budgets are now measured by
+token delta.
 
 ### Honest read
 
@@ -383,7 +386,7 @@ truth that contradicted a paper's own Table 1. All changed published results; no
 runtime total.
 
 A team reproducing this — correct ground truth in hand, scorer already right — would need roughly
-**12 h of local compute plus ~$24 of API**, and a day of setup. Building it from scratch, including
+**13 h of local compute plus ~$24 of API**, and a day of setup. Building it from scratch, including
 discovering that the *metric* was the dominant error source, took substantially longer than the
 compute suggests.
 
