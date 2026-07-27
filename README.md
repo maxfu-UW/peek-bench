@@ -8,7 +8,7 @@ The interesting part is not the text. It is that **a large share of the target v
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
 
-**Status: the 13-paper development sweep is COMPLETE — 117/117 runs, all papers under one frozen
+**Status: the 13-paper development sweep using 3 local LLM models is COMPLETE — 117/117 runs, all papers under one frozen
 prompt, 12 h 24 min. The frozen 10-paper test split has not been started.**
 
 ---
