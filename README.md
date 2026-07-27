@@ -8,9 +8,8 @@ The interesting part is not the text. It is that **a large share of the target v
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
 
-**Status: a full 13-paper development sweep is running now — 117 runs, all papers under one frozen
-prompt. Gemma and Mistral are complete (39/39 each); Qwen is in progress. The frozen 10-paper test
-split has not been started.**
+**Status: the 13-paper development sweep is COMPLETE — 117/117 runs, all papers under one frozen
+prompt, 12 h 24 min. The frozen 10-paper test split has not been started.**
 
 ---
 
@@ -70,9 +69,10 @@ Pooled UTS error across the two papers whose values are figure-locked (CF-P11, C
 
 ![headline](docs/figures/fig1_uts_error_by_paper.png)
 
-An 11× spread, correctly ordered. Gemma-3-27B is the **largest** model in the roster yet is the
-**least accurate** on these papers, so this is an architectural property rather than a capability
-ranking.
+An 11× spread across the local models, correctly ordered. Gemma-3-27B is the **largest** of the
+three yet the **least accurate**, so this is an architectural property rather than a capability
+ranking. *(Generation-A figures, from the early per-paper runs — the completed sweep gives
+5.20 / 4.44 / 1.06.)*
 
 *("Least accurate", not slowest — on wall-clock time the ordering is nearly reversed. See
 [speed](#accuracy-costs-time) below.)*
@@ -111,7 +111,7 @@ configuration that reads charts reliably.
 
 ![runtime vs accuracy](docs/figures/fig5_runtime_vs_accuracy.png)
 
-## Dev-13 sweep — generation B (primary result, in progress)
+## Dev-13 sweep — generation B (primary result, complete)
 
 All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. **This is the
 result to cite**; generation A above came from mixed prompt versions and is not poolable with it.
@@ -139,14 +139,19 @@ API terms but consumed ~11 h of GPU for the equivalent 117 runs.
 
 ![five configurations](docs/figures/fig7_five_configs.png)
 
-**Claude is ~11× more accurate on tensile values than either completed local model, for about a
-dollar a paper**, and the gap is concentrated exactly where the benchmark is hard:
+**Claude is 2.7× more accurate than the best local model** (0.39 vs qwen's 1.06) and **13× more
+accurate than the worst** (gemma 5.20), for about a dollar a paper. Note this gap narrowed sharply
+once qwen completed: against the two models finished first it looked like ~11×.
 
-| paper | claude | mistral | gemma |
-|---|---|---|---|
-| CF-P11 (figure sweeps) | **1.96** | 25.96 | 29.84 |
-| CF-P18 (printed bar labels) | **0.00** | 10.17 | 13.11 |
-| CF-P13 (SI + figures) | **1.78** | 11.70 | 9.28 |
+| paper | claude | qwen | mistral | gemma |
+|---|---|---|---|---|
+| CF-P11 (figure sweeps) | **1.96** | 6.45 | 25.96 | 29.84 |
+| CF-P18 (printed bar labels) | **0.00** | **0.00** | 10.17 | 13.11 |
+| CF-P13 (SI + figures) | **1.78** | 3.56 | 11.70 | 9.28 |
+
+On CF-P18 — printed bar labels on a raster chart — **qwen matches Claude exactly at 0.00 %**. A
+local 32B model with a large enough image budget reads that chart perfectly. The remaining gap is on
+CF-P11's swept curves, where values must be estimated against an axis rather than transcribed.
 
 ### The result is reading, not tooling — verified by ablation
 

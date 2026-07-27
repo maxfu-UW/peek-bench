@@ -3,8 +3,7 @@
 > **Two experiment generations.** Sections 1 and 3–6 report the **early per-paper runs** (CF-P11,
 > P13, P18, P19) under mixed prompt versions. Section 2 and the dev-13 tables report the **frozen
 > 13-paper sweep**, which supersedes them for model comparison. The same model can appear in both
-> with different numbers. `qwen3-vl-32b` is **still running in the sweep (18/39)** — its sweep row is
-> partial and italicised wherever shown.
+> with different numbers. The sweep is **complete: 117/117 runs**.
 
 All numbers below come from runs on the **development** split. The frozen 10-paper test split has
 not been run. Ground truth is not distributed with this repo, so the workbooks in `results/` carry
@@ -80,9 +79,12 @@ in two configurations that differ **only in tool access**:
 | mistral (best local, complete) | agentic view/note/submit | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
 | gemma | agentic view/note/submit | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
 
-**~11× lower tensile error than the best completed local model, for about $0.81 per paper.**
-The gap sits exactly on the figure-locked papers — CF-P11 **1.96 vs 25.96**, CF-P18 **0.00 vs
-10.17**, CF-P13 **1.78 vs 11.70**.
+**2.7× lower tensile error than the best local model** (0.39 vs qwen 1.06) and **13× lower than the
+worst** (gemma 5.20), for about $0.81 per paper. The claim was ~11× when only gemma and mistral had
+finished; qwen closed most of that gap, and on CF-P18 it **matches Claude exactly at 0.00 %**.
+
+The residual gap is concentrated on swept curves rather than printed labels: CF-P11 **1.96 vs
+6.45**, CF-P13 **1.78 vs 3.56**.
 
 ### It is reading, not tooling — established by ablation
 
