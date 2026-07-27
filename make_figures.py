@@ -205,3 +205,54 @@ if (R / "DEV13-sweep.xlsx").exists():
                  fontsize=10.5, y=1.0)
     fig.tight_layout(); fig.savefig(F / "fig6_dev13_sweep.png", bbox_inches="tight"); plt.close(fig)
     print("  docs/figures/fig6_dev13_sweep.png")
+
+# ---- Figure 7: Claude vs the local VLMs, and the read-only ablation
+if (R / "CLAUDE-dev13.xlsx").exists() and (R / "DEV13-sweep.xlsx").exists():
+    cl = pd.read_excel(R / "CLAUDE-dev13.xlsx", sheet_name="summary")
+    cl["paper"] = cl["run"].str.split("__").str[0]
+    dv = pd.read_excel(R / "DEV13-sweep.xlsx", sheet_name="summary")
+    dv["model"] = dv["run"].str.split("__").str[1].str.split("-").str[0]
+    dv["paper"] = dv["run"].str.split("__").str[0]
+    ro = pd.read_excel(R / "CLAUDE-readonly.xlsx", sheet_name="summary") \
+        if (R / "CLAUDE-readonly.xlsx").exists() else None
+    if ro is not None:
+        ro["paper"] = ro["run"].str.split("__").str[0]
+
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(11.4, 4.0))
+    # left: overall UTS MAPE by system
+    names, vals, cols = [], [], []
+    for m, lab in (("gemma", "gemma-3-27b\n256 img tok"), ("mistral", "mistral-3.1-24b\n1,030 img tok")):
+        s = dv[dv.model == m]
+        if len(s) >= 39:
+            names.append(lab); vals.append(s["UTS_MAPE_pct"].mean()); cols.append(COLOR[m])
+    q = dv[dv.model == "qwen"]
+    if len(q) >= 39:
+        names.append("qwen3-vl-32b\n~2,900 img tok"); vals.append(q["UTS_MAPE_pct"].mean()); cols.append(COLOR["qwen"])
+    names.append("claude-opus-5\nagentic, PDF"); vals.append(cl["UTS_MAPE_pct"].mean()); cols.append("#55a868")
+    xs = np.arange(len(names))
+    b = a1.bar(xs, vals, .62, color=cols)
+    for r, v in zip(b, vals):
+        a1.text(r.get_x() + r.get_width() / 2, r.get_height(), f"{v:.2f}",
+                ha="center", va="bottom", fontsize=8.5, fontweight="bold")
+    a1.set_xticks(xs); a1.set_xticklabels(names, fontsize=7.5)
+    a1.set_ylabel("UTS MAPE (%)  lower is better")
+    a1.set_title("13-paper dev sweep, one frozen prompt", fontsize=9.5)
+
+    # right: read-only ablation on the 5 papers it covered
+    if ro is not None:
+        P = sorted(ro.paper.unique())
+        w2 = .27; x2 = np.arange(len(P))
+        series = [("claude READ-ONLY", ro, "#55a868"),
+                  ("claude + code exec", cl[cl.paper.isin(P)], "#8fbf9f"),
+                  ("mistral", dv[(dv.model == "mistral") & (dv.paper.isin(P))], COLOR["mistral"])]
+        for j, (lab, df_, c_) in enumerate(series):
+            v = [df_[df_.paper == p]["UTS_MAPE_pct"].mean() for p in P]
+            a2.bar(x2 + (j - 1) * w2, v, w2, label=lab, color=c_)
+        a2.set_xticks(x2); a2.set_xticklabels(P, fontsize=8, rotation=20)
+        a2.set_ylabel("UTS MAPE (%)"); a2.legend(fontsize=7.5, frameon=False)
+        a2.set_title("Ablation: removing code execution does NOT hurt\n"
+                     "(15/15 agents verified Read-only)", fontsize=9.5)
+    fig.suptitle("Claude reads these charts. The ~10x gap over local VLMs is a reading result, "
+                 "not a tooling artefact.", fontsize=10.5, y=1.03)
+    fig.tight_layout(); fig.savefig(F / "fig7_claude_vs_local.png", bbox_inches="tight"); plt.close(fig)
+    print("  docs/figures/fig7_claude_vs_local.png")

@@ -103,11 +103,56 @@ All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt v
 supersedes the earlier per-paper results, which came from mixed prompt versions and are not
 poolable.
 
-| model | runs | row F1 | cell acc | UTS acc | UTS MAPE | min/run |
+| system | runs | row F1 | cell acc | UTS acc | UTS MAPE | min/run |
 |---|---|---|---|---|---|---|
 | gemma-3-27b-it | 39/39 | 0.573 | 0.798 | 0.761 | 5.20 | 5.2 |
-| mistral-small-3.1-24b | 39/39 | **0.856** | **0.906** | 0.808 | **4.44** | **4.2** |
+| mistral-small-3.1-24b | 39/39 | 0.856 | 0.906 | 0.808 | 4.44 | 4.2 |
 | qwen3-vl-32b | *in progress* | — | — | — | — | — |
+| **claude-opus-5** (agentic) | 39/39 | **0.933** | **0.962** | **0.968** | **0.49** | **3.0** |
+
+![claude vs local](docs/figures/fig7_claude_vs_local.png)
+
+**Claude is ~10× more accurate on tensile values than either completed local model**, and the gap is
+concentrated exactly where the benchmark is hard — the figure-locked papers:
+
+| paper | claude | mistral | gemma |
+|---|---|---|---|
+| CF-P11 (figure sweeps) | **1.59** | 25.96 | 29.84 |
+| CF-P18 (printed bar labels) | **0.00** | 10.17 | 13.11 |
+| CF-P13 (SI + figures) | **1.68** | 11.70 | 9.28 |
+
+### The result is reading, not tooling — verified by ablation
+
+The first Claude run made **220 Bash calls against 138 Reads**: agents were rendering pages at
+1100 dpi and detecting axis ticks programmatically. That would make the headline a
+chart-*digitisation* result rather than a chart-*reading* one, so it was re-run on five papers with
+**code execution forbidden** — Read tool only, verified against the transcripts (44 Read calls,
+**zero** Bash/Write/Edit across 15/15 agents).
+
+| paper | claude READ-ONLY | claude + code | mistral | gemma |
+|---|---|---|---|---|
+| CF-P11 | 1.96 | 1.59 | 25.96 | 29.84 |
+| CF-P13 | 1.78 | 1.68 | 11.70 | 9.28 |
+| CF-P18 | 0.00 | 0.00 | 10.17 | 13.11 |
+| CF-P19 *(table control)* | 0.40 | 0.40 | 1.00 | 0.64 |
+| CF-P24 | **0.54** | 2.16 | 2.11 | 6.25 |
+| **MEAN** | **0.94** | 1.17 | 10.08 | 12.16 |
+
+**Read-only was slightly better**, including on CF-P24 — the paper where the tool-enabled agents had
+digitised the axes. Eyeballing beat computing. The agents' own provenance says so: *"EVERY
+tensile_strength below is an EYEBALL ESTIMATE against the y-axis"* — landing within 2 % on a paper
+where Gemma is 30 % out.
+
+**Caveats that stay attached to this row.** Claude reads the PDF through a document-reading tool
+rather than fixed-budget JPEGs, so it does not have a comparable "image tokens" figure — the
+comparison is *agentic system* vs *local VLM at a fixed image budget*, not a controlled swap of one
+variable. Contamination was controlled by running every extraction in a fresh subagent with no
+access to the session that built the ground truth, barred from opening any spreadsheet; the
+provenance strings cite page numbers and figure panels. All four systems may have seen these
+published papers in training — a shared confound, not a Claude-specific one.
+
+**Cost**: the 39-run Claude sweep used **1.93 M tokens** and **12.9 min wall clock** (2.0 h serial,
+run in parallel), versus ~11 h of local GPU for the equivalent 117 local runs.
 
 **Paired across all 13 papers, Mistral beats Gemma on structure but not on reading values:**
 
@@ -178,6 +223,20 @@ clock), because the growing conversation prefix is reused across turns.
 See [docs/methodology.md](docs/methodology.md) for the scoring rules, the alignment design, and the
 two scope mechanisms (`paper_scope.json`, `out_of_scope.json`) that keep undisclosed curation
 decisions from being charged to the model.
+
+## MCP server and Skill
+
+`mcp_server/peek_bench_mcp.py` serves the corpus and scores submissions **without exposing ground
+truth** — `submit_extraction` returns metrics only, so a held-out split can be evaluated without
+being consumed. Tools: `list_papers`, `get_paper_text`, `get_page_image` (native resolution),
+`get_scope_note`, `get_answerability`, `submit_extraction`. Submissions are logged with a row hash,
+because unlimited scored submissions turn a test split into a training signal.
+
+`skills/peek-extract/SKILL.md` packages the extraction protocol: inclusion criteria, all ten field
+disambiguations, the eight rules, and the five traps actually observed in this corpus.
+
+> Note: do **not** name the server directory `mcp/` — it shadows the installed `mcp` package and
+> `import mcp.server` will fail.
 
 ## Reproducing a run
 
