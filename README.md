@@ -143,11 +143,11 @@ API terms but consumed ~11 h of GPU for the equivalent 117 runs.
 accurate than the worst** (gemma 5.20), for about a dollar a paper. Note this gap narrowed sharply
 once qwen completed: against the two models finished first it looked like ~11×.
 
-| paper | claude | qwen | mistral | gemma |
+| paper | gemma | mistral | qwen | claude |
 |---|---|---|---|---|
-| CF-P11 (figure sweeps) | **1.96** | 6.45 | 25.96 | 29.84 |
-| CF-P18 (printed bar labels) | **0.00** | **0.00** | 10.17 | 13.11 |
-| CF-P13 (SI + figures) | **1.78** | 3.56 | 11.70 | 9.28 |
+| CF-P11 (figure sweeps) | 29.84 | 25.96 | 6.45 | **1.96** |
+| CF-P18 (printed bar labels) | 13.11 | 10.17 | **0.00** | **0.00** |
+| CF-P13 (SI + figures) | 9.28 | 11.70 | 3.56 | **1.78** |
 
 On CF-P18 — printed bar labels on a raster chart — **qwen matches Claude exactly at 0.00 %**. A
 local 32B model with a large enough image budget reads that chart perfectly. The remaining gap is on
@@ -167,13 +167,13 @@ CF-P24 where the tool-enabled agents had digitised the axes at 1100 dpi:
 
 UTS MAPE %, all five configurations:
 
-| paper | claude READ-ONLY | claude + code | qwen | mistral | gemma |
+| paper | gemma | mistral | qwen | claude READ-ONLY | claude + code |
 |---|---|---|---|---|---|
-| CF-P11 | 1.96 | **1.59** | 6.45 | 25.96 | 29.84 |
-| CF-P13 | 1.78 | **1.68** | 3.56 | 11.70 | 9.28 |
-| CF-P18 | **0.00** | **0.00** | **0.00** | 10.17 | 13.11 |
-| CF-P19 *(table control)* | **0.40** | **0.40** | 1.41 | 1.00 | 0.64 |
-| CF-P24 | **0.54** | 2.16 | 1.31 | 2.11 | 6.25 |
+| CF-P11 | 29.84 | 25.96 | 6.45 | 1.96 | **1.59** |
+| CF-P13 | 9.28 | 11.70 | 3.56 | 1.78 | **1.68** |
+| CF-P18 | 13.11 | 10.17 | **0.00** | **0.00** | **0.00** |
+| CF-P19 *(table control)* | 0.64 | 1.00 | 1.41 | **0.40** | **0.40** |
+| CF-P24 | 6.25 | 2.11 | 1.31 | **0.54** | 2.16 |
 
 Eyeballing beat computing. The agents' own provenance says so: *"EVERY tensile_strength below is an
 EYEBALL ESTIMATE against the y-axis"* — landing within 2 % on a paper where Gemma is 30 % out.

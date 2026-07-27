@@ -74,11 +74,11 @@ in two configurations that differ **only in tool access**:
 
 | configuration | tools | runs | row F1 | cell | UTS acc | UTS MAPE | API cost |
 |---|---|---|---|---|---|---|---|
+| gemma | agentic view/note/submit | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
+| mistral | agentic view/note/submit | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
+| **qwen** (best local) | agentic view/note/submit | 39 | 0.933 | 0.927 | 0.947 | 1.06 | $0 · local |
 | **claude** | Read only | 39 | **0.950** | **0.963** | **0.982** | **0.39** | **$10.47** |
 | **claude code** | Read + Bash + Write + Edit | 39 | 0.933 | 0.962 | 0.968 | 0.49 | $13.50 |
-| **qwen** (best local) | agentic view/note/submit | 39 | 0.933 | 0.927 | 0.947 | 1.06 | $0 · local |
-| mistral | agentic view/note/submit | 39 | 0.856 | 0.906 | 0.808 | 4.44 | $0 · local |
-| gemma | agentic view/note/submit | 39 | 0.573 | 0.798 | 0.761 | 5.20 | $0 · local |
 
 **2.7× lower tensile error than the best local model** (0.39 vs qwen 1.06) and **13× lower than the
 worst** (gemma 5.20), for about $0.81 per paper. The claim was ~11× when only gemma and mistral had
