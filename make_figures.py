@@ -176,42 +176,48 @@ if (R / "DEV13-sweep.xlsx").exists():
     done = [m for m in MODELS if (d13.model == m).sum() > 0]
     counts = {m: int((d13.model == m).sum()) for m in done}
     papers = (d13.groupby("paper")["gt_rows"].first().sort_values(ascending=False).index.tolist())
-    fig, axes = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(13.5, 7.8), sharex=True)
     x = np.arange(len(papers)); w = 0.8 / max(len(done), 1)
+    axes[0].set_ylim(0, 1.30); axes[1].set_ylim(0, 36)
+    SPEC = [(axes[0], "row_f1", "row F1   (finds the condition)", "{:.2f}", 1.30),
+            (axes[1], "UTS_MAPE_pct", "UTS MAPE %   (reads the value)", "{:.1f}", 36)]
     for j, mo in enumerate(done):
         g = d13[d13.model == mo].groupby("paper")
-        for k_, (ax, met, ylab) in enumerate([(axes[0], "row_f1", "row F1  (finds the condition)"),
-                                              (axes[1], "UTS_MAPE_pct", "UTS MAPE %  (reads the value)")]):
+        partial = counts[mo] < 39
+        for ax, met, ylab, fmt, ymax in SPEC:
             v = [g[met].mean().get(p, np.nan) for p in papers]
             pos = x + (j - (len(done) - 1) / 2) * w
-            lab = None
-            if k_ == 0:
-                lab = mo if counts[mo] >= 39 else f"{mo} ({counts[mo]}/39, partial)"
-            ax.bar(pos, v, w, label=lab, color=COLOR[mo],
-                   alpha=1.0 if counts[mo] >= 39 else 0.55,
-                   hatch=None if counts[mo] >= 39 else "//")
-            # A zero bar and a no-data bar both render blank; distinguish them explicitly.
-            for xi, vi in zip(pos, v):
-                if pd.isna(vi):
-                    ax.text(xi, ax.get_ylim()[1] * .04, "n/s", ha="center", fontsize=6.5,
+            ax.bar(pos, v, w, color=COLOR[mo],
+                   label=(mo if not partial else f"{mo}   ({counts[mo]}/39, partial)")
+                         if met == "row_f1" else None,
+                   alpha=1.0 if not partial else .55, hatch=None if not partial else "//")
+            # "not yet run" and "ran but produced nothing scoreable" are different facts and
+            # must not share a marker -- one is a gap in the sweep, the other is a model failure.
+            nrun = {pp: int((d13[(d13.model == mo) & (d13.paper == pp)]).shape[0]) for pp in papers}
+            for xi, vi, pp in zip(pos, v, papers):
+                if nrun[pp] == 0:
+                    ax.text(xi, ymax * .015, "not run", ha="center", va="bottom", fontsize=5.8,
+                            color="#aaa", rotation=90, style="italic")
+                elif pd.isna(vi):
+                    ax.text(xi, ymax * .015, "n/s", ha="center", va="bottom", fontsize=6.4,
                             color=COLOR[mo], rotation=90, fontweight="bold")
-                elif vi == 0:
-                    ax.plot([xi - w * .35, xi + w * .35], [0, 0], color=COLOR[mo], lw=2.6,
-                            solid_capstyle="butt")
-                    ax.text(xi, ax.get_ylim()[1] * .03, "0", ha="center", fontsize=6.5,
-                            color=COLOR[mo], fontweight="bold")
-            ax.set_ylabel(ylab, fontsize=9)
-    axes[1].set_xticks(x); axes[1].set_xticklabels(papers, rotation=45, ha="right", fontsize=8)
-    axes[0].set_ylim(0, 1.1); axes[1].set_ylim(0, 33)
-    axes[0].legend(fontsize=8, frameon=False, ncol=len(done), loc="lower right")
-    axes[0].text(0.005, 1.02, "0 = found the conditions but reported no usable rows   "
-                              "n/s = no scoreable rows", transform=axes[0].transAxes,
-                 fontsize=7, color="#666")
-    axes[1].axhline(5, ls=":", c="#888", lw=1)
-    axes[1].text(len(papers) - .5, 5.6, "5% tolerance", fontsize=7.5, c="#888", ha="right")
-    fig.suptitle("Dev-13 sweep: structure vs values. Row F1 and UTS error rank papers differently —\n"
-                 "the models agree on WHICH conditions exist and disagree on WHAT the numbers are",
-                 fontsize=10.5, y=1.0)
+                else:
+                    ax.text(xi, vi + ymax * .015, fmt.format(vi), ha="center", va="bottom",
+                            fontsize=6.6, color="#222", rotation=90)
+            ax.set_ylabel(ylab, fontsize=10)
+    axes[1].set_xticks(x)
+    axes[1].set_xticklabels([f"{p}\n{int(d13[d13.paper == p]['gt_rows'].iloc[0])} pts"
+                             for p in papers], fontsize=8.5)
+    axes[1].axhline(5, ls=":", c="#999", lw=1)
+    axes[1].text(len(papers) - .4, 5.9, "5% tolerance", fontsize=8, c="#999", ha="right")
+    # legend ABOVE the axes -- in the previous version it sat on top of the CF-P18 bars
+    axes[0].legend(fontsize=10, frameon=False, ncol=len(done),
+                   loc="lower left", bbox_to_anchor=(0, 1.03))
+    axes[0].text(1.0, 1.03, "0.00 = conditions found, no usable values reported    "
+                            "n/s = ran, nothing scoreable    “not run” = not yet swept",
+                 transform=axes[0].transAxes, ha="right", fontsize=8, color="#666")
+    fig.suptitle("Dev-13 sweep: structure vs values. Models agree on WHICH conditions exist "
+                 "and disagree on WHAT the numbers are.", fontsize=11.5, y=1.07)
     fig.tight_layout(); fig.savefig(F / "fig6_dev13_sweep.png", bbox_inches="tight"); plt.close(fig)
     print("  docs/figures/fig6_dev13_sweep.png")
 
