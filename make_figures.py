@@ -163,3 +163,45 @@ fig.tight_layout(); fig.savefig(F / "fig5_runtime_vs_accuracy.png", bbox_inches=
 print("wrote:")
 for p in sorted(F.glob("*.png")):
     print(f"  {p.relative_to(F.parent.parent)}  ({p.stat().st_size//1024} KB)")
+
+# ---- Figure 6: the 13-paper dev sweep, one frozen prompt (gemma vs mistral complete)
+import os
+if (R / "DEV13-sweep.xlsx").exists():
+    d13 = pd.read_excel(R / "DEV13-sweep.xlsx", sheet_name="summary")
+    d13["model"] = d13["run"].str.split("__").str[1].str.split("-").str[0]
+    d13["paper"] = d13["run"].str.split("__").str[0]
+    done = [m for m in MODELS if (d13.model == m).sum() >= 39]
+    papers = (d13.groupby("paper")["gt_rows"].first().sort_values(ascending=False).index.tolist())
+    fig, axes = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
+    x = np.arange(len(papers)); w = 0.8 / max(len(done), 1)
+    for j, mo in enumerate(done):
+        g = d13[d13.model == mo].groupby("paper")
+        for k_, (ax, met, ylab) in enumerate([(axes[0], "row_f1", "row F1  (finds the condition)"),
+                                              (axes[1], "UTS_MAPE_pct", "UTS MAPE %  (reads the value)")]):
+            v = [g[met].mean().get(p, np.nan) for p in papers]
+            pos = x + (j - (len(done) - 1) / 2) * w
+            ax.bar(pos, v, w, label=mo if k_ == 0 else None, color=COLOR[mo])
+            # A zero bar and a no-data bar both render blank; distinguish them explicitly.
+            for xi, vi in zip(pos, v):
+                if pd.isna(vi):
+                    ax.text(xi, ax.get_ylim()[1] * .04, "n/s", ha="center", fontsize=6.5,
+                            color=COLOR[mo], rotation=90, fontweight="bold")
+                elif vi == 0:
+                    ax.plot([xi - w * .35, xi + w * .35], [0, 0], color=COLOR[mo], lw=2.6,
+                            solid_capstyle="butt")
+                    ax.text(xi, ax.get_ylim()[1] * .03, "0", ha="center", fontsize=6.5,
+                            color=COLOR[mo], fontweight="bold")
+            ax.set_ylabel(ylab, fontsize=9)
+    axes[1].set_xticks(x); axes[1].set_xticklabels(papers, rotation=45, ha="right", fontsize=8)
+    axes[0].set_ylim(0, 1.1); axes[1].set_ylim(0, 33)
+    axes[0].legend(fontsize=8, frameon=False, ncol=len(done), loc="lower right")
+    axes[0].text(0.005, 1.02, "0 = found the conditions but reported no usable rows   "
+                              "n/s = no scoreable rows", transform=axes[0].transAxes,
+                 fontsize=7, color="#666")
+    axes[1].axhline(5, ls=":", c="#888", lw=1)
+    axes[1].text(len(papers) - .5, 5.6, "5% tolerance", fontsize=7.5, c="#888", ha="right")
+    fig.suptitle("Dev-13 sweep: structure vs values. Row F1 and UTS error rank papers differently —\n"
+                 "the models agree on WHICH conditions exist and disagree on WHAT the numbers are",
+                 fontsize=10.5, y=1.0)
+    fig.tight_layout(); fig.savefig(F / "fig6_dev13_sweep.png", bbox_inches="tight"); plt.close(fig)
+    print("  docs/figures/fig6_dev13_sweep.png")

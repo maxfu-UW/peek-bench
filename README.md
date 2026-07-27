@@ -8,7 +8,9 @@ The interesting part is not the text. It is that **a large share of the target v
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
 
-**Status: development phase complete. The frozen 10-paper test split has not been run.**
+**Status: a full 13-paper development sweep is running now — 117 runs, all papers under one frozen
+prompt. Gemma and Mistral are complete (39/39 each); Qwen is in progress. The frozen 10-paper test
+split has not been started.**
 
 ---
 
@@ -95,6 +97,49 @@ configuration that reads charts reliably.
 
 ![runtime vs accuracy](docs/figures/fig5_runtime_vs_accuracy.png)
 
+## Dev-13 sweep (in progress — 2 of 3 models complete)
+
+All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. This
+supersedes the earlier per-paper results, which came from mixed prompt versions and are not
+poolable.
+
+| model | runs | row F1 | cell acc | UTS acc | UTS MAPE | min/run |
+|---|---|---|---|---|---|---|
+| gemma-3-27b-it | 39/39 | 0.573 | 0.798 | 0.761 | 5.20 | 5.2 |
+| mistral-small-3.1-24b | 39/39 | **0.856** | **0.906** | 0.808 | **4.44** | **4.2** |
+| qwen3-vl-32b | *in progress* | — | — | — | — | — |
+
+**Paired across all 13 papers, Mistral beats Gemma on structure but not on reading values:**
+
+| metric | mistral better on | *p* (Wilcoxon) |
+|---|---|---|
+| row F1 | 8/13 papers | **0.043** |
+| cell accuracy | 6/11 papers | **0.031** |
+| UTS MAPE | 4/11 papers | 0.38 — no difference |
+
+Both structural metrics are significant; value accuracy is not. On the figure-locked CF-P11 the two
+are effectively tied at **25.96 % vs 29.84 %** error — both catastrophic. So 256 and 1,030 image
+tokens *both* fail at chart reading, which suggests a **threshold** rather than a smooth gradient.
+Qwen's ~2,900 will decide that.
+
+![dev-13 sweep](docs/figures/fig6_dev13_sweep.png)
+
+Much of Mistral's F1 advantage is not superior alignment but simply *writing numbers down*:
+`CF-P14 0.000 → 0.894`, `CF-P20 0.000 → 1.000`, `CF-P18 0.457 → 1.000`. Those are papers where
+Gemma returned rows with every `tensile_strength` null.
+
+### Two failure modes found during the sweep
+
+**Context exhaustion (harness bug, not model weakness).** Three runs returned zero rows — all
+Mistral, all on the three longest papers. CF-P15 is 23 pages ≈ 20,700 text tokens; add two page
+images at 1,030 each and the 32,768-token context is ~72 % consumed before generation. The evidence
+is decisive: the CF-P15 run that viewed **one** page succeeded, and both runs that viewed **two**
+pages returned empty completions at the same turn. Mistral's numbers here are therefore a **floor** —
+it should be re-run at 65,536 context before any Gemma-vs-Mistral claim is published.
+
+**Reported-but-unread rows.** Gemma scored `row F1 = 0.000` on CF-P14 and CF-P20 not by finding
+nothing, but by finding every condition and reporting no values. See [docs/metrics.md](docs/metrics.md).
+
 ## Second finding: benchmark scoring is where the bugs are
 
 Six defects were found in the scorer itself, several of which **inverted the model ranking** —
@@ -146,7 +191,7 @@ scoring/     score10.py         Hungarian alignment + metrics
 runners/     *.sh               campaign scripts; progress.py live progress bar
 results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
-docs/        methodology, findings, scoring defects, next steps
+docs/        methodology, metrics, findings, scoring defects, next steps
              figures/           bar charts, regenerate with `python make_figures.py`
 ```
 
