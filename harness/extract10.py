@@ -17,7 +17,7 @@ from pathlib import Path
 
 import requests
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "calibration"))
+sys.path.insert(0, str(Path(__file__).parent / "calibration"))
 from calib import render_pages, stream_chat                       # noqa: E402
 from agentic import extract_action, page_text_index, _top_json_values               # noqa: E402
 

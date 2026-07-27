@@ -179,10 +179,25 @@ See [docs/methodology.md](docs/methodology.md) for the scoring rules, the alignm
 two scope mechanisms (`paper_scope.json`, `out_of_scope.json`) that keep undisclosed curation
 decisions from being charged to the model.
 
+## Reproducing a run
+
+See **[RUNNING.md](RUNNING.md)** for the full setup, and **[docs/prompt.md](docs/prompt.md)** for
+the verbatim prompt as sent to the model. The corpus PDFs and ground-truth spreadsheet are not
+published here — you need both from the maintainer.
+
+```bash
+export PEEKBENCH_ROOT=/path/to/peek_bench_2026
+export PEEKBENCH_GT_DIR=$PEEKBENCH_ROOT/group_truth_excel_file
+pip install requests pymupdf pandas numpy scipy openpyxl matplotlib
+nohup caffeinate -i ./runners/dev13_sweep.sh &    # 117 runs, ~11 h on an M4 Pro
+python runners/progress.py                         # live progress + metrics
+```
+
 ## Layout
 
 ```
 harness/     extract10.py       agentic extractor (view_page / note / submit)
+             calibration/       page rendering + action parsing (imported by extract10)
 scoring/     score10.py         Hungarian alignment + metrics
              schema10.json      12 fields with per-field disambiguations
              paper_scope.json   per-paper scope notes (2 papers)
@@ -191,7 +206,8 @@ scoring/     score10.py         Hungarian alignment + metrics
 runners/     *.sh               campaign scripts; progress.py live progress bar
 results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
-docs/        methodology, metrics, findings, scoring defects, next steps
+docs/        prompt.md          the VERBATIM prompt, regenerable and diffable
+             methodology, metrics, findings, scoring defects, next steps
              figures/           bar charts, regenerate with `python make_figures.py`
 ```
 
