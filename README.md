@@ -327,42 +327,65 @@ Ranked, with costs measured rather than estimated — see [docs/next-steps.md](d
 
 ## Total development time estimate
 
-Everything below is **measured** from run artefacts on disk, not recalled.
+Measured from run artefacts on disk, **as of 2026-07-26 23:20** — not recalled. The dev-13 sweep is
+still running (qwen 18/39), so the local figures are a floor.
 
-### Development phase (complete)
+### Local GPU (Apple M4 Pro, 64 GB)
 
 | | |
 |---|---|
-| **Model inference** | **12.5 h** across **88 runs** (mean 8.5 min/run) |
-| **Calendar span** | ~1.1 days of elapsed wall clock, 2026-07-24 → 2026-07-26 |
-| **Papers exercised** | 6 of 23 (CF-P05, P11, P13, P18, P19, P24) |
-| **Hardware** | one Apple M4 Pro, 64 GB unified memory — no cloud, no GPU rental |
-| **Code written** | ~1,100 lines of Python + 6 runner scripts |
+| **Runs on disk** | **184** |
+| **Total inference** | **22.6 h** |
+| **Calendar span** | **1.98 days**, 2026-07-24 23:43 → 2026-07-26 23:09 |
+| Hardware | one M4 Pro — no cloud, no GPU rental |
+| Code written | ~1,100 lines Python + 7 runner scripts |
 
-Inference time by model — note the same asymmetry the benchmark measures, showing up as cost:
-
-| model | runs | total |
+| model | runs | inference |
 |---|---|---|
-| qwen3-vl-32b | 29 | **7.2 h** |
-| gemma-3-27b | 29 | 2.6 h |
-| mistral-small-3.1-24b | 29 | 2.1 h |
+| qwen3-vl-32b | 47 | **11.2 h** |
+| gemma-3-27b | 68 | 6.0 h |
+| mistral-small-3.1-24b | 68 | 4.9 h |
 
-**Qwen alone consumed 58 % of all compute** while running the same number of extractions. That is
-the accuracy/cost tradeoff expressed as a budget line rather than a per-run average.
+**Qwen consumed 50 % of all GPU time** while contributing the fewest completed runs — the
+accuracy/cost tradeoff as a budget line rather than a per-run average.
 
-### What the 12.5 h actually bought
+### Claude API
 
-Only a minority went to the results in this repo. The rest went to work that produced no headline
-number but without which the headline numbers would have been wrong:
+| | |
+|---|---|
+| **Extractions** | **78** (39 with tools + 39 Read-only) |
+| **Tokens** | **3,425,083** |
+| **Wall clock** | **~20 min** total (parallel subagents) |
+| **Cost** | **$23.98** at $5/MTok in + $25/MTok out, 90 % input share |
 
-- **Discarded runs.** The supplementary A/B was run twice — 9 runs under a harness that failed
-  1-in-3, then 18 more after the fixes. CF-P18 and CF-P11 were each re-run after scope corrections.
-  Roughly a third of all compute was superseded.
-- **Model triage.** Several candidate models were downloaded and probed before three were kept.
-  Three early verdicts were **wrong** and had to be retracted — each from a qualitative probe rather
-  than a measurement, which is why image-token budgets are now measured by token delta.
-- **Scorer debugging.** Six defects, several found only by re-deriving numbers from primary
-  sources. No GPU cost, but it dominated the human/agent time and changed published rankings.
+The entire Claude side of the benchmark — two full 13-paper configurations — cost **under $24 and
+20 minutes of wall clock**, against 22.6 h of local GPU for the equivalent local sweeps.
+
+### What the 22.6 h actually bought
+
+| | |
+|---|---|
+| Survived into the published results | **14.6 h** |
+| **Superseded by re-runs** | **8.1 h (36 %)** |
+
+Roughly a third of all compute was thrown away and redone. The supplementary A/B ran twice (a
+harness that failed 1-in-3, then again after fixes); CF-P18 and CF-P11 were each re-run after scope
+corrections; the whole dev-13 sweep re-ran all 13 papers because earlier results came from mixed
+prompt versions. Plus model triage, including **three verdicts that were wrong and had to be
+retracted** — each from a qualitative probe rather than a measurement, which is why image-token
+budgets are now measured by token delta.
+
+### Honest read
+
+The **inference time is the small part**. The dominant costs were curation and metric design: four
+undisclosed scope filters, six scoring defects, 25 wrongly-blank ground-truth cells, and a ground
+truth that contradicted a paper's own Table 1. All changed published results; none is visible in a
+runtime total.
+
+A team reproducing this — correct ground truth in hand, scorer already right — would need roughly
+**12 h of local compute plus ~$24 of API**, and a day of setup. Building it from scratch, including
+discovering that the *metric* was the dominant error source, took substantially longer than the
+compute suggests.
 
 ### Cost of a full sweep, by split
 
