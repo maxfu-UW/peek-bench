@@ -264,3 +264,47 @@ if (R / "CLAUDE-dev13.xlsx").exists() and (R / "DEV13-sweep.xlsx").exists():
                  "than the tool-enabled run.", fontsize=10.5, y=1.02)
     fig.tight_layout(); fig.savefig(F / "fig7_five_configs.png", bbox_inches="tight"); plt.close(fig)
     print("  docs/figures/fig7_five_configs.png")
+
+# ---- Figure 8: naive-prompt baseline vs prompt-engineered, all five configurations
+if (R / "NAIVE-baseline.xlsx").exists() and (R / "DEV13-sweep.xlsx").exists():
+    nb = pd.read_excel(R / "NAIVE-baseline.xlsx", sheet_name="summary")
+    nb["m"] = nb["run"].str.split("__").str[1].str.split("-").str[0]
+    dv = pd.read_excel(R / "DEV13-sweep.xlsx", sheet_name="summary")
+    dv["m"] = dv["run"].str.split("__").str[1].str.split("-").str[0]
+    ni = pd.read_excel(R / "NAIVE-claude-isolated.xlsx", sheet_name="summary")
+    ni["m"] = ni["run"].str.split("__").str[1].str.replace(r"-r\d", "", regex=True)
+    ro = pd.read_excel(R / "CLAUDE-readonly.xlsx", sheet_name="summary")
+    cc = pd.read_excel(R / "CLAUDE-dev13.xlsx", sheet_name="summary")
+
+    CFG = [("gemma-3-27b\n256 tok", nb[nb.m == "gemma"], dv[dv.m == "gemma"], COLOR["gemma"]),
+           ("mistral-3.1-24b\n1,030 tok", nb[nb.m == "mistral"], dv[dv.m == "mistral"], COLOR["mistral"]),
+           ("qwen3-vl-32b\n~2,900 tok", nb[nb.m == "qwen"], dv[dv.m == "qwen"], COLOR["qwen"]),
+           ("claude\nRead only", ni[ni.m == "claude"], ro, "#55a868"),
+           ("claude\n+ Claude Code", ni[ni.m == "claudecode"], cc, "#3d7a4d")]
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
+    SPEC = [("UTS_MAPE_pct", "UTS MAPE (%)  lower is better", "{:.2f}", axes[0]),
+            ("row_f1", "row F1  higher is better", "{:.3f}", axes[1]),
+            ("false_fill_rate", "false-fill rate  lower is better", "{:.3f}", axes[2])]
+    x = np.arange(len(CFG)); w = 0.38
+    for met, ylab, fmt, ax in SPEC:
+        for j, (lab, a, b, c) in enumerate(CFG):
+            for k, (df_, hatch, alpha) in enumerate(((a, "//", .55), (b, None, 1.0))):
+                v = df_[met].dropna().mean()
+                ax.bar(x[j] + (k - .5) * w, v, w, color=c, alpha=alpha, hatch=hatch,
+                       edgecolor="white", linewidth=.6)
+                if not pd.isna(v):
+                    ax.text(x[j] + (k - .5) * w, v, fmt.format(v), ha="center", va="bottom",
+                            fontsize=6.8, rotation=90)
+        ax.set_xticks(x)
+        ax.set_xticklabels([c[0] for c in CFG], fontsize=7.5, rotation=30, ha="right")
+        ax.set_ylabel(ylab, fontsize=9)
+        ax.margins(y=0.18)          # headroom so rotated value labels are not clipped
+    from matplotlib.patches import Patch
+    axes[0].legend(handles=[Patch(facecolor="#888", hatch="//", alpha=.55, label="naive prompt (869 chars)"),
+                            Patch(facecolor="#888", label="engineered prompt (6,820 chars)")],
+                   fontsize=8, frameon=False, loc="upper left")
+    fig.suptitle("Prompt engineering helps the MIDDLE of the capability range — and makes every "
+                 "local model invent more.", fontsize=11, y=1.03)
+    fig.tight_layout(); fig.savefig(F / "fig8_naive_vs_engineered.png", bbox_inches="tight"); plt.close(fig)
+    print("  docs/figures/fig8_naive_vs_engineered.png")

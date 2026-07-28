@@ -1,0 +1,24 @@
+I'm building a dataset of 3D printing process parameters and mechanical properties from research papers.
+
+Please read this paper and extract the printing conditions and their measured tensile strength. Give me one row per condition tested, as a table with these columns:
+
+  nozzle_diameter (mm)
+  nozzle_temp (C)
+  printing_speed (mm/s)
+  fiber_weight_fraction (wt%)
+  raster_angle (deg)
+  infill_percentage (%)
+  specimen_thickness (mm)
+  layer_thickness (mm)
+  platform_temp (C)
+  tensile_strength (MPa)
+
+Use null if a value isn't given. Return the rows as JSON.
+
+You are given the TEXT of every page. To see a page IMAGE, respond with {"tool":"view_page","page":N}.
+Respond with EXACTLY ONE JSON object per turn:
+  {"tool":"view_page","page":N}
+  {"tool":"note","text":"..."}
+  {"tool":"submit","rows":[ {...} ]}
+
+cf_paper_id is given below - copy it into every row.
