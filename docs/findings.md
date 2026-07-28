@@ -190,6 +190,8 @@ Claude's is unchanged. Coverage is bought with fabrication.
 
 ## 7. Failure modes worth naming
 
+Catalogued in full, with the per-paper data behind each, in [failure-modes.md](failure-modes.md).
+
 - **Value replication.** On CF-P11, one model emitted 52–57 rows covering the paper's full
   3-material × 3-sweep design (which is real — Figure 4 sweeps all three materials), but filled
   17–18 bare-PEEK rows with a single repeated value where the true curve spans 44.0–67.6 MPa.

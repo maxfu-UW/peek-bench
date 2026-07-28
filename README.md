@@ -351,6 +351,11 @@ emitted, so the stall and the accuracy loss are the same failure.
 *Caveat: local naive is 1 repeat against 3 for engineered; the Claude rows are 3 repeats under
 cwd-isolation and are the more reliable comparison.*
 
+The six failure modes these runs exposed — grid-filling, rows with no measurement, severe
+under-extraction, chart-reading collapse on swept curves, intermittent non-termination, and
+fabrication under coverage pressure — are catalogued with the supporting data in
+[docs/failure-modes.md](docs/failure-modes.md).
+
 ## Reproducing a run
 
 See **[RUNNING.md](RUNNING.md)** for the full setup, and **[docs/prompt.md](docs/prompt.md)** for
@@ -379,6 +384,7 @@ runners/     *.sh               campaign scripts; progress.py live progress bar
 results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
 docs/        prompt.md          the VERBATIM prompt, regenerable and diffable
+             failure-modes.md   six catalogued failure modes with the data behind each
              methodology, metrics, findings, scoring defects, next steps
              figures/           bar charts, regenerate with `python make_figures.py`
 ```
