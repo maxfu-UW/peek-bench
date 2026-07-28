@@ -117,6 +117,21 @@ rest of the corpus, so its scores are not strictly comparable and must be footno
 as small as possible. A measured side-effect: after adding scope notes, 2 of 18 runs collapsed to a
 single row.
 
+## The naive-prompt ablation
+
+`harness/extract_naive.py` is the same harness with the SYSTEM prompt replaced by
+[docs/prompt_naive.txt](prompt_naive.txt) — 869 characters against 6,820, keeping only the ten
+column names with units and "use null if a value isn't given". No `{schema}` block and no
+`{paper_scope}` substitution, verified programmatically before the run.
+
+One deliberate deviation: Mistral runs at **65,536** context here rather than the 32,768 used in the
+main sweep. That setting caused three zero-row failures from context exhaustion — a harness bug
+whose reproduction would have contaminated the ablation with a defect unrelated to prompt quality.
+
+Runs that exceed **5×** their engineered-sweep time are killed by `runaway_guard.sh` and retried
+under a **3×** cap. Both thresholds are empirical: no run that passed 5× has ever finished, and all
+four that were killed completed on retry.
+
 ## Reproducibility
 
 Regression fixtures feed ground truth back as a prediction; they must score

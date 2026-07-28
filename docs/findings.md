@@ -174,7 +174,21 @@ three repeats. Reporting either metric alone inverts the ranking. Row F1 measure
 condition*; UTS accuracy measures *did you read the number*. They are different capabilities and
 this benchmark separates them.
 
-## 6. Failure modes worth naming
+## 6. Prompt engineering helps the middle of the capability range
+
+Full table and statistics in the [README](../README.md#prompt-engineering-ablation--naive-baseline).
+The short version, from re-running all five configurations with an 869-character prompt against the
+6,820-character engineered one:
+
+- **gemma** — no significant gain on any metric. It cannot execute the rules.
+- **mistral** — UTS MAPE 7.89 → 4.44 (*p* = 0.020).
+- **qwen** — row F1 0.770 → 0.933 (*p* = 0.023), cell 0.853 → 0.927 (*p* = 0.014). Biggest gain.
+- **claude** — cell accuracy only (*p* = 0.031); it avoids the corpus's traps unprompted.
+
+And every **local** model invents more when engineered — false-fill up 5.2× / 3.7× / 3.6×, while
+Claude's is unchanged. Coverage is bought with fabrication.
+
+## 7. Failure modes worth naming
 
 - **Value replication.** On CF-P11, one model emitted 52–57 rows covering the paper's full
   3-material × 3-sweep design (which is real — Figure 4 sweeps all three materials), but filled

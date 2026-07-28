@@ -283,6 +283,74 @@ disambiguations, the eight rules, and the five traps actually observed in this c
 > Note: do **not** name the server directory `mcp/` — it shadows the installed `mcp` package and
 > `import mcp.server` will fail.
 
+## Prompt-engineering ablation — naive baseline
+
+How much of the result comes from the *prompt* rather than the model? Every configuration was
+re-run with a **869-character prompt** — what a first-time user would type: the ten column names
+with units, "use null if a value isn't given", nothing else. No inclusion criteria, no field
+disambiguations, no rules, no per-paper scope notes. Verbatim in
+[docs/prompt_naive.txt](docs/prompt_naive.txt); the engineered prompt is 6,820 characters.
+
+![naive vs engineered](docs/figures/fig8_naive_vs_engineered.png)
+
+| configuration | img tok | row F1 | | cell acc | | UTS MAPE | | false-fill | |
+|---|---|---|---|---|---|---|---|---|---|
+| | | naive | eng | naive | eng | naive | eng | naive | eng |
+| gemma-3-27b | 256 | 0.547 | 0.573 | **0.859** | 0.798 | 5.16 | 5.20 | **0.042** | 0.217 |
+| mistral-small-3.1 | 1,030 | 0.777 | 0.856 | 0.855 | 0.906 | 7.89 | **4.44** | **0.204** | 0.750 |
+| qwen3-vl-32b | ~2,900 | 0.770 | **0.933** | 0.853 | **0.927** | 4.84 | **1.06** | **0.111** | 0.401 |
+| claude Read-only | native | 0.885 | **0.950** | 0.923 | **0.963** | 0.62 | 0.39 | 0.111 | 0.111 |
+| claude + Claude Code | native | 0.898 | 0.933 | 0.930 | **0.962** | 0.48 | 0.49 | 0.074 | 0.074 |
+
+Paired Wilcoxon by paper, n = 13:
+
+| configuration | row F1 | cell acc | UTS MAPE |
+|---|---|---|---|
+| gemma-3-27b | 0.898 | 0.156 | 0.688 |
+| mistral-small-3.1 | 0.389 | 0.055 | **0.020** |
+| qwen3-vl-32b | **0.023** | **0.014** | 0.156 |
+| claude Read-only | 0.625 | **0.031** | 0.500 |
+| claude + Claude Code | 0.625 | **0.031** | 1.000 |
+
+### Prompt engineering helps the MIDDLE of the capability range
+
+**gemma gains nothing significant on any metric.** It cannot execute the rules reliably enough for
+them to matter. **claude gains only cell accuracy** (+0.03–0.04) — it avoids the traps unprompted:
+given the naive prompt it still returned `null` for `infill_percentage` on the paper that says
+*"extrusion flow of 100 %"*, still dropped the glass-fibre rows, and filled **0 of 34** blank cells
+with conventional defaults.
+
+**qwen is the biggest beneficiary** — row F1 0.770 → 0.933, cell 0.853 → 0.927, both significant.
+Capable enough to follow the rules, not capable enough to derive them.
+
+### Every local model invents more when engineered
+
+False-fill rises **5.2×** (gemma), **3.7×** (mistral), **3.6×** (qwen). Mistral fabricates a value
+in **75 %** of the cells its paper leaves blank. Claude's rate is *identical* in both conditions
+(0.111 / 0.074) — it does not respond to that pressure at all.
+
+The "extract EVERY qualifying condition" rule buys coverage and pays for it in fabrication. A
+MAPE-only comparison hides this entirely, and it is only visible because ground truth is
+pre-imputation.
+
+### Non-termination: a claim withdrawn
+
+**4 of 39** local naive runs failed to terminate within 5× their engineered-prompt time
+(CF-P11 × mistral, and CF-P24 / CF-P11 / CF-P13 × qwen). During the sweep this was recorded as
+*"the naive prompt causes non-termination on scope-ambiguous papers."* **That was wrong.**
+
+On retry under a 3× cap, **all four completed** — CF-P11 × mistral went from a 3 h 38 m stall to
+**5.9 min** on an identical configuration; CF-P24 × qwen needed four attempts but finished in
+21.0 min. Non-termination is **intermittent**, and the correct mitigation is a timeout with retry,
+not a longer prompt.
+
+The underlying mechanism is real though, and measurable: under the naive prompt qwen emitted
+**60 rows against a ground truth of 20** on CF-P24, and mistral **41**. Runtime scales with rows
+emitted, so the stall and the accuracy loss are the same failure.
+
+*Caveat: local naive is 1 repeat against 3 for engineered; the Claude rows are 3 repeats under
+cwd-isolation and are the more reliable comparison.*
+
 ## Reproducing a run
 
 See **[RUNNING.md](RUNNING.md)** for the full setup, and **[docs/prompt.md](docs/prompt.md)** for
