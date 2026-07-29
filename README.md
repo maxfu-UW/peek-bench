@@ -351,6 +351,28 @@ emitted, so the stall and the accuracy loss are the same failure.
 *Caveat: local naive is 1 repeat against 3 for engineered; the Claude rows are 3 repeats under
 cwd-isolation and are the more reliable comparison.*
 
+### Capacity at fixed perception — gemma-3 4B / 12B / 27B
+
+Gemma 3 spends **258 image tokens per page at every size** (token-delta measured on all three), so
+this varies parameters with perception held constant. One Mac Mini M4 Pro, engineered prompt,
+ctx 40,960, 39 runs per sweep.
+
+| model | sweeps | row F1 | recall | precision | cell | UTS MAPE | rows/run | wall |
+|---|---|---|---|---|---|---|---|---|
+| **4B** | **3** | 0.371 | 0.336 | **0.655** | 0.746 | **31.6 ± 12.4** | 2.6 | 34 m |
+| **12B** | 1 | 0.288 | 0.285 | 0.346 | 0.785 | 10.40 | 4.8 | 2 h 48 m |
+| **27B** | 1 | **0.573** | **0.677** | 0.577 | **0.798** | **5.20** | 8.6 | 3 h 24 m |
+
+MAPE and rows-emitted are monotone in parameters. **Row F1 and recall are not** — the 4B beats the
+12B on both, across all three of its sweeps. Two separable causes: the 4B's precision advantage from
+under-extraction (0.655 vs 0.346), and the 12B returning **zero rows on CF-P14, CF-P10 and CF-P15**.
+
+Running the same sweep three times with nothing changed also produced the campaign's first
+sweep-level variance estimate, and it forced a correction: **UTS MAPE has a 39.3 % coefficient of
+variation** where cell accuracy has 1.1 %. A previously reported Metal-vs-CUDA discrepancy was
+**withdrawn** as sampling noise. Full detail and the fixes in
+[docs/capacity-curve.md](docs/capacity-curve.md).
+
 The six failure modes these runs exposed — grid-filling, rows with no measurement, severe
 under-extraction, chart-reading collapse on swept curves, intermittent non-termination, and
 fabrication under coverage pressure — are catalogued with the supporting data in
@@ -385,6 +407,7 @@ results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
 docs/        prompt.md          the VERBATIM prompt, regenerable and diffable
              failure-modes.md   six catalogued failure modes with the data behind each
+             capacity-curve.md  gemma-3 4B/12B/27B at fixed image tokens + MAPE instability
              methodology, metrics, findings, scoring defects, next steps
              figures/           bar charts, regenerate with `python make_figures.py`
 ```

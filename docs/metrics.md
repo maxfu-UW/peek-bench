@@ -19,7 +19,11 @@ correct. That bug existed, and it manufactured near-perfect UTS accuracy from wr
 **UTS gets a looser tolerance than parameters** because it is frequently read off a chart, while
 parameters are usually tabulated.
 
-**MAPE is the stable metric.** Accuracy is a step function that cannot distinguish missing by 6 %
+**MAPE is the more informative metric — but not a stable one.** Three identical re-runs of the
+gemma-3-4b sweep put its mean UTS MAPE at 40.85 / 17.47 / 36.36 (CV **39.3 %**) while cell accuracy
+moved 1.1 %. MAPE is unbounded above and averaged per-paper, so a 2-row paper such as CF-P18 can
+swing the arm mean by 180 points. See [capacity-curve.md](capacity-curve.md#the-methodological-result-uts-mape-is-not-a-stable-estimator).
+Prefer `UTS_medAPE_pct` and bootstrap CIs over papers. Originally: Accuracy is a step function that cannot distinguish missing by 6 %
 from missing by 60 %.
 
 ## Row F1 and UTS accuracy measure different capabilities
