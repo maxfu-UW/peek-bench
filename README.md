@@ -405,6 +405,8 @@ scoring/     score10.py         Hungarian alignment + metrics
 runners/     *.sh               campaign scripts; progress.py live progress bar
 results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
+paper_drafts/ PEEK-Bench-draft-v2.pdf/.docx  machine-assisted paper draft (NOT peer reviewed)
+             README.md          how it was produced and what it deliberately omits
 docs/        prompt.md          the VERBATIM prompt, regenerable and diffable
              failure-modes.md   six catalogued failure modes with the data behind each
              capacity-curve.md  gemma-3 4B/12B/27B at fixed image tokens + MAPE instability

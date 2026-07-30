@@ -1,0 +1,383 @@
+{
+ "verified": [
+  {
+   "apa7": "Alzahrani, N., Alyahya, H., Alnumay, Y., AlRashed, S., Alsubaie, S., Almushayqih, Y., Mirza, F., Alotaibi, N., Al-Twairesh, N., Alowisheq, A., Bari, M. S., & Khan, H. (2024). When benchmarks are targets: Revealing the sensitivity of large language model leaderboards. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 13787-13805). Association for Computational Linguistics. https://doi.org/10.18653/v1/2024.acl-long.744",
+   "in_text": "(Alzahrani et al., 2024)",
+   "why_cited": "Shows evaluation results change under scoring choices: minor, benign perturbations to benchmark items and to the answer-scoring procedure reorder leaderboard rankings. Strongest single citation for the claim that leaderboard position is an artifact of measurement decisions, not just model quality. VERIFICATION NOTE: ACL BibTeX confirms all twelve author surnames, pages, and DOI. The arXiv preprint (2402.01781) spells three names differently (Almushaykeh, Altwairesh, Alrashed); the ACL Anthology spellings used here are the published version of record.",
+   "verified_via": "https://aclanthology.org/2024.acl-long.744.bib",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Anthropic. (n.d.). Models overview. Retrieved July 29, 2026, from https://platform.claude.com/docs/en/about-claude/models/overview",
+   "in_text": "(Anthropic, n.d.)",
+   "why_cited": "Citable primary documentation for the Claude models used as the frontier/API comparison point \u2014 model IDs, context windows, vision support, and pricing. APA 7 uses (n.d.) plus a retrieval date for a continuously updated documentation page; substitute the specific model's release page if the paper pins one model.",
+   "verified_via": "https://platform.claude.com/docs/en/about-claude/models/overview \u2014 page fetched; H1 'Models overview'. Confirmed it tabulates Claude API model IDs, context windows, max output, and per-MTok pricing, and states all current models support image input and vision. No publication or last-updated date is shown, so (n.d.) + retrieval date is the correct APA form.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Bai, S., Cai, Y., Chen, R., Chen, K., Chen, X., Cheng, Z., Deng, L., Ding, W., Gao, C., Ge, C., Ge, W., Guo, Z., Huang, Q., Huang, J., Huang, F., Hui, B., Jiang, S., Li, Z., Li, M., ... Zhu, K. (2025). Qwen3-VL technical report. arXiv. https://arxiv.org/abs/2511.21631",
+   "in_text": "(Bai, Cai, et al., 2025)",
+   "why_cited": "Primary source for Qwen3-VL, the newest generation in the model roster. Cite alongside Qwen2.5-VL when distinguishing generations. Because both shorten to 'Bai et al., 2025', APA 7 requires enough co-author surnames in text to disambiguate \u2014 hence 'Bai, Cai, et al.' vs 'Bai, Chen, et al.' rather than 2025a/2025b.",
+   "verified_via": "http://export.arxiv.org/api/query?id_list=2511.21631 \u2014 confirmed arXiv:2511.21631, submitted 2025-11-26, first 19 authors verified in order (Shuai Bai ... Mingsheng Li), final author Ke Zhu. CORRECTION to candidate: the paper has 70 authors, not 63; the visible reference string is unaffected.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang, S., Tang, J., Zhong, H., Zhu, Y., Yang, M., Li, Z., Wan, J., Wang, P., Ding, W., Fu, Z., Xu, Y., ... Lin, J. (2025). Qwen2.5-VL technical report. arXiv. https://arxiv.org/abs/2502.13923",
+   "in_text": "(Bai, Chen, et al., 2025)",
+   "why_cited": "Primary source for the Qwen2.5-VL models in the roster; also the reference for its window-attention ViT and the dynamic-resolution / dynamic-FPS scheme that determines how many visual tokens a given figure consumes.",
+   "verified_via": "http://export.arxiv.org/api/query?id_list=2502.13923 \u2014 confirmed arXiv:2502.13923, submitted 2025-02-19, 27 authors, order verified from Shuai Bai through Junyang Lin. APA 7 >20-author rule applied: first 19 listed, ellipsis, final author Lin, J.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. Journal of the Royal Statistical Society: Series B (Methodological), 57(1), 289-300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x",
+   "in_text": "(Benjamini & Hochberg, 1995)",
+   "why_cited": "Original source for FDR control; the appropriate correction when the paper runs many exploratory per-paper or per-task comparisons and family-wise control (Holm) would be too conservative.",
+   "verified_via": "https://api.crossref.org/works/10.1111/j.2517-6161.1995.tb02031.x (Yoav Benjamini & Yosef Hochberg, 1995, 57(1), 289-300 confirmed; Crossref now renders the journal under its current name 'Journal of the Royal Statistical Society Series B: Statistical Methodology' - the 1995 name of record, used above, is 'Journal of the Royal Statistical Society: Series B (Methodological)')",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Biderman, S., Schoelkopf, H., Sutawika, L., Gao, L., Tow, J., Abbasi, B., Aji, A. F., Ammanamanchi, P. S., Black, S., Clive, J., DiPofi, A., Etxaniz, J., Fattori, B., Forde, J. Z., Foster, C., Hsu, J., Jaiswal, M., Lee, W. Y., Li, H., ... Zou, A. (2024). Lessons from the trenches on reproducible evaluation of language models. arXiv. https://arxiv.org/abs/2405.14782",
+   "in_text": "(Biderman et al., 2024)",
+   "why_cited": "Reproducibility and variance in LLM evaluation: documents, from the lm-evaluation-harness maintainers, how implementation details (prompt assembly, normalization, scoring code) make nominally identical benchmark results irreproducible across setups. Justifies reporting harness-level detail in a validity audit. VERIFICATION NOTE: 30 authors on the arXiv record; the 19-authors-then-ellipsis-then-final-author truncation is correct APA 7th for >20 authors, and Andy Zou is confirmed as the final listed author. No journal-ref or conference acceptance appears on the arXiv record, so the preprint form is the correct citation.",
+   "verified_via": "https://arxiv.org/abs/2405.14782",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Bowman, S. R., & Dahl, G. (2021). What will it take to fix benchmarking in natural language understanding? In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (pp. 4843-4855). Association for Computational Linguistics. https://doi.org/10.18653/v1/2021.naacl-main.385",
+   "in_text": "(Bowman & Dahl, 2021)",
+   "why_cited": "Position paper on benchmark saturation and validity in NLU: unreliable and biased systems score highly on standard benchmarks, so headline numbers no longer track progress. Supplies four criteria a valid benchmark must satisfy, a direct precedent for proposing a validity audit. VERIFICATION NOTE: ACL Anthology confirms authors (Samuel R. Bowman, George Dahl), year, venue, pages 4843-4855, and DOI exactly as cited.",
+   "verified_via": "https://aclanthology.org/2021.naacl-main.385/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Card, D., Henderson, P., Khandelwal, U., Jia, R., Mahowald, K., & Jurafsky, D. (2020). With little power comes great responsibility. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (pp. 9263-9274). Association for Computational Linguistics. https://doi.org/10.18653/v1/2020.emnlp-main.745",
+   "in_text": "(Card et al., 2020)",
+   "why_cited": "Statistical practice in NLP evaluation: shows that typical NLP experiments and benchmark test sets are badly underpowered, so many reported improvements are not statistically detectable at the sample sizes used. Grounds any claim in the paper about score differences falling within noise. VERIFICATION NOTE: ACL Anthology confirms all six authors in the cited order, pages 9263-9274, and the DOI.",
+   "verified_via": "https://aclanthology.org/2020.emnlp-main.745/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Chi, Z., Huang, H., Xu, H.-D., Yu, H., Yin, W., & Mao, X.-L. (2019). Complicated table structure recognition. arXiv. https://arxiv.org/abs/1908.04729",
+   "in_text": "(Chi et al., 2019)",
+   "why_cited": "Originating source for SciTSR (15,000 tables from scientific papers) and the GraphTSR relation-prediction formulation. Cite as the third standard table-structure benchmark alongside PubTables-1M and FinTabNet. Remains a preprint \u2014 no peer-reviewed venue found, so cite as arXiv.",
+   "verified_via": "https://arxiv.org/abs/1908.04729 \u2014 abstract page confirms title and the six authors (Zewen Chi, Heyan Huang, Heng-Da Xu, Houjin Yu, Wanxuan Yin, Xian-Ling Mao), v1 Aug 2019 / v2 Aug 2019, no journal-ref or venue comment.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Dagdelen, J., Dunn, A., Lee, S., Walker, N., Rosen, A. S., Ceder, G., Persson, K. A., & Jain, A. (2024). Structured information extraction from scientific text with large language models. Nature Communications, 15, Article 1418. https://doi.org/10.1038/s41467-024-45563-x",
+   "in_text": "(Dagdelen et al., 2024)",
+   "why_cited": "The Ceder/Persson/Jain result on fine-tuned LLMs emitting structured records (JSON-style schemas) from scientific text. Directly supports PEEK-Bench's task formulation as schema-constrained structured output, and is the strongest text-only counterpart to compare extraction accuracy against.",
+   "verified_via": "https://api.crossref.org/works/10.1038/s41467-024-45563-x (re-checked; all 8 authors confirmed in order; Nature Communications vol. 15, article 1418, 2024)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Dehghani, M., Mustafa, B., Djolonga, J., Heek, J., Minderer, M., Caron, M., Steiner, A., Puigcerver, J., Geirhos, R., Alabdulmohsin, I., Oliver, A., Padlewski, P., Gritsenko, A., Lucic, M., & Houlsby, N. (2023). Patch n' Pack: NaViT, a vision transformer for any aspect ratio and resolution. In Advances in neural information processing systems 36 (pp. 2252-2274). Neural Information Processing Systems Foundation. https://doi.org/10.52202/075280-0106",
+   "in_text": "(Dehghani et al., 2023)",
+   "why_cited": "The canonical source for sequence packing of variable-resolution patches \u2014 i.e. why a vision backbone need not resize every image to a fixed square, and why token count scales with native resolution and aspect ratio. Foundational citation for the image-token findings.",
+   "verified_via": "https://api.crossref.org/works/10.52202/075280-0106 \u2014 DOI resolves to the correct paper: Advances in Neural Information Processing Systems 36, 2023, pp. 2252-2274, publisher Neural Information Processing Systems Foundation, 15 authors in the order given. Cross-checked against https://papers.nips.cc/paper_files/paper/2023/hash/06ea400b9b7cfce6428ec27a371632eb-Abstract-Conference.html and dblp (NeurIPS 2023 main track; arXiv:2307.06304). UPGRADED from partial: the DOI is genuine and the page range is now confirmed. Note the candidate's publisher 'Curran Associates' was changed to match the registered Crossref publisher.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Efron, B. (1979). Bootstrap methods: Another look at the jackknife. The Annals of Statistics, 7(1), 1-26. https://doi.org/10.1214/aos/1176344552",
+   "in_text": "(Efron, 1979)",
+   "why_cited": "Canonical origin of the bootstrap; cite when the paper resamples to obtain nonparametric sampling distributions for accuracy metrics rather than relying on parametric standard errors.",
+   "verified_via": "https://api.crossref.org/works/10.1214/aos/1176344552 (author, year, journal, volume, issue) and https://projecteuclid.org/journals/annals-of-statistics/volume-7/issue-1/Bootstrap-Methods-Another-Look-at-the-Jackknife/10.1214/aos/1176344552.full (page range 1-26 confirmed on publisher landing page)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Efron, B. (1987). Better bootstrap confidence intervals. Journal of the American Statistical Association, 82(397), 171-185. https://doi.org/10.1080/01621459.1987.10478410",
+   "in_text": "(Efron, 1987)",
+   "why_cited": "Introduces the bias-corrected and accelerated (BCa) interval; this is the correct citation for the actual bootstrap confidence intervals reported, and is especially relevant because MAPE's skewed, heavy-right-tailed sampling distribution makes naive percentile intervals unreliable.",
+   "verified_via": "https://api.crossref.org/works/10.1080/01621459.1987.10478410 (Bradley Efron, 1987, JASA 82(397), 171-185 all confirmed)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Fellegi, I. P., & Sunter, A. B. (1969). A theory for record linkage. Journal of the American Statistical Association, 64(328), 1183-1210. https://doi.org/10.1080/01621459.1969.10501049",
+   "in_text": "(Fellegi & Sunter, 1969)",
+   "why_cited": "The formal theory of record linkage, including explicit match/non-match/possible-match decision regions and error rates; directly supports the claim that a matching rule has tunable error trade-offs and therefore admits wrong answers.",
+   "verified_via": "https://api.crossref.org/works/10.1080/01621459.1969.10501049",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Gemma Team. (2025). Gemma 3 technical report. arXiv. https://arxiv.org/abs/2503.19786",
+   "in_text": "(Gemma Team, 2025)",
+   "why_cited": "Primary source for the Gemma 3 model family evaluated in the benchmark \u2014 architecture (1B-27B, interleaved local/global attention), the SigLIP vision encoder, 128K context, and the fixed 896x896 image encoding that underlies the per-image token accounting.",
+   "verified_via": "http://export.arxiv.org/api/query?id_list=2503.19786 \u2014 confirmed arXiv:2503.19786, title 'Gemma 3 Technical Report', submitted 2025-03-25, corporate author 'Gemma Team' heading a ~200-person contributor list; abstract confirms 1-27B scale, vision understanding and 128K+ context.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Guo, Z., Xu, R., Yao, Y., Cui, J., Ni, Z., Ge, C., Chua, T.-S., Liu, Z., & Huang, G. (2024). LLaVA-UHD: An LMM perceiving any aspect ratio and high-resolution images. In Computer vision \u2013 ECCV 2024 (pp. 390-406). Springer. https://doi.org/10.1007/978-3-031-73010-8_23",
+   "in_text": "(Guo et al., 2024)",
+   "why_cited": "The AnyRes-style image-slicing line of work: analyses the failure modes of fixed-resolution ViT encoding, and proposes adaptive slicing plus token compression. Use it to explain why tiling a wide, high-resolution scientific figure inflates token counts and can still lose fine detail such as axis tick labels.",
+   "verified_via": "https://dblp.org/search/publ/api?q=LLaVA-UHD and https://api.crossref.org/works/10.1007/978-3-031-73010-8_23 \u2014 CORRECTED. The candidate cited this as an unpublished arXiv preprint with Ruyi Xu as first author; it was in fact published at ECCV 2024 (Milan, Sept 29 - Oct 4, 2024), Lecture Notes in Computer Science, pp. 390-406, Springer Nature Switzerland, DOI 10.1007/978-3-031-73010-8_23, and the published author list differs from the arXiv v1 list: it is led by Zonghao Guo, has 9 authors, and drops Maosong Sun. In-text form therefore changes from (Xu et al., 2024) to (Guo et al., 2024). Caveat: the LNCS volume editors and volume number were not confirmed and are omitted rather than guessed; add '(A. Leonardis et al., Eds.)' only after checking the physical volume.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Holm, S. (1979). A simple sequentially rejective multiple test procedure. Scandinavian Journal of Statistics, 6(2), 65-70. https://www.jstor.org/stable/4615733",
+   "in_text": "(Holm, 1979)",
+   "why_cited": "Original source for Holm's step-down correction, used to control the family-wise error rate across the multiple pairwise model comparisons reported in the paper.",
+   "verified_via": "https://api.openalex.org/works?filter=title.search:simple%20sequentially%20rejective (Sture Holm, 1979, Scand. J. Statist. 6, 65-70) and original scanned PDF read at https://www.ime.usp.br/~abe/lista/pdf4R8xPVzCnX.pdf whose JSTOR cover page states 'Scandinavian Journal of Statistics, Vol. 6, No. 2 (1979), pp. 65-70. Stable URL: http://www.jstor.org/stable/4615733' and whose article header reads 'Scand J Statist 6: 65-70, 1979'. NOTE: OpenAlex attaches DOI 10.2307/4615733 to this record, but that DOI is NOT registered - https://doi.org/api/handles/10.2307/4615733 returns 404 and https://api.crossref.org/works/10.2307/4615733 returns 404 - so the JSTOR stable URL is used instead. Do not cite that DOI.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Huang, Q., Hao, S., Ye, Y., Zhu, S., Feng, Y., & Zhao, D. (2022). Does recommend-revise produce reliable annotations? An analysis on missing instances in DocRED. In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 6241-6252). Association for Computational Linguistics. https://doi.org/10.18653/v1/2022.acl-long.432",
+   "in_text": "(Huang et al., 2022)",
+   "why_cited": "Traces DocRED's false negatives to the annotation procedure itself and documents resulting entity bias; supports the argument that evaluation-side design decisions propagate into apparent model quality.",
+   "verified_via": "https://aclanthology.org/2022.acl-long.432/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Huang, Z., Chen, K., He, J., Bai, X., Karatzas, D., Lu, S., & Jawahar, C. V. (2019). ICDAR2019 competition on scanned receipt OCR and information extraction. In Proceedings of the 2019 International Conference on Document Analysis and Recognition (ICDAR) (pp. 1516\u20131520). IEEE. https://doi.org/10.1109/ICDAR.2019.00244",
+   "in_text": "(Huang et al., 2019)",
+   "why_cited": "Originating source for SROIE. Cite for the competition's exact-match F1 protocol, which illustrates how the field defaults to string-equality scoring on a fixed field schema rather than attempting structural table comparison.",
+   "verified_via": "https://api.crossref.org/works/10.1109/ICDAR.2019.00244 \u2014 DOI resolves to this title with authors Zheng Huang, Kai Chen, Jianhua He, Xiang Bai, Dimosthenis Karatzas, Shijian Lu, C. V. Jawahar, 2019, ICDAR 2019, pp. 1516\u20131520, IEEE.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Hyndman, R. J., & Koehler, A. B. (2006). Another look at measures of forecast accuracy. International Journal of Forecasting, 22(4), 679-688. https://doi.org/10.1016/j.ijforecast.2006.03.001",
+   "in_text": "(Hyndman & Koehler, 2006)",
+   "why_cited": "The standard reference for MAPE's failure modes (undefined at zero actuals, extreme/infinite values as actuals approach zero, asymmetric penalty) and the source that proposes MASE as the scale-free alternative. This is the single most important citation for the paper's 39.3% coefficient of variation on MAPE, and it also supports reporting median APE or a scaled error alongside it.",
+   "verified_via": "https://api.crossref.org/works/10.1016/j.ijforecast.2006.03.001 (Rob J. Hyndman & Anne B. Koehler, 2006, International Journal of Forecasting 22(4), 679-688 confirmed)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Jaume, G., Ekenel, H. K., & Thiran, J.-P. (2019). FUNSD: A dataset for form understanding in noisy scanned documents. In Proceedings of the 2019 International Conference on Document Analysis and Recognition Workshops (ICDARW) (pp. 1\u20136). IEEE. https://doi.org/10.1109/ICDARW.2019.10029",
+   "in_text": "(Jaume et al., 2019)",
+   "why_cited": "Standard form-understanding benchmark and the reference point for entity-level F1 scoring in document understanding. Supports Section 3's contrast between field-level scoring (tractable) and whole-table scoring (open).",
+   "verified_via": "https://api.crossref.org/works/10.1109/ICDARW.2019.10029 \u2014 DOI resolves to this title, authors Guillaume Jaume, Hazim Kemal Ekenel, Jean-Philippe Thiran, 2019, ICDARW 2019, pp. 1\u20136, IEEE.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Kim, E., Huang, K., Tomala, A., Matthews, S., Strubell, E., Saunders, A., McCallum, A., & Olivetti, E. (2017). Machine-learned and codified synthesis parameters of oxide materials. Scientific Data, 4, Article 170127. https://doi.org/10.1038/sdata.2017.127",
+   "in_text": "(Kim et al., 2017)",
+   "why_cited": "Early Olivetti-group demonstration that synthesis parameters can be machine-extracted from literature at scale into a structured, reusable dataset. Supports the claim that the value of extraction lies in producing a queryable database, not just per-paper parsing.",
+   "verified_via": "https://api.crossref.org/works/10.1038/sdata.2017.127 (re-checked; all 8 authors confirmed in order: Edward Kim, Kevin Huang, Alex Tomala, Sara Matthews, Emma Strubell, Adam Saunders, Andrew McCallum, Elsa Olivetti; Scientific Data vol. 4, article 170127)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Kim, S., & Kim, H. (2016). A new metric of absolute percentage error for intermittent demand forecasts. International Journal of Forecasting, 32(3), 669-679. https://doi.org/10.1016/j.ijforecast.2015.12.003",
+   "in_text": "(Kim & Kim, 2016)",
+   "why_cited": "Documents in detail how MAPE explodes toward infinity as actual values approach zero (and how sMAPE fails to fix this), and proposes MAAPE as a bounded alternative. Directly supports the claim that MAPE's instability is a known property of the metric, not noise in the paper's measurements.",
+   "verified_via": "https://api.crossref.org/works/10.1016/j.ijforecast.2015.12.003 (Sungil Kim & Heeyoung Kim, 2016, International Journal of Forecasting 32(3), 669-679 confirmed)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Kononova, O., Huo, H., He, T., Rong, Z., Botari, T., Sun, W., Tshitoyan, V., & Ceder, G. (2019). Text-mined dataset of inorganic materials synthesis recipes. Scientific Data, 6, Article 203. https://doi.org/10.1038/s41597-019-0224-1",
+   "in_text": "(Kononova et al., 2019)",
+   "why_cited": "The reference large-scale text-mined synthesis corpus from the Ceder/Kononova group. Cite for the scale achievable by classical pipelines and, importantly, for the fact that such corpora are built from body text only, motivating PEEK-Bench's figure-centric scope.",
+   "verified_via": "https://api.crossref.org/works/10.1038/s41597-019-0224-1 (re-checked; all 8 authors confirmed in order, Scientific Data vol. 6, article 203, 2019)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Kuhn, H. W. (1955). The Hungarian method for the assignment problem. Naval Research Logistics Quarterly, 2(1-2), 83-97. https://doi.org/10.1002/nav.3800020109",
+   "in_text": "(Kuhn, 1955)",
+   "why_cited": "Original source for the assignment algorithm used to align predicted rows to reference rows; grounds the claim that one-to-one matching under a cost matrix is a solved optimization problem, so the real choice is which cost function you pick.",
+   "verified_via": "https://api.crossref.org/works/10.1002/nav.3800020109",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Makridakis, S. (1993). Accuracy measures: Theoretical and practical concerns. International Journal of Forecasting, 9(4), 527-529. https://doi.org/10.1016/0169-2070(93)90079-3",
+   "in_text": "(Makridakis, 1993)",
+   "why_cited": "The classic short critique establishing that MAPE is asymmetric - it penalises over-prediction more heavily than under-prediction and has no upper bound - and proposing the symmetric variant. Primary citation for why the paper's MAPE should not be read as a symmetric error measure.",
+   "verified_via": "https://api.crossref.org/works/10.1016/0169-2070(93)90079-3 (Spyros Makridakis, 1993, International Journal of Forecasting 9(4), 527-529 confirmed)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Masry, A., Long, D. X., Tan, J. Q., Joty, S., & Hoque, E. (2022). ChartQA: A benchmark for question answering about charts with visual and logical reasoning. In Findings of the Association for Computational Linguistics: ACL 2022 (pp. 2263-2279). Association for Computational Linguistics. https://doi.org/10.18653/v1/2022.findings-acl.177",
+   "in_text": "(Masry et al., 2022)",
+   "why_cited": "The standard chart-QA benchmark and the reference point for positioning PEEK-Bench: establishes the human-written + machine-generated question paradigm over chart images, and the relaxed-accuracy metric that motivates the paper's own scoring choices.",
+   "verified_via": "https://aclanthology.org/2022.findings-acl.177/ \u2014 confirmed authors Ahmed Masry, Do Xuan Long, Jia Qing Tan, Shafiq Joty, Enamul Hoque; Findings of the ACL: ACL 2022; pp. 2263-2279; DOI 10.18653/v1/2022.findings-acl.177. Abstract confirms 9.6K human-written + 23.1K generated questions.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Methani, N., Ganguly, P., Khapra, M. M., & Kumar, P. (2020). PlotQA: Reasoning over scientific plots. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) (pp. 1516-1525). IEEE. https://doi.org/10.1109/WACV45572.2020.9093523",
+   "in_text": "(Methani et al., 2020)",
+   "why_cited": "Earlier large-scale synthetic plot-QA benchmark; cite for the precedent of asking numerical/data-retrieval questions over scientific plots and for the out-of-vocabulary answer problem that motivates open-ended rather than multiple-choice answer extraction.",
+   "verified_via": "https://dblp.org/search/publ/api?q=PlotQA+Reasoning+over+Scientific+Plots \u2014 confirmed authors Nitesh Methani, Pritha Ganguly, Mitesh M. Khapra, Pratyush Kumar; WACV 2020; pp. 1516-1525; DOI 10.1109/WACV45572.2020.9093523 resolves to the same record.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Mistral AI. (2025, March 17). Mistral Small 3.1. https://mistral.ai/news/mistral-small-3-1",
+   "in_text": "(Mistral AI, 2025)",
+   "why_cited": "The only citable primary source for Mistral Small 3.1 \u2014 there is no technical report or arXiv preprint. Supports claims about the model's multimodal capability, 128K context, Apache 2.0 licence, and consumer-hardware feasibility, which is directly relevant to the local M4 Pro evaluation setting.",
+   "verified_via": "https://mistral.ai/news/mistral-small-3-1 \u2014 page fetched; title 'Mistral Small 3.1', dated March 17, 2025. Text confirms multimodal/image understanding, 'expanded context window of up to 128k tokens', and 'released under an Apache 2.0 license'.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Munkres, J. (1957). Algorithms for the assignment and transportation problems. Journal of the Society for Industrial and Applied Mathematics, 5(1), 32-38. https://doi.org/10.1137/0105003",
+   "in_text": "(Munkres, 1957)",
+   "why_cited": "The second half of the 'Kuhn-Munkres' attribution; gives the polynomial-time algorithmic formulation actually implemented in scipy.optimize.linear_sum_assignment and comparable libraries.",
+   "verified_via": "https://api.crossref.org/works/10.1137/0105003",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Newcombe, H. B., Kennedy, J. M., Axford, S. J., & James, A. P. (1959). Automatic linkage of vital records. Science, 130(3381), 954-959. https://doi.org/10.1126/science.130.3381.954",
+   "in_text": "(Newcombe et al., 1959)",
+   "why_cited": "The originating record-linkage paper; establishes that deciding whether two records describe the same entity is a probabilistic inference problem, not a lookup, which is the historical root of the paper's row-alignment framing.",
+   "verified_via": "https://api.crossref.org/works/10.1126/science.130.3381.954",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Northcutt, C. G., Athalye, A., & Mueller, J. (2021). Pervasive label errors in test sets destabilize machine learning benchmarks. arXiv. https://arxiv.org/abs/2103.14749",
+   "in_text": "(Northcutt et al., 2021)",
+   "why_cited": "Ground-truth quality: finds an average of at least 3.3% label errors across ten widely used test sets and shows that correcting them can reverse model rankings (e.g., ResNet-18 over ResNet-50). Directly supports the argument that a benchmark's gold answers must themselves be audited before scores mean anything. VERIFICATION NOTE: arXiv record confirms all three authors and the title; comments field confirms NeurIPS 2021 Track on Datasets and Benchmarks.",
+   "verified_via": "https://arxiv.org/abs/2103.14749",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Olivetti, E. A., Cole, J. M., Kim, E., Kononova, O., Ceder, G., Han, T. Y.-J., & Hiszpanski, A. M. (2020). Data-driven materials research enabled by natural language processing and information extraction. Applied Physics Reviews, 7(4), Article 041317. https://doi.org/10.1063/5.0021106",
+   "in_text": "(Olivetti et al., 2020)",
+   "why_cited": "Authoritative review co-authored by the Olivetti, Cole, and Ceder groups. Use as the single citation that frames the whole subfield in the introduction, and as documentation of what the field identified as open problems immediately before LLMs arrived.",
+   "verified_via": "https://api.crossref.org/works/10.1063/5.0021106 (re-checked; all 7 authors confirmed, including Thomas Yong-Jin Han -> T. Y.-J. Han; Applied Physics Reviews 7(4), article 041317)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Park, S., Shin, S., Lee, B., Lee, J., Surh, J., Seo, M., & Lee, H. (2019). CORD: A consolidated receipt dataset for post-OCR parsing. In Workshop on Document Intelligence at NeurIPS 2019. https://openreview.net/forum?id=SJl3z659UH",
+   "in_text": "(Park et al., 2019)",
+   "why_cited": "Widely used receipt-parsing KIE benchmark with multi-level semantic labels. Cite with FUNSD and SROIE as the KIE cluster. Workshop paper with no DOI \u2014 the OpenReview identifier is the stable link.",
+   "verified_via": "https://raw.githubusercontent.com/clovaai/cord/master/README.md \u2014 the official CORD repository's own bibtex gives this title, all seven authors in this order, 'Document Intelligence Workshop at Neural Information Processing Systems', 2019, and confirms the OpenReview id SJl3z659UH. Cross-checked against https://mlanthology.org/neuripsw/2019/park2019neuripsw-cord/ (identical author list and venue). Note: openreview.net itself is behind a bot challenge and could not be fetched directly, but the ID is confirmed by the authors' own repository.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Pavlick, E., & Kwiatkowski, T. (2019). Inherent disagreements in human textual inferences. Transactions of the Association for Computational Linguistics, 7, 677-694. https://doi.org/10.1162/tacl_a_00293",
+   "in_text": "(Pavlick & Kwiatkowski, 2019)",
+   "why_cited": "Annotator agreement and the existence of a single gold label: shows that annotator disagreement in NLI is not dismissible noise but persists with more raters and more context, and argues evaluation should target the full distribution of plausible human judgments. Supports the position that some benchmark items have no single scorable ground truth. VERIFICATION NOTE: ACL Anthology confirms authors, TACL volume 7, pages 677-694, and DOI 10.1162/tacl_a_00293 exactly as cited.",
+   "verified_via": "https://aclanthology.org/Q19-1043/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Peng, N., Poon, H., Quirk, C., Toutanova, K., & Yih, W.-T. (2017). Cross-sentence n-ary relation extraction with graph LSTMs. Transactions of the Association for Computational Linguistics, 5, 101-115. https://doi.org/10.1162/tacl_a_00049",
+   "in_text": "(Peng et al., 2017)",
+   "why_cited": "Canonical n-ary relation extraction formulation, where an instance is a tuple of several entities rather than a pair; motivates why scoring multi-field extracted rows requires an explicit alignment step instead of pairwise set comparison.",
+   "verified_via": "https://aclanthology.org/Q17-1008/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Polak, M. P., & Morgan, D. (2024). Extracting accurate materials data from research papers with conversational language models and prompt engineering. Nature Communications, 15, Article 1569. https://doi.org/10.1038/s41467-024-45914-8",
+   "in_text": "(Polak & Morgan, 2024)",
+   "why_cited": "Establishes accuracy levels attainable for materials property extraction with conversational LLMs plus prompt engineering, including the follow-up-question strategy for reducing errors. Cite when reporting PEEK-Bench accuracy numbers so readers can calibrate against a published text-extraction reference point.",
+   "verified_via": "https://api.crossref.org/works/10.1038/s41467-024-45914-8 (re-checked; 2 authors confirmed: Maciej P. Polak, Dane Morgan; Nature Communications vol. 15, article 1569, 2024)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Raji, I. D., Bender, E. M., Paullada, A., Denton, E., & Hanna, A. (2021). AI and the everything in the whole wide world benchmark. arXiv. https://arxiv.org/abs/2111.15366",
+   "in_text": "(Raji et al., 2021)",
+   "why_cited": "Core construct-validity critique: argues that general-purpose ML benchmarks illegitimately claim to measure broad, abstract constructs while actually measuring narrow, task-specific performance. Canonical anchor for the claim that benchmarks need validity audits. VERIFICATION NOTE: arXiv comments field confirms \"Accepted in NeurIPS 2021 Benchmarks and Datasets track\" \u2014 substitute the proceedings citation if page numbers are needed.",
+   "verified_via": "https://arxiv.org/abs/2111.15366",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Sainz, O., Campos, J., Garc\u00eda-Ferrero, I., Etxaniz, J., Lopez de Lacalle, O., & Agirre, E. (2023). NLP evaluation in trouble: On the need to measure LLM data contamination for each benchmark. In Findings of the Association for Computational Linguistics: EMNLP 2023 (pp. 10776-10787). Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.findings-emnlp.722",
+   "in_text": "(Sainz et al., 2023)",
+   "why_cited": "Contamination: argues that training on benchmark test splits invalidates the resulting scores and that contamination must be measured per benchmark rather than assumed absent. Supports the claim that reported numbers cannot be taken at face value without an audit. VERIFICATION NOTE: ACL BibTeX confirms all six authors, pages, and DOI. Minor caveat \u2014 the official BibTeX parses the fifth author as surname \"de Lacalle\", given \"Oier Lopez\"; the rendered form \"Lopez de Lacalle, O.\" used here matches the ACL Anthology display page and the author's own publication practice.",
+   "verified_via": "https://aclanthology.org/2023.findings-emnlp.722.bib",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Sclar, M., Choi, Y., Tsvetkov, Y., & Suhr, A. (2023). Quantifying language models' sensitivity to spurious features in prompt design or: How I learned to start worrying about prompt formatting. arXiv. https://arxiv.org/abs/2310.11324",
+   "in_text": "(Sclar et al., 2023)",
+   "why_cited": "Shows evaluation results change under prompt choices: semantically equivalent prompt formatting variations produce large accuracy spreads, so a single-prompt benchmark score is not a stable measurement of model ability. VERIFICATION NOTE: arXiv record confirms all four authors, the full title, and an October 2023 submission with a July 2024 revision marked \"ICLR 2024 Camera Ready.\" If you prefer the conference form, cite as ICLR 2024 and change the in-text year to 2024.",
+   "verified_via": "https://arxiv.org/abs/2310.11324",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Smock, B., Pesala, R., & Abraham, R. (2022). PubTables-1M: Towards comprehensive table extraction from unstructured documents. In Proceedings of the 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) (pp. 4624\u20134632). IEEE. https://doi.org/10.1109/CVPR52688.2022.00459",
+   "in_text": "(Smock et al., 2022)",
+   "why_cited": "Largest table-structure recognition benchmark, notable for an explicit canonicalization procedure to resolve ground-truth inconsistencies \u2014 direct evidence that benchmark authors themselves concede reference tables are not uniquely determined.",
+   "verified_via": "https://api.crossref.org/works/10.1109/CVPR52688.2022.00459 \u2014 DOI resolves to this title, same three authors, 2022, CVPR 2022, pp. 4624\u20134632, IEEE. Preprint counterpart arXiv:2110.00061.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Smock, B., Pesala, R., & Abraham, R. (2023). GriTS: Grid table similarity metric for table structure recognition. In Document analysis and recognition \u2013 ICDAR 2023 (pp. 535\u2013549). Springer. https://doi.org/10.1007/978-3-031-41734-4_33",
+   "in_text": "(Smock et al., 2023)",
+   "why_cited": "Strongest published critique of existing table-structure metrics including TEDS; argues prior metrics evaluate tables indirectly rather than in their natural matrix form. Load-bearing citation for Section 3's claim that table-vs-table scoring is an open problem.",
+   "verified_via": "https://api.crossref.org/works/10.1007/978-3-031-41734-4_33 \u2014 DOI resolves to this title, Brandon Smock, Rohith Pesala, Robin Abraham, 2023, ICDAR 2023 (LNCS), pp. 535\u2013549, Springer Nature Switzerland. Preprint counterpart arXiv:2203.12555.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Song, Y., Miret, S., & Liu, B. (2023). MatSci-NLP: Evaluating scientific language models on materials science language tasks using text-to-schema modeling. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 3621-3639). Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.acl-long.201",
+   "in_text": "(Song et al., 2023)",
+   "why_cited": "The closest existing benchmark for materials-science language understanding and schema-structured extraction. This is the key related-benchmark citation: use it to state precisely what PEEK-Bench adds that MatSci-NLP does not cover (figure-derived quantities rather than text-span tasks).",
+   "verified_via": "https://aclanthology.org/2023.acl-long.201/ (authoritative ACL Anthology landing page; confirmed authors Yu Song, Santiago Miret, Bang Liu; ACL 2023 Volume 1 Long Papers, pp. 3621-3639, DOI 10.18653/v1/2023.acl-long.201)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Swain, M. C., & Cole, J. M. (2016). ChemDataExtractor: A toolkit for automated extraction of chemical information from the scientific literature. Journal of Chemical Information and Modeling, 56(10), 1894-1904. https://doi.org/10.1021/acs.jcim.6b00207",
+   "in_text": "(Swain & Cole, 2016)",
+   "why_cited": "The canonical rule-based/NLP text-mining pipeline for chemical information extraction. Cite as the pre-LLM baseline PEEK-Bench is positioned against: it establishes that automated extraction from literature is a long-standing task, and that prior systems were hand-engineered, text-only, and did not touch figures.",
+   "verified_via": "https://api.crossref.org/works/10.1021/acs.jcim.6b00207 (re-checked in verification pass; confirmed 2 authors, JCIM 56(10), 1894-1904, 2016. Publisher page pubs.acs.org returns HTTP 403 to automated fetches.)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Tan, Q., Xu, L., Bing, L., Ng, H. T., & Aljunied, S. M. (2022). Revisiting DocRED - Addressing the false negative problem in relation extraction. In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (pp. 8472-8487). Association for Computational Linguistics. https://doi.org/10.18653/v1/2022.emnlp-main.580",
+   "in_text": "(Tan et al., 2022)",
+   "why_cited": "Shows DocRED's gold annotation is incomplete, so correct predictions are scored as false positives; re-annotation of 4,053 documents (Re-DocRED) moves F1 by roughly 13 points. Strong evidence that the reference set and the matching rule, not just the model, determine the reported number.",
+   "verified_via": "https://aclanthology.org/2022.emnlp-main.580/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Wang, P., Bai, S., Tan, S., Wang, S., Fan, Z., Bai, J., Chen, K., Liu, X., Wang, J., Ge, W., Fan, Y., Dang, K., Du, M., Ren, X., Men, R., Liu, D., Zhou, C., Zhou, J., & Lin, J. (2024). Qwen2-VL: Enhancing vision-language model's perception of the world at any resolution. arXiv. https://arxiv.org/abs/2409.12191",
+   "in_text": "(Wang et al., 2024)",
+   "why_cited": "Introduces naive dynamic resolution \u2014 mapping an image to a variable number of visual tokens instead of a fixed grid \u2014 plus M-RoPE. This is the mechanism that makes image-token count a free variable in the Qwen family, so it is the key citation when reporting how accuracy tracks token budget rather than pixel count.",
+   "verified_via": "http://export.arxiv.org/api/query?id_list=2409.12191 \u2014 confirmed arXiv:2409.12191, submitted 2024-09-18, exactly 19 authors from Peng Wang to Junyang Lin, order matches. Under 20 authors, so all are listed with '&' before the final name.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Wang, Z., Xia, M., He, L., Chen, H., Liu, Y., Zhu, R., Liang, K., Wu, X., Liu, H., Malladi, S., Chevalier, A., Arora, S., & Chen, D. (2024). CharXiv: Charting gaps in realistic chart understanding in multimodal LLMs. arXiv. https://arxiv.org/abs/2406.18521",
+   "in_text": "(Wang et al., 2024)",
+   "why_cited": "The most directly relevant chart-understanding benchmark: its charts are drawn from real arXiv papers rather than synthetic or web sources, and it documents a large gap between multimodal LLM and human performance on realistic scientific figures. This is the core citation justifying why extracting values from figures is a genuinely unsolved problem and why PEEK-Bench is needed.",
+   "verified_via": "https://export.arxiv.org/api/query?id_list=2406.18521 and https://arxiv.org/abs/2406.18521 (re-checked; all 13 authors confirmed in exact order, submitted 2024-06-26. NOTE: arXiv metadata shows no journal reference and no conference-acceptance note, so the preprint form is used; a human should check whether a NeurIPS 2024 Datasets & Benchmarks version should supersede it -- this could not be confirmed because the session's web-search budget was exhausted.)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Wilcoxon, F. (1945). Individual comparisons by ranking methods. Biometrics Bulletin, 1(6), 80-83. https://doi.org/10.2307/3001968",
+   "in_text": "(Wilcoxon, 1945)",
+   "why_cited": "Original source for the Wilcoxon signed-rank test, the paired nonparametric test the paper uses to compare paired per-item errors across models/conditions without assuming normality of the error distribution.",
+   "verified_via": "https://api.crossref.org/works/10.2307/3001968 (title/author/year/journal/volume/issue confirmed); https://doi.org/api/handles/10.2307/3001968 (handle resolves to JSTOR); page range 80-83 confirmed by reading the original scanned PDF cover page and article first page ('Biometrics Bulletin, Vol. 1, No. 6. (Dec., 1945), pp. 80-83') at https://sci2s.ugr.es/keel/pdf/algorithm/articulo/wilcoxon1945.pdf",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Xu, Z., Du, S., Qi, Y., Xu, C., Yuan, C., & Guo, J. (2023). ChartBench: A benchmark for complex visual reasoning in charts. arXiv. https://arxiv.org/abs/2312.15915",
+   "in_text": "(Xu et al., 2023)",
+   "why_cited": "Chart benchmark emphasising unannotated charts, where the model must read values off axes rather than off printed data labels \u2014 directly supports the paper's argument that figure comprehension degrades when numbers are not written on the image.",
+   "verified_via": "http://export.arxiv.org/api/query?id_list=2312.15915 \u2014 confirmed arXiv:2312.15915, submitted 2023-12-26, authors Zhengzhuo Xu, Sinan Du, Yiyan Qi, Chengjin Xu, Chun Yuan, Jian Guo. https://dblp.org/search/publ/api?q=ChartBench... records the work only as CoRR abs/2312.15915 with no peer-reviewed venue, so the preprint form is correct.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Yao, Y., Ye, D., Li, P., Han, X., Lin, Y., Liu, Z., Liu, Z., Huang, L., Zhou, J., & Sun, M. (2019). DocRED: A large-scale document-level relation extraction dataset. In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (pp. 764-777). Association for Computational Linguistics. https://doi.org/10.18653/v1/P19-1074",
+   "in_text": "(Yao et al., 2019)",
+   "why_cited": "The canonical document-level relation extraction benchmark and its evaluation protocol; the reference point for how predicted tuples are conventionally scored against gold tuples at the document level.",
+   "verified_via": "https://aclanthology.org/P19-1074/",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Zheng, X., Burdick, D., Popa, L., Zhong, X., & Wang, N. X. R. (2021). Global Table Extractor (GTE): A framework for joint table identification and cell structure recognition using visual context. In Proceedings of the 2021 IEEE Winter Conference on Applications of Computer Vision (WACV) (pp. 697\u2013706). IEEE. https://doi.org/10.1109/WACV48630.2021.00074",
+   "in_text": "(Zheng et al., 2021)",
+   "why_cited": "Originating source for FinTabNet (do not cite a survey for this). Cite when naming FinTabNet as a table-structure benchmark; the automatic labeling procedure also bears on ground-truth reliability.",
+   "verified_via": "https://api.crossref.org/works/10.1109/WACV48630.2021.00074 \u2014 DOI resolves to this title with authors Xinyi Zheng, Douglas Burdick, Lucian Popa, Xu Zhong, Nancy Xin Ru Wang, 2021, WACV 2021, pp. 697\u2013706, IEEE. Preprint counterpart arXiv:2005.00589.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Zheng, Z., Zhang, O., Borgs, C., Chayes, J. T., & Yaghi, O. M. (2023). ChatGPT chemistry assistant for text mining and the prediction of MOF synthesis. Journal of the American Chemical Society, 145(32), 18048-18062. https://doi.org/10.1021/jacs.3c05819",
+   "in_text": "(Zheng et al., 2023)",
+   "why_cited": "Prominent early demonstration that a general-purpose conversational LLM, with prompt engineering alone, can mine synthesis conditions from papers and support downstream prediction. Cite as evidence for the shift from bespoke pipelines to prompted general models.",
+   "verified_via": "https://api.crossref.org/works/10.1021/jacs.3c05819 (re-checked; 5 authors confirmed in order: Zhiling Zheng, Oufan Zhang, Christian Borgs, Jennifer T. Chayes, Omar M. Yaghi; JACS 145(32), 18048-18062)",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "Zhong, X., ShafieiBavani, E., & Jimeno Yepes, A. (2020). Image-based table recognition: Data, model, and evaluation. In Computer vision \u2013 ECCV 2020 (pp. 564\u2013580). Springer. https://doi.org/10.1007/978-3-030-58589-1_34",
+   "in_text": "(Zhong et al., 2020)",
+   "why_cited": "Canonical source for both the PubTabNet dataset and the TEDS (Tree-Edit-Distance-based Similarity) metric. Cite as the origin of the tree-edit-distance framing that Section 3 argues is the de facto but inadequate standard for table-vs-table scoring.",
+   "verified_via": "https://api.crossref.org/works/10.1007/978-3-030-58589-1_34 \u2014 DOI resolves to exactly this title, the three authors in this order, 2020, ECCV 2020 (LNCS), pp. 564\u2013580, Springer International Publishing.",
+   "confidence": "verified"
+  },
+  {
+   "apa7": "\u0160imsa, \u0160., \u0160ulc, M., U\u0159i\u010d\u00e1\u0159, M., Patel, Y., Hamdi, A., Koci\u00e1n, M., Skalick\u00fd, M., Matas, J., Doucet, A., Coustaty, M., & Karatzas, D. (2023). DocILE benchmark for document information localization and extraction. In Document analysis and recognition \u2013 ICDAR 2023 (pp. 147\u2013166). Springer. https://doi.org/10.1007/978-3-031-41679-8_9",
+   "in_text": "(\u0160imsa et al., 2023)",
+   "why_cited": "Recent large-scale key-information-extraction benchmark. Cite alongside FUNSD/CORD/SROIE to show the KIE line of work sidesteps table-vs-table comparison entirely by scoring per-field, which is the gap Section 3 identifies. Preserve the diacritics when pasting.",
+   "verified_via": "https://api.crossref.org/works/10.1007/978-3-031-41679-8_9 \u2014 DOI resolves to this title with all 11 authors in this exact order, 2023, ICDAR 2023 (LNCS), pp. 147\u2013166, Springer Nature Switzerland.",
+   "confidence": "verified"
+  }
+ ],
+ "partial": []
+}
