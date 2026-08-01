@@ -19,7 +19,10 @@ correct. That bug existed, and it manufactured near-perfect UTS accuracy from wr
 **UTS gets a looser tolerance than parameters** because it is frequently read off a chart, while
 parameters are usually tabulated.
 
-**MAPE is the more informative metric — but not a stable one.** Three identical re-runs of the
+**MAPE is the more informative metric — but not a stable one, and no metric is stable in general.**
+Which metric is least reliable depends on the model: on gemma-3-4b it is UTS MAPE (CV 39.3 %),
+on gemma-3-12b it is recall (46.4 % swing), and on gemma-3-27b row F1 and cell accuracy
+reproduce to three decimals. Three identical re-runs of the
 gemma-3-4b sweep put its mean UTS MAPE at 40.85 / 17.47 / 36.36 (CV **39.3 %**) while cell accuracy
 moved 1.1 %. MAPE is unbounded above and averaged per-paper, so a 2-row paper such as CF-P18 can
 swing the arm mean by 180 points. See [capacity-curve.md](capacity-curve.md#the-methodological-result-uts-mape-is-not-a-stable-estimator).

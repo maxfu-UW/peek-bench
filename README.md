@@ -355,22 +355,30 @@ cwd-isolation and are the more reliable comparison.*
 
 Gemma 3 spends **258 image tokens per page at every size** (token-delta measured on all three), so
 this varies parameters with perception held constant. One Mac Mini M4 Pro, engineered prompt,
-ctx 40,960, 39 runs per sweep.
+ctx 40,960, 39 runs per sweep. **Every arm has been swept at least twice**; ± is the SD between
+whole sweeps.
 
-| model | sweeps | row F1 | recall | precision | cell | UTS MAPE | rows/run | wall |
-|---|---|---|---|---|---|---|---|---|
-| **4B** | **3** | 0.371 | 0.336 | **0.655** | 0.746 | **31.6 ± 12.4** | 2.6 | 34 m |
-| **12B** | 1 | 0.288 | 0.285 | 0.346 | 0.785 | 10.40 | 4.8 | 2 h 48 m |
-| **27B** | 1 | **0.573** | **0.677** | 0.577 | **0.798** | **5.20** | 8.6 | 3 h 24 m |
+| model | sweeps | row F1 | recall | precision | cell | UTS MAPE |
+|---|---|---|---|---|---|---|
+| **4B** | 3 | 0.371 ± 0.046 | 0.336 ± 0.032 | **0.655** | 0.746 | 31.56 ± 12.41 |
+| **12B** | 2 | 0.362 ± 0.105 | 0.371 ± 0.122 | 0.404 | **0.805** | 9.54 ± 1.23 |
+| **27B** | 2 | **0.572** ± 0.001 | **0.645** ± 0.045 | 0.609 | 0.798 | **5.51** ± 0.44 |
 
-MAPE and rows-emitted are monotone in parameters. **Row F1 and recall are not** — the 4B beats the
-12B on both, across all three of its sweeps. Two separable causes: the 4B's precision advantage from
-under-extraction (0.655 vs 0.346), and the 12B returning **zero rows on CF-P14, CF-P10 and CF-P15**.
+UTS MAPE (31.56 → 9.54 → 5.51) and recall (0.336 → 0.371 → 0.645) are monotone in parameters. Row F1
+is not — the 4B and 12B tie within error.
 
-Running the same sweep three times with nothing changed also produced the campaign's first
-sweep-level variance estimate, and it forced a correction: **UTS MAPE has a 39.3 % coefficient of
-variation** where cell accuracy has 1.1 %. A previously reported Metal-vs-CUDA discrepancy was
-**withdrawn** as sampling noise. Full detail and the fixes in
+**Retraction.** Earlier versions of this README reported that the *4B beat the 12B* on row F1 and
+recall. That rested on a single 12B sweep; a second identical sweep moved its row F1 from 0.288 to
+0.437 (+52 %) and recall from 0.285 to 0.458 (+61 %). The inversion is **withdrawn** as a
+single-sample artifact.
+
+**What replaced it: reproducibility scales with model size.** Worst relative swing between identical
+sweeps — **4B 74.1 %** (UTS MAPE), **12B 46.4 %** (recall), **27B 11.4 %** (UTS MAPE). Small models
+are not merely less accurate, they are less reproducible, so a fixed repeat protocol is
+under-powered at the small end. And F1 can conceal it: across the 27B's two sweeps recall fell 9.5 %
+while precision rose 11.4 %, leaving row F1 at 0.573 → 0.571.
+
+Full detail, the metric-stability table and the fixes in
 [docs/capacity-curve.md](docs/capacity-curve.md).
 
 The six failure modes these runs exposed — grid-filling, rows with no measurement, severe

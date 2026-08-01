@@ -42,6 +42,14 @@ entries. The 15 DOI-less entries are preprints and vendor documentation carrying
 No ground-truth values, no source-paper titles, authors or DOIs, no PDFs. The corpus appears only
 as anonymised `CF-P##` identifiers, consistent with the metrics-only policy for `results/`.
 
+## SUPERSEDED — read docs/capacity-curve.md first
+
+Both drafts here state that the **4B beats the 12B on row F1 and recall**, and Figure 4 in the PDFs
+shows the 12B and 27B arms with no error bars. Both are now out of date. Every Gemma arm has since
+been swept at least twice, the inversion did not survive repetition, and the finding that replaced
+it — reproducibility scaling with model size — is not in these drafts at all. The figure file in
+`figures/` has been regenerated; the compiled `.docx`/`.pdf` have not.
+
 ## Known gaps a reader should not mistake for results
 
 - The frozen 10-paper test split has never been run. No claim depends on it.
