@@ -2,7 +2,7 @@
 
 A benchmark for LLM extraction of process–property data from **figure-heavy** additive-manufacturing
 papers. The task: given a PDF of an FFF/FDM carbon-fibre/PEEK study, emit one row per
-printed-and-tested condition with nine process parameters and the ultimate tensile strength.
+printed-and-tested condition with **nine process parameters** and the **ultimate tensile strength (UTS)**.
 
 The interesting part is not the text. It is that **a large share of the target values exist only
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
