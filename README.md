@@ -8,6 +8,19 @@ The interesting part is not the text. It is that **a large share of the target v
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
 
+## Why this benchmark exists
+
+The ground truth descends from a **manually curated process–property dataset** built for a
+machine-learning meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating that
+dataset by hand — reading each paper, locating every printed-and-tested condition, and transcribing
+values that often exist only inside figures — took **months of expert time**, and it is exactly the
+labour this benchmark asks whether an LLM can absorb. PEEK-Bench is the measurement instrument that
+question deserves: the same corpus discipline, scored.
+
+> Fu, H., & Zobeiry, N. (2026). Data-driven machine learning meta-analysis of process–property
+> relationships in polymer additive manufacturing. *Journal of Manufacturing Processes, 163*,
+> 100–113. https://doi.org/10.1016/j.jmapro.2026.02.044
+
 **Status: the 13-paper development sweep using 3 local LLM models is COMPLETE — 117/117 runs, all papers under one frozen
 prompt, 12 h 24 min. The frozen 10-paper test split has not been started.**
 
