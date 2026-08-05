@@ -23,6 +23,12 @@ used here.
 > relationships in polymer additive manufacturing. *Journal of Manufacturing Processes, 163*,
 > 100–113. https://doi.org/10.1016/j.jmapro.2026.02.044
 
+![Workflow of the pure-PEEK meta-analysis: hand-curated data collection and visualization, neural-network training and ranking, and Sobol sensitivity analysis](docs/figures/fu2026_pure_peek_workflow.png)
+
+*The workflow behind that predecessor study (figure from Fu & Zobeiry, 2026). Its left column —
+collecting studies and hand-curating the raw data — is the months-of-expert-time stage PEEK-Bench
+measures the automation of; every downstream stage is only as good as that input.*
+
 **Status: the 13-paper development sweep using 3 local LLM models is COMPLETE — 117/117 runs, all papers under one frozen
 prompt, 12 h 24 min. The frozen 10-paper test split has not been started.**
 
