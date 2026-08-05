@@ -10,12 +10,14 @@ model can *read a chart*, not whether it can summarise prose.
 
 ## Why this benchmark exists
 
-The ground truth descends from a **manually curated process–property dataset** built for a
-machine-learning meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating that
-dataset by hand — reading each paper, locating every printed-and-tested condition, and transcribing
-values that often exist only inside figures — took **months of expert time**, and it is exactly the
-labour this benchmark asks whether an LLM can absorb. PEEK-Bench is the measurement instrument that
-question deserves: the same corpus discipline, scored.
+This benchmark's authors have built a dataset like this by hand before: a manually curated
+process–property dataset of **pure (unreinforced) PEEK** studies, assembled for a machine-learning
+meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating it — reading each
+paper, locating every printed-and-tested condition, transcribing values that often exist only inside
+figures — took **months of expert time**. PEEK-Bench applies the same curation discipline to a new
+**carbon-fibre PEEK** corpus and asks, with a scored instrument, whether an LLM can absorb that
+labour. The two datasets are distinct: the 2026 paper's pure-PEEK data is *not* the ground truth
+used here.
 
 > Fu, H., & Zobeiry, N. (2026). Data-driven machine learning meta-analysis of process–property
 > relationships in polymer additive manufacturing. *Journal of Manufacturing Processes, 163*,
