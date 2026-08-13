@@ -43,9 +43,9 @@
   <text x="794" y="208" font-size="13.5" fill="#5c4326">co-author of the predecessor pure-PEEK study</text>
 
   <rect x="770" y="232" width="470" height="84" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
-  <text x="794" y="262" font-size="18" font-weight="bold" fill="#8a4a05">Ryan S. Hong — Collaborator</text>
-  <text x="794" y="288" font-size="13.5" fill="#5c4326">Code &amp; results review via GitHub · second pair of eyes</text>
-  <text x="794" y="306" font-size="13.5" fill="#5c4326">on the leaderboard and paper claims</text>
+  <text x="794" y="262" font-size="18" font-weight="bold" fill="#8a4a05">Ryan S. Hong — Collaborator (UW MSE)</text>
+  <text x="794" y="288" font-size="13.5" fill="#5c4326">Master's student · code &amp; results review via GitHub ·</text>
+  <text x="794" y="306" font-size="13.5" fill="#5c4326">second pair of eyes on leaderboard &amp; paper claims</text>
 
   <!-- Data pipeline card (right column) -->
   <rect x="1270" y="134" width="370" height="182" rx="14" fill="#f6f2fb" stroke="#9b7fc4" stroke-width="2"/>

@@ -23,7 +23,7 @@ model verification, staged downloads, resume-safe queue chains, per-model config
 vision gates, runtime watchdogs, nightly pauses, and scoring. **Humans stay in the loop where it
 matters**: [Huilong Fu](https://github.com/maxfu-UW) defines the benchmark, hand-builds the private
 ground truth, sets the policies, and approves every arm; Prof. **Navid Zobeiry** (UW MSE)
-supervises the research and methodology; [Ryan S. Hong](https://github.com/rh82-11)
+supervises the research and methodology; [Ryan S. Hong](https://github.com/rh82-11), a UW MSE master's student,
 reviews code and results. Every configuration deviation is documented in arm logs, every failure
 is closed with evidence, and fabricated "model releases" are fact-checked against primary sources
 before anything downloads.
