@@ -1,6 +1,6 @@
 # PEEK-Bench v2
 
-**Version 2.0** · benchmark of the multi-fleet campaign era — 30+ arms, repeat-sweep error bars,
+**Version 2.1** · benchmark of the multi-fleet campaign era — 30+ arms, repeat-sweep error bars,
 negative results, and autonomous orchestration. Versioning: minor releases (v2.1, v2.2, …) will
 track result refreshes and added arms; major releases (v3, v4, …) are reserved for changes to the
 task, corpus, or scoring. *v1* was the original four-model comparison (kept below as
@@ -63,6 +63,11 @@ scored against the private ground truth. Ranked by numeric fidelity (UTS MAPE, l
 | 15 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
 | 16 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
 | 17 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
+
+**Explore the leaderboard interactively** — parallel-coordinates view (brush any axis,
+reorder axes by dragging; hosted via GitHub Pages):
+
+[![Interactive parallel-coordinates leaderboard preview](docs/figures/parcoords_preview.png)](https://maxfu-uw.github.io/peek-bench/interactive/leaderboard.html)
 
 **Key findings so far**
 
@@ -127,13 +132,17 @@ plausible default is a scored error (`false_fill_rate`).
 
 ## Models
 
-Run locally on an Apple M4 Pro (64 GB unified memory) through LM Studio.
+**v2 roster — 19 vision-language models** (plus quant/backend/prompt variants → 30+ sweep arms),
+run locally on a Mac Mini M4 Pro 64 GB (Metal) and a Linux box with an RTX A2000 12 GB (CUDA),
+via `llama-server` (llama.cpp, pinned build per arm; LM Studio in the v1 era).
 
-| model | params | image tokens per page |
+| family | models benchmarked | image tokens/page |
 |---|---|---|
-| `gemma-3-27b-it` | 27B | **256** (fixed, 896×896) |
-| `mistral-small-3.1-24b-instruct-2503` | 24B | **1,030** |
-| `qwen3-vl-32b-instruct` | 32B | **~2,900** (dynamic) |
+| Google Gemma | gemma-3 4B/12B/27B · gemma-4 E4B/12B (+QAT, Metal+CUDA)/26B-A4B MoE/31B | **268** (fixed) |
+| Alibaba Qwen | Qwen3-VL 8B/30B-A3B/32B · Qwen3.5 4B/9B · Qwen3.6-35B-A3B | 990–2,900 (dynamic, capped 1,024) |
+| Others | InternVL3.5-30B-A3B · Nemotron-Omni-30B-A3B · GLM-4.6V-Flash · Ministral-3-8B · Mistral-Small-3.1 | mixed |
+| Negative results | EXAONE-4.5-33B · Fara1.5-9B (documented, kept visible) | — |
+| In flight | Muse Glimmer 30B · Agents-A1-35B · NuExtract3 · Qianfan-OCR · MiniCPM-V-4.6 · DeepSeek-OCR-2 · Q8 ablation | — |
 
 Image-token budgets were **measured**, not read from documentation: send an identical prompt with
 and without a page image and diff `prompt_tokens`. Every qualitative probe we tried ("can you read
@@ -142,6 +151,9 @@ this chart?") gave the wrong answer at least once; the token delta never did.
 ---
 
 ## Two experiment generations — read the labels
+
+*(v2 note: a third generation — the fleet campaign in the leaderboard above — supersedes both for
+model comparisons; A and B remain the provenance record of how the harness matured.)*
 
 This repo contains results from **two separate runs**, and the same model appears in both with
 different numbers. They are not interchangeable:
@@ -156,6 +168,8 @@ supplementary-information A/B and the early figure/table contrast, which B does 
 Every table below states which generation it comes from.
 
 ## Headline finding — generation A (early per-paper runs, mixed prompts)
+
+*(historical, v1)*
 
 **Chart-reading accuracy is monotonic in image-token budget, and it is not explained by model size.**
 
@@ -201,7 +215,12 @@ Reading a chart properly is not free. Mean wall-clock per run, same M4 Pro, thre
 | gemma-3-27b-it | 5.3 | 3.9 | 4.1 | **4.4 min** | 40.78 % |
 | qwen3-vl-32b-instruct | 9.9 | 7.8 | 4.5 | **7.4 min** | **3.48 %** |
 
-**The most accurate model is the slowest — 2.3× Mistral and 1.7× Gemma.** Gemma is neither fastest
+**The most accurate model is the slowest — 2.3× Mistral and 1.7× Gemma.** *(v1 table, LM Studio
+era.)* **v2 update:** the effect generalized and then inverted its meaning — mixture-of-experts
+models broke the accuracy-costs-time trade-off. The full-campaign `min/run` column (leaderboard
+above) shows MoE arms (26B-A4B 3.6 min, Qwen3.6-35B 4.4 min) matching or beating dense models
+one-third their total size while scoring within 0.02 F1 of the dense leaders: decode cost tracks
+*active* parameters, and on bandwidth-bound consumer hardware that is a 3–5× wall-clock dividend. Gemma is neither fastest
 nor most accurate, which is the least useful position to occupy: its fixed 256-token image encoder
 means the extra time buys nothing on figure-locked papers.
 
@@ -212,6 +231,8 @@ configuration that reads charts reliably.
 ![runtime vs accuracy](docs/figures/fig5_runtime_vs_accuracy.png)
 
 ## Dev-13 sweep — generation B (primary result, complete)
+
+*(historical, v1 — superseded as campaign summary by the v2 leaderboard above)*
 
 All 13 development papers, 3 models × 3 repeats = 117 runs, one frozen prompt version. **This is the
 result to cite**; generation A above came from mixed prompt versions and is not poolable with it.
@@ -385,6 +406,9 @@ disambiguations, the eight rules, and the five traps actually observed in this c
 
 ## Prompt-engineering ablation — naive baseline
 
+*(v2 confirmation: repeated ×3 per arm on gemma-4-E4B — engineered 0.820±0.007 vs naive
+0.645±0.005 row-F1; a +0.175 gap ≈ 25 between-sweep SDs. The v1 finding below replicated.)*
+
 How much of the result comes from the *prompt* rather than the model? Every configuration was
 re-run with a **869-character prompt** — what a first-time user would type: the ten column names
 with units, "use null if a value isn't given", nothing else. No inclusion criteria, no field
@@ -502,6 +526,9 @@ python runners/progress.py                         # live progress + metrics
 
 ## Layout
 
+*(v2 additions: `docs/figures/campaign_orchestration.svg`, `campaign_fan.svg`,
+`parcoords_preview.png`; `docs/interactive/leaderboard.html` — served via GitHub Pages.)*
+
 ```
 harness/     extract10.py       agentic extractor (view_page / note / submit)
              calibration/       page rendering + action parsing (imported by extract10)
@@ -532,24 +559,25 @@ MD5 into every workbook, so a result can always be traced to the GT it was score
 
 ## Next steps
 
-Ranked, with costs measured rather than estimated — see [docs/next-steps.md](docs/next-steps.md).
+Updated for v2 (2026-08-13):
 
-1. **Audit the six unaudited test papers** before spending GPU time (56 of 119 test rows). Free.
-2. **Resolve CF-P06**, which is fully degenerate under the current schema.
-3. **Freeze the configuration** — prompt, scorer, GT hash — and record it.
-4. **Run the frozen test**: 90 runs ≈ 9 h wall clock on the M4 Pro.
-5. **Cheap control**: `gemma-3-12b-it` on CF-P18 (~12 min) to show the image-token effect is
-   architectural, not a size artefact.
-6. **Serve the benchmark over MCP** — add `get_page_image`, `submit_extraction` and
-   `get_answerability` to the existing `peek-paper-md` server. Scoring server-side keeps ground
-   truth off the client, which is what lets a held-out split be published rather than spent.
-7. **Package the workflows as Skills** — `peek-extract`, `peek-score`, `peek-curate`. The scoring
-   one generalises: the six defects here are a checklist any extraction benchmark could run
-   against itself.
-
----
+1. **Finish the in-flight arms** — explorer queue (Muse Glimmer, Agents-A1, NuExtract3,
+   Qianfan-OCR, MiniCPM-V-4.6, DeepSeek-OCR-2) and the Qwen3.6-35B **Q8-vs-Q4 quant ablation**;
+   fold results into the leaderboard as **v2.1**.
+2. **Frozen test-split run** for the top tier (Qwen3.6-35B, Qwen3-VL-32B, Gemma4-31B,
+   Qwen3-VL-30B-A3B) — the v1 plan, now with the roster the dev split actually selected.
+3. **Consolidated scoring workbooks + paper draft** — metrics-only, per the privacy rule
+   (ground truth and source PDFs are never published).
+4. **Hardware**: the A2000's 12 GB is the fleet bottleneck; the evaluated upgrade path is a used
+   RTX 3090 24 GB (see campaign notes) if test-split scale demands it.
+5. **Serve the benchmark over MCP / package Skills** — carried over from v1, unchanged.
 
 ## Total development time estimate
+
+**v2 update (2026-08-13):** the fleet campaign has since grown the totals to **2,383 runs on
+disk** and **~200 machine-hours** across both machines (live master progress bar in the campaign
+tooling). The v1 accounting below is kept as the record of what the *initial* benchmark cost —
+the marginal cost per additional model has fallen with every layer of orchestration.
 
 Measured from run artefacts on disk, **final as of 2026-07-27 01:22**. The dev-13 sweep is complete
 (117/117), so these are the numbers, not a floor.
