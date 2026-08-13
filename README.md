@@ -1,4 +1,11 @@
-# PEEK-Bench
+# PEEK-Bench v2
+
+**Version 2.0** · benchmark of the multi-fleet campaign era — 30+ arms, repeat-sweep error bars,
+negative results, and autonomous orchestration. Versioning: minor releases (v2.1, v2.2, …) will
+track result refreshes and added arms; major releases (v3, v4, …) are reserved for changes to the
+task, corpus, or scoring. *v1* was the original four-model comparison (kept below as
+"generation A/B" sections for provenance).
+
 
 A benchmark for LLM extraction of process–property data from **figure-heavy** additive-manufacturing
 papers. The task: given a PDF of an FFF/FDM carbon-fibre/PEEK study, emit one row per
@@ -28,6 +35,55 @@ before anything downloads.
 *Two views of the same campaign. Above: the orchestration architecture. Below: the results as a
 fan — every blade one model, blade length = row-F1, error-barred arms marked ±, and the two
 models that could not drive the extraction protocol kept visible as stubs rather than deleted.*
+
+## Results to date — full campaign leaderboard (updated 2026-08-13)
+
+The campaign has grown far beyond the original four-model comparison: **30+ sweep arms** across
+two machines, **~200 machine-hours**, repeat sweeps giving nine models between-sweep error bars
+(±SD), a quant ablation, a Metal-vs-CUDA backend replication of the small-model roster, and two
+fully documented negative results. All engineered-prompt, 13 dev papers × 3 repeats per sweep,
+scored against the private ground truth. Ranked by numeric fidelity (UTS MAPE, lower = better):
+
+| # | Model / arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
+|---|---|---|---|---|---|---|---|
+| 1 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
+| 2 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
+| 3 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
+| 4 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | **2.20±0.21** | 0.259±0.064 | 3.6 |
+| 5 | Qwen3.5-4B | 0.766±0.044 | 0.813±0.062 | 0.886±0.020 | **2.48±0.43** | 0.263±0.077 | 13.7 |
+| 6 | Gemma4-12BQAT CUDA | 0.906 | 0.943 | 0.920 | **2.59** | 0.378 | 16.3 |
+| 7 | Qwen3VL-32B | 0.940 | 0.946 | 0.924 | **2.61** | 0.556 | 9.3 |
+| 8 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | **3.08** | 0.756 | 2.3 |
+| 9 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | **3.17±0.52** | 0.895±0.033 | 5.1 |
+| 10 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | **3.50±0.46** | 0.283±0.019 | 3.5 |
+| 11 | Gemma4-12B Metal | 0.879 | 0.889 | 0.913 | **3.50** | 0.360 | 12.5 |
+| 12 | Qwen3VL-8B (38) | 0.866±0.010 | 0.900±0.024 | 0.886±0.007 | **3.51±0.68** | 0.730±0.033 | 3.5 |
+| 13 | Gemma4-12B CUDA | 0.926 | 0.958 | 0.902 | **4.09** | 0.338 | 23.4 |
+| 14 | Nemotron-30B-A3B | 0.722 | 0.757 | 0.896 | **4.23** | 0.410 | 6.7 |
+| 15 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
+| 16 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
+| 17 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
+
+**Key findings so far**
+
+- **Best numeric fidelity:** Qwen3.6-35B-A3B — MAPE **0.83 ± 0.20 %** across three sweeps, with the
+  lowest false-fill on the board and ~4 min/run (MoE decode). The best trust-per-minute extractor.
+- **Best row-finding:** Qwen3-VL-32B (F1 0.940) and Gemma4-31B (F1 0.936, recall 0.994) — dense
+  models still hold the F1 crown, at 3-4× the runtime of their MoE rivals.
+- **F1 and MAPE rank models differently** — finding rows and transcribing numbers correctly are
+  close to independent skills, which is why the benchmark reports both.
+- **Reproducibility:** F1 is stable between sweeps (top models ±0.004-0.017); MAPE wobbles more
+  (±0.2-1.6) — single-sweep MAPE claims should be treated with caution.
+- **Negative results, kept visible:** EXAONE-4.5-33B (thinking-default output never drives the
+  agentic protocol; both thinking modes tested) and Fara1.5-9B (a GUI computer-use agent; perfect
+  probe on the easiest paper, F1 0.009 at corpus scale). A GUI agent is not a literature-mining
+  agent, and reasoning-heavy output styles can be protocol-incompatible.
+- **Engine caveats are part of the result:** Nemotron-30B's score is a lower bound (llama.cpp
+  fixed-256-token image projector bug); InternVL3.5 closed at 35/39 after context-exhaustion and
+  view-loop failures; per-arm config deviations are documented in the campaign logs.
+
+*Sections below marked "generation A/B" are the original early-phase results, kept for
+provenance; the table above supersedes them as the campaign summary.*
 
 ## Why this benchmark exists
 
