@@ -111,7 +111,7 @@
 <text x="1095" y="882" font-size="12" fill="#27547a" text-anchor="middle">CUDA · 12 GB</text>
 <rect x="450" y="1010" width="780" height="94" rx="14" fill="#fff3df" stroke="#e3a75c" stroke-width="2.5"/>
 <text x="840" y="1042" font-size="17.5" font-weight="bold" fill="#8a4a05" text-anchor="middle">The hand that holds the fan — human direction &amp; ground truth</text>
-<text x="840" y="1068" font-size="15" fill="#5c4326" text-anchor="middle">Max Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan (Collaborator)</text>
+<text x="840" y="1068" font-size="15" fill="#5c4326" text-anchor="middle">Huilong Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan S. Hong (Collaborator)</text>
 <text x="840" y="1090" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
 <line x1="840" y1="998" x2="840" y2="1010" stroke="#c2711d" stroke-width="4"/>
 <text x="40" y="1130" font-size="12.5" fill="#77828c">MAPE = mean absolute percentage error on ultimate tensile strength · whiskers = ±1 between-sweep SD (3 sweeps) · Fara/EXAONE: F1≈0, MAPE undefined · wall-clock never pooled across machines</text>

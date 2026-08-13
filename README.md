@@ -21,16 +21,16 @@ The benchmark is executed as a continuously-managed campaign: **Claude Code** (A
 agent) orchestrates a two-machine fleet — a Mac Mini M4 Pro (Metal) and a Linux/CUDA box — through
 model verification, staged downloads, resume-safe queue chains, per-model configuration ladders,
 vision gates, runtime watchdogs, nightly pauses, and scoring. **Humans stay in the loop where it
-matters**: [Max Fu](https://github.com/maxfu-UW) defines the benchmark, hand-builds the private
+matters**: [Huilong Fu](https://github.com/maxfu-UW) defines the benchmark, hand-builds the private
 ground truth, sets the policies, and approves every arm; Prof. **Navid Zobeiry** (UW MSE)
-supervises the research and methodology; [Ryan](https://github.com/rh82-11)
+supervises the research and methodology; [Ryan S. Hong](https://github.com/rh82-11)
 reviews code and results. Every configuration deviation is documented in arm logs, every failure
 is closed with evidence, and fabricated "model releases" are fact-checked against primary sources
 before anything downloads.
 
 ![Campaign orchestration: humans set direction and ground truth, Claude Code manages verification, queues, gates, watchdogs and scoring, and a two-machine fleet runs 20+ vision-language models](docs/figures/campaign_orchestration.svg)
 
-![The performance fan: each blade is one benchmarked VLM, blade length equals row-F1 against the private ground truth; Claude Code is the pivot, and the human team — Max Fu, Navid Zobeiry, Ryan — is the hand holding the fan](docs/figures/campaign_fan.svg)
+![The performance fan: each blade is one benchmarked VLM, blade length equals row-F1 against the private ground truth; Claude Code is the pivot, and the human team — Huilong Fu, Navid Zobeiry, Ryan S. Hong — is the hand holding the fan](docs/figures/campaign_fan.svg)
 
 *Two views of the same campaign. Above: the orchestration architecture. Below: the results as a
 fan — every blade one model, blade length = row-F1, error-barred arms marked ±, and the two

@@ -30,7 +30,7 @@
   <!-- ================= HUMAN BAND ================= -->
   <text x="40" y="122" font-size="14" font-weight="bold" fill="#a05b12" letter-spacing="2">HUMAN DIRECTION &amp; GROUND TRUTH</text>
   <rect x="40" y="134" width="700" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
-  <text x="64" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Max Fu — Research Lead (UW MSE)</text>
+  <text x="64" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Huilong Fu — Research Lead (UW MSE)</text>
   <text x="64" y="194" font-size="13.5" fill="#5c4326">• Defines the benchmark: task, schema, metrics, 13-paper CF-PEEK corpus</text>
   <text x="64" y="218" font-size="13.5" fill="#5c4326">• Hand-builds the private ground-truth dataset (the expert labour being measured)</text>
   <text x="64" y="242" font-size="13.5" fill="#5c4326">• Picks models &amp; hardware; sets policies (runtime ceiling, nightly pause, repeats)</text>
@@ -43,7 +43,7 @@
   <text x="794" y="208" font-size="13.5" fill="#5c4326">co-author of the predecessor pure-PEEK study</text>
 
   <rect x="770" y="232" width="470" height="84" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
-  <text x="794" y="262" font-size="18" font-weight="bold" fill="#8a4a05">Ryan — Collaborator</text>
+  <text x="794" y="262" font-size="18" font-weight="bold" fill="#8a4a05">Ryan S. Hong — Collaborator</text>
   <text x="794" y="288" font-size="13.5" fill="#5c4326">Code &amp; results review via GitHub · second pair of eyes</text>
   <text x="794" y="306" font-size="13.5" fill="#5c4326">on the leaderboard and paper claims</text>
 
