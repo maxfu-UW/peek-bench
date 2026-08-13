@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1120" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f2a43"/><stop offset="1" stop-color="#1d4e77"/>
+    </linearGradient>
+    <linearGradient id="human" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ec"/><stop offset="1" stop-color="#ffedd2"/>
+    </linearGradient>
+    <linearGradient id="cc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef4fc"/><stop offset="1" stop-color="#dcebfa"/>
+    </linearGradient>
+    <linearGradient id="mach" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eefaf2"/><stop offset="1" stop-color="#d9f2e3"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/>
+    </marker>
+    <marker id="arrO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c2711d"/>
+    </marker>
+  </defs>
+
+  <rect width="1680" height="1120" fill="#ffffff"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="1680" height="86" fill="url(#hdr)"/>
+  <text x="40" y="38" font-size="30" font-weight="bold" fill="#ffffff">PEEK-Bench Campaign Orchestration</text>
+  <text x="40" y="66" font-size="17" fill="#bcd5ea">Humans set direction and ground truth · Claude Code runs the fleet · two machines benchmark 20+ vision-language models on real materials-science papers</text>
+
+  <!-- ================= HUMAN BAND ================= -->
+  <text x="40" y="122" font-size="14" font-weight="bold" fill="#a05b12" letter-spacing="2">HUMAN DIRECTION &amp; GROUND TRUTH</text>
+  <rect x="40" y="134" width="770" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
+  <text x="64" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Max Fu — Research Lead (UW MSE)</text>
+  <text x="64" y="194" font-size="14.5" fill="#5c4326">• Defines the benchmark: task, schema, metrics, 13-paper CF-PEEK corpus</text>
+  <text x="64" y="218" font-size="14.5" fill="#5c4326">• Hand-builds the private ground-truth dataset (the months of expert work being measured)</text>
+  <text x="64" y="242" font-size="14.5" fill="#5c4326">• Picks models &amp; hardware; sets policies — 35-min run ceiling, nightly 8 pm pause, repeat protocol</text>
+  <text x="64" y="266" font-size="14.5" fill="#5c4326">• Reviews findings, corrects course (dataset lineage, quant claims), approves every new arm</text>
+  <text x="64" y="296" font-size="13" fill="#a05b12" font-style="italic">Human judgment stays in the loop: no sweep, purchase, or publication happens without sign-off</text>
+
+  <rect x="840" y="134" width="400" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
+  <text x="864" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Ryan — Collaborator</text>
+  <text x="864" y="194" font-size="14.5" fill="#5c4326">• Reviews code &amp; results via GitHub</text>
+  <text x="864" y="218" font-size="14.5" fill="#5c4326">• Contributes to the public repo</text>
+  <text x="864" y="242" font-size="14.5" fill="#5c4326">• Second pair of eyes on the</text>
+  <text x="874" y="262" font-size="14.5" fill="#5c4326">leaderboard &amp; paper claims</text>
+
+  <!-- Data pipeline card (right column) -->
+  <rect x="1270" y="134" width="370" height="182" rx="14" fill="#f6f2fb" stroke="#9b7fc4" stroke-width="2"/>
+  <text x="1294" y="166" font-size="18" font-weight="bold" fill="#5b3d8a">Data &amp; Publication</text>
+  <text x="1294" y="194" font-size="14" fill="#4a3a63">13 CF-PEEK papers + ground truth</text>
+  <text x="1294" y="214" font-size="13.5" fill="#7a5ea6">🔒 GT &amp; PDFs never published</text>
+  <text x="1294" y="240" font-size="14" fill="#4a3a63">→ metrics-only workbooks (F1, MAPE)</text>
+  <text x="1294" y="262" font-size="14" fill="#4a3a63">→ public leaderboard + README</text>
+  <text x="1294" y="284" font-size="14" fill="#4a3a63">→ paper draft with error bars</text>
+
+  <!-- arrows humans -> claude -->
+  <line x1="425" y1="316" x2="425" y2="376" stroke="#c2711d" stroke-width="3" marker-end="url(#arrO)"/>
+  <text x="437" y="352" font-size="13.5" fill="#a05b12">direction · policies · approvals · corrections</text>
+  <line x1="1040" y1="316" x2="1040" y2="376" stroke="#c2711d" stroke-width="3" marker-end="url(#arrO)"/>
+  <text x="1052" y="352" font-size="13.5" fill="#a05b12">review</text>
+  <line x1="1455" y1="376" x2="1455" y2="316" stroke="#9b7fc4" stroke-width="3" marker-end="url(#arrO)"/>
+  <text x="1467" y="352" font-size="13.5" fill="#7a5ea6">results flow up</text>
+
+  <!-- ================= CLAUDE CODE BAND ================= -->
+  <text x="40" y="410" font-size="14" font-weight="bold" fill="#1d4e77" letter-spacing="2">AUTONOMOUS ORCHESTRATION — CLAUDE CODE</text>
+  <rect x="40" y="422" width="1600" height="300" rx="14" fill="url(#cc)" stroke="#4a86c2" stroke-width="2.5"/>
+  <text x="64" y="456" font-size="21" font-weight="bold" fill="#153c60">Claude Code — fleet manager for the whole campaign</text>
+
+  <!-- subsystem chips row 1 -->
+  <g font-size="13.5" fill="#1d456e">
+    <rect x="64" y="478" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="78" y="502" font-weight="bold">Model verification</text>
+    <text x="78" y="522">existence · vision · engine support</text>
+    <rect x="316" y="478" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="330" y="502" font-weight="bold">Staging</text>
+    <text x="330" y="522">downloads · quants · side-builds</text>
+    <rect x="568" y="478" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="582" y="502" font-weight="bold">Queue chains</text>
+    <text x="582" y="522">resume-safe · order-aware</text>
+    <rect x="820" y="478" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="834" y="502" font-weight="bold">Config ladders</text>
+    <text x="834" y="522">probe → optimal per model</text>
+    <rect x="1072" y="478" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="1086" y="502" font-weight="bold">Vision gates</text>
+    <text x="1086" y="522">real-page probe before sweeps</text>
+    <rect x="1324" y="478" width="292" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="1338" y="502" font-weight="bold">Watchdogs &amp; deadmen</text>
+    <text x="1338" y="522">35-min ceiling · zero-row abort</text>
+  </g>
+  <!-- subsystem chips row 2 -->
+  <g font-size="13.5" fill="#1d456e">
+    <rect x="64" y="554" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="78" y="578" font-weight="bold">Nightly pause</text>
+    <text x="78" y="598">launchd + scheduler, 8 pm daily</text>
+    <rect x="316" y="554" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="330" y="578" font-weight="bold">Scoring</text>
+    <text x="330" y="598">F1 · MAPE · ±SD leaderboard</text>
+    <rect x="568" y="554" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="582" y="578" font-weight="bold">Live progress board</text>
+    <text x="582" y="598">30+ arms · master hours bar</text>
+    <rect x="820" y="554" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="834" y="578" font-weight="bold">Daily summaries</text>
+    <text x="834" y="598">findings · kills · ETAs</text>
+    <rect x="1072" y="554" width="236" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="1086" y="578" font-weight="bold">Failure forensics</text>
+    <text x="1086" y="598">engine bugs · negative results</text>
+    <rect x="1324" y="554" width="292" height="62" rx="9" fill="#ffffff" stroke="#7fa8cf"/>
+    <text x="1338" y="578" font-weight="bold">Release watch</text>
+    <text x="1338" y="598">new models fact-checked, phantoms rejected</text>
+  </g>
+  <text x="64" y="652" font-size="14" fill="#3c648c" font-style="italic">Every claim verified against primary sources; every config deviation documented in arm logs; every failure closed with evidence, not deleted.</text>
+  <text x="64" y="694" font-size="15.5" font-weight="bold" fill="#153c60">Campaign to date: 30+ sweep arms · ~200 machine-hours · 9 models with between-sweep error bars · 2 documented negative results · 4 phantom "releases" caught pre-download</text>
+
+  <!-- arrows claude -> machines -->
+  <line x1="440" y1="722" x2="440" y2="782" stroke="#5b6b7c" stroke-width="3" marker-end="url(#arr)"/>
+  <line x1="1240" y1="722" x2="1240" y2="782" stroke="#5b6b7c" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="452" y="758" font-size="13.5" fill="#54636f">serve · gate · sweep · score</text>
+  <text x="1252" y="758" font-size="13.5" fill="#54636f">ssh orchestration</text>
+
+  <!-- ================= FLEET BAND ================= -->
+  <text x="40" y="816" font-size="14" font-weight="bold" fill="#1e7a4a" letter-spacing="2">THE FLEET — LOCAL VLMS ON CONSUMER HARDWARE</text>
+  <rect x="40" y="828" width="780" height="252" rx="14" fill="url(#mach)" stroke="#57ab7d" stroke-width="2"/>
+  <text x="64" y="862" font-size="19" font-weight="bold" fill="#14603a">Mac Mini M4 Pro · 64 GB unified · Metal</text>
+  <text x="64" y="886" font-size="13.5" fill="#2c5c42">llama-server (pinned b10250 + master side-build for new archs)</text>
+  <g font-size="12.5" fill="#155c38">
+    <rect x="64" y="902" width="160" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="80" y="920">Gemma-4 E4B→31B</text>
+    <rect x="232" y="902" width="150" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="248" y="920">Qwen3-VL 30B/32B</text>
+    <rect x="390" y="902" width="140" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="406" y="920">Qwen3.6-35B ×3</text>
+    <rect x="538" y="902" width="130" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="554" y="920">InternVL3.5-30B</text>
+    <rect x="676" y="902" width="126" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="692" y="920">Nemotron-30B</text>
+    <rect x="64" y="936" width="150" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="80" y="954">Muse Glimmer 30B</text>
+    <rect x="222" y="936" width="120" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="238" y="954">Agents-A1 35B</text>
+    <rect x="350" y="936" width="196" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="366" y="954">NuExtract3 · Qianfan-OCR</text>
+    <rect x="554" y="936" width="248" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="570" y="954">MiniCPM-V-4.6 · Metal replications ×7</text>
+  </g>
+  <text x="64" y="994" font-size="13" fill="#2c5c42">Repeat sweeps for error bars · quant ablation (Q8 vs Q4) · dense-vs-MoE capacity curve</text>
+  <text x="64" y="1052" font-size="13.5" font-style="italic" fill="#1e7a4a">Per model: serve → vision gate → 39 agentic runs (13 papers × 3) → score vs private GT</text>
+
+  <rect x="850" y="828" width="790" height="252" rx="14" fill="url(#mach)" stroke="#57ab7d" stroke-width="2"/>
+  <text x="874" y="862" font-size="19" font-weight="bold" fill="#14603a">ASUS Linux · RTX A2000 12 GB · CUDA</text>
+  <text x="874" y="886" font-size="13.5" fill="#2c5c42">self-built llama.cpp CUDA (backend cross-validated vs Metal)</text>
+  <g font-size="12.5" fill="#155c38">
+    <rect x="874" y="902" width="172" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="890" y="920">Gemma-4-12B + QAT</text>
+    <rect x="1054" y="902" width="180" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="1070" y="920">Qwen3.5 4B / 9B (FA fix)</text>
+    <rect x="1242" y="902" width="130" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="1258" y="920">Qwen3-VL-8B</text>
+    <rect x="1380" y="902" width="134" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="1396" y="920">GLM-4.6V-Flash</text>
+    <rect x="874" y="936" width="130" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="890" y="954">Ministral-3-8B</text>
+    <rect x="1012" y="936" width="200" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="1028" y="954">Fara1.5-9B (negative result)</text>
+    <rect x="1220" y="936" width="220" height="26" rx="13" fill="#ffffff" stroke="#79b995"/><text x="1236" y="954">×2 repeat sweeps per model</text>
+  </g>
+  <text x="874" y="994" font-size="13" fill="#2c5c42">Engine-bug discoveries fed upstream context: FA-inverted crash fix · silent OOM diagnosis</text>
+  <text x="874" y="1052" font-size="13.5" font-style="italic" fill="#1e7a4a">Same protocol, same gates — wall-clock never pooled across machines</text>
+</svg>

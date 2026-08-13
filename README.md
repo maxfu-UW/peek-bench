@@ -8,6 +8,20 @@ The interesting part is not the text. It is that **a large share of the target v
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
 
+## How the campaign is run
+
+The benchmark is executed as a continuously-managed campaign: **Claude Code** (Anthropic's CLI
+agent) orchestrates a two-machine fleet — a Mac Mini M4 Pro (Metal) and a Linux/CUDA box — through
+model verification, staged downloads, resume-safe queue chains, per-model configuration ladders,
+vision gates, runtime watchdogs, nightly pauses, and scoring. **Humans stay in the loop where it
+matters**: [Max Fu](https://github.com/maxfu-UW) defines the benchmark, hand-builds the private
+ground truth, sets the policies, and approves every arm; [Ryan](https://github.com/rh82-11)
+reviews code and results. Every configuration deviation is documented in arm logs, every failure
+is closed with evidence, and fabricated "model releases" are fact-checked against primary sources
+before anything downloads.
+
+![Campaign orchestration: humans set direction and ground truth, Claude Code manages verification, queues, gates, watchdogs and scoring, and a two-machine fleet runs 20+ vision-language models](docs/figures/campaign_orchestration.svg)
+
 ## Why this benchmark exists
 
 This benchmark's authors have built a dataset like this by hand before: a manually curated
