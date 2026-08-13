@@ -23,6 +23,12 @@ before anything downloads.
 
 ![Campaign orchestration: humans set direction and ground truth, Claude Code manages verification, queues, gates, watchdogs and scoring, and a two-machine fleet runs 20+ vision-language models](docs/figures/campaign_orchestration.svg)
 
+![The performance fan: each blade is one benchmarked VLM, blade length equals row-F1 against the private ground truth; Claude Code is the pivot, and the human team — Max Fu, Navid Zobeiry, Ryan — is the hand holding the fan](docs/figures/campaign_fan.svg)
+
+*Two views of the same campaign. Above: the orchestration architecture. Below: the results as a
+fan — every blade one model, blade length = row-F1, error-barred arms marked ±, and the two
+models that could not drive the extraction protocol kept visible as stubs rather than deleted.*
+
 ## Why this benchmark exists
 
 This benchmark's authors have built a dataset like this by hand before: a manually curated

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1150" font-family="Helvetica, Arial, sans-serif">
+<rect width="1680" height="1150" fill="#ffffff"/>
+<rect x="0" y="0" width="1680" height="78" fill="#0f2a43"/>
+<text x="40" y="36" font-size="28" font-weight="bold" fill="#ffffff">PEEK-Bench — The Performance Fan</text>
+<text x="40" y="62" font-size="15.5" fill="#bcd5ea">Every blade is one benchmarked vision-language model · blade length = row-F1 vs the private ground truth · held by the humans, spread by Claude Code</text>
+<path d="M 536.8 815.5 A 310.0 310.0 0 0 1 1143.2 815.5" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1145.3" y="826.2" font-size="12.5" fill="#9aa7b4">0.25</text>
+<path d="M 419.4 790.6 A 430.0 430.0 0 0 1 1260.6 790.6" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1263.5" y="805.3" font-size="12.5" fill="#9aa7b4">0.50</text>
+<path d="M 302.0 765.6 A 550.0 550.0 0 0 1 1378.0 765.6" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1381.6" y="784.5" font-size="12.5" fill="#9aa7b4">0.75</text>
+<path d="M 184.6 740.7 A 670.0 670.0 0 0 1 1495.4 740.7" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1499.8" y="763.7" font-size="12.5" fill="#9aa7b4">F1 = 1.00</text>
+<path d="M 656.3 831.5 L 220.1 716.2 A 641.2 641.2 0 0 1 242.2 648.1 L 662.9 811.3 A 190 190 0 0 0 656.3 831.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="262.5" y="692.4" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-72.0 262.5 692.4)">0.940</text>
+<text x="218.8" y="678.2" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(18.0 218.8 678.2)">Qwen3-VL-32B</text>
+<path d="M 664.8 806.4 L 250.7 632.3 A 639.28 639.28 0 0 1 282.0 568.1 L 674.1 787.3 A 190 190 0 0 0 664.8 806.4 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="296.0" y="614.7" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-64.0 296.0 614.7)">0.936</text>
+<text x="254.6" y="594.5" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(26.0 254.6 594.5)">Gemma4-31B</text>
+<path d="M 676.8 782.7 L 291.7 553.2 A 638.32 638.32 0 0 1 331.6 494.1 L 688.7 765.1 A 190 190 0 0 0 676.8 782.7 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="339.0" y="542.1" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-56.0 339.0 542.1)">0.934</text>
+<text x="300.9" y="516.3" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(34.0 300.9 516.3)">Qwen3-VL-30B-A3B</text>
+<path d="M 691.9 760.9 L 345.5 482.4 A 634.48 634.48 0 0 1 392.9 429.8 L 706.1 745.2 A 190 190 0 0 0 691.9 760.9 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="393.8" y="478.2" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-48.0 393.8 478.2)">0.926</text>
+<text x="359.6" y="447.4" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(42.0 359.6 447.4)">Gemma4-26B-A4B MoE</text>
+<path d="M 709.9 741.5 L 405.7 417.5 A 634.48 634.48 0 0 1 459.9 372.0 L 726.2 727.9 A 190 190 0 0 0 709.9 741.5 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="454.0" y="420.0" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-40.0 454.0 420.0)">0.926</text>
+<text x="424.5" y="384.8" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(50.0 424.5 384.8)">Gemma4-12B CUDA</text>
+<path d="M 730.5 724.7 L 476.8 365.1 A 630.1600000000001 630.1600000000001 0 0 1 536.4 327.8 L 748.5 713.5 A 190 190 0 0 0 730.5 724.7 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="524.1" y="374.4" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-32.0 524.1 374.4)">0.917</text>
+<text x="499.7" y="335.4" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(58.0 499.7 335.4)">Qwen3.6-35B-A3B ±</text>
+<path d="M 753.2 711.0 L 554.4 324.2 A 624.88 624.88 0 0 1 618.1 295.8 L 772.5 702.4 A 190 190 0 0 0 753.2 711.0 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="599.7" y="340.2" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-24.0 599.7 340.2)">0.906</text>
+<text x="581.0" y="298.2" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(66.0 581.0 298.2)">Gemma4-12B-QAT</text>
+<path d="M 777.5 700.6 L 637.3 298.0 A 616.24 616.24 0 0 1 703.5 279.1 L 797.9 694.7 A 190 190 0 0 0 777.5 700.6 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="679.5" y="320.3" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-16.0 679.5 320.3)">0.888</text>
+<text x="666.8" y="276.1" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(74.0 666.8 276.1)">QAT-12B Metal</text>
+<path d="M 803.1 693.6 L 720.3 275.5 A 616.24 616.24 0 0 1 788.4 265.9 L 824.1 690.7 A 190 190 0 0 0 803.1 693.6 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="759.0" y="303.4" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-8.0 759.0 303.4)">0.888</text>
+<text x="752.6" y="257.9" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(82.0 752.6 257.9)">Qwen3.5-9B ±</text>
+<path d="M 829.4 690.3 L 805.8 269.0 A 611.9200000000001 611.9200000000001 0 0 1 874.2 269.0 L 850.6 690.3 A 190 190 0 0 0 829.4 690.3 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="840.0" y="302.1" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(0.0 840.0 302.1)">0.879</text>
+<text x="840.0" y="256.1" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-90.0 840.0 256.1)">Gemma4-12B Metal</text>
+<path d="M 855.9 690.7 L 890.5 278.8 A 603.28 603.28 0 0 1 957.2 288.2 L 876.9 693.6 A 190 190 0 0 0 855.9 690.7 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="919.2" y="316.3" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(8.0 919.2 316.3)">0.861</text>
+<text x="925.6" y="270.7" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-82.0 925.6 270.7)">Ministral-3-8B ±</text>
+<path d="M 882.1 694.7 L 973.2 293.6 A 601.36 601.36 0 0 1 1037.8 312.1 L 902.5 700.6 A 190 190 0 0 0 882.1 694.7 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="996.4" y="334.6" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(16.0 996.4 334.6)">0.857</text>
+<text x="1009.1" y="290.4" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-74.0 1009.1 290.4)">Qwen3-VL-8B</text>
+<path d="M 907.5 702.4 L 1047.2 334.4 A 583.5999999999999 583.5999999999999 0 0 1 1106.8 360.9 L 926.8 711.0 A 190 190 0 0 0 907.5 702.4 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="1063.5" y="377.9" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(24.0 1063.5 377.9)">0.820</text>
+<text x="1082.3" y="335.9" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-66.0 1082.3 335.9)">Gemma4-E4B ×3</text>
+<path d="M 931.5 713.5 L 1119.1 372.4 A 579.28 579.28 0 0 1 1173.9 406.6 L 949.5 724.7 A 190 190 0 0 0 931.5 713.5 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="1129.0" y="417.6" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(32.0 1129.0 417.6)">0.811</text>
+<text x="1153.3" y="378.6" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-58.0 1153.3 378.6)">GLM-4.6V-Flash ±</text>
+<path d="M 953.8 727.9 L 1164.9 445.7 A 542.3199999999999 542.3199999999999 0 0 1 1211.2 484.7 L 970.1 741.5 A 190 190 0 0 0 953.8 727.9 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.6"/>
+<text x="1166.7" y="490.6" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(40.0 1166.7 490.6)">0.734</text>
+<text x="1196.3" y="455.4" font-size="14.5" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-50.0 1196.3 455.4)">Qwen3.5-4B</text>
+<path d="M 973.9 745.2 L 1218.1 499.3 A 536.56 536.56 0 0 1 1258.2 543.8 L 988.1 760.9 A 190 190 0 0 0 973.9 745.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="1213.5" y="543.7" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(48.0 1213.5 543.7)">0.722</text>
+<text x="1247.7" y="512.9" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-42.0 1247.7 512.9)">Nemotron-30B</text>
+<path d="M 991.3 765.1 L 1235.7 579.7 A 496.72 496.72 0 0 1 1266.7 625.7 L 1003.2 782.7 A 190 190 0 0 0 991.3 765.1 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.6"/>
+<text x="1223.6" y="621.3" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(56.0 1223.6 621.3)">0.639</text>
+<text x="1261.7" y="595.5" font-size="14.5" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-34.0 1261.7 595.5)">InternVL3.5-30B</text>
+<path d="M 1005.9 787.3 L 1018.4 780.3 A 204.4 204.4 0 0 1 1028.4 800.8 L 1015.2 806.4 A 190 190 0 0 0 1005.9 787.3 Z" fill="#c4c9ce" fill-opacity="0.88" stroke="#8d959c" stroke-width="1.6"/>
+<text x="1034.5" y="785.1" font-size="14.5" font-weight="bold" fill="#8d959c" text-anchor="start" transform="rotate(-26.0 1034.5 785.1)">Fara1.5-9B (0 — negative result)</text>
+<path d="M 1017.1 811.3 L 1030.6 806.1 A 204.4 204.4 0 0 1 1037.6 827.8 L 1023.7 831.5 A 190 190 0 0 0 1017.1 811.3 Z" fill="#c4c9ce" fill-opacity="0.88" stroke="#8d959c" stroke-width="1.6"/>
+<text x="1045.8" y="813.1" font-size="14.5" font-weight="bold" fill="#8d959c" text-anchor="start" transform="rotate(-18.0 1045.8 813.1)">EXAONE-4.5-33B (0 — negative result)</text>
+<circle cx="840" cy="880" r="118" fill="#dcebfa" stroke="#4a86c2" stroke-width="3"/>
+<text x="840" y="854" font-size="19" font-weight="bold" fill="#153c60" text-anchor="middle">Claude Code</text>
+<text x="840" y="878" font-size="13" fill="#2c567e" text-anchor="middle">fleet orchestration</text>
+<text x="840" y="900" font-size="12" fill="#2c567e" text-anchor="middle">verify · queue · gate ·</text>
+<text x="840" y="918" font-size="12" fill="#2c567e" text-anchor="middle">watchdog · score</text>
+<rect x="510" y="840" width="150" height="52" rx="9" fill="#eefaf2" stroke="#57ab7d" stroke-width="1.6"/>
+<text x="585" y="862" font-size="13.5" font-weight="bold" fill="#14603a" text-anchor="middle">Mac Mini M4 Pro</text>
+<text x="585" y="882" font-size="12" fill="#2c5c42" text-anchor="middle">Metal · 64 GB</text>
+<rect x="1020" y="840" width="150" height="52" rx="9" fill="#edf5fc" stroke="#5f97c9" stroke-width="1.6"/>
+<text x="1095" y="862" font-size="13.5" font-weight="bold" fill="#1a5182" text-anchor="middle">ASUS · A2000</text>
+<text x="1095" y="882" font-size="12" fill="#27547a" text-anchor="middle">CUDA · 12 GB</text>
+<rect x="450" y="1010" width="780" height="94" rx="14" fill="#fff3df" stroke="#e3a75c" stroke-width="2.5"/>
+<text x="840" y="1042" font-size="17.5" font-weight="bold" fill="#8a4a05" text-anchor="middle">The hand that holds the fan — human direction &amp; ground truth</text>
+<text x="840" y="1068" font-size="15" fill="#5c4326" text-anchor="middle">Max Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan (Collaborator)</text>
+<text x="840" y="1090" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
+<line x1="840" y1="998" x2="840" y2="1010" stroke="#c2711d" stroke-width="4"/>
+<text x="40" y="1130" font-size="12.5" fill="#77828c">± = between-sweep error bars from repeat sweeps · negative results kept visible: models that could not drive the extraction protocol · wall-clock never pooled across machines</text>
+</svg>
