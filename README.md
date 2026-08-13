@@ -15,7 +15,8 @@ agent) orchestrates a two-machine fleet — a Mac Mini M4 Pro (Metal) and a Linu
 model verification, staged downloads, resume-safe queue chains, per-model configuration ladders,
 vision gates, runtime watchdogs, nightly pauses, and scoring. **Humans stay in the loop where it
 matters**: [Max Fu](https://github.com/maxfu-UW) defines the benchmark, hand-builds the private
-ground truth, sets the policies, and approves every arm; [Ryan](https://github.com/rh82-11)
+ground truth, sets the policies, and approves every arm; Prof. **Navid Zobeiry** (UW MSE)
+supervises the research and methodology; [Ryan](https://github.com/rh82-11)
 reviews code and results. Every configuration deviation is documented in arm logs, every failure
 is closed with evidence, and fabricated "model releases" are fact-checked against primary sources
 before anything downloads.

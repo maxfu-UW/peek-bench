@@ -29,20 +29,23 @@
 
   <!-- ================= HUMAN BAND ================= -->
   <text x="40" y="122" font-size="14" font-weight="bold" fill="#a05b12" letter-spacing="2">HUMAN DIRECTION &amp; GROUND TRUTH</text>
-  <rect x="40" y="134" width="770" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
+  <rect x="40" y="134" width="700" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
   <text x="64" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Max Fu — Research Lead (UW MSE)</text>
-  <text x="64" y="194" font-size="14.5" fill="#5c4326">• Defines the benchmark: task, schema, metrics, 13-paper CF-PEEK corpus</text>
-  <text x="64" y="218" font-size="14.5" fill="#5c4326">• Hand-builds the private ground-truth dataset (the months of expert work being measured)</text>
-  <text x="64" y="242" font-size="14.5" fill="#5c4326">• Picks models &amp; hardware; sets policies — 35-min run ceiling, nightly 8 pm pause, repeat protocol</text>
-  <text x="64" y="266" font-size="14.5" fill="#5c4326">• Reviews findings, corrects course (dataset lineage, quant claims), approves every new arm</text>
-  <text x="64" y="296" font-size="13" fill="#a05b12" font-style="italic">Human judgment stays in the loop: no sweep, purchase, or publication happens without sign-off</text>
+  <text x="64" y="194" font-size="13.5" fill="#5c4326">• Defines the benchmark: task, schema, metrics, 13-paper CF-PEEK corpus</text>
+  <text x="64" y="218" font-size="13.5" fill="#5c4326">• Hand-builds the private ground-truth dataset (the expert labour being measured)</text>
+  <text x="64" y="242" font-size="13.5" fill="#5c4326">• Picks models &amp; hardware; sets policies (runtime ceiling, nightly pause, repeats)</text>
+  <text x="64" y="266" font-size="13.5" fill="#5c4326">• Reviews findings, corrects course, approves every new arm</text>
+  <text x="64" y="296" font-size="13" fill="#a05b12" font-style="italic">Human judgment stays in the loop: nothing runs or publishes without sign-off</text>
 
-  <rect x="840" y="134" width="400" height="182" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
-  <text x="864" y="166" font-size="20" font-weight="bold" fill="#8a4a05">Ryan — Collaborator</text>
-  <text x="864" y="194" font-size="14.5" fill="#5c4326">• Reviews code &amp; results via GitHub</text>
-  <text x="864" y="218" font-size="14.5" fill="#5c4326">• Contributes to the public repo</text>
-  <text x="864" y="242" font-size="14.5" fill="#5c4326">• Second pair of eyes on the</text>
-  <text x="874" y="262" font-size="14.5" fill="#5c4326">leaderboard &amp; paper claims</text>
+  <rect x="770" y="134" width="470" height="84" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
+  <text x="794" y="164" font-size="18" font-weight="bold" fill="#8a4a05">Navid Zobeiry — Supervisor (UW MSE)</text>
+  <text x="794" y="190" font-size="13.5" fill="#5c4326">Research supervision &amp; methodology oversight ·</text>
+  <text x="794" y="208" font-size="13.5" fill="#5c4326">co-author of the predecessor pure-PEEK study</text>
+
+  <rect x="770" y="232" width="470" height="84" rx="14" fill="url(#human)" stroke="#e3a75c" stroke-width="2"/>
+  <text x="794" y="262" font-size="18" font-weight="bold" fill="#8a4a05">Ryan — Collaborator</text>
+  <text x="794" y="288" font-size="13.5" fill="#5c4326">Code &amp; results review via GitHub · second pair of eyes</text>
+  <text x="794" y="306" font-size="13.5" fill="#5c4326">on the leaderboard and paper claims</text>
 
   <!-- Data pipeline card (right column) -->
   <rect x="1270" y="134" width="370" height="182" rx="14" fill="#f6f2fb" stroke="#9b7fc4" stroke-width="2"/>
@@ -56,8 +59,8 @@
   <!-- arrows humans -> claude -->
   <line x1="425" y1="316" x2="425" y2="376" stroke="#c2711d" stroke-width="3" marker-end="url(#arrO)"/>
   <text x="437" y="352" font-size="13.5" fill="#a05b12">direction · policies · approvals · corrections</text>
-  <line x1="1040" y1="316" x2="1040" y2="376" stroke="#c2711d" stroke-width="3" marker-end="url(#arrO)"/>
-  <text x="1052" y="352" font-size="13.5" fill="#a05b12">review</text>
+  <line x1="1005" y1="316" x2="1005" y2="376" stroke="#c2711d" stroke-width="3" marker-end="url(#arrO)"/>
+  <text x="1017" y="352" font-size="13.5" fill="#a05b12">supervision · review</text>
   <line x1="1455" y1="376" x2="1455" y2="316" stroke="#9b7fc4" stroke-width="3" marker-end="url(#arrO)"/>
   <text x="1467" y="352" font-size="13.5" fill="#7a5ea6">results flow up</text>
 
