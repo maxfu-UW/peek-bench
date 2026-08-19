@@ -36,7 +36,7 @@ before anything downloads.
 fan — every blade one model, blade length = row-F1, error-barred arms marked ±, and the two
 models that could not drive the extraction protocol kept visible as stubs rather than deleted.*
 
-## Results to date — full campaign leaderboard (updated 2026-08-13)
+## Results to date — full campaign leaderboard (updated 2026-08-19)
 
 The campaign has grown far beyond the original four-model comparison: **30+ sweep arms** across
 two machines, **~200 machine-hours**, repeat sweeps giving nine models between-sweep error bars
@@ -46,28 +46,41 @@ scored against the private ground truth. Ranked by numeric fidelity (UTS MAPE, l
 
 | # | Model / arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
 |---|---|---|---|---|---|---|---|
-| 1 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
-| 2 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
-| 3 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
-| 4 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | **2.20±0.21** | 0.259±0.064 | 3.6 |
-| 5 | Qwen3.5-4B | 0.766±0.044 | 0.813±0.062 | 0.886±0.020 | **2.48±0.43** | 0.263±0.077 | 13.7 |
-| 6 | Gemma4-12BQAT CUDA | 0.906 | 0.943 | 0.920 | **2.59** | 0.378 | 16.3 |
-| 7 | Qwen3VL-32B | 0.940 | 0.946 | 0.924 | **2.61** | 0.556 | 9.3 |
-| 8 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | **3.08** | 0.756 | 2.3 |
-| 9 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | **3.17±0.52** | 0.895±0.033 | 5.1 |
-| 10 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | **3.50±0.46** | 0.283±0.019 | 3.5 |
-| 11 | Gemma4-12B Metal | 0.879 | 0.889 | 0.913 | **3.50** | 0.360 | 12.5 |
-| 12 | Qwen3VL-8B (38) | 0.866±0.010 | 0.900±0.024 | 0.886±0.007 | **3.51±0.68** | 0.730±0.033 | 3.5 |
-| 13 | Gemma4-12B CUDA | 0.926 | 0.958 | 0.902 | **4.09** | 0.338 | 23.4 |
-| 14 | Nemotron-30B-A3B | 0.722 | 0.757 | 0.896 | **4.23** | 0.410 | 6.7 |
-| 15 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
-| 16 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
-| 17 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
+| 1 | **Claude API (v1 era)** | 0.933 | 0.976 | 0.962 | **0.49** | 0.074 | - |
+| 2 | **Qwen3.8-27B** | 0.954 | 1.000 | 0.958 | **0.53** | 0.148 | 14.9 |
+| 3 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
+| 4 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
+| 5 | Qwen3.6-35B Q8_0 | 0.667 | 1.000 | 1.000 | **1.63** | 0.000 | 6.6 |
+| 6 | Agents-A1-35B | 0.739 | 0.797 | 0.917 | **1.64** | 0.136 | 7.2 |
+| 7 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
+| 8 | Qwen3.5-4B | 0.772±0.042 | 0.800±0.053 | 0.903±0.003 | **1.99±0.17** | 0.303±0.013 | 11.7 |
+| 9 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | **2.20±0.21** | 0.259±0.064 | 3.6 |
+| 10 | Gemma4-12BQAT CUDA | 0.909±0.011 | 0.951±0.010 | 0.925±0.010 | **2.28±0.36** | 0.359±0.017 | 14.8 |
+| 11 | Qwen3VL-32B | 0.940 | 0.946 | 0.924 | **2.61** | 0.556 | 9.3 |
+| 12 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | **3.08** | 0.756 | 2.3 |
+| 13 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | **3.17±0.52** | 0.895±0.033 | 5.1 |
+| 14 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | **3.50±0.46** | 0.283±0.019 | 3.5 |
+| 15 | Gemma4-12B Metal | 0.879 | 0.889 | 0.913 | **3.50** | 0.360 | 12.5 |
+| 16 | Qwen3VL-8B (38) | 0.866±0.010 | 0.900±0.024 | 0.886±0.007 | **3.51±0.68** | 0.730±0.033 | 3.5 |
+| 17 | Gemma4-12B CUDA | 0.926 | 0.958 | 0.902 | **4.09** | 0.338 | 23.4 |
+| 18 | Nemotron-30B-A3B | 0.722 | 0.757 | 0.896 | **4.23** | 0.410 | 6.7 |
+| 19 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
+| 20 | Qianfan-OCR (32) | 0.561 | 0.589 | 0.761 | **5.27** | 0.873 | 3.4 |
+| 21 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
+| 22 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
+| 23 | MiniCPM-V4.6 (36) | 0.346 | 0.332 | 0.660 | **25.53** | 0.863 | 1.3 |
 
 **Explore the leaderboard interactively** — parallel-coordinates view (brush any axis,
 reorder axes by dragging; hosted via GitHub Pages):
 
 [![Interactive parallel-coordinates leaderboard preview](docs/figures/parcoords_preview.png)](https://maxfu-uw.github.io/peek-bench/interactive/leaderboard.html)
+
+**Headline (v2.2): a 3-day-old free local model caught the frontier API.** Qwen3.8-27B
+(released 2026-08-14, Apache-2.0, 19 GB Q4 on a Mac Mini) scored **F1 0.954 / recall 1.000 /
+MAPE 0.53** — beating the campaign's Claude Opus 5 API arm (F1 0.933 / recall 0.976 / MAPE 0.49)
+on row-finding while matching its numeric fidelity within noise. The v1 finding ("the frontier
+API is 2.7x more accurate than the best local model") no longer holds. *Caveats: single sweeps
+on both sides; the Claude arm is v1-era; repeat sweeps for error bars are planned.*
 
 **Key findings so far**
 
