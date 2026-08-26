@@ -36,7 +36,7 @@ before anything downloads.
 fan — every blade one model, blade length = row-F1, error-barred arms marked ±, and the two
 models that could not drive the extraction protocol kept visible as stubs rather than deleted.*
 
-## Results to date — full campaign leaderboard (updated 2026-08-19)
+## Results to date — full campaign leaderboard (updated 2026-08-25)
 
 The campaign has grown far beyond the original four-model comparison: **30+ sweep arms** across
 two machines, **~200 machine-hours**, repeat sweeps giving nine models between-sweep error bars
@@ -47,10 +47,10 @@ scored against the private ground truth. Ranked by numeric fidelity (UTS MAPE, l
 | # | Model / arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
 |---|---|---|---|---|---|---|---|
 | 1 | **Claude API (v1 era)** | 0.933 | 0.976 | 0.962 | **0.49** | 0.074 | - |
-| 2 | **Qwen3.8-27B** | 0.954 | 1.000 | 0.958 | **0.53** | 0.148 | 14.9 |
-| 3 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
-| 4 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
-| 5 | Qwen3.6-35B Q8_0 | 0.667 | 1.000 | 1.000 | **1.63** | 0.000 | 6.6 |
+| 2 | **Qwen3.8-27B (2swp)** | 0.958±0.006 | 1.000±0.000 | 0.958±0.001 | **0.50±0.05** | 0.134±0.020 | 14.8 |
+| 3 | Qwen3.6-35B Q8_0 | 0.939 | 0.995 | 0.956 | **0.77** | 0.148 | 4.8 |
+| 4 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
+| 5 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
 | 6 | Agents-A1-35B | 0.739 | 0.797 | 0.917 | **1.64** | 0.136 | 7.2 |
 | 7 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
 | 8 | Qwen3.5-4B | 0.772±0.042 | 0.800±0.053 | 0.903±0.003 | **1.99±0.17** | 0.303±0.013 | 11.7 |
@@ -79,8 +79,9 @@ reorder axes by dragging; hosted via GitHub Pages):
 (released 2026-08-14, Apache-2.0, 19 GB Q4 on a Mac Mini) scored **F1 0.954 / recall 1.000 /
 MAPE 0.53** — beating the campaign's Claude Opus 5 API arm (F1 0.933 / recall 0.976 / MAPE 0.49)
 on row-finding while matching its numeric fidelity within noise. The v1 finding ("the frontier
-API is 2.7x more accurate than the best local model") no longer holds. *Caveats: single sweeps
-on both sides; the Claude arm is v1-era; repeat sweeps for error bars are planned.*
+API is 2.7x more accurate than the best local model") no longer holds. *Update 2026-08-25: Qwen3.8-27B's repeat sweeps now give it error bars — two complete sweeps
+read **F1 0.958±0.006, recall 1.000±0.000, MAPE 0.50±0.05**: both crowns CONFIRMED and slightly
+strengthened; a third sweep is in progress. The Claude arm remains v1-era single-sweep.*
 
 **Key findings so far**
 
