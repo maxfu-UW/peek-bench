@@ -318,6 +318,36 @@ naive arms only score the easy rows they managed to find (a survivorship confoun
 MAPE-vs-MAPE across arms is not a like-for-like comparison. Statistical tests use per-paper
 paired deltas (Wilcoxon signed-rank + exact sign-flip permutation, n=13 papers).
 
+#### The same comparison, villains only (CF-P11/13/14/18/19/24)
+
+Restricting to the six rogue papers roughly **doubles the engineered-prompt F1 advantage in
+every pair** (+0.19 to +0.35, vs +0.03 to +0.18 corpus-wide) — the scaffolding earns its keep
+almost entirely on the papers that are actually hard:
+
+| pair | arm | row F1 | recall | UTS MAPE % | false-fill |
+|---|---|---|---|---|---|
+| **gemma4-E4B (x3 each)** | engineered | 0.675±0.085 | 0.659±0.083 | 13.93±5.69 | 0.021±0.036 |
+|  | naive | 0.327±0.022 | 0.291±0.021 | 11.25±3.38 | 0.024±0.041 |
+|  | **Δ (eng−naive)** | **+0.348** | +0.368 | +2.677 | -0.003 |
+| **gemma3-27B** | engineered | 0.487 | 0.501 | 12.16 | 0.000 |
+|  | naive | 0.295 | 0.240 | 12.66 | 0.000 |
+|  | **Δ (eng−naive)** | **+0.192** | +0.261 | -0.504 | +0.000 |
+| **mistral-24B** | engineered | 0.808 | 0.811 | 10.08 | 0.562 |
+|  | naive | 0.610 | 0.752 | 17.09 | 0.167 |
+|  | **Δ (eng−naive)** | **+0.198** | +0.059 | -7.013 | +0.396 |
+| **qwen3vl-32B** | engineered | 0.861 | 0.980 | 2.55 | 0.389 |
+|  | naive | 0.677 | 0.794 | 11.57 | 0.000 |
+|  | **Δ (eng−naive)** | **+0.185** | +0.186 | -9.024 | +0.389 |
+
+Notes: the qwen3vl-32B row is the cleanest illustration of the full trade — on villains,
+engineering buys +0.185 F1, +0.186 recall and a 4.5x MAPE improvement (2.55 vs 11.57), at the
+price of false-fill going from a perfect 0.000 to 0.389. The naive prompt is *safer* (it
+invents nothing) but blind to the hard rows; the engineered prompt reads the hard figures and
+overreaches on blanks. MAPE deltas remain survivorship-confounded (see above) — the E4B pair's
+*positive* MAPE delta is that confound in action: its naive arm scores only the easy rows it
+finds. Villain-only MAPE for CF-P14 is structurally undefined (schema degeneracy, per the
+per-paper autopsy above).
+
 **Generalization arm in progress:** a naive sweep of **Qwen3.8-27B** (the current leader,
 whose engineered arm carries 3-sweep error bars F1 0.961±0.006) is queued — it will settle
 whether frontier-parity models still need the engineered scaffolding. Table updates when it
