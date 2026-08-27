@@ -104,6 +104,38 @@ strengthened; a third sweep is in progress. The Claude arm remains v1-era single
 *Sections below marked "generation A/B" are the original early-phase results, kept for
 provenance; the table above supersedes them as the campaign summary.*
 
+## Which papers do the discriminating — a per-paper difficulty autopsy
+
+Aggregated across the 12 strongest arms (36 runs per paper), the dev-13 corpus splits cleanly
+into papers every competitive model aces and a small rogues' gallery that produces nearly all
+of the benchmark's discriminative signal — confirming, at fleet scale, the corpus-sensitivity
+finding of the validity audit (§7 of the paper draft).
+
+**The angels:** CF-P02, CF-P04, CF-P10, CF-P20 — F1 1.000 and MAPE 0.00 on all 36 runs each.
+They contribute confidence, not discrimination.
+
+**The rogues' gallery** (best/worst UTS-MAPE across the 12 arms):
+
+| Paper | F1 mean | worst F1 run | best MAPE (model) | worst MAPE (model) | median | ceiling kills | Failure axis |
+|---|---|---|---|---|---|---|---|
+| CF-P13 | 0.609 | 0.000 | 1.34% (Gemma4-31B) | 39.13% (Ministral-8B) | 3.89 | 17 | length: 21 pages — context exhaustion, engine wedges, timeouts |
+| CF-P24 | 0.684 | 0.000 | 0.67% (Qwen3.6-35B) | 13.99% (Gemma4-12B) | 3.34 | 8 | protocol: induces view-loop spiraling regardless of length |
+| CF-P14 | 0.845 | 0.000 | — | — | — | 7 | **MAPE structurally undefined on all 36 runs** (no model ever matched a scoreable UTS row) — difficulty registers in F1 only; a ground-truth-alignment case |
+| CF-P11 | 0.973 | 0.588 | 1.28% (Qwen3.8-27B) | 24.83% (Gemma4-12B) | 9.70 | 0 | figures: rows found easily, values misread — worst numeric error in the corpus |
+| CF-P18 | 0.837 | 0.667 | 0.00% (Qwen3.5-9B) | 29.91% (Ministral-8B) | 6.33 | 0 | figures: raster bar labels — a near-binary 0-or-30 chart-reading switch |
+| CF-P19 | 0.902 | 0.421 | 0.01% (Ministral-8B) | 6.55% (Muse-30B) | 0.40 | 6 | engine: shortest paper (6 pages), kills come from long-context serving configs, not content |
+
+Difficulty is three independent axes — **length** (P13/P14), **figure hostility** (P11/P18,
+which break MAPE while leaving F1 intact), and **protocol traps** (P24). CF-P18 is the
+corpus's best single discriminator: models either transcribe its bar labels exactly or
+hallucinate them wholesale. A future corpus revision should add figure-hostile papers of the
+P11/P18 class and can afford to drop angels.
+
+**CF-P14 disclosure:** because no run ever produced a scoreable UTS match on this paper, it
+contributes nothing to any MAPE aggregate in the tables above — MAPE columns are effectively
+averaged over 12 papers, F1 over all 13. This is documented rather than repaired, consistent
+with the audit's treatment of ground-truth alignment limits.
+
 ## Why this benchmark exists
 
 This benchmark's authors have built a dataset like this by hand before: a manually curated
