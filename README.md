@@ -361,6 +361,23 @@ per-paper autopsy above).
 | 5 | CF-P19 | 0.890 → 0.886 | 0.800 → 0.952 | **0.615 → 0.935** | 0.846 → 0.923 |
 | 6 | CF-P11 | **0.098 → 0.716** | **0.190 → 0.616** | **0.520 → 0.938** | **0.455 → 0.938** |
 
+The same worst-first view on the other three metrics:
+
+![Worst-case papers: UTS MAPE, naive to engineered](docs/figures/eng_vs_naive_villains_mape.png)
+
+![Worst-case papers: recall, naive to engineered](docs/figures/eng_vs_naive_villains_recall.png)
+
+![Worst-case papers: false-fill, naive to engineered](docs/figures/eng_vs_naive_villains_ff.png)
+
+Metric-by-metric read: **recall** mirrors the F1 chart (engineering finds the hard rows) —
+except on #1 CF-P13 where the mistral/qwen regressions are recall collapses, confirming the
+context-burn mechanism. **MAPE** improves with engineering almost everywhere it is defined —
+including on the villains for the two strong models — with the E4B/CF-P24-class exceptions
+being the survivorship confound (naive scores only the easy rows it found). **False-fill** is
+the tax collector: engineering worsens it on most paper×model cells (red dominates), with the
+notable exception that on some villains the naive arms' 0.000 reflects extracting nothing at
+all — a blank sheet has perfect blank-discipline. Undefined cells (CF-P14 MAPE) are marked.
+
 Three showcase cases (bold = |Δ| > 0.3):
 
 - **CF-P18, the chart-trap, is the existence proof for prompt engineering.** Two models score
