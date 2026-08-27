@@ -348,6 +348,35 @@ overreaches on blanks. MAPE deltas remain survivorship-confounded (see above) �
 finds. Villain-only MAPE for CF-P14 is structurally undefined (schema degeneracy, per the
 per-paper autopsy above).
 
+#### Worst-case showcase — per-paper F1, naive → engineered
+
+![Per-paper dumbbells on the six rogue papers: naive to engineered F1 for each model pair](docs/figures/eng_vs_naive_villains.png)
+
+| | gemma4-E4B | gemma3-27B | mistral-24B | qwen3vl-32B |
+|---|---|---|---|---|
+| CF-P18 | **0.000 → 0.926** | **0.000 → 0.457** | **0.667 → 1.000** | 1.000 → 1.000 |
+| CF-P11 | **0.098 → 0.716** | **0.190 → 0.616** | **0.520 → 0.938** | **0.455 → 0.938** |
+| CF-P24 | 0.059 → 0.311 | **0.080 → 0.643** | 0.656 → 0.600 | 0.500 → 0.667 |
+| CF-P13 | 0.387 → 0.535 | 0.273 → 0.256 | **0.778 → 0.478** | 0.733 → 0.676 |
+| CF-P14 | 0.525 → 0.676 | **0.429 → 0.000** | **0.421 → 0.894** | **0.526 → 0.965** |
+| CF-P19 | 0.890 → 0.886 | 0.800 → 0.952 | **0.615 → 0.935** | 0.846 → 0.923 |
+
+Three showcase cases (bold = |Δ| > 0.3):
+
+- **CF-P18, the chart-trap, is the existence proof for prompt engineering.** Two models score
+  literally 0.000 naive — they never extract a single correct row from the raster bar-chart —
+  and jump to 0.926 (E4B) and 0.457 (gemma3) engineered. Mistral goes 0.667 → 1.000. Qwen
+  reads it perfectly under either prompt: model capability can substitute for scaffolding, but
+  scaffolding cannot fully substitute for capability.
+- **CF-P11, the figure-value paper, is the most uniform win** — every pair gains +0.4 to +0.6,
+  the purest case of the engineered prompt directing attention into figures.
+- **CF-P13, the 21-page monster, is where engineering *backfires* for two of four models**
+  (mistral 0.778 → 0.478, qwen 0.733 → 0.676): the engineered protocol's extra viewing turns
+  burn context on a paper that punishes length, while the naive prompt's single pass
+  accidentally economizes. Scaffolding has a cost model, and very long documents invert it.
+- CF-P14's gemma3 collapse (0.429 → 0.000) is a single-sweep curiosity on a schema-degenerate
+  paper — its F1 is alignment-sensitive there (see the per-paper autopsy).
+
 **Generalization arm in progress:** a naive sweep of **Qwen3.8-27B** (the current leader,
 whose engineered arm carries 3-sweep error bars F1 0.961±0.006) is queued — it will settle
 whether frontier-parity models still need the engineered scaffolding. Table updates when it
