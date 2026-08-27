@@ -116,14 +116,14 @@ They contribute confidence, not discrimination.
 
 **The rogues' gallery** (best/worst UTS-MAPE across the 12 arms):
 
-| Paper | F1 mean | worst F1 run | best MAPE (model) | worst MAPE (model) | median | ceiling kills | Failure axis |
-|---|---|---|---|---|---|---|---|
-| CF-P13 | 0.609 | 0.000 | 1.34% (Gemma4-31B) | 39.13% (Ministral-8B) | 3.89 | 17 | length: 21 pages — context exhaustion, engine wedges, timeouts |
-| CF-P24 | 0.684 | 0.000 | 0.67% (Qwen3.6-35B) | 13.99% (Gemma4-12B) | 3.34 | 8 | protocol: induces view-loop spiraling regardless of length |
-| CF-P14 | 0.845 | 0.000 | — (sorted: 1.35%) | — (sorted: 3.97%) | — | 7 | **schema-degenerate**: row-aligned MAPE refused by design (see disclosure below); length (21 pages) is its real difficulty |
-| CF-P11 | 0.973 | 0.588 | 1.28% (Qwen3.8-27B) | 24.83% (Gemma4-12B) | 9.70 | 0 | figures: rows found easily, values misread — worst numeric error in the corpus |
-| CF-P18 | 0.837 | 0.667 | 0.00% (Qwen3.5-9B) | 29.91% (Ministral-8B) | 6.33 | 0 | figures: raster bar labels — a near-binary 0-or-30 chart-reading switch |
-| CF-P19 | 0.902 | 0.421 | 0.01% (Ministral-8B) | 6.55% (Muse-30B) | 0.40 | 6 | engine: shortest paper (6 pages), kills come from long-context serving configs, not content |
+| rank Paper | F1 mean | worst F1 run | best MAPE (model) | worst MAPE (model) | median | ceiling kills | Failure axis |
+|---|---|---|---|---|---|---|---|---|
+| **#1** CF-P13 | 0.609 | 0.000 | 1.34% (Gemma4-31B) | 39.13% (Ministral-8B) | 3.89 | 17 | length: 21 pages — context exhaustion, engine wedges, timeouts |
+| **#2** CF-P24 | 0.684 | 0.000 | 0.67% (Qwen3.6-35B) | 13.99% (Gemma4-12B) | 3.34 | 8 | protocol: induces view-loop spiraling regardless of length |
+| **#3** CF-P18 | 0.837 | 0.667 | 0.00% (Qwen3.5-9B) | 29.91% (Ministral-8B) | 6.33 | 0 | figures: raster bar labels — a near-binary 0-or-30 chart-reading switch |
+| **#4** CF-P14 | 0.845 | 0.000 | — (sorted: 1.35%) | — (sorted: 3.97%) | — | 7 | **schema-degenerate**: row-aligned MAPE refused by design (see disclosure below); length (21 pages) is its real difficulty |
+| **#5** CF-P19 | 0.902 | 0.421 | 0.01% (Ministral-8B) | 6.55% (Muse-30B) | 0.40 | 6 | engine: shortest paper (6 pages), kills come from long-context serving configs, not content |
+| **#6** CF-P11 | 0.973 | 0.588 | 1.28% (Qwen3.8-27B) | 24.83% (Gemma4-12B) | 9.70 | 0 | figures: rows found easily, values misread — worst numeric error in the corpus |
 
 Difficulty is three independent axes — **length** (P13/P14), **figure hostility** (P11/P18,
 which break MAPE while leaving F1 intact), and **protocol traps** (P24). CF-P18 is the
@@ -352,14 +352,14 @@ per-paper autopsy above).
 
 ![Per-paper dumbbells on the six rogue papers: naive to engineered F1 for each model pair](docs/figures/eng_vs_naive_villains.png)
 
-| | gemma4-E4B | gemma3-27B | mistral-24B | qwen3vl-32B |
-|---|---|---|---|---|
-| CF-P18 | **0.000 → 0.926** | **0.000 → 0.457** | **0.667 → 1.000** | 1.000 → 1.000 |
-| CF-P11 | **0.098 → 0.716** | **0.190 → 0.616** | **0.520 → 0.938** | **0.455 → 0.938** |
-| CF-P24 | 0.059 → 0.311 | **0.080 → 0.643** | 0.656 → 0.600 | 0.500 → 0.667 |
-| CF-P13 | 0.387 → 0.535 | 0.273 → 0.256 | **0.778 → 0.478** | 0.733 → 0.676 |
-| CF-P14 | 0.525 → 0.676 | **0.429 → 0.000** | **0.421 → 0.894** | **0.526 → 0.965** |
-| CF-P19 | 0.890 → 0.886 | 0.800 → 0.952 | **0.615 → 0.935** | 0.846 → 0.923 |
+| rank | paper | gemma4-E4B | gemma3-27B | mistral-24B | qwen3vl-32B |
+|---|---|---|---|---|---|
+| 1 | CF-P13 | 0.387 → 0.535 | 0.273 → 0.256 | **0.778 → 0.478** | 0.733 → 0.676 |
+| 2 | CF-P24 | 0.059 → 0.311 | **0.080 → 0.643** | 0.656 → 0.600 | 0.500 → 0.667 |
+| 3 | CF-P18 | **0.000 → 0.926** | **0.000 → 0.457** | **0.667 → 1.000** | 1.000 → 1.000 |
+| 4 | CF-P14 | 0.525 → 0.676 | **0.429 → 0.000** | **0.421 → 0.894** | **0.526 → 0.965** |
+| 5 | CF-P19 | 0.890 → 0.886 | 0.800 → 0.952 | **0.615 → 0.935** | 0.846 → 0.923 |
+| 6 | CF-P11 | **0.098 → 0.716** | **0.190 → 0.616** | **0.520 → 0.938** | **0.455 → 0.938** |
 
 Three showcase cases (bold = |Δ| > 0.3):
 
