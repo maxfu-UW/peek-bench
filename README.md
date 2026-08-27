@@ -120,7 +120,7 @@ They contribute confidence, not discrimination.
 |---|---|---|---|---|---|---|---|
 | CF-P13 | 0.609 | 0.000 | 1.34% (Gemma4-31B) | 39.13% (Ministral-8B) | 3.89 | 17 | length: 21 pages — context exhaustion, engine wedges, timeouts |
 | CF-P24 | 0.684 | 0.000 | 0.67% (Qwen3.6-35B) | 13.99% (Gemma4-12B) | 3.34 | 8 | protocol: induces view-loop spiraling regardless of length |
-| CF-P14 | 0.845 | 0.000 | — | — | — | 7 | **MAPE structurally undefined on all 36 runs** (no model ever matched a scoreable UTS row) — difficulty registers in F1 only; a ground-truth-alignment case |
+| CF-P14 | 0.845 | 0.000 | — (sorted: 1.35%) | — (sorted: 3.97%) | — | 7 | **schema-degenerate**: row-aligned MAPE refused by design (see disclosure below); length (21 pages) is its real difficulty |
 | CF-P11 | 0.973 | 0.588 | 1.28% (Qwen3.8-27B) | 24.83% (Gemma4-12B) | 9.70 | 0 | figures: rows found easily, values misread — worst numeric error in the corpus |
 | CF-P18 | 0.837 | 0.667 | 0.00% (Qwen3.5-9B) | 29.91% (Ministral-8B) | 6.33 | 0 | figures: raster bar labels — a near-binary 0-or-30 chart-reading switch |
 | CF-P19 | 0.902 | 0.421 | 0.01% (Ministral-8B) | 6.55% (Muse-30B) | 0.40 | 6 | engine: shortest paper (6 pages), kills come from long-context serving configs, not content |
@@ -131,10 +131,16 @@ corpus's best single discriminator: models either transcribe its bar labels exac
 hallucinate them wholesale. A future corpus revision should add figure-hostile papers of the
 P11/P18 class and can afford to drop angels.
 
-**CF-P14 disclosure:** because no run ever produced a scoreable UTS match on this paper, it
-contributes nothing to any MAPE aggregate in the tables above — MAPE columns are effectively
-averaged over 12 papers, F1 over all 13. This is documented rather than repaired, consistent
-with the audit's treatment of ground-truth alignment limits.
+**CF-P14 disclosure — schema degeneracy, not model failure.** This paper's nine ground-truth
+rows differ only in factors *outside* the nine-parameter extraction schema (annealing-class
+variables); within the schema every row is identical, so any pairing of predicted rows to
+ground-truth rows is arbitrary. Row-aligned MAPE under an arbitrary pairing would measure
+output *order*, not extraction quality — a defect class identified in the validity audit — so
+the scorer deliberately returns no row-aligned MAPE for this paper (`alignment_degenerate`).
+The order-free replacement metric shows the paper is read accurately: sorted-UTS MAPE medians
+of 1.37% (Qwen3.8-27B), 1.35% (Gemma4-31B), 2.53% (Qwen3.6-35B), 3.97% (Ministral-8B). Net
+effect on the tables above: MAPE columns average over 12 papers, F1 over all 13. Documented
+rather than repaired, consistent with the audit's treatment of ground-truth alignment limits.
 
 ## Why this benchmark exists
 
