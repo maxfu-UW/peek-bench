@@ -286,6 +286,44 @@ disambiguations, the eight rules, and the five traps actually observed in this c
 
 ## Prompt-engineering ablation — naive baseline
 
+### Engineered vs naive — full-metric comparison (added 2026-08-27)
+
+Four paired comparisons, same model and serving config, only the prompt differs. The E4B pair
+has three sweeps per arm (± between-sweep SD); the other three are v1-era single-sweep pairs.
+
+![Engineered vs naive prompt across four paired models: F1, recall, MAPE, false-fill](docs/figures/eng_vs_naive.png)
+
+| pair | arm | row F1 | recall | UTS MAPE % | false-fill |
+|---|---|---|---|---|---|
+| **gemma4-E4B (x3 each)** | engineered | 0.820±0.007 | 0.817±0.020 | 6.37±1.57 | 0.123±0.016 |
+|  | naive | 0.645±0.005 | 0.628±0.005 | 5.54±1.10 | 0.099±0.020 |
+|  | **Δ (eng−naive)** | **+0.175** | +0.188 | +0.82 | +0.025 |
+| **gemma3-27B** | engineered | 0.573 | 0.677 | 5.20 | 0.217 |
+|  | naive | 0.547 | 0.534 | 5.16 | 0.042 |
+|  | **Δ (eng−naive)** | **+0.027** | +0.143 | +0.04 | +0.175 |
+| **mistral-24B** | engineered | 0.856 | 0.862 | 4.44 | 0.750 |
+|  | naive | 0.777 | 0.839 | 7.88 | 0.204 |
+|  | **Δ (eng−naive)** | **+0.079** | +0.022 | -3.44 | +0.546 |
+| **qwen3vl-32B** | engineered | 0.933 | 0.986 | 1.06 | 0.401 |
+|  | naive | 0.770 | 0.821 | 4.84 | 0.111 |
+|  | **Δ (eng−naive)** | **+0.164** | +0.165 | -3.78 | +0.290 |
+
+**How to read it:** prompt engineering buys **coverage** — F1 and recall rise in every pair
+(F1 +0.03 to +0.18) — and the gain concentrates on the corpus's hard papers (E4B x3:
+ΔF1 +0.35 on the six rogues vs +0.03 on the angels; exact sign-flip permutation p=0.029
+overall, difficulty-interaction p=0.038). The costs are equally consistent: **false-fill rises
+in every pair** (+0.02 to +0.55) — engineered prompts push every local model to fill cells it
+should leave blank — and the MAPE column is mixed because it is *conditioned on matched rows*:
+naive arms only score the easy rows they managed to find (a survivorship confound), so
+MAPE-vs-MAPE across arms is not a like-for-like comparison. Statistical tests use per-paper
+paired deltas (Wilcoxon signed-rank + exact sign-flip permutation, n=13 papers).
+
+**Generalization arm in progress:** a naive sweep of **Qwen3.8-27B** (the current leader,
+whose engineered arm carries 3-sweep error bars F1 0.961±0.006) is queued — it will settle
+whether frontier-parity models still need the engineered scaffolding. Table updates when it
+lands.
+
+
 *(v2 confirmation: repeated ×3 per arm on gemma-4-E4B — engineered 0.820±0.007 vs naive
 0.645±0.005 row-F1; a +0.175 gap ≈ 25 between-sweep SDs. The v1 finding below replicated.)*
 
