@@ -2,7 +2,7 @@
 <rect width="1680" height="1150" fill="#ffffff"/>
 <rect x="0" y="0" width="1680" height="78" fill="#0f2a43"/>
 <text x="40" y="36" font-size="28" font-weight="bold" fill="#ffffff">PEEK-Bench v2.2 — The Precision Fan (MAPE)</text>
-<text x="40" y="62" font-size="15.5" fill="#bcd5ea">updated 2026-08-25 · longer blade = lower numeric error (UTS MAPE %, log scale) · whiskers = between-sweep SD · gold = Claude Opus 5 API arm</text>
+<text x="40" y="62" font-size="15.5" fill="#bcd5ea">updated 2026-08-27 · repeat campaign complete: both leaders carry 3-sweep whiskers · gold = Claude Opus 5 API arm</text>
 <path d="M 654.2 840.5 A 190.0 190.0 0 0 1 1025.8 840.5" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
 <text x="1027.1" y="847.0" font-size="12.5" fill="#9aa7b4">MAPE 8%</text>
 <path d="M 545.5 817.4 A 301.0615423166844 301.0615423166844 0 0 1 1134.5 817.4" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
@@ -16,12 +16,12 @@
 <path d="M 656.1 832.1 L 223.1 719.3 A 637.4832073685786 637.4832073685786 0 0 1 241.0 661.9 L 661.5 815.0 A 190 190 0 0 0 656.1 832.1 Z" fill="#e8b33d" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
 <text x="263.8" y="700.5" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-72.7 263.8 700.5)">0.49</text>
 <text x="218.0" y="686.2" font-size="13" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(17.3 218.0 686.2)">Claude API (v1 era)</text>
-<path d="M 662.9 811.3 L 248.7 650.6 A 634.2461692667376 634.2461692667376 0 0 1 273.0 595.8 L 670.1 794.9 A 190 190 0 0 0 662.9 811.3 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="291.3" y="636.7" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-66.1 291.3 636.7)">0.50</text>
-<line x1="274.2" y1="629.1" x2="244.8" y2="616.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="269.9" y1="639.0" x2="278.6" y2="619.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="240.2" y1="626.5" x2="249.5" y2="605.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="238.3" y="613.2" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(23.9 238.3 613.2)">Qwen3.8-27B (2swp) ±0.05</text>
+<path d="M 662.9 811.3 L 257.4 653.9 A 624.9098623656114 624.9098623656114 0 0 1 281.3 600.0 L 670.1 794.9 A 190 190 0 0 0 662.9 811.3 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="299.8" y="640.5" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-66.1 299.8 640.5)">0.53</text>
+<line x1="284.4" y1="633.7" x2="251.1" y2="618.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="280.2" y1="643.4" x2="288.8" y2="624.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="246.7" y1="629.2" x2="255.8" y2="608.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="246.8" y="617.0" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(23.9 246.8 617.0)">Qwen3.8-27B ±0.06</text>
 <path d="M 672.0 791.3 L 340.2 616.3 A 565.0625637376693 565.0625637376693 0 0 1 367.3 570.4 L 681.1 775.9 A 190 190 0 0 0 672.0 791.3 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
 <text x="382.5" y="610.3" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-59.5 382.5 610.3)">0.77</text>
 <text x="341.2" y="585.9" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(30.5 341.2 585.9)">Qwen3.6-35B Q8_0</text>
@@ -61,9 +61,12 @@
 <line x1="749.7" y1="523.6" x2="762.2" y2="520.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
 <line x1="737.2" y1="474.2" x2="751.4" y2="470.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
 <text x="745.1" y="475.9" font-size="13" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(76.8 745.1 475.9)">Gemma4-12BQAT CUDA ±0.36</text>
-<path d="M 809.3 692.5 L 780.2 515.4 A 369.46992076427364 369.46992076427364 0 0 1 814.8 511.4 L 827.1 690.4 A 190 190 0 0 0 809.3 692.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="801.4" y="546.8" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-6.6 801.4 546.8)">2.61</text>
-<text x="795.9" y="499.1" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(83.4 795.9 499.1)">Qwen3VL-32B</text>
+<path d="M 809.3 692.5 L 783.1 533.1 A 351.4869955044102 351.4869955044102 0 0 1 816.1 529.3 L 827.1 690.4 A 190 190 0 0 0 809.3 692.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="803.5" y="564.6" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-6.6 803.5 564.6)">2.92</text>
+<line x1="801.4" y1="546.4" x2="797.5" y2="513.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="795.5" y1="547.1" x2="807.2" y2="545.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="791.2" y1="514.4" x2="804.0" y2="512.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="796.8" y="507.0" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(83.4 796.8 507.0)">Qwen3VL-32B ±0.30</text>
 <path d="M 831.0 690.2 L 823.8 537.4 A 342.9394791043005 342.9394791043005 0 0 1 856.2 537.4 L 849.0 690.2 A 190 190 0 0 0 831.0 690.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
 <text x="840.0" y="571.1" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(0.0 840.0 571.1)">3.08</text>
 <text x="840.0" y="523.1" font-size="13" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-90.0 840.0 523.1)">InternVL3.5-30B(35)</text>
@@ -128,5 +131,5 @@
 <text x="840" y="1068" font-size="15" fill="#5c4326" text-anchor="middle">Huilong Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan S. Hong (MS Student) — UW MSE</text>
 <text x="840" y="1090" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
 <line x1="840" y1="998" x2="840" y2="1010" stroke="#c2711d" stroke-width="4"/>
-<text x="40" y="1130" font-size="12.5" fill="#77828c">MAPE on UTS · whiskers = ±1 between-sweep SD · Qwen3.8-27B row = 2 complete sweeps (3rd in progress) · negative-result arms excluded from fan; documented in README · wall-clock never pooled across hosts</text>
+<text x="40" y="1130" font-size="12.5" fill="#77828c">MAPE on UTS · whiskers = ±1 between-sweep SD (3 sweeps) · partial arms excluded · negative-result arms documented in README · wall-clock never pooled across hosts</text>
 </svg>
