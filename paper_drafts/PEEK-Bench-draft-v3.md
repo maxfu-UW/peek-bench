@@ -3,7 +3,7 @@
 *Draft v3 (2026-08-19, postscript updated 2026-08-29): adds §8.8 — the v2 fleet-campaign
 readout, including repeat-sweep replication of the §6 instability result, the Qwen3.8-27B vs
 frontier comparison (now three sweeps on both sides), and the engineered-vs-naive inversion
-measured on Claude Fable 5 / Opus 4.8 (readout (d)). Earlier copies of this draft numbered the
+measured on all three frontier models — Claude Fable 5, Opus 4.8, and Opus 5 1M (readout (d)). Earlier copies of this draft numbered the
 postscript §8.6, colliding with "Reading beats tooling"; cross-references to §8.6 elsewhere in
 the draft refer to that original section.*
 
@@ -600,9 +600,9 @@ The corpus sensitivity adds a second warning: on Dev-9, which excludes both conf
 
 Between the analysis above and this draft's revision, the benchmark was re-run as a managed
 fleet campaign: 35+ sweep arms over 23 local vision-language models on two machines plus
-a frontier-API tier (~3,800 scored runs, ~330 local machine-hours, 156 token-metered agentic
+a frontier-API tier (~3,900 scored runs, ~330 local machine-hours, 234 token-metered agentic
 runs), with the instrument disciplines this paper argues for applied throughout — per-arm
-configuration logs, per-run watchdogs, repeat sweeps for eighteen arms, and negative results
+configuration logs, per-run watchdogs, repeat sweeps for twenty arms, and negative results
 retained rather than deleted. Four readouts matter for this paper's theses; the full table
 follows them.
 
@@ -621,7 +621,8 @@ The v1 readout had the frontier API arm (claude-opus-5, same harness and prompt)
 numeric fidelity of the best local model. In the v2 campaign, **Qwen3.8-27B** — released
 2026-08-14, Apache-2.0, 19 GB Q4_K_M on a consumer Mac — returned **row F1 0.961±0.006,
 recall 1.000±0.000, UTS MAPE 0.53±0.06%** across three full sweeps, winning row-finding
-outright against every Claude arm in the campaign (best frontier F1: 0.908±0.000) with numeric
+outright against every Claude arm in the campaign (best frontier F1: 0.914±0.004, Opus 5
+naive) with numeric
 fidelity inside the noise band established by (a). The repeat-sweep discipline this paper
 demands was applied to both sides of the comparison; the conclusion survived it. The frontier
 gap on this task closed to within instrument noise in under a year, at zero marginal cost per
@@ -637,10 +638,11 @@ view-loops). A leaderboard that silently omits such models overstates the genera
 task; we report them as first-class results.
 
 **(d) The prompt-engineering result of §8.7 acquires a second branch: the advantage inverts
-at the frontier.** A full engineered-vs-naive matrix on two frontier models (Claude Fable 5
-and Claude Opus 4.8, three sweeps per cell through the agentic harness) has both models
-scoring *higher* row F1 under the naive prompt (Fable 5: 0.908±0.000 naive vs 0.885±0.002
-engineered; Opus 4.8: 0.901±0.005 vs 0.883±0.003) — small absolute gaps, but many combined
+at the frontier.** A full engineered-vs-naive matrix on three frontier models (Claude Fable 5,
+Claude Opus 4.8, and Claude Opus 5 1M, three sweeps per cell through the agentic harness) has
+all three scoring *higher* row F1 under the naive prompt (Opus 5: 0.914±0.004 naive vs
+0.883±0.008 engineered, the largest within-model gap; Fable 5: 0.908±0.000 vs 0.885±0.002;
+Opus 4.8: 0.901±0.005 vs 0.883±0.003) — small absolute gaps, but many combined
 between-sweep SDs, and in the direction *opposite* to every local pair measured (+0.07 to
 +0.18 across the v2 repeat-sweep pairs; the v1-era single-sweep local pairs were also
 positive, +0.03 to +0.16). This reverses the v1-era frontier pairs of §8.7's Table 13, where
@@ -652,21 +654,26 @@ measurements. Note the direction of
 handicapped, and still win F1 at the frontier. The capability-dependence claim of §8.7
 therefore has edges on both ends: models too weak to execute the rules gain nothing, mid-range
 models gain coverage, and frontier models pay a precision tax for scaffolding they no longer
-need. Villain-only repeat sweeps (eight paired comparisons, seven with between-sweep SD on
-both sides; the qwen3.8-27B naive-villain side is a single sweep) sharpen the same picture:
-mid-range pairs roughly double
+need. A further structural readout: the three engineered arms are statistically pinned
+together (F1 0.883/0.885/0.883) while the naive arms differentiate the models
+(0.901/0.908/0.914) — the scaffolding acts as an equalizer that masks between-model
+differences the naive prompt reveals. Villain-only repeat sweeps (nine paired comparisons,
+eight with between-sweep SD on both sides; the qwen3.8-27B naive-villain side is a single
+sweep) sharpen the same picture: mid-range pairs roughly double
 their engineered advantage on the six hardest papers (+0.13 to +0.35), the frontier pairs stay
 inverted, and one small model (Ministral-3-8B) inverts from below — its engineered arm's
 false-fill (0.490±0.117 on villains) costs more F1 than the scaffolding's coverage buys.
 
-**Full v2.2 readout (dev-13; local arms 3 repeats per sweep, Claude agentic arms 1 run per
+**Full v2.3 readout (dev-13; local arms 3 repeats per sweep, Claude agentic arms 1 run per
 paper per sweep; ± = between-sweep SD where n sweeps > 1; min/run is host-specific and never
 pooled across machines; NAIVE marks naive-prompt arms):**
 
 | arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
 |---|---|---|---|---|---|---|
 | Claude Opus 4.8 agentic (eng) | 0.883±0.003 | 1.000±0.000 | 0.973±0.004 | 0.33±0.06 | 0.012±0.021 | - |
+| Claude Opus 5 agentic (eng) | 0.883±0.008 | 0.988±0.020 | 0.969±0.001 | 0.39±0.06 | 0.025±0.021 | - |
 | Claude Fable 5 agentic (naive) | 0.908±0.000 | 1.000±0.000 | 0.980±0.002 | 0.40±0.01 | 0.037±0.000 | - |
+| Claude Opus 5 agentic (naive) | 0.914±0.004 | 0.977±0.020 | 0.976±0.002 | 0.46±0.08 | 0.012±0.021 | - |
 | Claude Opus 5 API (v1 era) | 0.933 | 0.976 | 0.962 | 0.49 | 0.074 | - |
 | Claude Fable 5 agentic (eng) | 0.885±0.002 | 1.000±0.000 | 0.974±0.006 | 0.49±0.10 | 0.037±0.000 | - |
 | Qwen3.8-27B | 0.961±0.006 | 1.000±0.000 | 0.958±0.001 | 0.53±0.06 | 0.152±0.033 | 14.9 |

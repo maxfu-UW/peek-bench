@@ -1,7 +1,7 @@
 # PEEK-Bench v2
 
-**Version 2.2** · benchmark of the multi-fleet campaign era — 35+ arms, repeat-sweep error bars,
-a complete frontier-API matrix, negative results, and autonomous orchestration. Versioning: minor releases (v2.1, v2.2, …) will
+**Version 2.3** · benchmark of the multi-fleet campaign era — 35+ arms, repeat-sweep error bars,
+a complete three-model frontier-API matrix, negative results, and autonomous orchestration. Versioning: minor releases (v2.1, v2.2, …) will
 track result refreshes and added arms; major releases (v3, v4, …) are reserved for changes to the
 task, corpus, or scoring. *v1* was the original four-model comparison (kept below as
 "generation A/B" sections for provenance).
@@ -40,46 +40,48 @@ drive the extraction protocol kept visible as stubs rather than deleted.*
 ## Results to date — full campaign leaderboard (updated 2026-08-29)
 
 The campaign has grown far beyond the original four-model comparison: **35+ sweep arms** across
-two machines and a frontier-API tier, **~3,800 scored runs / ~330 local machine-hours**, repeat
-sweeps giving eighteen arms between-sweep error bars (±SD), a quant ablation, a Metal-vs-CUDA
+two machines and a frontier-API tier, **~3,900 scored runs / ~330 local machine-hours**, repeat
+sweeps giving twenty arms between-sweep error bars (±SD), a quant ablation, a Metal-vs-CUDA
 backend replication of the small-model roster, and four fully documented negative results.
 13 dev papers × 3 repeats per sweep (Claude agentic arms: 13 runs per sweep), scored against the
-private ground truth. Engineered prompt unless the arm says **NAIVE**; the four **agentic** arms
+private ground truth. Engineered prompt unless the arm says **NAIVE**; the six **agentic** arms
 are Claude models driving the same protocol through the Claude Code harness. Ranked by numeric
 fidelity (UTS MAPE, lower = better):
 
 | # | Model / arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
 |---|---|---|---|---|---|---|---|
 | 1 | **Claude Opus 4.8 agentic (eng)** | 0.883±0.003 | 1.000±0.000 | 0.973±0.004 | **0.33±0.06** | 0.012±0.021 | - |
-| 2 | **Claude Fable 5 agentic (naive)** | 0.908±0.000 | 1.000±0.000 | 0.980±0.002 | **0.40±0.01** | 0.037±0.000 | - |
-| 3 | Claude Opus 5 API (v1 era) | 0.933 | 0.976 | 0.962 | **0.49** | 0.074 | - |
-| 4 | Claude Fable 5 agentic (eng) | 0.885±0.002 | 1.000±0.000 | 0.974±0.006 | **0.49±0.10** | 0.037±0.000 | - |
-| 5 | **Qwen3.8-27B** | 0.961±0.006 | 1.000±0.000 | 0.958±0.001 | **0.53±0.06** | 0.152±0.033 | 14.9 |
-| 6 | Qwen3.6-35B Q8_0 | 0.939 | 0.995 | 0.956 | **0.77** | 0.148 | 4.8 |
-| 7 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
-| 8 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
-| 9 | Qwen3.8-27B NAIVE | 0.869 | 0.942 | 0.939 | **1.02** | 0.160 | 11.5 |
-| 10 | Claude Opus 4.8 agentic (naive) | 0.901±0.005 | 0.961±0.041 | 0.962±0.006 | **1.13±1.25** | 0.000±0.000 | - |
-| 11 | Agents-A1-35B | 0.739 | 0.797 | 0.917 | **1.64** | 0.136 | 7.2 |
-| 12 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
-| 13 | Qwen3.5-4B | 0.772±0.042 | 0.800±0.053 | 0.903±0.003 | **1.99±0.17** | 0.303±0.013 | 11.7 |
-| 14 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | **2.20±0.21** | 0.259±0.064 | 3.6 |
-| 15 | Muse Glimmer 30B | 0.843 | 0.941 | 0.915 | **2.23** | 0.210 | 8.5 |
-| 16 | Gemma4-12BQAT CUDA | 0.909±0.011 | 0.951±0.010 | 0.925±0.010 | **2.28±0.36** | 0.359±0.017 | 14.8 |
-| 17 | Qwen3.6-35B NAIVE | 0.846±0.017 | 0.869±0.027 | 0.921±0.011 | **2.86±1.17** | 0.099±0.021 | 2.2 |
-| 18 | Qwen3VL-32B | 0.938±0.007 | 0.961±0.014 | 0.924±0.005 | **2.92±0.30** | 0.549±0.010 | 8.3 |
-| 19 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | **3.08** | 0.756 | 2.3 |
-| 20 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | **3.17±0.52** | 0.895±0.033 | 5.1 |
-| 21 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | **3.50±0.46** | 0.283±0.019 | 3.5 |
-| 22 | Gemma4-12B Metal | 0.879 | 0.889 | 0.913 | **3.50** | 0.360 | 12.5 |
-| 23 | Qwen3VL-8B (38) | 0.866±0.010 | 0.900±0.024 | 0.886±0.007 | **3.51±0.68** | 0.730±0.033 | 3.5 |
-| 24 | Gemma4-12B CUDA | 0.926 | 0.958 | 0.902 | **4.09** | 0.338 | 23.4 |
-| 25 | Nemotron-30B-A3B | 0.722 | 0.757 | 0.896 | **4.23** | 0.410 | 6.7 |
-| 26 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
-| 27 | Qianfan-OCR (32) | 0.561 | 0.589 | 0.761 | **5.27** | 0.873 | 3.4 |
-| 28 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
-| 29 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
-| 30 | MiniCPM-V4.6 (36) | 0.346 | 0.332 | 0.660 | **25.53** | 0.863 | 1.3 |
+| 2 | **Claude Opus 5 agentic (eng)** | 0.883±0.008 | 0.988±0.020 | 0.969±0.001 | **0.39±0.06** | 0.025±0.021 | - |
+| 3 | **Claude Fable 5 agentic (naive)** | 0.908±0.000 | 1.000±0.000 | 0.980±0.002 | **0.40±0.01** | 0.037±0.000 | - |
+| 4 | **Claude Opus 5 agentic (naive)** | 0.914±0.004 | 0.977±0.020 | 0.976±0.002 | **0.46±0.08** | 0.012±0.021 | - |
+| 5 | Claude Opus 5 API (v1 era) | 0.933 | 0.976 | 0.962 | **0.49** | 0.074 | - |
+| 6 | Claude Fable 5 agentic (eng) | 0.885±0.002 | 1.000±0.000 | 0.974±0.006 | **0.49±0.10** | 0.037±0.000 | - |
+| 7 | **Qwen3.8-27B** | 0.961±0.006 | 1.000±0.000 | 0.958±0.001 | **0.53±0.06** | 0.152±0.033 | 14.9 |
+| 8 | Qwen3.6-35B Q8_0 | 0.939 | 0.995 | 0.956 | **0.77** | 0.148 | 4.8 |
+| 9 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | **0.83±0.20** | 0.140±0.026 | 4.4 |
+| 10 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | **1.02±0.32** | 0.385±0.045 | 9.2 |
+| 11 | Qwen3.8-27B NAIVE | 0.869 | 0.942 | 0.939 | **1.02** | 0.160 | 11.5 |
+| 12 | Claude Opus 4.8 agentic (naive) | 0.901±0.005 | 0.961±0.041 | 0.962±0.006 | **1.13±1.25** | 0.000±0.000 | - |
+| 13 | Agents-A1-35B | 0.739 | 0.797 | 0.917 | **1.64** | 0.136 | 7.2 |
+| 14 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | **1.77** | 0.197 | 15.2 |
+| 15 | Qwen3.5-4B | 0.772±0.042 | 0.800±0.053 | 0.903±0.003 | **1.99±0.17** | 0.303±0.013 | 11.7 |
+| 16 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | **2.20±0.21** | 0.259±0.064 | 3.6 |
+| 17 | Muse Glimmer 30B | 0.843 | 0.941 | 0.915 | **2.23** | 0.210 | 8.5 |
+| 18 | Gemma4-12BQAT CUDA | 0.909±0.011 | 0.951±0.010 | 0.925±0.010 | **2.28±0.36** | 0.359±0.017 | 14.8 |
+| 19 | Qwen3.6-35B NAIVE | 0.846±0.017 | 0.869±0.027 | 0.921±0.011 | **2.86±1.17** | 0.099±0.021 | 2.2 |
+| 20 | Qwen3VL-32B | 0.938±0.007 | 0.961±0.014 | 0.924±0.005 | **2.92±0.30** | 0.549±0.010 | 8.3 |
+| 21 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | **3.08** | 0.756 | 2.3 |
+| 22 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | **3.17±0.52** | 0.895±0.033 | 5.1 |
+| 23 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | **3.50±0.46** | 0.283±0.019 | 3.5 |
+| 24 | Gemma4-12B Metal | 0.879 | 0.889 | 0.913 | **3.50** | 0.360 | 12.5 |
+| 25 | Qwen3VL-8B (38) | 0.866±0.010 | 0.900±0.024 | 0.886±0.007 | **3.51±0.68** | 0.730±0.033 | 3.5 |
+| 26 | Gemma4-12B CUDA | 0.926 | 0.958 | 0.902 | **4.09** | 0.338 | 23.4 |
+| 27 | Nemotron-30B-A3B | 0.722 | 0.757 | 0.896 | **4.23** | 0.410 | 6.7 |
+| 28 | Ministral-3-8B | 0.858±0.025 | 0.840±0.031 | 0.924±0.003 | **4.48±0.72** | 0.620±0.011 | 1.6 |
+| 29 | Qianfan-OCR (32) | 0.561 | 0.589 | 0.761 | **5.27** | 0.873 | 3.4 |
+| 30 | Gemma4-E4B naive x3 | 0.645±0.005 | 0.628±0.005 | 0.849±0.010 | **5.54±1.10** | 0.099±0.020 | 1.0 |
+| 31 | Gemma4-E4B eng x3 | 0.820±0.007 | 0.817±0.020 | 0.866±0.014 | **6.37±1.57** | 0.123±0.016 | 1.9 |
+| 32 | MiniCPM-V4.6 (36) | 0.346 | 0.332 | 0.660 | **25.53** | 0.863 | 1.3 |
 
 *Parenthesised counts — e.g. InternVL3.5-30B(35) — are arms that closed below 39 runs after
 documented failures; the Claude agentic arms are 13 runs per sweep (one per paper, the harness's
@@ -92,32 +94,37 @@ reorder axes by dragging; hosted via GitHub Pages):
 
 [![Interactive parallel-coordinates leaderboard preview](docs/figures/parcoords_preview.png)](https://maxfu-uw.github.io/peek-bench/interactive/leaderboard.html)
 
-**Headline (v2.2): a 3-day-old free local model caught the frontier API.** Qwen3.8-27B
+**Headline (v2.3): a 3-day-old free local model caught the frontier API.** Qwen3.8-27B
 (released 2026-08-14, Apache-2.0, 19 GB Q4 on a Mac Mini) scored **F1 0.961±0.006 / recall
 1.000±0.000 / MAPE 0.53±0.06** across three full sweeps — beating every Claude arm on
 row-finding while sitting within noise of them on numeric fidelity. The v1 finding ("the
 frontier API is 2.7x more accurate than the best local model") no longer holds.
 
-**The frontier matrix is complete (2026-08-29).** Four new agentic arms — **Claude Fable 5**
-and **Claude Opus 4.8**, each under both the engineered and the naive prompt, three sweeps
-each on Dev-13 — replace the single v1-era Claude datapoint with a proper matrix:
+**The frontier matrix is complete — three models (2026-08-29).** Six agentic arms — **Claude
+Fable 5**, **Claude Opus 4.8**, and **Claude Opus 5 (1M)**, each under both the engineered and
+the naive prompt, three sweeps each on Dev-13 — replace the single v1-era Claude datapoint
+with a full matrix:
 
 - **Claude Opus 4.8 (eng)** sets the campaign's best-ever numeric fidelity: **MAPE 0.33±0.06 %**
-  with near-zero false-fill (0.012±0.021) and perfect recall.
-- **Claude Fable 5 (naive)** is the best frontier row-finder: F1 **0.908±0.000** — three sweeps,
-  between-sweep SD < 0.001.
-- **Both frontier models score *higher* under the naive prompt than the engineered one**
-  (Fable 5: 0.908 vs 0.885; Opus 4.8: 0.901 vs 0.883) — see the prompt-ablation section for why
-  this inversion is the campaign's most interesting prompt-engineering result.
-- The local champion **Qwen3.8-27B still out-F1s every frontier arm** (0.961 vs 0.908); the
+  with near-zero false-fill (0.012±0.021) and perfect recall; Opus 5 (eng) is second at
+  0.39±0.06.
+- **Claude Opus 5 (naive)** is the best frontier row-finder: F1 **0.914±0.004**, with the
+  villain-subset crown as well (0.814±0.009).
+- **All three frontier models score *higher* F1 under the naive prompt than the engineered
+  one** (Opus 5: 0.914 vs 0.883; Fable 5: 0.908 vs 0.885; Opus 4.8: 0.901 vs 0.883) — see the
+  prompt-ablation section for why this inversion is the campaign's most interesting
+  prompt-engineering result.
+- **The engineered scaffolding acts as an equalizer at the frontier**: the three engineered
+  arms are statistically pinned together (0.883 / 0.885 / 0.883) while the naive arms
+  differentiate the models (0.901 / 0.908 / 0.914). Under the engineered prompt you cannot
+  tell the frontier models apart on row-finding; under the naive prompt you can.
+- The local champion **Qwen3.8-27B still out-F1s every frontier arm** (0.961 vs 0.914); the
   frontier arms win on MAPE, false-fill discipline, and cell accuracy.
 
-*Attribution note: the v1-era arm ran claude-opus-5. The v2 agentic arms ran on Claude Fable 5
-and Claude Opus 4.8 (the orchestration harness's "opus" tier resolves to Opus 4.8; verified
-from the runs themselves and relabeled accordingly). A 3-paper validation sample re-run on
-genuine Opus 5 (1M context) scored identically to Opus 4.8 on the two well-behaved papers and
-slightly better on the villain CF-P24 (naive F1 0.741 vs 0.563, single run) — consistent with
-frontier saturation; kept off the leaderboard as a sample, not a sweep.*
+*Attribution note: the v1-era arm ran claude-opus-5 under the older API harness. The v2
+agentic arms ran on Claude Fable 5, Claude Opus 4.8 (the orchestration harness's "opus" tier
+resolves to Opus 4.8; verified from the runs themselves and relabeled accordingly), and — via
+explicit model routing — genuine Claude Opus 5 1M.*
 
 *The naive-prompt Qwen3.8 arm has completed (F1 0.869 full-sweep vs engineered 0.961±0.006 —
 gap +0.092; an earlier partial-sweep note here called it "the largest eng-vs-naive gap yet",
@@ -130,12 +137,14 @@ prompt-ablation section.*
 - **Best numeric fidelity:** Claude Opus 4.8 agentic (eng) — MAPE **0.33±0.06 %** with near-zero
   false-fill. Best *local* fidelity: Qwen3.8-27B (0.53±0.06) and Qwen3.6-35B-A3B (0.83±0.20, ~4
   min/run MoE decode — still the best trust-per-minute extractor).
-- **Best row-finding:** Qwen3.8-27B (F1 0.961±0.006) — a local model holds the F1 crown over
-  every frontier arm; among the rest, Qwen3VL-30B-A3B (0.944±0.017), the Qwen3.6-35B Q8
-  ablation (0.939) and Qwen3-VL-32B (0.938±0.007) lead.
-- **Prompt engineering inverts at the frontier:** both Claude models score higher F1 under the
-  naive prompt than the engineered one, while every mid-range local model still needs the
-  scaffolding (details in the prompt-ablation section).
+- **Best row-finding:** Qwen3.8-27B (F1 0.961±0.006) — a local model holds the F1 crown,
+  0.047 clear of the best frontier arm (Opus 5 naive, 0.914±0.004); among the rest,
+  Qwen3VL-30B-A3B (0.944±0.017), the Qwen3.6-35B Q8 ablation (0.939) and Qwen3-VL-32B
+  (0.938±0.007) lead.
+- **Prompt engineering inverts at the frontier — three for three:** all three Claude models
+  score higher F1 under the naive prompt than the engineered one (Opus 5 shows the largest
+  within-model gap, −0.031), while every mid-range local model still needs the scaffolding
+  (details in the prompt-ablation section).
 - **F1 and MAPE rank models differently** — finding rows and transcribing numbers correctly are
   close to independent skills, which is why the benchmark reports both.
 - **Reproducibility:** F1 is stable between sweeps (top models ±0.004-0.017); MAPE wobbles more
@@ -214,8 +223,8 @@ used here.
 collecting studies and hand-curating the raw data — is the months-of-expert-time stage PEEK-Bench
 measures the automation of; every downstream stage is only as good as that input.*
 
-**Status (2026-08-29): the Dev-13 campaign is near close-out — ~3,800 scored runs across 35+
-arms, frontier matrix complete, villain-repeat chain finishing its last menus. The frozen
+**Status (2026-08-29): the Dev-13 campaign is near close-out — ~3,900 scored runs across 35+
+arms, three-model frontier matrix complete, villain-repeat chain finishing its last menus. The frozen
 10-paper test split has not been started.**
 
 ---
@@ -244,7 +253,7 @@ Studio in the v1 era); Claude agentic arms via the Claude Code harness.
 | Google Gemma | gemma-3 4B/12B/27B · gemma-4 E4B/12B (+QAT, Metal+CUDA)/26B-A4B MoE/31B | **268** (fixed) |
 | Alibaba Qwen | Qwen3-VL 8B/30B-A3B/32B · Qwen3.5 4B/9B · Qwen3.6-35B-A3B (+Q8 ablation) · Qwen3.8-27B | 990–2,900 (dynamic, capped 1,024) |
 | Others | InternVL3.5-30B-A3B · Nemotron-Omni-30B-A3B · GLM-4.6V-Flash · Ministral-3-8B · Mistral-Small-3.1 · Muse Glimmer 30B · Agents-A1-35B · Qianfan-OCR · MiniCPM-V-4.6 | mixed |
-| Claude (agentic) | Fable 5 · Opus 4.8 (each eng + naive, ×3 sweeps) · Opus 5 (v1 era + 3-paper validation sample) | native |
+| Claude (agentic) | Fable 5 · Opus 4.8 · Opus 5 1M (each eng + naive, ×3 sweeps) · plus the v1-era Opus 5 single sweep | native |
 | Negative results | EXAONE-4.5-33B · Fara1.5-9B · NuExtract3-4.8B · DeepSeek-OCR-2 (documented, kept visible) | — |
 | In flight | villain-only repeat sweeps (Muse, Gemma4-31B, Gemma3-27B, Qwen3.8 pairs) | — |
 
@@ -341,14 +350,14 @@ disambiguations, the eight rules, and the five traps actually observed in this c
 
 ### Engineered vs naive — repeat-sweep comparison (updated 2026-08-29)
 
-Five paired comparisons with repeat sweeps, same model and serving config inside each pair,
+Six paired comparisons with repeat sweeps, same model and serving config inside each pair,
 only the prompt differs. Ordered by model capability — and the ordering is the story: **the
 engineered prompt's advantage is large for the weakest model, moderate for the mid-range, and
-inverted at the frontier.**
+inverted at the frontier — for all three frontier models.**
 (Three further v1-era single-sweep pairs — gemma3-27B, mistral-24B, qwen3vl-32B — are in the
 archived table below; all three showed positive F1 deltas of +0.03 to +0.16.)
 
-![Engineered vs naive prompt across five repeat-sweep pairs: the advantage inverts at the frontier](docs/figures/eng_vs_naive.png)
+![Engineered vs naive prompt across six repeat-sweep pairs: the advantage inverts at the frontier](docs/figures/eng_vs_naive.png)
 
 | pair | arm | row F1 | recall | UTS MAPE % | false-fill |
 |---|---|---|---|---|---|
@@ -367,6 +376,9 @@ archived table below; all three showed positive F1 deltas of +0.03 to +0.16.)
 | **Claude Opus 4.8 agentic (×3 / ×3)** | engineered | 0.883±0.003 | 1.000±0.000 | 0.33±0.06 | 0.012±0.021 |
 |  | naive | 0.901±0.005 | 0.961±0.041 | 1.13±1.25 | 0.000±0.000 |
 |  | **Δ (eng−naive)** | **-0.018** | +0.039 | -0.80 | +0.012 |
+| **Claude Opus 5 agentic (×3 / ×3)** | engineered | 0.883±0.008 | 0.988±0.020 | 0.39±0.06 | 0.025±0.021 |
+|  | naive | 0.914±0.004 | 0.977±0.020 | 0.46±0.08 | 0.012±0.021 |
+|  | **Δ (eng−naive)** | **-0.031** | +0.012 | -0.07 | +0.012 |
 
 **How to read it:** for local models prompt engineering buys **coverage** — F1 and recall rise
 in every local pair, and the gain concentrates on the corpus's hard papers (E4B ×3: ΔF1 +0.35
@@ -377,30 +389,40 @@ rows* — naive arms only score the easy rows they managed to find (a survivorsh
 MAPE-vs-MAPE across arms is not a like-for-like comparison. Statistical tests use per-paper
 paired deltas (Wilcoxon signed-rank + exact sign-flip permutation, n=13 papers).
 
-**The frontier inversion.** Both Claude arms score *higher* F1 naive than engineered — and the
-gaps, though small in absolute terms (−0.024 and −0.018), are enormous against the between-sweep
-noise (Fable 5's naive arm has between-sweep SD < 0.001; the gap is ~15 combined SDs, in
-quadrature). The
-mechanism is visible in the per-paper data: the engineered prompt's coverage rules push even
-frontier models to emit extra candidate rows on the protocol-trap papers (precision cost),
-while a frontier model under the naive prompt already finds everything the scaffolding was
-built to point at. The engineered prompt still wins on what it was *designed* for — Opus 4.8
-eng has the best MAPE (0.33±0.06) and recall (1.000) on the board — but for pure row-F1 the
-scaffolding has become a tax. Prompt engineering, on this task, is capability-dependent in both
-directions: too weak to follow the rules and they do nothing (gemma3); strong enough to not
-need them and they cost precision (Claude); the win is the middle of the range.
+**The frontier inversion — three for three.** All three Claude arms score *higher* F1 naive
+than engineered, and the gaps, though small in absolute terms (Opus 5 −0.031, Fable 5 −0.024,
+Opus 4.8 −0.018), are large against the between-sweep noise (Fable 5: ~15 combined SDs;
+Opus 5: ~3.4; all in quadrature). Two structural observations sharpen it:
+
+- **The scaffolding is an equalizer.** The three engineered arms land at F1 0.883 / 0.885 /
+  0.883 — three different frontier models, statistically indistinguishable — while their naive
+  arms differentiate cleanly (0.901 / 0.908 / 0.914, Opus 5 on top). The engineered protocol
+  appears to impose its own row-emission behavior on any model strong enough to follow it
+  fully; the naive prompt lets the model's own judgment show, and at the frontier that
+  judgment is better.
+- **The mechanism is precision, not recall.** The engineered prompt's coverage rules push even
+  frontier models to emit extra candidate rows on the protocol-trap papers; the naive arms
+  emit fewer, better rows.
+
+The engineered prompt still wins on what it was *designed* for — Opus 4.8 eng has the best
+MAPE (0.33±0.06) and recall (1.000) on the board, and the two Opus eng arms beat their naive
+siblings on MAPE (Fable 5 is the exception: its naive arm wins there too, 0.40 vs 0.49) — but
+for pure row-F1 the scaffolding has become a tax. Prompt engineering, on
+this task, is capability-dependent in both directions: too weak to follow the rules and they
+do nothing (gemma3); strong enough to not need them and they cost precision (all three Claude
+models); the win is the middle of the range.
 
 #### The same comparison, villains only (CF-P11/13/14/18/19/24) — now with error bars
 
 The villain-repeat campaign has landed: dedicated villain-only sweeps on both machines plus
-villain subsets of complete full sweeps (same six-paper mix, so poolable) give **eight paired
-comparisons, seven of them with between-sweep SD on both sides** (the qwen3.8-27B naive-villain
+villain subsets of complete full sweeps (same six-paper mix, so poolable) give **nine paired
+comparisons, eight of them with between-sweep SD on both sides** (the qwen3.8-27B naive-villain
 side is a single sweep; its repeats are queued). For the mid-range local models the engineered-prompt F1
 advantage roughly **doubles on the rogues** (+0.13 to +0.35, vs +0.07 to +0.18 corpus-wide) —
 the scaffolding earns its keep almost entirely on the papers that are actually hard. But the
 edges of the capability range now tell the opposite story:
 
-![Villain-only ΔF1 with error bars across eight pairs: scaffolding helps the middle, not the edges](docs/figures/eng_vs_naive_villains_sd.png)
+![Villain-only ΔF1 with error bars across nine pairs: scaffolding helps the middle, not the edges](docs/figures/eng_vs_naive_villains_sd.png)
 
 | pair (eng / naive sweeps) | eng F1 | naive F1 | **ΔF1** | eng MAPE % | naive MAPE % | eng ff | naive ff |
 |---|---|---|---|---|---|---|---|
@@ -412,10 +434,13 @@ edges of the capability range now tell the opposite story:
 | Claude Opus 4.8 agentic (3/3) | 0.746±0.007 | 0.785±0.010 | **-0.039** | 0.79±0.15 | 2.72±3.00 | 0.000±0.000 | 0.000±0.000 |
 | Claude Fable 5 agentic (3/3) | 0.750±0.003 | 0.801±0.001 | **-0.052** | 1.17±0.25 | 0.95±0.02 | 0.000±0.000 | 0.000±0.000 |
 | Ministral-3-8B (3/3) | 0.744±0.051 | 0.808±0.009 | **-0.064** | 11.19±1.61 | 13.31±1.87 | 0.490±0.117 | 0.025±0.028 |
+| Claude Opus 5 agentic (3/3) | 0.746±0.018 | 0.814±0.009 | **-0.068** | 0.94±0.14 | 1.11±0.19 | 0.000±0.000 | 0.000±0.000 |
 
 Three reads. **The middle needs the scaffolding**: every Qwen/GLM/E4B pair gains +0.13 to
-+0.35 F1 on the villains, several by many combined SDs. **The frontier inversion persists on
-the villains** (both Claude pairs negative) — hard papers do not rescue the engineered prompt
++0.35 F1 on the villains, several by many combined SDs. **The frontier inversion persists —
+and widens — on the villains** (all three Claude pairs negative; Opus 5's −0.068 is the
+largest inversion on the board, and its naive villain F1 0.814±0.009 is the frontier crown) —
+hard papers do not rescue the engineered prompt
 at the top of the range. **And Ministral-3-8B is the small-model counterexample**: its
 engineered arm hemorrhages precision on the rogues (false-fill 0.490±0.117 vs the naive arm's
 0.025±0.028), so the naive prompt's blank-discipline *wins* F1 (−0.064). The coverage-vs-
@@ -478,7 +503,7 @@ Three showcase cases (bold = |Δ| > 0.3):
 **Generalization arm — landed:** the naive sweep of **Qwen3.8-27B** completed at F1 0.869
 (vs engineered 0.961±0.006, Δ +0.092). The answer to "do frontier-parity models still need the
 scaffolding?" turned out to be *yes for the local frontier-parity model, no for the actual
-frontier* — Qwen3.8 still gains +0.09 from engineering while both Claude models lose F1 to it
+frontier* — Qwen3.8 still gains +0.09 from engineering while all three Claude models lose F1 to it
 (the inversion above). Naive-villain repeat sweeps for the Qwen3.8 pair are queued to put SD
 on its villain delta.
 
@@ -639,11 +664,11 @@ MD5 into every workbook, so a result can always be traced to the GT it was score
 
 ## Next steps
 
-Updated for v2.2 (2026-08-29):
+Updated for v2.3 (2026-08-29):
 
 1. **Finish the villain-repeat chain** (Muse, Gemma4-31B, Qwen3.8 eng+naive pairs, Gemma3-27B)
    and fold the final villain error bars into the ablation tables — closes the Dev-13 campaign
-   as **v2.3**.
+   as **v2.4**.
 2. **Frozen test-split run** for the top tier (Qwen3.8-27B, Qwen3.6-35B, Qwen3-VL-32B,
    Gemma4-31B, Qwen3-VL-30B-A3B) — now with the roster the dev split actually selected.
 3. **Consolidated scoring workbooks + paper draft** — metrics-only, per the privacy rule
@@ -655,9 +680,9 @@ Updated for v2.2 (2026-08-29):
 
 ## Campaign accounting (v2)
 
-Measured from run artefacts on disk, 2026-08-29: **~3,800 scored runs · ~330 local
+Measured from run artefacts on disk, 2026-08-29: **~3,900 scored runs · ~330 local
 machine-hours** across the Mac Mini M4 Pro (Metal) and the RTX A2000 box (CUDA), tracked live
-by the campaign's master progress bar, plus **156 Claude-API agentic runs** (token-metered, no
+by the campaign's master progress bar, plus **234 Claude-API agentic runs** (token-metered, no
 comparable wall-clock). Cost per marginal model has fallen steadily as orchestration matured —
 a new model now costs one verification workflow, one download, and one queued sweep (~2–13 h of
 unattended machine time depending on size class). The full v1 cost breakdown (24.8 h for the
