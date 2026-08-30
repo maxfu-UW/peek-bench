@@ -1,7 +1,11 @@
 # Three Instruments and an Unstable Estimator: A Validity Audit of PEEK-Bench
 
-*Draft v3 (2026-08-19): adds §8.6 — the v2 fleet-campaign readout, including repeat-sweep
-replication of the §6 instability result and the Qwen3.8-27B vs claude-opus-5 comparison.*
+*Draft v3 (2026-08-19, postscript updated 2026-08-29): adds §8.8 — the v2 fleet-campaign
+readout, including repeat-sweep replication of the §6 instability result, the Qwen3.8-27B vs
+frontier comparison (now three sweeps on both sides), and the engineered-vs-naive inversion
+measured on Claude Fable 5 / Opus 4.8 (readout (d)). Earlier copies of this draft numbered the
+postscript §8.6, colliding with "Reading beats tooling"; cross-references to §8.6 elsewhere in
+the draft refer to that original section.*
 
 **Keywords:** benchmark validity; structured information extraction; evaluation metric design; scientific document understanding; vision–language models; materials informatics
 
@@ -592,33 +596,37 @@ The corpus sensitivity adds a second warning: on Dev-9, which excludes both conf
 
 ![Figure 6. Coverage bought with fabrication. Each arrow runs from a configuration's naive-prompt operating point (hollow) to its engineered-prompt point (solid). Every local model moves upward - buying row F1 with invented values in cells the source paper leaves blank - while both frontier arms move horizontally. This is measurable only because the reference tables are pre-imputation, so null is a correct answer. The prompt ablation is confounded on two papers (Section 8.7).](figures/fig6_coverage_fabrication.png)
 
-### 8.6 Postscript readout — the v2 fleet campaign (added 2026-08-19)
+### 8.8 Postscript readout — the v2 fleet campaign (added 2026-08-19, updated 2026-08-29)
 
 Between the analysis above and this draft's revision, the benchmark was re-run as a managed
-fleet campaign: 30+ sweep arms over 19 additional vision-language models on two machines
-(~260 machine-hours), with the instrument disciplines this paper argues for applied
-throughout — per-arm configuration logs, per-run watchdogs, repeat sweeps for nine models,
-and negative results retained rather than deleted. Three readouts matter for this paper's
-theses; the full table follows them.
+fleet campaign: 35+ sweep arms over 23 local vision-language models on two machines plus
+a frontier-API tier (~3,800 scored runs, ~330 local machine-hours, 156 token-metered agentic
+runs), with the instrument disciplines this paper argues for applied throughout — per-arm
+configuration logs, per-run watchdogs, repeat sweeps for eighteen arms, and negative results
+retained rather than deleted. Four readouts matter for this paper's theses; the full table
+follows them.
 
 **(a) The estimator-instability finding (§6) replicates across the fleet.** With the repaired
-scorer, row F1 is now stable between sweeps for every repeated model (between-sweep SD
-0.004–0.044), while UTS MAPE remains the volatile metric (SD 0.20–1.57 on repeated arms) —
-smaller than the CV 39.3% of §6's early harness, but still large enough that no single-sweep
-MAPE ranking should be read as settled. The instability was an estimator property, not a bug
-artefact: fixing the scorer shrank it; repeat sweeps remain mandatory.
+scorer, row F1 between-sweep SD runs 0.000–0.055 — below 0.017 for every top-tier arm, though
+the noisiest small arms (GLM-4.6V-Flash 0.055, Qwen3.5-4B 0.042) remain at the §6.1
+instability scale. UTS MAPE remains the volatile metric: absolute between-sweep SDs of
+0.01–1.57 percentage points, roughly eight-fold smaller than the early harness's 12.41 pp,
+though *relative* volatility on low-MAPE arms can still exceed the early harness's CV of 39.3%
+(the Opus 4.8 naive arm's 1.13±1.25 is a CV of ~110%). No single-sweep MAPE ranking should be
+read as settled. The instability was an estimator property, not a bug artefact: fixing the
+scorer shrank it; repeat sweeps remain mandatory.
 
-**(b) The frontier-gap subplot inverted in fourteen days.** The v1 readout had the frontier
-API arm (claude-opus-5, same harness and prompt) at 2.7x the numeric fidelity of the best
-local model. In the v2 campaign, **Qwen3.8-27B** — released 2026-08-14, Apache-2.0, 19 GB
-Q4_K_M on a consumer Mac — returned **row F1 0.954, recall 1.000, cell accuracy 0.958,
-UTS MAPE 0.53%, false-fill 0.148** against the claude-opus-5 arm's 0.933 / 0.976 / 0.962 /
-0.49% / 0.074. The local model wins row-finding outright; numeric fidelity is within the MAPE
-noise band established by (a); the API arm retains only blank-discipline (false-fill). Both
-readouts are single sweeps, and by this paper's own argument (§6) the comparison carries that
-sensitivity until repeat sweeps land; the direction of travel, however, is unambiguous — the
-frontier gap on this task closed to within instrument noise in under a year, at zero marginal
-cost per paper.
+**(b) The frontier-gap subplot inverted in fourteen days — and repeat sweeps confirmed it.**
+The v1 readout had the frontier API arm (claude-opus-5, same harness and prompt) at 2.7x the
+numeric fidelity of the best local model. In the v2 campaign, **Qwen3.8-27B** — released
+2026-08-14, Apache-2.0, 19 GB Q4_K_M on a consumer Mac — returned **row F1 0.961±0.006,
+recall 1.000±0.000, UTS MAPE 0.53±0.06%** across three full sweeps, winning row-finding
+outright against every Claude arm in the campaign (best frontier F1: 0.908±0.000) with numeric
+fidelity inside the noise band established by (a). The repeat-sweep discipline this paper
+demands was applied to both sides of the comparison; the conclusion survived it. The frontier
+gap on this task closed to within instrument noise in under a year, at zero marginal cost per
+paper — what the frontier arms retain is blank-discipline (false-fill 0.000–0.037) and the
+best absolute MAPE (0.33±0.06%, Claude Opus 4.8 engineered).
 
 **(c) Protocol compatibility is a hidden axis a leaderboard hides.** Four models produced
 essentially zero rows under every configuration tried in a systematic ladder (EXAONE-4.5-33B,
@@ -628,22 +636,53 @@ InternVL3.5) carry engine-level caveats (a fixed-256-token projector bug; contex
 view-loops). A leaderboard that silently omits such models overstates the generality of the
 task; we report them as first-class results.
 
-**Full v2.2 readout (dev-13 x 3 repeats per sweep; ± = between-sweep SD where n sweeps > 1;
-min/run is host-specific and never pooled across machines):**
+**(d) The prompt-engineering result of §8.7 acquires a second branch: the advantage inverts
+at the frontier.** A full engineered-vs-naive matrix on two frontier models (Claude Fable 5
+and Claude Opus 4.8, three sweeps per cell through the agentic harness) has both models
+scoring *higher* row F1 under the naive prompt (Fable 5: 0.908±0.000 naive vs 0.885±0.002
+engineered; Opus 4.8: 0.901±0.005 vs 0.883±0.003) — small absolute gaps, but many combined
+between-sweep SDs, and in the direction *opposite* to every local pair measured (+0.07 to
++0.18 across the v2 repeat-sweep pairs; the v1-era single-sweep local pairs were also
+positive, +0.03 to +0.16). This reverses the v1-era frontier pairs of §8.7's Table 13, where
+claude-opus-5 gained +0.035 to +0.065 row F1 from engineering (its two harness modes) under
+the same scope-note handicap — the inversion is a property of the current frontier models
+under the agentic harness, not of the frontier as such, and the v1 pairs remain single-sweep
+measurements. Note the direction of
+§8.7's scope-note confound: the naive arms run *without* the two scope notes, i.e.
+handicapped, and still win F1 at the frontier. The capability-dependence claim of §8.7
+therefore has edges on both ends: models too weak to execute the rules gain nothing, mid-range
+models gain coverage, and frontier models pay a precision tax for scaffolding they no longer
+need. Villain-only repeat sweeps (eight paired comparisons, seven with between-sweep SD on
+both sides; the qwen3.8-27B naive-villain side is a single sweep) sharpen the same picture:
+mid-range pairs roughly double
+their engineered advantage on the six hardest papers (+0.13 to +0.35), the frontier pairs stay
+inverted, and one small model (Ministral-3-8B) inverts from below — its engineered arm's
+false-fill (0.490±0.117 on villains) costs more F1 than the scaffolding's coverage buys.
+
+**Full v2.2 readout (dev-13; local arms 3 repeats per sweep, Claude agentic arms 1 run per
+paper per sweep; ± = between-sweep SD where n sweeps > 1; min/run is host-specific and never
+pooled across machines; NAIVE marks naive-prompt arms):**
 
 | arm | row F1 | recall | cell acc | UTS MAPE % | false-fill | min/run |
 |---|---|---|---|---|---|---|
-| Claude API (v1 era) | 0.933 | 0.976 | 0.962 | 0.49 | 0.074 | - |
-| Qwen3.8-27B | 0.954 | 1.000 | 0.958 | 0.53 | 0.148 | 14.9 |
+| Claude Opus 4.8 agentic (eng) | 0.883±0.003 | 1.000±0.000 | 0.973±0.004 | 0.33±0.06 | 0.012±0.021 | - |
+| Claude Fable 5 agentic (naive) | 0.908±0.000 | 1.000±0.000 | 0.980±0.002 | 0.40±0.01 | 0.037±0.000 | - |
+| Claude Opus 5 API (v1 era) | 0.933 | 0.976 | 0.962 | 0.49 | 0.074 | - |
+| Claude Fable 5 agentic (eng) | 0.885±0.002 | 1.000±0.000 | 0.974±0.006 | 0.49±0.10 | 0.037±0.000 | - |
+| Qwen3.8-27B | 0.961±0.006 | 1.000±0.000 | 0.958±0.001 | 0.53±0.06 | 0.152±0.033 | 14.9 |
+| Qwen3.6-35B Q8_0 | 0.939 | 0.995 | 0.956 | 0.77 | 0.148 | 4.8 |
 | Qwen3.6-35B-A3B | 0.917±0.007 | 0.960±0.014 | 0.953±0.005 | 0.83±0.20 | 0.140±0.026 | 4.4 |
 | Qwen3.5-9B | 0.871±0.030 | 0.890±0.022 | 0.921±0.004 | 1.02±0.32 | 0.385±0.045 | 9.2 |
-| Qwen3.6-35B Q8_0 | 0.667 | 1.000 | 1.000 | 1.63 | 0.000 | 6.6 |
+| Qwen3.8-27B NAIVE | 0.869 | 0.942 | 0.939 | 1.02 | 0.160 | 11.5 |
+| Claude Opus 4.8 agentic (naive) | 0.901±0.005 | 0.961±0.041 | 0.962±0.006 | 1.13±1.25 | 0.000±0.000 | - |
 | Agents-A1-35B | 0.739 | 0.797 | 0.917 | 1.64 | 0.136 | 7.2 |
 | Gemma4-31B dense | 0.936 | 0.994 | 0.951 | 1.77 | 0.197 | 15.2 |
 | Qwen3.5-4B | 0.772±0.042 | 0.800±0.053 | 0.903±0.003 | 1.99±0.17 | 0.303±0.013 | 11.7 |
 | Gemma4-26B-A4B MoE | 0.926±0.004 | 0.991±0.007 | 0.937±0.002 | 2.20±0.21 | 0.259±0.064 | 3.6 |
+| Muse Glimmer 30B | 0.843 | 0.941 | 0.915 | 2.23 | 0.210 | 8.5 |
 | Gemma4-12BQAT CUDA | 0.909±0.011 | 0.951±0.010 | 0.925±0.010 | 2.28±0.36 | 0.359±0.017 | 14.8 |
-| Qwen3VL-32B | 0.940 | 0.946 | 0.924 | 2.61 | 0.556 | 9.3 |
+| Qwen3.6-35B NAIVE | 0.846±0.017 | 0.869±0.027 | 0.921±0.011 | 2.86±1.17 | 0.099±0.021 | 2.2 |
+| Qwen3VL-32B | 0.938±0.007 | 0.961±0.014 | 0.924±0.005 | 2.92±0.30 | 0.549±0.010 | 8.3 |
 | InternVL3.5-30B(35) | 0.639 | 0.661 | 0.834 | 3.08 | 0.756 | 2.3 |
 | Qwen3VL-30B-A3B | 0.944±0.017 | 0.946±0.023 | 0.895±0.005 | 3.17±0.52 | 0.895±0.033 | 5.1 |
 | GLM-4.6V-Flash | 0.839±0.055 | 0.831±0.048 | 0.903±0.007 | 3.50±0.46 | 0.283±0.019 | 3.5 |
