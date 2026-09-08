@@ -200,6 +200,68 @@ of 1.37% (Qwen3.8-27B), 1.35% (Gemma4-31B), 2.53% (Qwen3.6-35B), 3.97% (Ministra
 effect on the tables above: MAPE columns average over 12 papers, F1 over all 13. Documented
 rather than repaired, consistent with the audit's treatment of ground-truth alignment limits.
 
+### The villain fans — every arm on the six rogue papers, one fan per metric (added 2026-09-08)
+
+The rogues' gallery is where the benchmark discriminates, so here is the whole roster scored
+on **only those six papers** — 35 arms (every leaderboard arm's six-paper subset, pooled with
+its dedicated villain-only sweeps where they exist, plus three naive arms that were run *only*
+on the villains). Same fan language as the campaign figure: longer blade = better, whiskers =
+±SD across six-paper samples, gold = Claude API, hatched = naive prompt, dashed outline =
+villain-only arm. Villain numbers are never pooled into the full-13 leaderboard above.
+
+![Villain fan — row F1 on the six rogue papers](docs/figures/villain_fan_f1.svg)
+
+![Villain fan — recall on the six rogue papers](docs/figures/villain_fan_recall.svg)
+
+![Villain fan — UTS MAPE on the six rogue papers (log scale; CF-P14 undefined by design)](docs/figures/villain_fan_mape.svg)
+
+![Villain fan — false-fill on the six rogue papers](docs/figures/villain_fan_ff.svg)
+
+![Villain fan — cell accuracy on the six rogue papers](docs/figures/villain_fan_cell.svg)
+
+Villain-only top of the board (row F1; ± = SD across six-paper samples, n = samples):
+
+| arm | villain F1 | recall | UTS MAPE % | false-fill | n |
+|---|---|---|---|---|---|
+| **Qwen3.8-27B** | **0.912±0.010** | 1.000±0.000 | 1.36±0.18 | 0.000±0.000 | 3 |
+| Claude Opus 5 API (v1 era) | 0.905 | 1.000 | 1.17 | 0.000 | 1 |
+| Qwen3VL-30B-A3B | 0.884±0.044 | 0.892±0.058 | 8.03±1.36 | 0.893±0.061 | 5 |
+| Qwen3.6-35B Q8_0 | 0.874 | 1.000 | 1.85 | 0.000 | 1 |
+| Qwen3VL-32B | 0.869±0.010 | 0.909±0.024 | 7.06±0.73 | 0.557±0.039 | 5 |
+| Gemma4-31B dense | 0.861 | 0.987 | 4.25 | 0.000 | 1 |
+| Gemma4-26B-A4B MoE | 0.842±0.013 | 0.978±0.023 | 5.63±0.63 | 0.189±0.145 | 5 |
+| Qwen3.6-35B-A3B | 0.838±0.022 | 0.951±0.038 | 1.82±0.44 | 0.022±0.050 | 5 |
+| **Claude Opus 5 agentic (naive)** | 0.814±0.009 | 0.949±0.044 | 1.11±0.19 | 0.000±0.000 | 3 |
+| Ministral-3-8B NAIVE (villain-only) | 0.808±0.009 | 0.825±0.017 | 13.31±1.87 | 0.025±0.028 | 3 |
+| Claude Fable 5 agentic (naive) | 0.801±0.001 | 1.000±0.000 | 0.95±0.02 | 0.000±0.000 | 3 |
+| Claude Opus 4.8 agentic (naive) | 0.785±0.010 | 0.915±0.089 | 2.72±3.00 | 0.000±0.000 | 3 |
+| Claude Fable 5 agentic (eng) | 0.750±0.003 | 1.000±0.000 | 1.17±0.25 | 0.000±0.000 | 3 |
+| Claude Opus 4.8 agentic (eng) | 0.746±0.007 | 1.000±0.000 | **0.79±0.15** | 0.000±0.000 | 3 |
+| Claude Opus 5 agentic (eng) | 0.746±0.018 | 0.975±0.044 | 0.94±0.14 | 0.000±0.000 | 3 |
+
+What the five fans say together:
+
+- **The F1 fan re-ranks the board.** Qwen3.8-27B keeps the crown on the hard papers too
+  (0.912±0.010, perfect recall, zero false-fill), ahead of every Claude arm including the
+  v1-era Opus 5 (0.905). The strongest frontier villain arm is Opus 5 naive at 0.814±0.009.
+- **The equalizer replicates on the villains.** The three frontier *engineered* arms are pinned
+  at 0.746 / 0.750 / 0.746, exactly as they are on the full corpus (0.883 / 0.885 / 0.883),
+  while the naive arms spread out (0.785 / 0.801 / 0.814). Same phenomenon, harder papers.
+- **F1 and false-fill tell opposite stories for the Qwen3-VL family.** Qwen3VL-30B-A3B's
+  villain F1 of 0.884 (#3) comes with false-fill 0.893 — it finds the rows by filling nearly
+  every blank; Qwen3VL-32B follows the same pattern (0.869 / 0.557). The false-fill fan is
+  where they drop to the far end while the frontier arms and Qwen3.8 sit at a perfect 0.000.
+- **The MAPE fan is the frontier's.** Opus 4.8 eng (0.79±0.15), Opus 5 eng (0.94±0.14) and
+  Fable 5 naive (0.95±0.02) lead numeric fidelity on the hard papers; the best local villain
+  MAPE is Qwen3.8-27B at 1.36±0.18. MiniCPM's 38.9% is clamped off-scale.
+- **Recall is nearly saturated at the top** (1.000 for Qwen3.8, Gemma4-31B 0.987, the frontier
+  eng arms 0.975–1.000); the discriminating spread is all in the lower half of that fan.
+
+*Data caveat: Gemma4-31B, Qwen3.8 (eng and naive), and Muse are single-sample on the villains
+until the running villain-repeat chain lands their dedicated sweeps; the fans will be
+regenerated at v2.4 (`python3 runners/make_aggregates.py && python3
+runners/figures/gen_villain_fans.py`).*
+
 ## Why this benchmark exists
 
 This benchmark's authors have built a dataset like this by hand before: a manually curated
@@ -630,8 +692,11 @@ python runners/progress.py                         # live progress + metrics
 ## Layout
 
 *(v2 additions: `docs/figures/campaign_orchestration.svg`, `campaign_fan.svg`,
-`parcoords_preview.png`, `eng_vs_naive_villains_sd.png`;
-`docs/interactive/leaderboard.html` — served via GitHub Pages.)*
+`parcoords_preview.png`, `eng_vs_naive_villains_sd.png`, `villain_fan_{f1,recall,cell,mape,ff}.svg`;
+`docs/interactive/leaderboard.html` — served via GitHub Pages; `runners/make_aggregates.py`
+recomputes every table/figure number from the raw runs into the metrics-only
+`results/aggregates_v2.json`, and `runners/figures/gen_villain_fans.py` draws the villain fans
+from it.)*
 
 ```
 harness/     extract10.py       agentic extractor (view_page / note / submit)
@@ -644,6 +709,8 @@ scoring/     score10.py         Hungarian alignment + metrics
 runners/     *.sh               campaign scripts; progress.py live progress bar
 results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
+             aggregates_v2.json  metrics-only campaign aggregates (per-sweep means, mean±SD)
+                                that every v2 table and figure is generated from
 paper_drafts/ PEEK-Bench-draft-v3.md          current machine-assisted draft (NOT peer reviewed)
              PEEK-Bench-draft-v2.md/.docx    archived earlier drafts
              README.md          how it was produced and what it deliberately omits

@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 1368" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<pattern id="hatch-gold" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f0d089"/><rect width="3.4" height="8" fill="#d9a028" fill-opacity="0.75"/></pattern>
+<pattern id="hatch-qwen" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#aecde9"/><rect width="3.4" height="8" fill="#2f78b8" fill-opacity="0.75"/></pattern>
+<pattern id="hatch-gemma" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#abd9c0"/><rect width="3.4" height="8" fill="#2f9e63" fill-opacity="0.75"/></pattern>
+<pattern id="hatch-rust" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#d5baab"/><rect width="3.4" height="8" fill="#96522e" fill-opacity="0.75"/></pattern>
+</defs>
+<rect width="1760" height="1368" fill="#ffffff"/>
+<rect x="0" y="0" width="1760" height="78" fill="#0f2a43"/>
+<text x="40" y="36" font-size="28" font-weight="bold" fill="#ffffff">PEEK-Bench v2.3 — The Villain Fan: false-fill rate (six rogue papers)</text>
+<text x="40" y="62" font-size="15.5" fill="#bcd5ea">CF-P11 · P13 · P14 · P18 · P19 · P24 — the papers that carry the benchmark's discrimination · 35 arms · updated 2026-09-08</text>
+<path d="M 694.2 1020.5 A 190.0 190.0 0 0 1 1065.8 1020.5" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1070.8" y="1024.5" font-size="12.5" fill="#9aa7b4">false-fill 1.00</text>
+<path d="M 565.8 993.2 A 321.2 321.2 0 0 1 1194.2 993.2" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1199.2" y="997.2" font-size="12.5" fill="#9aa7b4">0.75</text>
+<path d="M 437.4 965.9 A 452.5 452.5 0 0 1 1322.6 965.9" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1327.6" y="969.9" font-size="12.5" fill="#9aa7b4">0.50</text>
+<path d="M 309.0 938.6 A 583.8 583.8 0 0 1 1451.0 938.6" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1456.0" y="942.6" font-size="12.5" fill="#9aa7b4">0.25</text>
+<path d="M 232.0 922.3 A 662.5 662.5 0 0 1 1528.0 922.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1533.0" y="926.3" font-size="12.5" fill="#9aa7b4">0.10</text>
+<path d="M 180.6 911.3 A 715.0 715.0 0 0 1 1579.4 911.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1584.4" y="915.3" font-size="12.5" fill="#9aa7b4">0.00</text>
+<path d="M 697.0 1008.8 L 191.5 867.1 A 715.0 715.0 0 0 1 203.8 827.8 L 700.3 998.3 A 190 190 0 0 0 697.0 1008.8 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="220.3" y="854.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-72.7 220.3 854.5)">0.000</text>
+<text x="182.1" y="842.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(17.3 182.1 842.6)">Qwen3.8-27B ±0.000</text>
+<path d="M 701.1 996.0 L 206.8 819.1 A 715.0 715.0 0 0 1 221.8 780.7 L 705.1 985.8 A 190 190 0 0 0 701.1 996.0 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="251.3" y="814.4" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-68.7 251.3 814.4)">0.000</text>
+<text x="187.9" y="789.6" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(21.3 187.9 789.6)">Claude API (v1 era)</text>
+<path d="M 706.1 983.6 L 225.4 772.3 A 715.0 715.0 0 0 1 243.1 735.1 L 710.8 973.7 A 190 190 0 0 0 706.1 983.6 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="255.7" y="763.8" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-64.6 255.7 763.8)">0.000</text>
+<text x="219.5" y="746.7" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(25.4 219.5 746.7)">Qwen3.6-35B Q8_0</text>
+<path d="M 711.9 971.5 L 247.3 726.9 A 715.0 715.0 0 0 1 267.6 691.0 L 717.3 961.9 A 190 190 0 0 0 711.9 971.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="292.0" y="728.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-60.6 292.0 728.5)">0.000</text>
+<text x="232.8" y="695.1" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(29.4 232.8 695.1)">Gemma4-31B dense</text>
+<path d="M 718.5 959.9 L 272.3 683.2 A 715.0 715.0 0 0 1 295.1 648.8 L 724.6 950.7 A 190 190 0 0 0 718.5 959.9 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<text x="303.5" y="679.1" font-size="11.5" font-weight="bold" fill="#9a7217" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-56.5 303.5 679.1)">0.000</text>
+<text x="270.1" y="657.0" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(33.5 270.1 657.0)">Opus5 agentic nv ±0.000</text>
+<path d="M 726.0 948.7 L 300.4 641.3 A 715.0 715.0 0 0 1 325.5 608.6 L 732.6 940.1 A 190 190 0 0 0 726.0 948.7 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<text x="344.4" y="649.1" font-size="11.5" font-weight="bold" fill="#9a7217" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-52.5 344.4 649.1)">0.000</text>
+<text x="290.5" y="607.7" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(37.5 290.5 607.7)">Fable5 agentic naive ±0.000</text>
+<path d="M 734.2 938.2 L 331.3 601.5 A 715.0 715.0 0 0 1 358.7 570.7 L 741.5 930.0 A 190 190 0 0 0 734.2 938.2 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<text x="362.7" y="601.8" font-size="11.5" font-weight="bold" fill="#9a7217" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-48.5 362.7 601.8)">0.000</text>
+<text x="332.8" y="575.3" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(41.5 332.8 575.3)">Opus4.8 agentic nv ±0.000</text>
+<path d="M 743.1 928.2 L 365.0 564.0 A 715.0 715.0 0 0 1 394.4 535.2 L 751.0 920.5 A 190 190 0 0 0 743.1 928.2 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="407.5" y="578.0" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-44.4 407.5 578.0)">0.000</text>
+<text x="359.9" y="529.4" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="end" transform="rotate(45.6 359.9 529.4)">Muse Glimmer 30B</text>
+<path d="M 752.8 918.9 L 401.2 529.0 A 715.0 715.0 0 0 1 432.6 502.3 L 761.1 911.8 A 190 190 0 0 0 752.8 918.9 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="432.3" y="533.7" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-40.4 432.3 533.7)">0.000</text>
+<text x="406.3" y="503.2" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(49.6 406.3 503.2)">Fable5 agentic eng ±0.000</text>
+<path d="M 763.0 910.3 L 439.8 496.6 A 715.0 715.0 0 0 1 473.0 472.2 L 771.8 903.8 A 190 190 0 0 0 763.0 910.3 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="479.9" y="516.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-36.4 479.9 516.3)">0.000</text>
+<text x="439.6" y="461.6" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(53.6 439.6 461.6)">Opus4.8 agentic eng ±0.000</text>
+<path d="M 773.9 902.4 L 480.6 467.0 A 715.0 715.0 0 0 1 515.4 444.9 L 783.1 896.6 A 190 190 0 0 0 773.9 902.4 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="510.6" y="476.0" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-32.3 510.6 476.0)">0.000</text>
+<text x="489.3" y="442.2" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(57.7 489.3 442.2)">Opus5 agentic eng ±0.000</text>
+<path d="M 785.2 895.3 L 523.3 440.3 A 715.0 715.0 0 0 1 559.6 420.8 L 794.9 890.1 A 190 190 0 0 0 785.2 895.3 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
+<text x="560.3" y="465.5" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-28.3 560.3 465.5)">0.000</text>
+<text x="528.1" y="405.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(61.7 528.1 405.6)">Qwen3.8-27B NAIVE</text>
+<path d="M 797.1 889.1 L 567.8 416.7 A 715.0 715.0 0 0 1 605.4 399.8 L 807.0 884.6 A 190 190 0 0 0 797.1 889.1 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="596.4" y="429.9" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-24.2 596.4 429.9)">0.000</text>
+<text x="580.0" y="393.4" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="end" transform="rotate(65.8 580.0 393.4)">Agents-A1-35B</text>
+<path d="M 809.3 883.6 L 618.0 406.5 A 704.1 704.1 0 0 1 656.1 392.5 L 819.6 879.9 A 190 190 0 0 0 809.3 883.6 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="650.8" y="436.8" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-20.2 650.8 436.8)">0.021</text>
+<line x1="643.5" y1="417.0" x2="633.2" y2="389.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="635.0" y1="420.1" x2="651.9" y2="413.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="627.7" y="373.9" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(69.8 627.7 373.9)">Gemma4-E4B eng x3 ±0.036</text>
+<path d="M 821.9 879.1 L 664.9 390.4 A 703.3 703.3 0 0 1 703.9 379.1 L 832.4 876.1 A 190 190 0 0 0 821.9 879.1 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="699.3" y="436.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-16.2 699.3 436.3)">0.022</text>
+<line x1="691.6" y1="409.5" x2="681.1" y2="373.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="682.9" y1="412.0" x2="700.2" y2="407.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="676.6" y="357.9" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(73.8 676.6 357.9)">Qwen3.6-35B-A3B ±0.050</text>
+<path d="M 834.8 875.5 L 712.8 377.7 A 702.5 702.5 0 0 1 752.4 369.2 L 845.5 873.2 A 190 190 0 0 0 834.8 875.5 Z" fill="url(#hatch-gemma)" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="737.1" y1="394.3" x2="729.9" y2="360.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="728.3" y1="396.2" x2="745.9" y2="392.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="726.6" y="345.3" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(77.9 726.6 345.3)">Gemma4-E4B naive x3 · 0.024 ±0.041</text>
+<path d="M 847.9 872.7 L 761.4 368.1 A 702.0 702.0 0 0 1 801.4 362.4 L 858.7 871.2 A 190 190 0 0 0 847.9 872.7 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<text x="787.0" y="404.5" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-8.1 787.0 404.5)">0.025</text>
+<line x1="783.4" y1="379.6" x2="779.5" y2="352.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="774.5" y1="380.9" x2="792.3" y2="378.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="777.3" y="336.3" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="end" transform="rotate(81.9 777.3 336.3)">Ministral-3-8B NAIVE (v-only) ±0.028</text>
+<path d="M 861.2 870.9 L 811.0 367.9 A 695.6 695.6 0 0 1 851.0 365.0 L 872.1 870.2 A 190 190 0 0 0 861.2 870.9 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<text x="834.8" y="420.0" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-4.0 834.8 420.0)">0.037</text>
+<line x1="833.4" y1="399.8" x2="829.6" y2="346.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="824.4" y1="400.4" x2="842.4" y2="399.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="828.5" y="330.8" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(86.0 828.5 330.8)">Qwen3.5-9B NAIVE (v-only) ±0.064</text>
+<path d="M 874.5 870.1 L 861.6 423.0 A 637.2 637.2 0 0 1 898.4 423.0 L 885.5 870.1 A 190 190 0 0 0 874.5 870.1 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
+<text x="880.0" y="476.8" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(0.0 880.0 476.8)">0.148</text>
+<line x1="880.0" y1="456.5" x2="880.0" y2="389.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="871.0" y1="456.5" x2="889.0" y2="456.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="871.0" y1="389.1" x2="889.0" y2="389.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="880.0" y="373.1" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-90.0 880.0 373.1)">Qwen3.6-35B NAIVE ±0.064</text>
+<path d="M 887.9 870.2 L 905.6 444.7 A 615.8 615.8 0 0 1 941.1 447.2 L 898.8 870.9 A 190 190 0 0 0 887.9 870.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="918.0" y1="521.6" x2="928.7" y2="369.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="909.0" y1="520.9" x2="927.0" y2="522.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="919.8" y1="369.2" x2="937.7" y2="370.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="929.9" y="353.9" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-86.0 929.9 353.9)">Gemma4-26B-A4B MoE · 0.189 ±0.145</text>
+<path d="M 901.3 871.2 L 947.4 461.8 A 602.0 602.0 0 0 1 981.7 466.7 L 912.1 872.7 A 190 190 0 0 0 901.3 871.2 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<line x1="957.1" y1="516.4" x2="972.0" y2="411.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="948.2" y1="515.2" x2="966.1" y2="517.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="963.1" y1="410.3" x2="980.9" y2="412.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="974.3" y="395.7" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-81.9 974.3 395.7)">GLM-4.6V NAIVE (v-only) · 0.215 ±0.101</text>
+<path d="M 914.5 873.2 L 973.2 555.3 A 513.3 513.3 0 0 1 1002.2 561.5 L 925.2 875.5 A 190 190 0 0 0 914.5 873.2 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="982.7" y="581.6" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(12.1 982.7 581.6)">0.384</text>
+<line x1="986.9" y1="562.3" x2="988.6" y2="554.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="978.1" y1="560.4" x2="995.7" y2="564.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="979.8" y1="552.2" x2="997.4" y2="555.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="992.0" y="538.4" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-77.9 992.0 538.4)">GLM-4.6V-Flash ±0.008</text>
+<path d="M 927.6 876.1 L 997.7 605.0 A 470.0 470.0 0 0 1 1023.7 612.5 L 938.1 879.1 A 190 190 0 0 0 927.6 876.1 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="995.8" y="660.4" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(16.2 995.8 660.4)">0.467</text>
+<line x1="1002.3" y1="637.7" x2="1019.2" y2="579.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="993.7" y1="635.2" x2="1011.0" y2="640.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1010.6" y1="576.9" x2="1027.9" y2="582.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1023.7" y="564.1" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-73.8 1023.7 564.1)">Qwen3VL-8B (38) ±0.058</text>
+<path d="M 940.4 879.9 L 1026.6 622.9 A 461.0 461.0 0 0 1 1051.5 632.1 L 950.7 883.6 A 190 190 0 0 0 940.4 879.9 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="980.2" y1="787.5" x2="1098.0" y2="467.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="971.8" y1="784.3" x2="988.7" y2="790.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1089.6" y1="464.1" x2="1106.5" y2="470.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1103.6" y="452.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-69.8 1103.6 452.2)">Qwen3.5-9B · 0.484 ±0.325</text>
+<path d="M 953.0 884.6 L 1055.8 637.4 A 457.7 457.7 0 0 1 1079.8 648.2 L 962.9 889.1 A 190 190 0 0 0 953.0 884.6 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<line x1="1042.7" y1="698.6" x2="1093.1" y2="586.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1034.4" y1="694.9" x2="1050.9" y2="702.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1084.9" y1="582.9" x2="1101.3" y2="590.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1099.6" y="572.0" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-65.8 1099.6 572.0)">Ministral-3-8B · 0.490 ±0.117</text>
+<path d="M 965.1 890.1 L 1082.8 655.5 A 452.5 452.5 0 0 1 1105.7 667.8 L 974.8 895.3 A 190 190 0 0 0 965.1 890.1 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1083.0" y="682.6" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(28.3 1083.0 682.6)">0.500</text>
+<text x="1101.9" y="647.4" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-61.7 1101.9 647.4)">Nemotron-30B-A3B</text>
+<path d="M 976.9 896.6 L 1095.9 695.8 A 423.3 423.3 0 0 1 1116.5 708.9 L 986.1 902.4 A 190 190 0 0 0 976.9 896.6 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="1093.5" y="722.5" font-size="11.5" font-weight="bold" fill="#1c6b41" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(32.3 1093.5 722.5)">0.556</text>
+<text x="1114.8" y="688.7" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-57.7 1114.8 688.7)">Gemma4-12B CUDA</text>
+<path d="M 988.2 903.8 L 1120.6 712.5 A 422.6 422.6 0 0 1 1140.2 727.0 L 997.0 910.3 A 190 190 0 0 0 988.2 903.8 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="1106.8" y="751.8" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(36.3 1106.8 751.8)">0.557</text>
+<line x1="1118.2" y1="736.3" x2="1142.7" y2="703.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1111.0" y1="731.0" x2="1125.5" y2="741.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1135.5" y1="697.6" x2="1150.0" y2="708.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1152.2" y="690.1" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-53.7 1152.2 690.1)">Qwen3VL-32B ±0.039</text>
+<path d="M 998.9 911.8 L 1139.7 736.3 A 415.0 415.0 0 0 1 1157.9 751.8 L 1007.2 918.9 A 190 190 0 0 0 998.9 911.8 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="1113.9" y="785.0" font-size="11.5" font-weight="bold" fill="#1c6b41" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(40.4 1113.9 785.0)">0.571</text>
+<text x="1159.3" y="731.7" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-49.6 1159.3 731.7)">Gemma4-12B Metal</text>
+<path d="M 1009.0 920.5 L 1147.7 770.7 A 394.2 394.2 0 0 1 1163.9 786.6 L 1016.9 928.2 A 190 190 0 0 0 1009.0 920.5 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="1120.6" y1="814.6" x2="1191.3" y2="742.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1114.1" y1="808.3" x2="1127.0" y2="820.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1184.9" y1="736.1" x2="1197.7" y2="748.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1202.5" y="731.0" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-45.6 1202.5 731.0)">Qwen3.5-4B · 0.611 ±0.096</text>
+<path d="M 1018.5 930.0 L 1157.7 799.4 A 380.8 380.8 0 0 1 1172.2 815.8 L 1025.8 938.2 A 190 190 0 0 0 1018.5 930.0 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="1118.1" y1="849.1" x2="1212.0" y2="765.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1112.1" y1="842.4" x2="1124.0" y2="855.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1206.1" y1="759.2" x2="1218.0" y2="772.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1224.0" y="755.3" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-41.5 1224.0 755.3)">Gemma4-12BQAT CUDA · 0.637 ±0.120</text>
+<path d="M 1027.4 940.1 L 1163.1 829.6 A 365.0 365.0 0 0 1 1175.9 846.3 L 1034.0 948.7 A 190 190 0 0 0 1027.4 940.1 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1182.3" y="828.1" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-37.5 1182.3 828.1)">InternVL3.5-30B(35) · 0.667</text>
+<path d="M 1035.4 950.7 L 1107.0 900.4 A 277.5 277.5 0 0 1 1115.8 913.8 L 1041.5 959.9 A 190 190 0 0 0 1035.4 950.7 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1124.9" y="898.2" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-33.5 1124.9 898.2)">MiniCPM-V4.6 (36) · 0.833</text>
+<path d="M 1042.7 961.9 L 1090.9 932.9 A 246.3 246.3 0 0 1 1097.9 945.3 L 1048.1 971.5 A 190 190 0 0 0 1042.7 961.9 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="1066.8" y1="954.7" x2="1122.2" y2="923.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1062.4" y1="946.8" x2="1071.2" y2="962.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1117.8" y1="915.6" x2="1126.6" y2="931.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1136.1" y="915.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-29.4 1136.1 915.6)">Qwen3VL-30B-A3B · 0.893 ±0.061</text>
+<path d="M 1049.2 973.7 L 1061.7 967.3 A 204.0 204.0 0 0 1 1066.8 977.9 L 1053.9 983.6 A 190 190 0 0 0 1049.2 973.7 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1078.8" y="965.7" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-25.4 1078.8 965.7)">Qianfan-OCR (32) · 1.000 (at axis origin)</text>
+<path d="M 1054.9 985.8 L 1066.0 981.1 A 202.0 202.0 0 0 1 1070.2 992.0 L 1058.9 996.0 A 190 190 0 0 0 1054.9 985.8 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
+<text x="1083.1" y="980.7" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-21.3 1083.1 980.7)">EXAONE-4.5-33B — no protocol drive</text>
+<path d="M 1059.7 998.3 L 1071.0 994.4 A 202.0 202.0 0 0 1 1074.5 1005.5 L 1063.0 1008.8 A 190 190 0 0 0 1059.7 998.3 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
+<text x="1088.1" y="995.2" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-17.3 1088.1 995.2)">Fara1.5-9B — no protocol drive</text>
+<circle cx="880" cy="1060" r="118" fill="#dcebfa" stroke="#4a86c2" stroke-width="3"/>
+<text x="880" y="1034" font-size="19" font-weight="bold" fill="#153c60" text-anchor="middle">Claude Code</text>
+<text x="880" y="1058" font-size="13" fill="#2c567e" text-anchor="middle">fleet orchestration</text>
+<text x="880" y="1080" font-size="12" fill="#2c567e" text-anchor="middle">verify · queue · gate ·</text>
+<text x="880" y="1098" font-size="12" fill="#2c567e" text-anchor="middle">watchdog · score</text>
+<line x1="880" y1="1178" x2="880" y2="1190" stroke="#c2711d" stroke-width="4"/>
+<rect x="490" y="1190" width="780" height="94" rx="14" fill="#fff3df" stroke="#e3a75c" stroke-width="2.5"/>
+<text x="880" y="1222" font-size="17.5" font-weight="bold" fill="#8a4a05" text-anchor="middle">The hand that holds the fan — human direction &amp; ground truth</text>
+<text x="880" y="1248" font-size="15" fill="#5c4326" text-anchor="middle">Huilong Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan S. Hong (MS Student) — UW MSE</text>
+<text x="880" y="1270" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
+<rect x="40" y="112" width="20" height="13" rx="2" fill="#d9a028" stroke="#9a7217" stroke-width="1.2"/>
+<text x="68" y="123" font-size="12.5" fill="#233340">Claude API arms (agentic + v1 era)</text>
+<rect x="40" y="138" width="20" height="13" rx="2" fill="#2f78b8" stroke="#1a5182" stroke-width="1.2"/>
+<text x="68" y="149" font-size="12.5" fill="#233340">Qwen family (local)</text>
+<rect x="40" y="164" width="20" height="13" rx="2" fill="#2f9e63" stroke="#1c6b41" stroke-width="1.2"/>
+<text x="68" y="175" font-size="12.5" fill="#233340">Gemma family (local)</text>
+<rect x="40" y="190" width="20" height="13" rx="2" fill="#96522e" stroke="#6b3a20" stroke-width="1.2"/>
+<text x="68" y="201" font-size="12.5" fill="#233340">other local models</text>
+<rect x="330" y="112" width="20" height="13" rx="2" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.2"/>
+<text x="358" y="123" font-size="12.5" fill="#233340">hatched = NAIVE-prompt arm</text>
+<rect x="330" y="138" width="20" height="13" rx="2" fill="#d7dce1" stroke="#8a939c" stroke-width="1.2"/>
+<text x="358" y="149" font-size="12.5" fill="#233340" font-style="italic">gray stub = negative result</text>
+<line x1="332" y1="170" x2="350" y2="170" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="332" y1="165" x2="332" y2="175" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="350" y1="165" x2="350" y2="175" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="358" y="175" font-size="12.5" fill="#233340">±1 between-sweep SD (multi-sweep arms)</text>
+<rect x="330" y="190" width="20" height="13" rx="2" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.2" stroke-dasharray="3 2"/>
+<text x="358" y="201" font-size="12.5" fill="#233340">dashed outline = villain-only arm (v-only)</text>
+<text x="1720" y="118" font-size="12.5" fill="#77828c" text-anchor="end">longer blade → lower false-fill rate (linear scale, 1 → 0; ties broken by row F1)</text>
+<text x="1720" y="136" font-size="12.5" fill="#77828c" text-anchor="end">blades sorted best → worst, left → right</text>
+<text x="40" y="1310" font-size="12.5" fill="#77828c">villain metrics = six-paper subsets of complete full sweeps pooled with dedicated villain-only sweeps (same paper mix); never pooled into the full-13 leaderboard · (v-only) arms exist only as villain sweeps (no full-13 counterpart)</text>
+<text x="40" y="1330" font-size="12.5" fill="#77828c">false-fill rate on the six rogue papers · whiskers = ±1 between-sweep SD (multi-sweep arms) · other uncapped whisker ends = ±SD reaches past the axis edge, clamped · Qianfan-OCR (32) sits at the axis origin (false-fill rate 1.000): zero-length blade drawn as a stub</text>
+<text x="40" y="1350" font-size="12.5" fill="#77828c">gray stubs = negative results, not scored (EXAONE-4.5-33B &amp; Fara1.5-9B: no protocol drive)</text>
+</svg>
