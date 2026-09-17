@@ -711,9 +711,6 @@ results/     *.xlsx             scored metrics: summary + per_column sheets only
                                 (stamped with the GT filename and md5 they were scored against)
              aggregates_v2.json  metrics-only campaign aggregates (per-sweep means, mean±SD)
                                 that every v2 table and figure is generated from
-paper_drafts/ PEEK-Bench-draft-v3.md          current machine-assisted draft (NOT peer reviewed)
-             PEEK-Bench-draft-v2.md/.docx    archived earlier drafts
-             README.md          how it was produced and what it deliberately omits
 docs/        prompt.md          the VERBATIM prompt, regenerable and diffable
              failure-modes.md   six catalogued failure modes with the data behind each
              capacity-curve.md  gemma-3 4B/12B/27B at fixed image tokens + MAPE instability
@@ -738,8 +735,8 @@ Updated for v2.3 (2026-08-29):
    as **v2.4**.
 2. **Frozen test-split run** for the top tier (Qwen3.8-27B, Qwen3.6-35B, Qwen3-VL-32B,
    Gemma4-31B, Qwen3-VL-30B-A3B) — now with the roster the dev split actually selected.
-3. **Consolidated scoring workbooks + paper draft** — metrics-only, per the privacy rule
-   (ground truth and source PDFs are never published).
+3. **Consolidated scoring workbooks** — metrics-only, per the privacy rule (ground truth and
+   source PDFs are never published). The paper draft is maintained privately until submission.
 4. **Hardware**: evaluation closed — the chosen upgrade path is a used RTX 3090 24 GB
    (~$700-750) if test-split scale demands it; AMD RDNA3 was assessed viable-with-guardrails
    (llama.cpp only), Intel B65/B70 and DGX Spark evaluated and passed over (campaign notes).
