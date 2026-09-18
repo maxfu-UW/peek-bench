@@ -1,12 +1,4 @@
-# PEEK-Bench v2
-
-**Version 2.4b** · the completed Dev-13 campaign — 35+ arms, repeat-sweep error bars on 20 of 32
-leaderboard arms, a complete three-model frontier-API matrix, per-metric villain fans, negative
-results, and autonomous orchestration. The paper draft carries the same version number. Versioning: minor releases (v2.1, v2.2, …) will
-track result refreshes and added arms; major releases (v3, v4, …) are reserved for changes to the
-task, corpus, or scoring. *v1* was the original four-model comparison (kept below as
-"generation A/B" sections for provenance).
-
+# PEEK-Bench v2.4b
 
 A benchmark for LLM extraction of process–property data from **figure-heavy** additive-manufacturing
 papers. The task: given a PDF of an FFF/FDM carbon-fibre/PEEK study, emit one row per
@@ -15,6 +7,38 @@ printed-and-tested condition with **nine process parameters** and the **ultimate
 The interesting part is not the text. It is that **a large share of the target values exist only
 inside raster figures** — bar labels, swept curves, axis ticks — so the benchmark measures whether a
 model can *read a chart*, not whether it can summarise prose.
+
+---
+
+## Why this benchmark exists
+
+This benchmark's authors have built a dataset like this by hand before: a manually curated
+process–property dataset of **pure (unreinforced) PEEK** studies, assembled for a machine-learning
+meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating it — reading each
+paper, locating every printed-and-tested condition, transcribing values that often exist only inside
+figures — took **months of expert time**. PEEK-Bench applies the same curation discipline to a new
+**carbon-fibre PEEK** corpus and asks, with a scored instrument, whether an LLM can absorb that
+labour. The two datasets are distinct: the 2026 paper's pure-PEEK data is *not* the ground truth
+used here.
+
+> Fu, H., & Zobeiry, N. (2026). Data-driven machine learning meta-analysis of process–property
+> relationships in polymer additive manufacturing. *Journal of Manufacturing Processes, 163*,
+> 100–113. https://doi.org/10.1016/j.jmapro.2026.02.044
+>
+> 
+
+![Workflow of the pure-PEEK meta-analysis: hand-curated data collection and visualization, neural-network training and ranking, and Sobol sensitivity analysis](docs/figures/fu2026_workflow_hires.png)
+
+*The workflow behind that predecessor study (figure from Fu & Zobeiry, 2026). Its left column —
+collecting studies and hand-curating the raw data — is the months-of-expert-time stage PEEK-Bench
+measures the automation of; every downstream stage is only as good as that input.*
+
+**Status (2026-09-17): the Dev-13 campaign is COMPLETE — 4,070 scored runs across 35+ arms,
+three-model frontier matrix and villain-repeat chain both finished. The frozen 10-paper test split
+has not been started.**
+
+---
+
 
 ## How the campaign is run
 
@@ -265,33 +289,6 @@ What the five fans say together:
 legacy arms now carries between-sweep error bars. Regenerate after any new run with
 `PEEKBENCH_CAMPAIGN=<campaign dir> python3 runners/make_aggregates.py && python3
 runners/figures/gen_villain_fans.py`.*
-
-## Why this benchmark exists
-
-This benchmark's authors have built a dataset like this by hand before: a manually curated
-process–property dataset of **pure (unreinforced) PEEK** studies, assembled for a machine-learning
-meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating it — reading each
-paper, locating every printed-and-tested condition, transcribing values that often exist only inside
-figures — took **months of expert time**. PEEK-Bench applies the same curation discipline to a new
-**carbon-fibre PEEK** corpus and asks, with a scored instrument, whether an LLM can absorb that
-labour. The two datasets are distinct: the 2026 paper's pure-PEEK data is *not* the ground truth
-used here.
-
-> Fu, H., & Zobeiry, N. (2026). Data-driven machine learning meta-analysis of process–property
-> relationships in polymer additive manufacturing. *Journal of Manufacturing Processes, 163*,
-> 100–113. https://doi.org/10.1016/j.jmapro.2026.02.044
->
-> 
-
-![Workflow of the pure-PEEK meta-analysis: hand-curated data collection and visualization, neural-network training and ranking, and Sobol sensitivity analysis](docs/figures/fu2026_workflow_hires.png)
-
-*The workflow behind that predecessor study (figure from Fu & Zobeiry, 2026). Its left column —
-collecting studies and hand-curating the raw data — is the months-of-expert-time stage PEEK-Bench
-measures the automation of; every downstream stage is only as good as that input.*
-
-**Status (2026-09-17): the Dev-13 campaign is COMPLETE — 4,070 scored runs across 35+ arms,
-three-model frontier matrix and villain-repeat chain both finished. The frozen 10-paper test split
-has not been started.**
 
 ---
 
