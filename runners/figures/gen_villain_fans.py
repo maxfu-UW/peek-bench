@@ -29,8 +29,8 @@ REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 DATA = os.path.join(REPO, "results", "aggregates_v2.json")
 OUT_DIR = os.path.join(REPO, "docs", "figures")
 
-UPDATED = "2026-09-08"
-VERSION = "PEEK-Bench v2.3"
+UPDATED = "2026-09-17"
+VERSION = "PEEK-Bench v2.4b"
 PAPERS = "CF-P11 · P13 · P14 · P18 · P19 · P24"
 
 # ----------------------------------------------------------------------------

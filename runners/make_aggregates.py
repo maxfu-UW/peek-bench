@@ -127,6 +127,7 @@ V_EXTRA = {
 V_ONLY = {
  "Ministral-3-8B NAIVE (v-only)": [("results_nvill_mini38bnv_r1", r"(CF-P\d+)__mini38bnv1-r(\d)\.json", 18), ("results_nvill_mini38bnv_r2", r"(CF-P\d+)__mini38bnv2-r(\d)\.json", 18), ("results_nvill_mini38bnv_r3", r"(CF-P\d+)__mini38bnv3-r(\d)\.json", 18)],
  "GLM-4.6V NAIVE (v-only)":       [("results_nvill_glm46vnv_r1", r"(CF-P\d+)__glm46vnv1-r(\d)\.json", 18), ("results_nvill_glm46vnv_r2", r"(CF-P\d+)__glm46vnv2-r(\d)\.json", 18), ("results_nvill_glm46vnv_r3", r"(CF-P\d+)__glm46vnv3-r(\d)\.json", 18)],
+ "Gemma3-27B (v-sweeps)":         [("results_vill_g327b_run2", r"(CF-P\d+)__g327bv2-r(\d)\.json", 18), ("results_vill_g327b_run3", r"(CF-P\d+)__g327bv3-r(\d)\.json", 18)],
  "Qwen3.5-9B NAIVE (v-only)":     [("results_nvill_qwen35nv_r1", r"(CF-P\d+)__qwen35nv1-r(\d)\.json", 18), ("results_nvill_qwen35nv_r2", r"(CF-P\d+)__qwen35nv2-r(\d)\.json", 18), ("results_nvill_qwen35nv_r3", r"(CF-P\d+)__qwen35nv3-r(\d)\.json", 18)],
 }
 # eng-vs-naive pairs (group names)

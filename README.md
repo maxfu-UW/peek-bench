@@ -1,7 +1,8 @@
 # PEEK-Bench v2
 
-**Version 2.3** · benchmark of the multi-fleet campaign era — 35+ arms, repeat-sweep error bars,
-a complete three-model frontier-API matrix, negative results, and autonomous orchestration. Versioning: minor releases (v2.1, v2.2, …) will
+**Version 2.4b** · the completed Dev-13 campaign — 35+ arms, repeat-sweep error bars on 20 of 32
+leaderboard arms, a complete three-model frontier-API matrix, per-metric villain fans, negative
+results, and autonomous orchestration. The paper draft carries the same version number. Versioning: minor releases (v2.1, v2.2, …) will
 track result refreshes and added arms; major releases (v3, v4, …) are reserved for changes to the
 task, corpus, or scoring. *v1* was the original four-model comparison (kept below as
 "generation A/B" sections for provenance).
@@ -37,11 +38,11 @@ fan — every blade one arm, blade length = numeric fidelity (inverse UTS-MAPE),
 whiskers on repeated arms, gold blades the Claude API arms, and the two models that could not
 drive the extraction protocol kept visible as stubs rather than deleted.*
 
-## Results to date — full campaign leaderboard (updated 2026-08-29)
+## Results to date — full campaign leaderboard (final, 2026-09-17)
 
 The campaign has grown far beyond the original four-model comparison: **35+ sweep arms** across
-two machines and a frontier-API tier, **~3,900 scored runs / ~330 local machine-hours**, repeat
-sweeps giving twenty arms between-sweep error bars (±SD), a quant ablation, a Metal-vs-CUDA
+two machines and a frontier-API tier, **4,070 scored runs / 377 local machine-hours**, repeat
+sweeps giving twenty of the thirty-two arms between-sweep error bars (±SD), a quant ablation, a Metal-vs-CUDA
 backend replication of the small-model roster, and four fully documented negative results.
 13 dev papers × 3 repeats per sweep (Claude agentic arms: 13 runs per sweep), scored against the
 private ground truth. Engineered prompt unless the arm says **NAIVE**; the six **agentic** arms
@@ -94,7 +95,7 @@ reorder axes by dragging; hosted via GitHub Pages):
 
 [![Interactive parallel-coordinates leaderboard preview](docs/figures/parcoords_preview.png)](https://maxfu-uw.github.io/peek-bench/interactive/leaderboard.html)
 
-**Headline (v2.3): a 3-day-old free local model caught the frontier API.** Qwen3.8-27B
+**Headline (v2.4b): a 3-day-old free local model caught the frontier API.** Qwen3.8-27B
 (released 2026-08-14, Apache-2.0, 19 GB Q4 on a Mac Mini) scored **F1 0.961±0.006 / recall
 1.000±0.000 / MAPE 0.53±0.06** across three full sweeps — beating every Claude arm on
 row-finding while sitting within noise of them on numeric fidelity. The v1 finding ("the
@@ -200,12 +201,12 @@ of 1.37% (Qwen3.8-27B), 1.35% (Gemma4-31B), 2.53% (Qwen3.6-35B), 3.97% (Ministra
 effect on the tables above: MAPE columns average over 12 papers, F1 over all 13. Documented
 rather than repaired, consistent with the audit's treatment of ground-truth alignment limits.
 
-### The villain fans — every arm on the six rogue papers, one fan per metric (added 2026-09-08)
+### The villain fans — every arm on the six rogue papers, one fan per metric (final, 2026-09-17)
 
 The rogues' gallery is where the benchmark discriminates, so here is the whole roster scored
-on **only those six papers** — 35 arms (every leaderboard arm's six-paper subset, pooled with
-its dedicated villain-only sweeps where they exist, plus three naive arms that were run *only*
-on the villains). Same fan language as the campaign figure: longer blade = better, whiskers =
+on **only those six papers** — 36 arms (every leaderboard arm's six-paper subset, pooled with
+its dedicated villain-only sweeps where they exist, plus four arms that were run *only* on the
+villains). 27 of the 36 carry between-sweep error bars. Same fan language as the campaign figure: longer blade = better, whiskers =
 ±SD across six-paper samples, gold = Claude API, hatched = naive prompt, dashed outline =
 villain-only arm. Villain numbers are never pooled into the full-13 leaderboard above.
 
@@ -223,27 +224,30 @@ Villain-only top of the board (row F1; ± = SD across six-paper samples, n = sam
 
 | arm | villain F1 | recall | UTS MAPE % | false-fill | n |
 |---|---|---|---|---|---|
-| **Qwen3.8-27B** | **0.912±0.010** | 1.000±0.000 | 1.36±0.18 | 0.000±0.000 | 3 |
+| **Qwen3.8-27B** | **0.911±0.008** | 1.000±0.000 | 1.33±0.14 | 0.000±0.000 | 5 |
 | Claude Opus 5 API (v1 era) | 0.905 | 1.000 | 1.17 | 0.000 | 1 |
 | Qwen3VL-30B-A3B | 0.884±0.044 | 0.892±0.058 | 8.03±1.36 | 0.893±0.061 | 5 |
+| Gemma4-31B dense | 0.878±0.019 | 0.984±0.004 | 4.51±0.25 | 0.000±0.000 | 3 |
 | Qwen3.6-35B Q8_0 | 0.874 | 1.000 | 1.85 | 0.000 | 1 |
 | Qwen3VL-32B | 0.869±0.010 | 0.909±0.024 | 7.06±0.73 | 0.557±0.039 | 5 |
-| Gemma4-31B dense | 0.861 | 0.987 | 4.25 | 0.000 | 1 |
 | Gemma4-26B-A4B MoE | 0.842±0.013 | 0.978±0.023 | 5.63±0.63 | 0.189±0.145 | 5 |
 | Qwen3.6-35B-A3B | 0.838±0.022 | 0.951±0.038 | 1.82±0.44 | 0.022±0.050 | 5 |
 | **Claude Opus 5 agentic (naive)** | 0.814±0.009 | 0.949±0.044 | 1.11±0.19 | 0.000±0.000 | 3 |
 | Ministral-3-8B NAIVE (villain-only) | 0.808±0.009 | 0.825±0.017 | 13.31±1.87 | 0.025±0.028 | 3 |
 | Claude Fable 5 agentic (naive) | 0.801±0.001 | 1.000±0.000 | 0.95±0.02 | 0.000±0.000 | 3 |
+| Muse Glimmer 30B | 0.788±0.018 | 0.873±0.043 | 4.74±0.42 | 0.000±0.000 | 3 |
 | Claude Opus 4.8 agentic (naive) | 0.785±0.010 | 0.915±0.089 | 2.72±3.00 | 0.000±0.000 | 3 |
 | Claude Fable 5 agentic (eng) | 0.750±0.003 | 1.000±0.000 | 1.17±0.25 | 0.000±0.000 | 3 |
 | Claude Opus 4.8 agentic (eng) | 0.746±0.007 | 1.000±0.000 | **0.79±0.15** | 0.000±0.000 | 3 |
 | Claude Opus 5 agentic (eng) | 0.746±0.018 | 0.975±0.044 | 0.94±0.14 | 0.000±0.000 | 3 |
+| Qwen3.8-27B NAIVE | 0.730±0.012 | 0.875±0.000 | 1.79±0.58 | 0.000±0.000 | 3 |
 
 What the five fans say together:
 
 - **The F1 fan re-ranks the board.** Qwen3.8-27B keeps the crown on the hard papers too
-  (0.912±0.010, perfect recall, zero false-fill), ahead of every Claude arm including the
-  v1-era Opus 5 (0.905). The strongest frontier villain arm is Opus 5 naive at 0.814±0.009.
+  (0.911±0.008 across five six-paper samples, perfect recall, zero false-fill), ahead of every
+  Claude arm including the v1-era Opus 5 (0.905). The strongest frontier villain arm is Opus 5
+  naive at 0.814±0.009.
 - **The equalizer replicates on the villains.** The three frontier *engineered* arms are pinned
   at 0.746 / 0.750 / 0.746, exactly as they are on the full corpus (0.883 / 0.885 / 0.883),
   while the naive arms spread out (0.785 / 0.801 / 0.814). Same phenomenon, harder papers.
@@ -253,14 +257,14 @@ What the five fans say together:
   where they drop to the far end while the frontier arms and Qwen3.8 sit at a perfect 0.000.
 - **The MAPE fan is the frontier's.** Opus 4.8 eng (0.79±0.15), Opus 5 eng (0.94±0.14) and
   Fable 5 naive (0.95±0.02) lead numeric fidelity on the hard papers; the best local villain
-  MAPE is Qwen3.8-27B at 1.36±0.18. MiniCPM's 38.9% is clamped off-scale.
-- **Recall is nearly saturated at the top** (1.000 for Qwen3.8, Gemma4-31B 0.987, the frontier
+  MAPE is Qwen3.8-27B at 1.33±0.14. MiniCPM's 38.9% is clamped off-scale.
+- **Recall is nearly saturated at the top** (1.000 for Qwen3.8, Gemma4-31B 0.984±0.004, the frontier
   eng arms 0.975–1.000); the discriminating spread is all in the lower half of that fan.
 
-*Data caveat: Gemma4-31B, Qwen3.8 (eng and naive), and Muse are single-sample on the villains
-until the running villain-repeat chain lands their dedicated sweeps; the fans will be
-regenerated at v2.4 (`python3 runners/make_aggregates.py && python3
-runners/figures/gen_villain_fans.py`).*
+*The villain-repeat chain completed on 2026-09-17; every arm above except the four single-sweep
+legacy arms now carries between-sweep error bars. Regenerate after any new run with
+`PEEKBENCH_CAMPAIGN=<campaign dir> python3 runners/make_aggregates.py && python3
+runners/figures/gen_villain_fans.py`.*
 
 ## Why this benchmark exists
 
@@ -285,9 +289,9 @@ used here.
 collecting studies and hand-curating the raw data — is the months-of-expert-time stage PEEK-Bench
 measures the automation of; every downstream stage is only as good as that input.*
 
-**Status (2026-08-29): the Dev-13 campaign is near close-out — ~3,900 scored runs across 35+
-arms, three-model frontier matrix complete, villain-repeat chain finishing its last menus. The frozen
-10-paper test split has not been started.**
+**Status (2026-09-17): the Dev-13 campaign is COMPLETE — 4,070 scored runs across 35+ arms,
+three-model frontier matrix and villain-repeat chain both finished. The frozen 10-paper test split
+has not been started.**
 
 ---
 
@@ -410,7 +414,7 @@ disambiguations, the eight rules, and the five traps actually observed in this c
 
 ## Prompt-engineering ablation — naive baseline
 
-### Engineered vs naive — repeat-sweep comparison (updated 2026-08-29)
+### Engineered vs naive — repeat-sweep comparison (final, 2026-09-17)
 
 Six paired comparisons with repeat sweeps, same model and serving config inside each pair,
 only the prompt differs. Ordered by model capability — and the ordering is the story: **the
@@ -476,10 +480,9 @@ models); the win is the middle of the range.
 
 #### The same comparison, villains only (CF-P11/13/14/18/19/24) — now with error bars
 
-The villain-repeat campaign has landed: dedicated villain-only sweeps on both machines plus
+The villain-repeat campaign is complete: dedicated villain-only sweeps on both machines plus
 villain subsets of complete full sweeps (same six-paper mix, so poolable) give **nine paired
-comparisons, eight of them with between-sweep SD on both sides** (the qwen3.8-27B naive-villain
-side is a single sweep; its repeats are queued). For the mid-range local models the engineered-prompt F1
+comparisons, all nine with between-sweep SD on both sides**. For the mid-range local models the engineered-prompt F1
 advantage roughly **doubles on the rogues** (+0.13 to +0.35, vs +0.07 to +0.18 corpus-wide) —
 the scaffolding earns its keep almost entirely on the papers that are actually hard. But the
 edges of the capability range now tell the opposite story:
@@ -490,7 +493,7 @@ edges of the capability range now tell the opposite story:
 |---|---|---|---|---|---|---|---|
 | gemma4-E4B (3/3) | 0.675±0.085 | 0.327±0.022 | **+0.348** | 13.93±5.69 | 11.25±3.38 | 0.021±0.036 | 0.024±0.041 |
 | GLM-4.6V-Flash (3/3) | 0.662±0.113 | 0.397±0.011 | **+0.265** | 8.63±1.16 | 10.30±2.47 | 0.384±0.008 | 0.215±0.101 |
-| qwen3.8-27B (3/1) | 0.912±0.010 | 0.715 | **+0.196** | 1.36±0.18 | 2.44 | 0.000±0.000 | 0.000 |
+| qwen3.8-27B (5/3) | 0.911±0.008 | 0.730±0.012 | **+0.181** | 1.33±0.14 | 1.79±0.58 | 0.000±0.000 | 0.000±0.000 |
 | qwen3.6-35B (5/3) | 0.838±0.022 | 0.683±0.025 | **+0.155** | 1.82±0.44 | 6.86±2.81 | 0.022±0.050 | 0.148±0.064 |
 | qwen3.5-9B (5/3) | 0.680±0.073 | 0.554±0.059 | **+0.125** | 2.25±0.62 | 7.57±1.91 | 0.484±0.325 | 0.037±0.064 |
 | Claude Opus 4.8 agentic (3/3) | 0.746±0.007 | 0.785±0.010 | **-0.039** | 0.79±0.15 | 2.72±3.00 | 0.000±0.000 | 0.000±0.000 |
@@ -509,9 +512,17 @@ engineered arm hemorrhages precision on the rogues (false-fill 0.490±0.117 vs t
 fabrication trade the corpus-wide table shows in miniature is decisive on villains for a model
 this small. Villain-only MAPE for CF-P14 is structurally undefined (schema degeneracy, per the
 per-paper autopsy above); villain sweeps are never pooled into the full-13 leaderboard
-(different paper mix). The villain repeats also armor the eng-only arms' villain numbers:
-Gemma4-26B MoE 0.842±0.013 (n=5), Qwen3VL-30B-A3B 0.884±0.044 (n=5), Qwen3VL-32B 0.866±0.009
-(n=4 six-paper samples).
+(different paper mix). The completed repeats also armor the eng-only arms' villain numbers:
+Gemma4-26B MoE 0.842±0.013 (n=5), Qwen3VL-30B-A3B 0.884±0.044 (n=5), Qwen3VL-32B 0.869±0.010
+(n=5), Gemma4-31B 0.878±0.019 (n=3), Muse Glimmer 0.788±0.018 (n=3), and add Gemma3-27B at
+0.589±0.053 (villain sweeps only).
+
+**The sharpest contrast in the campaign** sits in two adjacent rows of that table: Qwen3.8-27B,
+the local champion, gains **+0.181** F1 from the engineered prompt on the villains (0.911±0.008
+vs 0.730±0.012) — while the three frontier models all *lose* F1 to the same scaffolding on the
+same six papers. One further detail from the run logs: every one of the engineered Qwen3.8
+villain sweeps lost a CF-P13 attempt to the 35-minute ceiling, whereas both naive sweeps closed
+18/18 — the context-burn cost of the scaffolding, measured directly.
 
 #### Worst-case showcase — per-paper F1, naive → engineered
 
@@ -695,8 +706,8 @@ python runners/progress.py                         # live progress + metrics
 `parcoords_preview.png`, `eng_vs_naive_villains_sd.png`, `villain_fan_{f1,recall,cell,mape,ff}.svg`;
 `docs/interactive/leaderboard.html` — served via GitHub Pages; `runners/make_aggregates.py`
 recomputes every table/figure number from the raw runs into the metrics-only
-`results/aggregates_v2.json`, and `runners/figures/gen_villain_fans.py` draws the villain fans
-from it.)*
+`results/aggregates_v2.json`, and `runners/figures/gen_villain_fans.py` and
+`runners/figures/gen_villain_delta.py` draw the villain figures from it.)*
 
 ```
 harness/     extract10.py       agentic extractor (view_page / note / submit)
@@ -728,11 +739,11 @@ MD5 into every workbook, so a result can always be traced to the GT it was score
 
 ## Next steps
 
-Updated for v2.3 (2026-08-29):
+Updated for v2.4b (2026-09-17):
 
-1. **Finish the villain-repeat chain** (Muse, Gemma4-31B, Qwen3.8 eng+naive pairs, Gemma3-27B)
-   and fold the final villain error bars into the ablation tables — closes the Dev-13 campaign
-   as **v2.4**.
+1. **Dev-13 is closed** (v2.4b): the villain-repeat chain finished 2026-09-17, every villain
+   eng-vs-naive pair carries between-sweep SD on both sides, and all tables and figures are
+   regenerated from `results/aggregates_v2.json`.
 2. **Frozen test-split run** for the top tier (Qwen3.8-27B, Qwen3.6-35B, Qwen3-VL-32B,
    Gemma4-31B, Qwen3-VL-30B-A3B) — now with the roster the dev split actually selected.
 3. **Consolidated scoring workbooks** — metrics-only, per the privacy rule (ground truth and
@@ -744,9 +755,9 @@ Updated for v2.3 (2026-08-29):
 
 ## Campaign accounting (v2)
 
-Measured from run artefacts on disk, 2026-08-29: **~3,900 scored runs · ~330 local
+Measured from run artefacts on disk, 2026-09-17: **4,070 scored runs · 377 local
 machine-hours** across the Mac Mini M4 Pro (Metal) and the RTX A2000 box (CUDA), tracked live
-by the campaign's master progress bar, plus **234 Claude-API agentic runs** (token-metered, no
+by the campaign's master progress bar, plus **240 Claude-API agentic runs** (token-metered, no
 comparable wall-clock). Cost per marginal model has fallen steadily as orchestration matured —
 a new model now costs one verification workflow, one download, and one queued sweep (~2–13 h of
 unattended machine time depending on size class). The full v1 cost breakdown (24.8 h for the

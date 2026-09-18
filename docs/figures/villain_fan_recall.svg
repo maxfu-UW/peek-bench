@@ -1,186 +1,196 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 1368" font-family="Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 1388" font-family="Helvetica, Arial, sans-serif">
 <defs>
 <pattern id="hatch-gold" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f0d089"/><rect width="3.4" height="8" fill="#d9a028" fill-opacity="0.75"/></pattern>
 <pattern id="hatch-qwen" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#aecde9"/><rect width="3.4" height="8" fill="#2f78b8" fill-opacity="0.75"/></pattern>
 <pattern id="hatch-gemma" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#abd9c0"/><rect width="3.4" height="8" fill="#2f9e63" fill-opacity="0.75"/></pattern>
 <pattern id="hatch-rust" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#d5baab"/><rect width="3.4" height="8" fill="#96522e" fill-opacity="0.75"/></pattern>
 </defs>
-<rect width="1760" height="1368" fill="#ffffff"/>
+<rect width="1760" height="1388" fill="#ffffff"/>
 <rect x="0" y="0" width="1760" height="78" fill="#0f2a43"/>
-<text x="40" y="36" font-size="28" font-weight="bold" fill="#ffffff">PEEK-Bench v2.3 — The Villain Fan: row recall (six rogue papers)</text>
-<text x="40" y="62" font-size="15.5" fill="#bcd5ea">CF-P11 · P13 · P14 · P18 · P19 · P24 — the papers that carry the benchmark's discrimination · 35 arms · updated 2026-09-08</text>
-<path d="M 694.2 1020.5 A 190.0 190.0 0 0 1 1065.8 1020.5" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1070.8" y="1024.5" font-size="12.5" fill="#9aa7b4">recall 0.00</text>
-<path d="M 565.8 993.2 A 321.2 321.2 0 0 1 1194.2 993.2" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1199.2" y="997.2" font-size="12.5" fill="#9aa7b4">0.25</text>
-<path d="M 437.4 965.9 A 452.5 452.5 0 0 1 1322.6 965.9" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1327.6" y="969.9" font-size="12.5" fill="#9aa7b4">0.50</text>
-<path d="M 309.0 938.6 A 583.8 583.8 0 0 1 1451.0 938.6" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1456.0" y="942.6" font-size="12.5" fill="#9aa7b4">0.75</text>
-<path d="M 232.0 922.3 A 662.5 662.5 0 0 1 1528.0 922.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1533.0" y="926.3" font-size="12.5" fill="#9aa7b4">0.90</text>
-<path d="M 180.6 911.3 A 715.0 715.0 0 0 1 1579.4 911.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
-<text x="1584.4" y="915.3" font-size="12.5" fill="#9aa7b4">1.00</text>
-<path d="M 697.0 1008.8 L 191.5 867.1 A 715.0 715.0 0 0 1 203.8 827.8 L 700.3 998.3 A 190 190 0 0 0 697.0 1008.8 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<text x="220.3" y="854.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-72.7 220.3 854.5)">1.000</text>
-<text x="182.1" y="842.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(17.3 182.1 842.6)">Qwen3.8-27B ±0.000</text>
-<path d="M 701.1 996.0 L 206.8 819.1 A 715.0 715.0 0 0 1 221.8 780.7 L 705.1 985.8 A 190 190 0 0 0 701.1 996.0 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
-<text x="251.3" y="814.4" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-68.7 251.3 814.4)">1.000</text>
-<text x="187.9" y="789.6" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(21.3 187.9 789.6)">Claude API (v1 era)</text>
-<path d="M 706.1 983.6 L 225.4 772.3 A 715.0 715.0 0 0 1 243.1 735.1 L 710.8 973.7 A 190 190 0 0 0 706.1 983.6 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<text x="255.7" y="763.8" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-64.6 255.7 763.8)">1.000</text>
-<text x="219.5" y="746.7" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(25.4 219.5 746.7)">Qwen3.6-35B Q8_0</text>
-<path d="M 711.9 971.5 L 247.3 726.9 A 715.0 715.0 0 0 1 267.6 691.0 L 717.3 961.9 A 190 190 0 0 0 711.9 971.5 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
-<text x="292.0" y="728.5" font-size="11.5" font-weight="bold" fill="#9a7217" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-60.6 292.0 728.5)">1.000</text>
-<text x="232.8" y="695.1" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(29.4 232.8 695.1)">Fable5 agentic naive ±0.000</text>
-<path d="M 718.5 959.9 L 272.3 683.2 A 715.0 715.0 0 0 1 295.1 648.8 L 724.6 950.7 A 190 190 0 0 0 718.5 959.9 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
-<text x="303.5" y="679.1" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-56.5 303.5 679.1)">1.000</text>
-<text x="270.1" y="657.0" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(33.5 270.1 657.0)">Fable5 agentic eng ±0.000</text>
-<path d="M 726.0 948.7 L 300.4 641.3 A 715.0 715.0 0 0 1 325.5 608.6 L 732.6 940.1 A 190 190 0 0 0 726.0 948.7 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
-<text x="344.4" y="649.1" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-52.5 344.4 649.1)">1.000</text>
-<text x="290.5" y="607.7" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(37.5 290.5 607.7)">Opus4.8 agentic eng ±0.000</text>
-<path d="M 734.2 938.2 L 336.6 606.0 A 708.1 708.1 0 0 1 363.7 575.4 L 741.5 930.0 A 190 190 0 0 0 734.2 938.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="390.3" y="626.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-48.5 390.3 626.3)">0.987</text>
-<text x="337.9" y="579.9" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(41.5 337.9 579.9)">Gemma4-31B dense</text>
-<path d="M 743.1 928.2 L 373.4 572.1 A 703.3 703.3 0 0 1 402.3 543.7 L 751.0 920.5 A 190 190 0 0 0 743.1 928.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<line x1="396.2" y1="566.4" x2="379.5" y2="549.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="389.8" y1="572.7" x2="402.6" y2="560.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="368.3" y="538.0" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(45.6 368.3 538.0)">Gemma4-26B-A4B MoE · 0.978 ±0.023</text>
-<path d="M 752.8 918.9 L 410.1 538.9 A 701.7 701.7 0 0 1 440.9 512.6 L 761.1 911.8 A 190 190 0 0 0 752.8 918.9 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
-<text x="451.2" y="556.0" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-40.4 451.2 556.0)">0.975</text>
-<line x1="440.2" y1="543.0" x2="416.7" y2="515.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="433.3" y1="548.9" x2="447.0" y2="537.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="406.3" y="503.2" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(49.6 406.3 503.2)">Opus5 agentic eng ±0.044</text>
-<path d="M 763.0 910.3 L 455.6 516.8 A 689.4 689.4 0 0 1 487.6 493.2 L 771.8 903.8 A 190 190 0 0 0 763.0 910.3 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<text x="503.4" y="548.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-36.4 503.4 548.3)">0.951</text>
-<line x1="483.3" y1="520.9" x2="459.5" y2="488.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="476.0" y1="526.3" x2="490.5" y2="515.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="452.3" y1="493.9" x2="466.8" y2="483.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="450.0" y="475.7" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(53.6 450.0 475.7)">Qwen3.6-35B-A3B ±0.038</text>
-<path d="M 773.9 902.4 L 495.4 489.0 A 688.5 688.5 0 0 1 528.9 467.8 L 783.1 896.6 A 190 190 0 0 0 773.9 902.4 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
-<line x1="524.3" y1="497.6" x2="499.7" y2="458.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="516.7" y1="502.4" x2="531.9" y2="492.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="492.1" y1="463.5" x2="507.3" y2="453.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="491.2" y="445.2" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(57.7 491.2 445.2)">Opus5 agentic nv · 0.949 ±0.044</text>
-<path d="M 785.2 895.3 L 545.5 478.9 A 670.5 670.5 0 0 1 579.6 460.6 L 794.9 890.1 A 190 190 0 0 0 785.2 895.3 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
-<line x1="584.7" y1="510.8" x2="541.3" y2="430.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="576.7" y1="515.1" x2="592.6" y2="506.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="533.8" y="416.2" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(61.7 533.8 416.2)">Opus4.8 agentic nv · 0.915 ±0.089</text>
-<path d="M 797.1 889.1 L 587.4 457.0 A 670.2 670.2 0 0 1 622.6 441.2 L 807.0 884.6 A 190 190 0 0 0 797.1 889.1 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="614.8" y="470.7" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-24.2 614.8 470.7)">0.915</text>
-<text x="593.4" y="423.3" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(65.8 593.4 423.3)">Gemma4-12B CUDA</text>
-<path d="M 809.3 883.6 L 631.8 440.9 A 667.0 667.0 0 0 1 667.9 427.6 L 819.6 879.9 A 190 190 0 0 0 809.3 883.6 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<text x="663.5" y="471.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-20.2 663.5 471.5)">0.909</text>
-<line x1="654.1" y1="445.7" x2="645.4" y2="422.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="645.6" y1="448.8" x2="662.5" y2="442.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="637.0" y1="425.4" x2="653.9" y2="419.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="639.9" y="407.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(69.8 639.9 407.2)">Qwen3VL-32B ±0.024</text>
-<path d="M 821.9 879.1 L 678.3 432.0 A 659.6 659.6 0 0 1 714.8 421.4 L 832.4 876.1 A 190 190 0 0 0 821.9 879.1 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="711.5" y="478.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-16.2 711.5 478.3)">0.894</text>
-<line x1="699.8" y1="437.9" x2="693.2" y2="415.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="691.1" y1="440.4" x2="708.4" y2="435.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="684.5" y1="417.6" x2="701.8" y2="412.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="688.7" y="399.7" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(73.8 688.7 399.7)">Gemma4-12BQAT CUDA ±0.023</text>
-<path d="M 834.8 875.5 L 723.3 420.6 A 658.3 658.3 0 0 1 760.4 412.7 L 845.5 873.2 A 190 190 0 0 0 834.8 875.5 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<line x1="748.3" y1="446.3" x2="735.4" y2="386.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="739.5" y1="448.2" x2="757.1" y2="444.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="726.6" y1="388.3" x2="744.2" y2="384.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="732.0" y="370.8" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(77.9 732.0 370.8)">Qwen3VL-30B-A3B · 0.892 ±0.058</text>
-<path d="M 847.9 872.7 L 770.3 420.1 A 649.3 649.3 0 0 1 807.3 414.8 L 858.7 871.2 A 190 190 0 0 0 847.9 872.7 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
-<text x="792.1" y="440.9" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-8.1 792.1 440.9)">0.875</text>
-<text x="786.5" y="401.3" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(81.9 786.5 401.3)">Qwen3.8-27B NAIVE</text>
-<path d="M 861.2 870.9 L 815.8 415.5 A 647.7 647.7 0 0 1 853.0 412.9 L 872.1 870.2 A 190 190 0 0 0 861.2 870.9 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="837.2" y="453.8" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-4.0 837.2 453.8)">0.872</text>
-<text x="833.3" y="398.0" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="end" transform="rotate(86.0 833.3 398.0)">Muse Glimmer 30B</text>
-<path d="M 874.5 870.1 L 861.7 427.1 A 633.1 633.1 0 0 1 898.3 427.1 L 885.5 870.1 A 190 190 0 0 0 874.5 870.1 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<line x1="880.0" y1="477.6" x2="880.0" y2="376.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="871.0" y1="477.6" x2="889.0" y2="477.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="871.0" y1="376.2" x2="889.0" y2="376.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="880.0" y="360.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-90.0 880.0 360.2)">Qwen3VL-8B (38) · 0.844 ±0.097</text>
-<path d="M 887.9 870.2 L 905.9 437.5 A 623.0 623.0 0 0 1 941.8 440.1 L 898.8 870.9 A 190 190 0 0 0 887.9 870.2 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
-<text x="922.2" y="462.5" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(4.0 922.2 462.5)">0.825</text>
-<line x1="923.3" y1="447.3" x2="924.5" y2="429.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="914.3" y1="446.7" x2="932.2" y2="447.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="915.5" y1="429.2" x2="933.5" y2="430.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="925.6" y="413.8" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-86.0 925.6 413.8)">Ministral-3-8B NAIVE (v-only) ±0.017</text>
-<path d="M 901.3 871.2 L 945.8 475.4 A 588.3 588.3 0 0 1 979.4 480.2 L 912.1 872.7 A 190 190 0 0 0 901.3 871.2 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<text x="959.3" y="501.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(8.1 959.3 501.3)">0.759</text>
-<text x="964.9" y="461.7" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-81.9 964.9 461.7)">Gemma4-12B Metal</text>
-<path d="M 914.5 873.2 L 985.2 490.5 A 579.1 579.1 0 0 1 1017.8 497.5 L 925.2 875.5 A 190 190 0 0 0 914.5 873.2 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
-<text x="990.2" y="546.6" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(12.1 990.2 546.6)">0.741</text>
-<line x1="996.1" y1="519.4" x2="1007.1" y2="468.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="987.3" y1="517.5" x2="1004.9" y2="521.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="998.3" y1="466.3" x2="1015.9" y2="470.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1010.4" y="452.5" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-77.9 1010.4 452.5)">Qwen3.6-35B NAIVE ±0.050</text>
-<path d="M 927.6 876.1 L 1022.1 510.5 A 567.6 567.6 0 0 1 1053.6 519.6 L 938.1 879.1 A 190 190 0 0 0 927.6 876.1 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<line x1="1027.6" y1="550.5" x2="1048.2" y2="479.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1019.0" y1="548.0" x2="1036.3" y2="553.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1039.6" y1="476.7" x2="1056.9" y2="481.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1052.7" y="463.8" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-73.8 1052.7 463.8)">Qwen3.5-9B · 0.719 ±0.071</text>
-<path d="M 940.4 879.9 L 1060.1 523.1 A 566.3 566.3 0 0 1 1090.7 534.3 L 950.7 883.6 A 190 190 0 0 0 940.4 879.9 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1056.9" y="579.2" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(20.2 1056.9 579.2)">0.717</text>
-<line x1="1065.2" y1="556.4" x2="1085.8" y2="500.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1056.8" y1="553.3" x2="1073.7" y2="559.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1077.3" y1="497.4" x2="1094.2" y2="503.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1091.3" y="485.5" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-69.8 1091.3 485.5)">Ministral-3-8B ±0.057</text>
-<path d="M 953.0 884.6 L 1086.5 563.5 A 537.7 537.7 0 0 1 1114.7 576.3 L 962.9 889.1 A 190 190 0 0 0 953.0 884.6 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5" stroke-dasharray="6 3.5"/>
-<line x1="1083.9" y1="607.1" x2="1117.5" y2="532.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1075.6" y1="603.4" x2="1092.1" y2="610.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1109.3" y1="528.6" x2="1125.7" y2="536.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1124.1" y="517.7" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-65.8 1124.1 517.7)">Qwen3.5-9B NAIVE (v-only) · 0.662 ±0.078</text>
-<path d="M 965.1 890.1 L 1120.2 580.8 A 536.0 536.0 0 0 1 1147.4 595.4 L 974.8 895.3 A 190 190 0 0 0 965.1 890.1 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
-<line x1="1113.4" y1="626.1" x2="1154.5" y2="549.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1105.4" y1="621.9" x2="1121.3" y2="630.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1146.5" y1="545.4" x2="1162.4" y2="554.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1162.0" y="535.6" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-61.7 1162.0 535.6)">Gemma4-E4B eng x3 · 0.659 ±0.083</text>
-<path d="M 976.9 896.6 L 1148.1 607.8 A 525.7 525.7 0 0 1 1173.7 624.0 L 986.1 902.4 A 190 190 0 0 0 976.9 896.6 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<line x1="1130.8" y1="663.5" x2="1191.2" y2="567.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1123.2" y1="658.7" x2="1138.4" y2="668.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1183.6" y1="563.1" x2="1198.8" y2="572.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1199.8" y="554.4" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-57.7 1199.8 554.4)">GLM-4.6V-Flash · 0.639 ±0.108</text>
-<path d="M 988.2 903.8 L 1172.5 637.6 A 513.8 513.8 0 0 1 1196.3 655.2 L 997.0 910.3 A 190 190 0 0 0 988.2 903.8 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1170.3" y="665.5" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(36.3 1170.3 665.5)">0.617</text>
-<text x="1194.0" y="633.3" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-53.7 1194.0 633.3)">Agents-A1-35B</text>
-<path d="M 998.9 911.8 L 1200.9 660.0 A 512.8 512.8 0 0 1 1223.4 679.2 L 1007.2 918.9 A 190 190 0 0 0 998.9 911.8 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
-<line x1="1177.3" y1="710.5" x2="1247.2" y2="628.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1170.5" y1="704.6" x2="1184.2" y2="716.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1240.3" y1="622.6" x2="1254.0" y2="634.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1257.5" y="616.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-49.6 1257.5 616.2)">Qwen3.5-4B · 0.615 ±0.103</text>
-<path d="M 1009.0 920.5 L 1217.0 695.8 A 496.2 496.2 0 0 1 1237.4 715.8 L 1016.9 928.2 A 190 190 0 0 0 1009.0 920.5 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1210.5" y="722.8" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(44.4 1210.5 722.8)">0.583</text>
-<text x="1238.5" y="694.2" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-45.6 1238.5 694.2)">Nemotron-30B-A3B</text>
-<path d="M 1018.5 930.0 L 1240.6 721.6 A 494.5 494.5 0 0 1 1259.5 742.9 L 1025.8 938.2 A 190 190 0 0 0 1018.5 930.0 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1220.2" y="758.6" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(48.5 1220.2 758.6)">0.580</text>
-<text x="1262.1" y="721.5" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-41.5 1262.1 721.5)">InternVL3.5-30B(35)</text>
-<path d="M 1027.4 940.1 L 1181.6 814.5 A 388.8 388.8 0 0 1 1195.2 832.3 L 1034.0 948.7 A 190 190 0 0 0 1027.4 940.1 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
-<text x="1169.5" y="837.9" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(52.5 1169.5 837.9)">0.379</text>
-<line x1="1182.4" y1="828.0" x2="1194.6" y2="818.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1176.9" y1="820.9" x2="1187.9" y2="835.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1189.2" y1="811.5" x2="1200.1" y2="825.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1207.3" y="808.9" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-37.5 1207.3 808.9)">GLM-4.6V NAIVE (v-only) ±0.015</text>
-<path d="M 1035.4 950.7 L 1160.4 862.9 A 342.8 342.8 0 0 1 1171.3 879.4 L 1041.5 959.9 A 190 190 0 0 0 1035.4 950.7 Z" fill="url(#hatch-gemma)" stroke="#1c6b41" stroke-width="1.5"/>
-<line x1="1156.7" y1="877.2" x2="1175.2" y2="864.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1151.7" y1="869.7" x2="1161.7" y2="884.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<line x1="1170.3" y1="857.4" x2="1180.2" y2="872.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
-<text x="1188.6" y="856.1" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-33.5 1188.6 856.1)">Gemma4-E4B naive x3 · 0.291 ±0.021</text>
-<path d="M 1042.7 961.9 L 1143.0 901.5 A 307.1 307.1 0 0 1 1151.7 917.0 L 1048.1 971.5 A 190 190 0 0 0 1042.7 961.9 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1161.4" y="901.3" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-29.4 1161.4 901.3)">MiniCPM-V4.6 (36) · 0.223</text>
-<path d="M 1049.2 973.7 L 1152.9 920.8 A 306.4 306.4 0 0 1 1160.5 936.7 L 1053.9 983.6 A 190 190 0 0 0 1049.2 973.7 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
-<text x="1171.3" y="921.8" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-25.4 1171.3 921.8)">Qianfan-OCR (32) · 0.222</text>
-<path d="M 1054.9 985.8 L 1066.0 981.1 A 202.0 202.0 0 0 1 1070.2 992.0 L 1058.9 996.0 A 190 190 0 0 0 1054.9 985.8 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
-<text x="1083.1" y="980.7" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-21.3 1083.1 980.7)">EXAONE-4.5-33B — no protocol drive</text>
-<path d="M 1059.7 998.3 L 1071.0 994.4 A 202.0 202.0 0 0 1 1074.5 1005.5 L 1063.0 1008.8 A 190 190 0 0 0 1059.7 998.3 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
-<text x="1088.1" y="995.2" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-17.3 1088.1 995.2)">Fara1.5-9B — no protocol drive</text>
-<circle cx="880" cy="1060" r="118" fill="#dcebfa" stroke="#4a86c2" stroke-width="3"/>
-<text x="880" y="1034" font-size="19" font-weight="bold" fill="#153c60" text-anchor="middle">Claude Code</text>
-<text x="880" y="1058" font-size="13" fill="#2c567e" text-anchor="middle">fleet orchestration</text>
-<text x="880" y="1080" font-size="12" fill="#2c567e" text-anchor="middle">verify · queue · gate ·</text>
-<text x="880" y="1098" font-size="12" fill="#2c567e" text-anchor="middle">watchdog · score</text>
-<line x1="880" y1="1178" x2="880" y2="1190" stroke="#c2711d" stroke-width="4"/>
-<rect x="490" y="1190" width="780" height="94" rx="14" fill="#fff3df" stroke="#e3a75c" stroke-width="2.5"/>
-<text x="880" y="1222" font-size="17.5" font-weight="bold" fill="#8a4a05" text-anchor="middle">The hand that holds the fan — human direction &amp; ground truth</text>
-<text x="880" y="1248" font-size="15" fill="#5c4326" text-anchor="middle">Huilong Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan S. Hong (MS Student) — UW MSE</text>
-<text x="880" y="1270" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
+<text x="40" y="36" font-size="28" font-weight="bold" fill="#ffffff">PEEK-Bench v2.4b — The Villain Fan: row recall (six rogue papers)</text>
+<text x="40" y="62" font-size="15.5" fill="#bcd5ea">CF-P11 · P13 · P14 · P18 · P19 · P24 — the papers that carry the benchmark's discrimination · 36 arms · updated 2026-09-17</text>
+<path d="M 694.2 1040.5 A 190.0 190.0 0 0 1 1065.8 1040.5" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1070.8" y="1044.5" font-size="12.5" fill="#9aa7b4">recall 0.00</text>
+<path d="M 565.8 1013.2 A 321.2 321.2 0 0 1 1194.2 1013.2" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1199.2" y="1017.2" font-size="12.5" fill="#9aa7b4">0.25</text>
+<path d="M 437.4 985.9 A 452.5 452.5 0 0 1 1322.6 985.9" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1327.6" y="989.9" font-size="12.5" fill="#9aa7b4">0.50</text>
+<path d="M 309.0 958.6 A 583.8 583.8 0 0 1 1451.0 958.6" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1456.0" y="962.6" font-size="12.5" fill="#9aa7b4">0.75</text>
+<path d="M 232.0 942.3 A 662.5 662.5 0 0 1 1528.0 942.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1533.0" y="946.3" font-size="12.5" fill="#9aa7b4">0.90</text>
+<path d="M 180.6 931.3 A 715.0 715.0 0 0 1 1579.4 931.3" fill="none" stroke="#e3e8ee" stroke-width="1.4" stroke-dasharray="5 6"/>
+<text x="1584.4" y="935.3" font-size="12.5" fill="#9aa7b4">1.00</text>
+<path d="M 697.1 1028.6 L 191.6 886.6 A 715.0 715.0 0 0 1 203.6 848.3 L 700.3 1018.4 A 190 190 0 0 0 697.1 1028.6 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="220.3" y="874.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-72.7 220.3 874.5)">1.000</text>
+<text x="182.1" y="862.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(17.3 182.1 862.6)">Qwen3.8-27B ±0.000</text>
+<path d="M 701.0 1016.2 L 206.5 839.9 A 715.0 715.0 0 0 1 221.0 802.5 L 704.9 1006.3 A 190 190 0 0 0 701.0 1016.2 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="250.8" y="835.6" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-68.8 250.8 835.6)">1.000</text>
+<text x="187.4" y="811.0" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(21.2 187.4 811.0)">Claude API (v1 era)</text>
+<path d="M 705.8 1004.1 L 224.6 794.3 A 715.0 715.0 0 0 1 241.6 758.0 L 710.4 994.4 A 190 190 0 0 0 705.8 1004.1 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="254.6" y="786.2" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-64.8 254.6 786.2)">1.000</text>
+<text x="218.4" y="769.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(25.2 218.4 769.2)">Qwen3.6-35B Q8_0</text>
+<path d="M 711.4 992.3 L 245.7 750.1 A 715.0 715.0 0 0 1 265.2 715.0 L 716.6 983.0 A 190 190 0 0 0 711.4 992.3 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<text x="290.1" y="751.8" font-size="11.5" font-weight="bold" fill="#9a7217" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-60.9 290.1 751.8)">1.000</text>
+<text x="230.7" y="718.8" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(29.1 230.7 718.8)">Fable5 agentic naive ±0.000</text>
+<path d="M 717.8 981.0 L 269.8 707.4 A 715.0 715.0 0 0 1 291.6 673.7 L 723.7 972.0 A 190 190 0 0 0 717.8 981.0 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="300.6" y="703.5" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-57.0 300.6 703.5)">1.000</text>
+<text x="267.1" y="681.7" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(33.0 267.1 681.7)">Fable5 agentic eng ±0.000</text>
+<path d="M 725.0 970.1 L 296.8 666.4 A 715.0 715.0 0 0 1 320.9 634.4 L 731.4 961.6 A 190 190 0 0 0 725.0 970.1 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="340.6" y="674.3" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-53.1 340.6 674.3)">1.000</text>
+<text x="286.2" y="633.4" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(36.9 286.2 633.4)">Opus4.8 agentic eng ±0.000</text>
+<path d="M 732.9 959.7 L 333.0 632.7 A 706.6 706.6 0 0 1 358.9 602.7 L 739.9 951.7 A 190 190 0 0 0 732.9 959.7 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="386.5" y="652.9" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-49.1 386.5 652.9)">0.984</text>
+<line x1="347.4" y1="619.0" x2="344.0" y2="616.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="341.5" y1="625.8" x2="353.3" y2="612.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="338.1" y1="622.9" x2="349.9" y2="609.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="331.9" y="605.6" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(40.9 331.9 605.6)">Gemma4-31B dense ±0.004</text>
+<path d="M 741.5 949.9 L 367.3 598.5 A 703.3 703.3 0 0 1 395.1 570.5 L 749.0 942.4 A 190 190 0 0 0 741.5 949.9 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="389.7" y1="592.9" x2="372.7" y2="576.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="383.3" y1="599.3" x2="396.0" y2="586.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="361.4" y="564.8" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(44.8 361.4 564.8)">Gemma4-26B-A4B MoE · 0.978 ±0.023</text>
+<path d="M 750.7 940.7 L 402.6 565.7 A 701.7 701.7 0 0 1 432.2 539.7 L 758.8 933.7 A 190 190 0 0 0 750.7 940.7 Z" fill="#d9a028" fill-opacity="0.88" stroke="#9a7217" stroke-width="1.5"/>
+<text x="443.6" y="582.6" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-41.3 443.6 582.6)">0.975</text>
+<line x1="432.4" y1="569.8" x2="408.5" y2="542.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="425.6" y1="575.7" x2="439.1" y2="563.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="397.9" y="530.5" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(48.7 397.9 530.5)">Opus5 agentic eng ±0.044</text>
+<path d="M 760.6 932.2 L 446.7 543.8 A 689.4 689.4 0 0 1 477.5 520.3 L 769.1 925.8 A 190 190 0 0 0 760.6 932.2 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="494.7" y="574.8" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-37.3 494.7 574.8)">0.951</text>
+<line x1="474.1" y1="547.8" x2="449.8" y2="515.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="467.0" y1="553.3" x2="481.3" y2="542.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="442.6" y1="521.4" x2="456.9" y2="510.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="440.1" y="503.2" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(52.7 440.1 503.2)">Qwen3.6-35B-A3B ±0.038</text>
+<path d="M 771.0 924.4 L 485.0 516.1 A 688.5 688.5 0 0 1 517.3 494.9 L 779.9 918.5 A 190 190 0 0 0 771.0 924.4 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<line x1="513.6" y1="524.4" x2="488.3" y2="486.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="506.1" y1="529.4" x2="521.2" y2="519.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="480.8" y1="491.0" x2="495.8" y2="481.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="479.5" y="472.7" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(56.6 479.5 472.7)">Opus5 agentic nv · 0.949 ±0.044</text>
+<path d="M 781.9 917.3 L 533.8 505.7 A 670.5 670.5 0 0 1 566.6 487.2 L 791.2 912.0 A 190 190 0 0 0 781.9 917.3 Z" fill="url(#hatch-gold)" stroke="#9a7217" stroke-width="1.5"/>
+<line x1="573.2" y1="537.2" x2="528.2" y2="457.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="565.4" y1="541.6" x2="581.0" y2="532.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="520.3" y="443.6" font-size="12" font-weight="bold" fill="#9a7217" text-anchor="end" transform="rotate(60.5 520.3 443.6)">Opus4.8 agentic nv · 0.915 ±0.089</text>
+<path d="M 793.3 910.9 L 574.2 483.6 A 670.2 670.2 0 0 1 608.1 467.4 L 802.9 906.3 A 190 190 0 0 0 793.3 910.9 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="601.4" y="496.9" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-25.5 601.4 496.9)">0.915</text>
+<text x="578.9" y="450.0" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(64.5 578.9 450.0)">Gemma4-12B CUDA</text>
+<path d="M 805.1 905.4 L 617.0 467.0 A 667.0 667.0 0 0 1 651.8 453.2 L 815.0 901.5 A 190 190 0 0 0 805.1 905.4 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<text x="649.0" y="497.1" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-21.6 649.0 497.1)">0.909</text>
+<line x1="638.9" y1="471.5" x2="629.7" y2="448.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="630.5" y1="474.8" x2="647.3" y2="468.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="621.3" y1="451.6" x2="638.1" y2="445.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="623.8" y="433.4" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(68.4 623.8 433.4)">Qwen3VL-32B ±0.024</text>
+<path d="M 817.2 900.7 L 662.1 457.5 A 659.6 659.6 0 0 1 697.4 446.2 L 827.4 897.4 A 190 190 0 0 0 817.2 900.7 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="696.0" y="503.0" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-17.7 696.0 503.0)">0.894</text>
+<line x1="683.2" y1="462.9" x2="676.0" y2="440.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="674.7" y1="465.6" x2="691.8" y2="460.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="667.5" y1="443.0" x2="684.6" y2="437.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="671.2" y="425.1" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="end" transform="rotate(72.3 671.2 425.1)">Gemma4-12BQAT CUDA ±0.023</text>
+<path d="M 829.7 896.8 L 705.6 445.2 A 658.3 658.3 0 0 1 741.5 436.4 L 840.0 894.3 A 190 190 0 0 0 829.7 896.8 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="730.8" y1="470.4" x2="716.2" y2="410.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="722.0" y1="472.5" x2="739.5" y2="468.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="707.5" y1="412.9" x2="724.9" y2="408.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="712.4" y="395.3" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(76.2 712.4 395.3)">Qwen3VL-30B-A3B · 0.892 ±0.058</text>
+<path d="M 842.3 893.8 L 751.3 443.6 A 649.3 649.3 0 0 1 787.2 437.4 L 852.8 892.0 A 190 190 0 0 0 842.3 893.8 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
+<text x="773.3" y="463.9" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(-9.8 773.3 463.9)">0.875</text>
+<text x="766.5" y="424.5" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(80.2 766.5 424.5)">Qwen3.8-27B NAIVE ±0.000</text>
+<path d="M 855.2 891.6 L 795.3 437.1 A 648.5 648.5 0 0 1 831.5 433.3 L 865.8 890.5 A 190 190 0 0 0 855.2 891.6 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="817.5" y="474.7" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-5.9 817.5 474.7)">0.873</text>
+<line x1="815.7" y1="457.2" x2="811.1" y2="412.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="806.8" y1="458.2" x2="824.7" y2="456.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="802.2" y1="413.6" x2="820.1" y2="411.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="809.5" y="396.8" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="end" transform="rotate(84.1 809.5 396.8)">Muse Glimmer 30B ±0.043</text>
+<path d="M 868.2 890.4 L 840.5 448.1 A 633.1 633.1 0 0 1 876.1 446.9 L 878.8 890.0 A 190 190 0 0 0 868.2 890.4 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="860.0" y1="497.9" x2="856.6" y2="396.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="851.0" y1="498.2" x2="869.0" y2="497.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="847.6" y1="396.9" x2="865.5" y2="396.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="856.0" y="380.6" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="end" transform="rotate(88.0 856.0 380.6)">Qwen3VL-8B (38) · 0.844 ±0.097</text>
+<path d="M 881.2 890.0 L 883.9 457.0 A 623.0 623.0 0 0 1 918.8 458.2 L 891.8 890.4 A 190 190 0 0 0 881.2 890.0 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<text x="900.5" y="481.4" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(2.0 900.5 481.4)">0.825</text>
+<line x1="901.1" y1="466.1" x2="901.7" y2="448.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="892.1" y1="465.8" x2="910.1" y2="466.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="892.7" y1="448.3" x2="910.7" y2="448.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="902.2" y="432.6" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-88.0 902.2 432.6)">Ministral-3-8B NAIVE (v-only) ±0.017</text>
+<path d="M 894.2 890.5 L 924.0 493.3 A 588.3 588.3 0 0 1 956.8 496.7 L 904.8 891.6 A 190 190 0 0 0 894.2 890.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<text x="938.0" y="518.7" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(5.9 938.0 518.7)">0.759</text>
+<text x="942.1" y="478.9" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-84.1 942.1 478.9)">Gemma4-12B Metal</text>
+<path d="M 907.2 892.0 L 962.8 506.8 A 579.1 579.1 0 0 1 994.8 512.4 L 917.7 893.8 A 190 190 0 0 0 907.2 892.0 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5"/>
+<text x="969.6" y="562.6" font-size="11.5" font-weight="bold" fill="#1a5182" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(9.8 969.6 562.6)">0.741</text>
+<line x1="974.4" y1="535.1" x2="983.3" y2="483.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="965.5" y1="533.6" x2="983.2" y2="536.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="974.4" y1="482.0" x2="992.1" y2="485.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="986.0" y="467.8" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-80.2 986.0 467.8)">Qwen3.6-35B NAIVE ±0.050</text>
+<path d="M 920.0 894.3 L 999.4 525.1 A 567.6 567.6 0 0 1 1030.4 532.7 L 930.3 896.8 A 190 190 0 0 0 920.0 894.3 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="1006.1" y1="564.7" x2="1023.8" y2="492.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="997.4" y1="562.6" x2="1014.9" y2="566.9" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1015.0" y1="490.5" x2="1032.5" y2="494.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1027.6" y="477.1" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-76.2 1027.6 477.1)">Qwen3.5-9B · 0.719 ±0.071</text>
+<path d="M 932.6 897.4 L 1036.8 535.8 A 566.3 566.3 0 0 1 1067.1 545.5 L 942.8 900.7 A 190 190 0 0 0 932.6 897.4 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1035.6" y="591.9" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(17.7 1035.6 591.9)">0.717</text>
+<line x1="1043.0" y1="568.8" x2="1061.1" y2="512.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1034.4" y1="566.1" x2="1051.6" y2="571.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1052.5" y1="509.3" x2="1069.6" y2="514.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1065.9" y="496.8" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-72.3 1065.9 496.8)">Ministral-3-8B ±0.057</text>
+<path d="M 945.0 901.5 L 1063.9 574.8 A 537.7 537.7 0 0 1 1092.0 585.9 L 954.9 905.4 A 190 190 0 0 0 945.0 901.5 Z" fill="url(#hatch-qwen)" stroke="#1a5182" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<line x1="1062.9" y1="618.3" x2="1093.2" y2="542.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1054.6" y1="615.0" x2="1071.3" y2="621.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1084.8" y1="538.7" x2="1101.5" y2="545.3" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1099.1" y="527.1" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-68.4 1099.1 527.1)">Qwen3.5-9B NAIVE (v-only) · 0.662 ±0.078</text>
+<path d="M 957.1 906.3 L 1097.5 590.1 A 536.0 536.0 0 0 1 1124.6 603.0 L 966.7 910.9 A 190 190 0 0 0 957.1 906.3 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="1092.4" y1="635.5" x2="1129.8" y2="557.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1084.3" y1="631.6" x2="1100.5" y2="639.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1121.7" y1="553.3" x2="1138.0" y2="561.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1136.7" y="542.8" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-64.5 1136.7 542.8)">Gemma4-E4B eng x3 · 0.659 ±0.083</text>
+<path d="M 968.8 912.0 L 1125.7 615.3 A 525.7 525.7 0 0 1 1151.4 629.8 L 978.1 917.3 A 190 190 0 0 0 968.8 912.0 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<line x1="1110.8" y1="671.6" x2="1166.5" y2="573.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1103.0" y1="667.1" x2="1118.7" y2="676.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1158.6" y1="568.7" x2="1174.3" y2="577.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1174.3" y="559.2" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-60.5 1174.3 559.2)">GLM-4.6V-Flash · 0.639 ±0.108</text>
+<path d="M 980.1 918.5 L 1155.1 636.2 A 522.2 522.2 0 0 1 1179.6 652.3 L 989.0 924.4 A 190 190 0 0 0 980.1 918.5 Z" fill="#2f9e63" fill-opacity="0.88" stroke="#1c6b41" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<line x1="1143.3" y1="680.7" x2="1191.6" y2="607.5" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1135.8" y1="675.8" x2="1150.8" y2="685.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1184.1" y1="602.5" x2="1199.1" y2="612.4" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1200.4" y="594.1" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-56.6 1200.4 594.1)">Gemma3-27B (v-sweeps) · 0.633 ±0.084</text>
+<path d="M 990.9 925.8 L 1180.0 662.9 A 513.8 513.8 0 0 1 1202.9 680.4 L 999.4 932.2 A 190 190 0 0 0 990.9 925.8 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1177.0" y="690.6" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(37.3 1177.0 690.6)">0.617</text>
+<text x="1201.3" y="658.8" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-52.7 1201.3 658.8)">Agents-A1-35B</text>
+<path d="M 1001.2 933.7 L 1207.2 685.2 A 512.8 512.8 0 0 1 1228.9 704.2 L 1009.3 940.7 A 190 190 0 0 0 1001.2 933.7 Z" fill="#2f78b8" fill-opacity="0.88" stroke="#1a5182" stroke-width="1.5"/>
+<line x1="1182.6" y1="735.1" x2="1253.7" y2="654.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1175.9" y1="729.1" x2="1189.4" y2="741.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1247.0" y1="648.1" x2="1260.5" y2="660.0" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1264.3" y="642.0" font-size="12" font-weight="bold" fill="#1a5182" text-anchor="start" transform="rotate(-48.7 1264.3 642.0)">Qwen3.5-4B · 0.615 ±0.103</text>
+<path d="M 1011.0 942.4 L 1222.1 720.6 A 496.2 496.2 0 0 1 1241.7 740.3 L 1018.5 949.9 A 190 190 0 0 0 1011.0 942.4 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1215.0" y="747.2" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(45.2 1215.0 747.2)">0.583</text>
+<text x="1243.4" y="719.0" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-44.8 1243.4 719.0)">Nemotron-30B-A3B</text>
+<path d="M 1020.1 951.7 L 1244.7 746.0 A 494.5 494.5 0 0 1 1262.8 767.0 L 1027.1 959.7 A 190 190 0 0 0 1020.1 951.7 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1223.6" y="782.5" font-size="11.5" font-weight="bold" fill="#6b3a20" paint-order="stroke" stroke="#ffffff" stroke-width="3" text-anchor="middle" transform="rotate(49.1 1223.6 782.5)">0.580</text>
+<text x="1266.0" y="745.9" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-40.9 1266.0 745.9)">InternVL3.5-30B(35)</text>
+<path d="M 1028.6 961.6 L 1184.1 837.6 A 388.8 388.8 0 0 1 1197.2 855.1 L 1035.0 970.1 A 190 190 0 0 0 1028.6 961.6 Z" fill="url(#hatch-rust)" stroke="#6b3a20" stroke-width="1.5" stroke-dasharray="6 3.5"/>
+<line x1="1184.6" y1="850.9" x2="1196.9" y2="841.6" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1179.2" y1="843.7" x2="1190.0" y2="858.1" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1191.5" y1="834.4" x2="1202.3" y2="848.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1209.7" y="832.0" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-36.9 1209.7 832.0)">GLM-4.6V NAIVE (v-only) · 0.379 ±0.015</text>
+<path d="M 1036.3 972.0 L 1162.0 885.2 A 342.8 342.8 0 0 1 1172.5 901.4 L 1042.2 981.0 A 190 190 0 0 0 1036.3 972.0 Z" fill="url(#hatch-gemma)" stroke="#1c6b41" stroke-width="1.5"/>
+<line x1="1158.1" y1="899.3" x2="1176.7" y2="887.2" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1153.2" y1="891.7" x2="1163.0" y2="906.8" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="1171.8" y1="879.6" x2="1181.6" y2="894.7" stroke="#233340" stroke-width="2.6" stroke-linecap="round"/>
+<text x="1190.1" y="878.5" font-size="12" font-weight="bold" fill="#1c6b41" text-anchor="start" transform="rotate(-33.0 1190.1 878.5)">Gemma4-E4B naive x3 · 0.291 ±0.021</text>
+<path d="M 1043.4 983.0 L 1144.0 923.2 A 307.1 307.1 0 0 1 1152.4 938.3 L 1048.6 992.3 A 190 190 0 0 0 1043.4 983.0 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1162.3" y="922.9" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-29.1 1162.3 922.9)">MiniCPM-V4.6 (36) · 0.223</text>
+<path d="M 1049.6 994.4 L 1153.6 942.0 A 306.4 306.4 0 0 1 1160.9 957.6 L 1054.2 1004.1 A 190 190 0 0 0 1049.6 994.4 Z" fill="#96522e" fill-opacity="0.88" stroke="#6b3a20" stroke-width="1.5"/>
+<text x="1171.8" y="942.9" font-size="12" font-weight="bold" fill="#6b3a20" text-anchor="start" transform="rotate(-25.2 1171.8 942.9)">Qianfan-OCR (32) · 0.222</text>
+<path d="M 1055.1 1006.3 L 1066.2 1001.6 A 202.0 202.0 0 0 1 1070.3 1012.2 L 1059.0 1016.2 A 190 190 0 0 0 1055.1 1006.3 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
+<text x="1083.2" y="1001.1" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-21.2 1083.2 1001.1)">EXAONE-4.5-33B — no protocol drive</text>
+<path d="M 1059.7 1018.4 L 1071.1 1014.5 A 202.0 202.0 0 0 1 1074.5 1025.4 L 1062.9 1028.6 A 190 190 0 0 0 1059.7 1018.4 Z" fill="#d7dce1" fill-opacity="0.9" stroke="#8a939c" stroke-width="1.5"/>
+<text x="1088.1" y="1015.2" font-size="12" font-weight="bold" fill="#7c8690" font-style="italic" text-anchor="start" transform="rotate(-17.3 1088.1 1015.2)">Fara1.5-9B — no protocol drive</text>
+<circle cx="880" cy="1080" r="118" fill="#dcebfa" stroke="#4a86c2" stroke-width="3"/>
+<text x="880" y="1054" font-size="19" font-weight="bold" fill="#153c60" text-anchor="middle">Claude Code</text>
+<text x="880" y="1078" font-size="13" fill="#2c567e" text-anchor="middle">fleet orchestration</text>
+<text x="880" y="1100" font-size="12" fill="#2c567e" text-anchor="middle">verify · queue · gate ·</text>
+<text x="880" y="1118" font-size="12" fill="#2c567e" text-anchor="middle">watchdog · score</text>
+<line x1="880" y1="1198" x2="880" y2="1210" stroke="#c2711d" stroke-width="4"/>
+<rect x="490" y="1210" width="780" height="94" rx="14" fill="#fff3df" stroke="#e3a75c" stroke-width="2.5"/>
+<text x="880" y="1242" font-size="17.5" font-weight="bold" fill="#8a4a05" text-anchor="middle">The hand that holds the fan — human direction &amp; ground truth</text>
+<text x="880" y="1268" font-size="15" fill="#5c4326" text-anchor="middle">Huilong Fu (Research Lead) · Navid Zobeiry (Supervisor) · Ryan S. Hong (MS Student) — UW MSE</text>
+<text x="880" y="1290" font-size="12.5" font-style="italic" fill="#a05b12" text-anchor="middle">benchmark design · private ground truth · policies &amp; approvals · review</text>
 <rect x="40" y="112" width="20" height="13" rx="2" fill="#d9a028" stroke="#9a7217" stroke-width="1.2"/>
 <text x="68" y="123" font-size="12.5" fill="#233340">Claude API arms (agentic + v1 era)</text>
 <rect x="40" y="138" width="20" height="13" rx="2" fill="#2f78b8" stroke="#1a5182" stroke-width="1.2"/>
@@ -201,6 +211,6 @@
 <text x="358" y="201" font-size="12.5" fill="#233340">dashed outline = villain-only arm (v-only)</text>
 <text x="1720" y="118" font-size="12.5" fill="#77828c" text-anchor="end">longer blade → higher row recall (linear scale, 0 → 1; ties broken by row F1)</text>
 <text x="1720" y="136" font-size="12.5" fill="#77828c" text-anchor="end">blades sorted best → worst, left → right</text>
-<text x="40" y="1310" font-size="12.5" fill="#77828c">villain metrics = six-paper subsets of complete full sweeps pooled with dedicated villain-only sweeps (same paper mix); never pooled into the full-13 leaderboard · (v-only) arms exist only as villain sweeps (no full-13 counterpart)</text>
-<text x="40" y="1330" font-size="12.5" fill="#77828c">row recall on the six rogue papers · whiskers = ±1 between-sweep SD (multi-sweep arms) · other uncapped whisker ends = ±SD reaches past the axis edge, clamped · gray stubs = negative results, not scored (EXAONE-4.5-33B &amp; Fara1.5-9B: no protocol drive)</text>
+<text x="40" y="1330" font-size="12.5" fill="#77828c">villain metrics = six-paper subsets of complete full sweeps pooled with dedicated villain-only sweeps (same paper mix); never pooled into the full-13 leaderboard · (v-only) arms exist only as villain sweeps (no full-13 counterpart)</text>
+<text x="40" y="1350" font-size="12.5" fill="#77828c">row recall on the six rogue papers · whiskers = ±1 between-sweep SD (multi-sweep arms) · other uncapped whisker ends = ±SD reaches past the axis edge, clamped · gray stubs = negative results, not scored (EXAONE-4.5-33B &amp; Fara1.5-9B: no protocol drive)</text>
 </svg>
