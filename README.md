@@ -745,10 +745,7 @@ Updated for v2.4b (2026-09-17):
    Gemma4-31B, Qwen3-VL-30B-A3B) — now with the roster the dev split actually selected.
 3. **Consolidated scoring workbooks** — metrics-only, per the privacy rule (ground truth and
    source PDFs are never published). The paper draft is maintained privately until submission.
-4. **Hardware**: evaluation closed — the chosen upgrade path is a used RTX 3090 24 GB
-   (~$700-750) if test-split scale demands it; AMD RDNA3 was assessed viable-with-guardrails
-   (llama.cpp only), Intel B65/B70 and DGX Spark evaluated and passed over (campaign notes).
-5. **Serve the benchmark over MCP / package Skills** — carried over from v1, unchanged.
+
 
 ## Campaign accounting (v2)
 
