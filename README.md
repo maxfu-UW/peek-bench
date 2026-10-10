@@ -35,7 +35,7 @@ measures the automation of; every downstream stage is only as good as that input
 
 **Status (2026-09-17): the Dev-13 campaign is COMPLETE — 4,070 scored runs · 377 local machine-hours across the Mac Mini M4 Pro (Metal) and the RTX A2000 box (CUDA),
 three-model frontier matrix and villain-repeat chain both finished. The frozen 10-paper test split
-has not been started.**
+has not been published yet in this repo.**
 
 ---
 
