@@ -18,7 +18,7 @@ meta-analysis of polymer additive manufacturing (Fu & Zobeiry, 2026). Curating i
 paper, locating every printed-and-tested condition, transcribing values that often exist only inside
 figures — took **months of expert time**. PEEK-Bench applies the same curation discipline to a new
 **carbon-fibre PEEK** corpus and asks, with a scored instrument, whether an LLM can absorb that
-labour. **The two datasets are distinct: the 2026 paper's pure-PEEK data is *not* the ground truth
+labour. **The two datasets are distinct: the 2026 journal paper's pure-PEEK data is *not* the ground truth
 used here.**
 
 > Fu, H., & Zobeiry, N. (2026). Data-driven machine learning meta-analysis of process–property
